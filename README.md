@@ -2,7 +2,7 @@
   <link rel="icon" type="image/x-icon" href="favicon.png" />
 </head>
 <h1 align="center">
-  DNA™ Integration Samples
+  Streamroot Integration Samples
 </h1>
 <p align="center">
   <img alt="Streamroot" src="https://blog.streamroot.io/wp-content/uploads/2018/04/logo_typo_long.png" width="400" />
@@ -35,39 +35,39 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 
 #### Players
 
-- ExoPlayer ( [Kotlin](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer) | [Java](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-Java) | [Kotlin-pre2.10](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-pre2.10) | [Java-pre2.10](https://github.com/streamroot/dna-integration-samples/tree/master/android/ExoPlayer-pre2.10-Java) )
-- [PlayKit](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKit)
-- [PlayKit with OVP Sample](https://github.com/streamroot/dna-integration-samples/tree/master/android/PlayKitOVPStarter)
-- [VideoView](https://github.com/streamroot/dna-integration-samples/tree/master/android/VideoView)
-- [AMP](https://github.com/streamroot/dna-integration-samples/tree/master/android/AMP)
+- ExoPlayer ( [Kotlin](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer) | [Java](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-Java) | [Kotlin-pre2.10](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-pre2.10) | [Java-pre2.10](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-pre2.10-Java) )
+- [PlayKit](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/PlayKit)
+- [PlayKit with OVP Sample](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/PlayKitOVPStarter)
+- [VideoView](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/VideoView)
+- [AMP](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/AMP)
 
 ### iOS
 
 #### Players
 
-- [AVPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/ios)
-- [AMP](https://github.com/streamroot/dna-integration-samples/tree/master/ios/AMP)
+- [AVPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios)
+- [AMP](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios/AMP)
 
 ### Web
 
 #### Players
 
-- [Azure Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/azure-media-player/azuremp.html)
-- [Castlabs](https://github.com/streamroot/dna-integration-samples/tree/master/web/castlabs/castlabs.html)
-- [Clappr](https://github.com/streamroot/dna-integration-samples/tree/master/web/clappr/hlsjs-clappr.html)
-- [Dash.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/dash.js/dashjs-wrapper.html)
-- [FlowPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/flowplayer/flowplayer.html)
-- [Hls.js](https://github.com/streamroot/dna-integration-samples/tree/master/web/hls.js/hlsjs-wrapper.html)
-- [JWPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/jwplayer/hlsjs-jwplayer.html)
-- [Radiant Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/radiant-media-player/radiant.html)
-- [ShakaPlayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/shaka-player/shakaplayer-wrapper.html)
-- [VideoJS](https://github.com/streamroot/dna-integration-samples/tree/master/web/video.js/hlsjs-videojs.html)
-- [Bitmovin](https://github.com/streamroot/dna-integration-samples/tree/master/web/bitmovin/bitmovin.html)
-- [THEOplayer](https://github.com/streamroot/dna-integration-samples/tree/master/web/theoplayer/theoplayer.html)
-- [Brightcove](https://github.com/streamroot/dna-integration-samples/tree/master/web/brightcove/brightcove.html)
-- [Mpx](https://github.com/streamroot/dna-integration-samples/tree/master/web/mpx/mpx.html)
-- [Akamai Adaptive Media Player](https://github.com/streamroot/dna-integration-samples/tree/master/web/akamai-adaptive-media-player/akamai.html)
-- [Kaltura](https://github.com/streamroot/dna-integration-samples/tree/master/web/kaltura/kaltura.html)
+- [Azure Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/azure-media-player/azuremp.html)
+- [Castlabs](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/castlabs/castlabs.html)
+- [Clappr](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/clappr/hlsjs-clappr.html)
+- [Dash.js](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/dash.js/dashjs-wrapper.html)
+- [FlowPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/flowplayer/flowplayer.html)
+- [Hls.js](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/hls.js/hlsjs-wrapper.html)
+- [JWPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/jwplayer/hlsjs-jwplayer.html)
+- [Radiant Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/radiant-media-player/radiant.html)
+- [ShakaPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/shaka-player/shakaplayer-wrapper.html)
+- [VideoJS](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/video.js/hlsjs-videojs.html)
+- [Bitmovin](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/bitmovin/bitmovin.html)
+- [THEOplayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/theoplayer/theoplayer.html)
+- [Brightcove](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/brightcove/brightcove.html)
+- [Mpx](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/mpx/mpx.html)
+- [Akamai Adaptive Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/akamai-adaptive-media-player/akamai.html)
+- [Kaltura](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/kaltura/kaltura.html)
 
 ## License
 
