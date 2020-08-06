@@ -11,8 +11,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import io.streamroot.jericho.bridge.MediaInterfacePublic;
-import io.streamroot.jericho.bridge.TimeRangePublic;
+import io.streamroot.ctl.delivery.client.core.MediaInterfacePublic;
+import io.streamroot.ctl.delivery.client.core.TimeRangePublic;
+
 
 public final class ExoPlayerMediaInterface implements MediaInterfacePublic {
     private interface InnerBlockReturner<T> {

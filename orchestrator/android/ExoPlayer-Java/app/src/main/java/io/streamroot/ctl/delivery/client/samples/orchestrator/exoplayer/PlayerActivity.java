@@ -29,9 +29,9 @@ import com.google.android.exoplayer2.util.Util;
 
 import org.jetbrains.annotations.Nullable;
 
-import io.streamroot.jericho.bridge.CTLDeliveryClient;
-import io.streamroot.jericho.bridge.LogLevelPublic;
-import io.streamroot.jericho.bridge.StatsView;
+import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient;
+import io.streamroot.ctl.delivery.client.core.LogLevelPublic;
+import io.streamroot.ctl.delivery.client.utils.StatsView;
 
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
 

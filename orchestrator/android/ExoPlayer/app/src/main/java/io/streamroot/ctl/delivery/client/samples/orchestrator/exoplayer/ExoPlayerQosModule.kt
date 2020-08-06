@@ -5,8 +5,8 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import io.streamroot.jericho.bridge.QosInterfaceBase
-import io.streamroot.jericho.bridge.VideoPlaybackStatePublic
+import io.streamroot.ctl.delivery.client.core.QosInterfaceBase
+import io.streamroot.ctl.delivery.client.core.VideoPlaybackStatePublic
 
 class ExoPlayerQosModule(exoPlayer: ExoPlayer) : QosInterfaceBase(), Player.EventListener {
 

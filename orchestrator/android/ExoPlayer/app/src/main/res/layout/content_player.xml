@@ -27,7 +27,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <io.streamroot.jericho.bridge.StatsView
+    <io.streamroot.ctl.delivery.client.utils.StatsView
         android:id="@+id/dcStatsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

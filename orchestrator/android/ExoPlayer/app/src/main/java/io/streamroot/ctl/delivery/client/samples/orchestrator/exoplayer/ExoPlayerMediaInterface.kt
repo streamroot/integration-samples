@@ -3,8 +3,8 @@ package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer
 import android.os.Handler
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Timeline
-import io.streamroot.jericho.bridge.MediaInterfacePublic
-import io.streamroot.jericho.bridge.TimeRangePublic
+import io.streamroot.ctl.delivery.client.core.MediaInterfacePublic
+import io.streamroot.ctl.delivery.client.core.TimeRangePublic
 
 class ExoPlayerMediaInterface(private val player: ExoPlayer) : MediaInterfacePublic {
     private val handler = Handler(player.applicationLooper)
