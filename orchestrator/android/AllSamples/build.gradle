@@ -20,10 +20,6 @@ allprojects {
         maven {
             url 'https://sdk.streamroot.io/android'
         }
-        maven {
-            url  "https://dl.bintray.com/npaw/youbora"
-            name 'Youbora'
-        }
     }
 }
 
