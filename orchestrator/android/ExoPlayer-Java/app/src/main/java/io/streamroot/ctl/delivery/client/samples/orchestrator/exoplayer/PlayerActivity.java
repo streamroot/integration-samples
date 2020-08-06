@@ -30,8 +30,8 @@ import com.google.android.exoplayer2.util.Util;
 import org.jetbrains.annotations.Nullable;
 
 import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient;
-import io.streamroot.ctl.delivery.client.core.LogLevelPublic;
-import io.streamroot.ctl.delivery.client.utils.StatsView;
+import io.streamroot.ctl.delivery.client.core.CTLLogLevel;
+import io.streamroot.ctl.delivery.client.utils.CTLStatsView;
 
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
 
@@ -60,7 +60,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     }
 
     @Nullable private PlayerView exoPlayerView = null;
-    @Nullable private StatsView dcStatsView = null;
+    @Nullable private CTLStatsView dcStatsView = null;
 
     @Nullable private String mStreamUrl = null;
     @Nullable private String mOrchProperty = null;
@@ -183,7 +183,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
                 .options(o -> {
                     o.qosInterface(new ExoPlayerQosModule(newPlayer))
                         .orchestratorProperty(mOrchProperty)
-                        .logLevel(LogLevelPublic.TRACE);
+                        .logLevel(CTLLogLevel.TRACE);
                     return null;
                 }).build(mStreamUrl);
     }

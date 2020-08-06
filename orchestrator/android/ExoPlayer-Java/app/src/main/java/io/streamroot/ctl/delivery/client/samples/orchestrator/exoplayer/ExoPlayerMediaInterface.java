@@ -11,16 +11,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import io.streamroot.ctl.delivery.client.core.MediaInterfacePublic;
-import io.streamroot.ctl.delivery.client.core.TimeRangePublic;
+import io.streamroot.ctl.delivery.client.core.CTLMediaInterface;
+import io.streamroot.ctl.delivery.client.core.CTLTimeRange;
 
 
-public final class ExoPlayerMediaInterface implements MediaInterfacePublic {
+public final class ExoPlayerMediaInterface implements CTLMediaInterface {
     private interface InnerBlockReturner<T> {
         T run();
     }
 
-    private final List<TimeRangePublic> emptyTRList = Collections.unmodifiableList(Collections.emptyList());
+    private final List<CTLTimeRange> emptyTRList = Collections.unmodifiableList(Collections.emptyList());
 
     private final Handler handler;
     private final ExoPlayer player;
@@ -69,13 +69,13 @@ public final class ExoPlayerMediaInterface implements MediaInterfacePublic {
 
     @NotNull
     @Override
-    public List<TimeRangePublic> timeRanges() {
+    public List<CTLTimeRange> timeRanges() {
         return runSyncOnEPHandler(() -> {
             final long shift = getCurrentWindowShift();
             final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
 
             if (rangeDurationMs > 0) {
-                return Collections.singletonList(new TimeRangePublic(shift + player.getCurrentPosition(), rangeDurationMs));
+                return Collections.singletonList(new CTLTimeRange(shift + player.getCurrentPosition(), rangeDurationMs));
             }
             return emptyTRList;
         });

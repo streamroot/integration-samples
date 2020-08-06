@@ -7,17 +7,17 @@ import com.google.android.exoplayer2.Player.EventListener;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 
-import io.streamroot.ctl.delivery.client.core.QosInterfaceBase;
-import io.streamroot.ctl.delivery.client.core.VideoPlaybackStatePublic;
+import io.streamroot.ctl.delivery.client.core.CTLQosInterfaceBase;
+import io.streamroot.ctl.delivery.client.core.CTLVideoPlaybackState;
 
-public final class ExoPlayerQosModule extends QosInterfaceBase implements EventListener {
+public final class ExoPlayerQosModule extends CTLQosInterfaceBase implements EventListener {
     public ExoPlayerQosModule(ExoPlayer exoPlayer) {
         exoPlayer.addListener(this);
     }
 
     @Override
     public void onSeekProcessed() {
-        super.playerStateChange(VideoPlaybackStatePublic.SEEKING);
+        super.playerStateChange(CTLVideoPlaybackState.SEEKING);
     }
 
     @Override
@@ -34,16 +34,16 @@ public final class ExoPlayerQosModule extends QosInterfaceBase implements EventL
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         switch(playbackState) {
             case Player.STATE_IDLE:
-                super.playerStateChange(VideoPlaybackStatePublic.IDLE);
+                super.playerStateChange(CTLVideoPlaybackState.IDLE);
                 break;
             case Player.STATE_BUFFERING:
-                super.playerStateChange(VideoPlaybackStatePublic.REBUFFERING);
+                super.playerStateChange(CTLVideoPlaybackState.REBUFFERING);
                 break;
             case Player.STATE_READY:
-                super.playerStateChange(playWhenReady ? VideoPlaybackStatePublic.PLAYING : VideoPlaybackStatePublic.PAUSED);
+                super.playerStateChange(playWhenReady ? CTLVideoPlaybackState.PLAYING : CTLVideoPlaybackState.PAUSED);
                 break;
             case Player.STATE_ENDED:
-                super.playerStateChange(VideoPlaybackStatePublic.ENDED);
+                super.playerStateChange(CTLVideoPlaybackState.ENDED);
                 break;
         }
     }

@@ -5,15 +5,15 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import io.streamroot.ctl.delivery.client.core.QosInterfaceBase
-import io.streamroot.ctl.delivery.client.core.VideoPlaybackStatePublic
+import io.streamroot.ctl.delivery.client.core.CTLQosInterfaceBase
+import io.streamroot.ctl.delivery.client.core.CTLVideoPlaybackState
 
-class ExoPlayerQosModule(exoPlayer: ExoPlayer) : QosInterfaceBase(), Player.EventListener {
+class ExoPlayerQosModule(exoPlayer: ExoPlayer) : CTLQosInterfaceBase(), Player.EventListener {
 
     init { exoPlayer.addListener(this) }
 
     override fun onSeekProcessed() {
-        super.playerStateChange(VideoPlaybackStatePublic.SEEKING)
+        super.playerStateChange(CTLVideoPlaybackState.SEEKING)
     }
 
     override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {
@@ -35,16 +35,16 @@ class ExoPlayerQosModule(exoPlayer: ExoPlayer) : QosInterfaceBase(), Player.Even
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         when (playbackState) {
             Player.STATE_IDLE -> {
-                super.playerStateChange(VideoPlaybackStatePublic.IDLE)
+                super.playerStateChange(CTLVideoPlaybackState.IDLE)
             }
             Player.STATE_BUFFERING -> {
-                super.playerStateChange(VideoPlaybackStatePublic.REBUFFERING)
+                super.playerStateChange(CTLVideoPlaybackState.REBUFFERING)
             }
             Player.STATE_READY -> {
-                super.playerStateChange(if (playWhenReady) VideoPlaybackStatePublic.PLAYING else VideoPlaybackStatePublic.PAUSED)
+                super.playerStateChange(if (playWhenReady) CTLVideoPlaybackState.PLAYING else CTLVideoPlaybackState.PAUSED)
             }
             Player.STATE_ENDED -> {
-                super.playerStateChange(VideoPlaybackStatePublic.ENDED)
+                super.playerStateChange(CTLVideoPlaybackState.ENDED)
             }
         }
     }

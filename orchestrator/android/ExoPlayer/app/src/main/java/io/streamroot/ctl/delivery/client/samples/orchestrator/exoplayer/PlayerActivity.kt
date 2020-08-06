@@ -28,8 +28,8 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient
-import io.streamroot.ctl.delivery.client.core.LogLevelPublic
-import io.streamroot.ctl.delivery.client.utils.StatsView
+import io.streamroot.ctl.delivery.client.core.CTLLogLevel
+import io.streamroot.ctl.delivery.client.utils.CTLStatsView
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
     data class PlayerActivityArgs(
@@ -56,7 +56,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private lateinit var exoPlayerView: PlayerView
-    private lateinit var dcStatsView: StatsView
+    private lateinit var dcStatsView: CTLStatsView
 
     private var mStreamUrl: String? = null
     private var mOrchProperty: String? = null
@@ -170,7 +170,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
                     .options {
                         qosInterface(ExoPlayerQosModule(newPlayer))
                         orchestratorProperty(mOrchProperty!!)
-                        logLevel(LogLevelPublic.TRACE)
+                        logLevel(CTLLogLevel.TRACE)
                     }
                     .build(mStreamUrl!!)
 

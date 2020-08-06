@@ -3,10 +3,10 @@ package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer
 import android.os.Handler
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Timeline
-import io.streamroot.ctl.delivery.client.core.MediaInterfacePublic
-import io.streamroot.ctl.delivery.client.core.TimeRangePublic
+import io.streamroot.ctl.delivery.client.core.CTLMediaInterface
+import io.streamroot.ctl.delivery.client.core.CTLTimeRange
 
-class ExoPlayerMediaInterface(private val player: ExoPlayer) : MediaInterfacePublic {
+class ExoPlayerMediaInterface(private val player: ExoPlayer) : CTLMediaInterface {
     private val handler = Handler(player.applicationLooper)
 
     private fun <T> runSyncOnEPHandler(block: () -> T) : T?  {
@@ -32,7 +32,7 @@ class ExoPlayerMediaInterface(private val player: ExoPlayer) : MediaInterfacePub
         val shift = getCurrentWindowShift()
         val rangeDurationMs = player.bufferedPosition - player.currentPosition
         if (rangeDurationMs > 0) {
-            arrayListOf(TimeRangePublic((shift + player.currentPosition).toFloat(), rangeDurationMs / 1000f))
+            arrayListOf(CTLTimeRange((shift + player.currentPosition).toFloat(), rangeDurationMs / 1000f))
         } else {
             arrayListOf()
         }
