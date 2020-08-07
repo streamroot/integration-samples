@@ -1,5 +1,5 @@
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.png" />
+  <link rel="icon" type="image/x-icon" href="../favicon.png" />
 </head>
 <h1 align="center">
   Streamroot Integration Samples
@@ -15,9 +15,13 @@
 
 This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [support@streamroot.io](mailto:support@streamroot.io) for any request or issue you might have.
 
-## Web Demo
 
-You can find simple integration web-pages [here](http://samples.streamroot.io/web/).
+## Products
+
+Each of Streamroot's product has its own designated section.
+
+- [Orchestrator](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/)
+- [Mesh](https://github.com/streamroot/streamroot-samples/tree/master/dna/)
 
 ## Integration documentation
 
@@ -28,46 +32,6 @@ A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is a
 If you already have an account you can visite your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 
 If you don't have an account, [request a trial](https://streamroot.io/?request_trial=true)!
-
-## Existing Integrations
-
-### Android
-
-#### Players
-
-- ExoPlayer ( [Kotlin](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer) | [Java](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-Java) | [Kotlin-pre2.10](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-pre2.10) | [Java-pre2.10](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/ExoPlayer-pre2.10-Java) )
-- [PlayKit](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/PlayKit)
-- [PlayKit with OVP Sample](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/PlayKitOVPStarter)
-- [VideoView](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/VideoView)
-- [AMP](https://github.com/streamroot/streamroot-samples/tree/master/dna/android/AMP)
-
-### iOS
-
-#### Players
-
-- [AVPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios)
-- [AMP](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios/AMP)
-
-### Web
-
-#### Players
-
-- [Azure Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/azure-media-player/azuremp.html)
-- [Castlabs](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/castlabs/castlabs.html)
-- [Clappr](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/clappr/hlsjs-clappr.html)
-- [Dash.js](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/dash.js/dashjs-wrapper.html)
-- [FlowPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/flowplayer/flowplayer.html)
-- [Hls.js](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/hls.js/hlsjs-wrapper.html)
-- [JWPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/jwplayer/hlsjs-jwplayer.html)
-- [Radiant Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/radiant-media-player/radiant.html)
-- [ShakaPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/shaka-player/shakaplayer-wrapper.html)
-- [VideoJS](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/video.js/hlsjs-videojs.html)
-- [Bitmovin](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/bitmovin/bitmovin.html)
-- [THEOplayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/theoplayer/theoplayer.html)
-- [Brightcove](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/brightcove/brightcove.html)
-- [Mpx](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/mpx/mpx.html)
-- [Akamai Adaptive Media Player](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/akamai-adaptive-media-player/akamai.html)
-- [Kaltura](https://github.com/streamroot/streamroot-samples/tree/master/dna/web/kaltura/kaltura.html)
 
 ## License
 
