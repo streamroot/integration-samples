@@ -12,8 +12,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         launchButton.setOnClickListener {
+            if (streamEditText.text.isBlank()) return@setOnClickListener
             PlayerActivity.makeIntent(this,
                 PlayerActivity.PlayerActivityArgs(
+                    dcKeyET.text.toString(),
                     streamEditText.text.toString(),
                     orchPropET.text.toString()
                 )

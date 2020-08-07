@@ -33,11 +33,13 @@ import io.streamroot.ctl.delivery.client.utils.CTLStatsView
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
     data class PlayerActivityArgs(
-            val url:String?,
+            val dcKey: String?,
+            val url: String?,
             val orchProperty: String?
     )
 
     companion object {
+        private const val ARG_DC_KEY = "dcKey"
         private const val ARG_STREAM_URL = "streamUrl"
         private const val ARG_ORCH_PROP = "orchestratorProperty"
 
@@ -45,10 +47,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             return Intent(ctx, PlayerActivity::class.java).apply {
                 putExtra(ARG_STREAM_URL, args.url)
                 putExtra(ARG_ORCH_PROP, args.orchProperty)
+                putExtra(ARG_DC_KEY, args.dcKey)
             }
         }
         fun extractArgs(i: Intent) : PlayerActivityArgs {
             return PlayerActivityArgs(
+                    i.getStringExtra(ARG_DC_KEY),
                     i.getStringExtra(ARG_STREAM_URL),
                     i.getStringExtra(ARG_ORCH_PROP)
             )
@@ -58,6 +62,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     private lateinit var exoPlayerView: PlayerView
     private lateinit var dcStatsView: CTLStatsView
 
+    private var mDCKey: String? = null
     private var mStreamUrl: String? = null
     private var mOrchProperty: String? = null
 
@@ -71,6 +76,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
         val args = extractArgs(intent)
         mStreamUrl = args.url
+        mDCKey = args.dcKey?.takeUnless { it.isBlank() }
         mOrchProperty = args.orchProperty?.takeUnless { it.isBlank() }
 
         exoPlayerView = findViewById(R.id.exoplayerView)
@@ -168,8 +174,9 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
             CTLDeliveryClient.orchestratorBuilder(applicationContext)
                     .mediaInterface(ExoPlayerMediaInterface(newPlayer))
                     .options {
+                        mDCKey?.let { deliveryClientKey(it) }
                         qosInterface(ExoPlayerQosModule(newPlayer))
-                        orchestratorProperty(mOrchProperty!!)
+                        mOrchProperty?.let { orchestratorProperty(it) }
                         logLevel(CTLLogLevel.TRACE)
                     }
                     .build(mStreamUrl!!)

@@ -2,8 +2,8 @@
     <string name="app_name">Orchestrator ExoPlayer Sample</string>
     <string name="title_activity_player">PlayerActivity</string>
     <string name="logo_cd">Logo</string>
-    <string name="streamroot_key_text">Delivery client Key / Streamroot key</string>
-    <string name="streamroot_key_hint">Enter your Delivery Client Key</string>
+    <string name="dc_key_text">Delivery client Key / Streamroot key</string>
+    <string name="dc_key_hint">Defaults to demoswebsiteandpartners</string>
     <string name="stream_url_text">Stream URL</string>
     <string name="stream_url_hint">Enter your stream URL</string>
     <string name="orchestrator_property_text">Orchestrator property</string>
