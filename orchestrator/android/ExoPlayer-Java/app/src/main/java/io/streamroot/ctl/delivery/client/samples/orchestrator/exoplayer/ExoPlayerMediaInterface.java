@@ -51,9 +51,10 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
 
     @Override
     public double playbackTime() {
-        return runSyncOnEPHandler(
-            () -> (double) (getCurrentWindowShift() + player.getCurrentPosition())
+        final Double pt = runSyncOnEPHandler(
+            () -> Double.valueOf(getCurrentWindowShift() + player.getCurrentPosition())
         );
+        return pt != null ? pt : 0L;
     }
 
     private long getCurrentWindowShift() {
@@ -70,7 +71,7 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
     @NotNull
     @Override
     public List<CTLTimeRange> timeRanges() {
-        return runSyncOnEPHandler(() -> {
+        final List<CTLTimeRange> trs = runSyncOnEPHandler(() -> {
             final long shift = getCurrentWindowShift();
             final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
 
@@ -79,5 +80,6 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
             }
             return emptyTRList;
         });
+        return trs != null ? trs : emptyTRList;
     }
 }

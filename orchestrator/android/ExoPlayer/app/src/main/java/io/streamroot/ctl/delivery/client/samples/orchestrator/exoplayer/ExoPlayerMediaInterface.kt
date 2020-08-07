@@ -26,7 +26,7 @@ class ExoPlayerMediaInterface(private val player: ExoPlayer) : CTLMediaInterface
 
     override fun playbackTime() = runSyncOnEPHandler {
         (getCurrentWindowShift() + player.currentPosition).toDouble()
-    }!!
+    } ?: 0.0
 
     override fun timeRanges() = runSyncOnEPHandler {
         val shift = getCurrentWindowShift()
@@ -36,7 +36,7 @@ class ExoPlayerMediaInterface(private val player: ExoPlayer) : CTLMediaInterface
         } else {
             arrayListOf()
         }
-    }!!
+    } ?: arrayListOf()
 
     private fun getCurrentWindowShift(): Long {
         val current = player.currentTimeline

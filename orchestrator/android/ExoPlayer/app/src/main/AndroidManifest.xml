@@ -25,6 +25,6 @@
 
         <meta-data
             android:name="io.streamroot.ctl.delivery.client.DeliveryClientKey"
-            android:value="4eaae9d4-b309-48b8-8100-e429a71df200" />
+            android:value="demoswebsiteandpartners" />
     </application>
 </manifest>
