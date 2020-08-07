@@ -76,7 +76,7 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
             final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
 
             if (rangeDurationMs > 0) {
-                return Collections.singletonList(new CTLTimeRange(shift + player.getCurrentPosition(), rangeDurationMs));
+                return Collections.singletonList(new CTLTimeRange(shift + player.getCurrentPosition(), rangeDurationMs / 1000f));
             }
             return emptyTRList;
         });
