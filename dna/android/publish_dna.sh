@@ -25,7 +25,7 @@ then
 fi
 
 echo 'Executing ./gradlew clean assembleDebug'
-(cd $MODULE_LOCATION && ./gradlew clean assembleDebug)
+(cd $MODULE_LOCATION && ANDROID_SDK_ROOT=$ANDROID_SDK ./gradlew clean assembleDebug)
 
 echo 'Distribution'
 firebase appdistribution:distribute $APK_FILE_LOCATION --app $fir_app --groups 'qa' --release-notes "$fir_release_notes"

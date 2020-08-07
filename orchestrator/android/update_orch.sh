@@ -9,7 +9,7 @@ set -eo pipefail
 YELLOW="\033[1;33m"
 RST="\033[0m"
 
-last_version=`curl -s https://sdk.streamroot.io | grep -Eo '<Key>android/io/streamroot/dna/dna-core/[0-9\.]*/' | grep -Eo '[0-9\.]+' | sort -V | tail -1`
+last_version=`curl -s https://sdk.streamroot.io | grep -Eo '<Key>android/io/streamroot/ctl/delivery/client/orchestrator-sdk/[0-9\.]*/' | grep -Eo '[0-9\.]+' | sort -V | tail -1`
 dna_version=''
 
 if [ -z "$last_version" ]
@@ -37,4 +37,4 @@ echo "Version will be updated to $YELLOW$dna_version$RST"
 echo "Updating version ..."
 LC_ALL=C find . -name 'build.gradle' -exec sed -i '' -e "s/def dna_version = \".*\"/def dna_version = \"$dna_version\"/g" {} \;
 echo "Building project ..."
-cd AllSamples && ./gradlew clean assembleDebug
+cd AllSamples && ANDROID_SDK_ROOT=$ANDROID_SDK ./gradlew clean assembleDebug

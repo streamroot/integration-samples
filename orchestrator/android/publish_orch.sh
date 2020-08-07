@@ -7,7 +7,7 @@ echo 'Make sure you are logged in to firebase using Firebase CLI "firebase login
 echo 'Available targets : ExoPlayer | ExoPlayer-Java | ExoPlayer-pre2.10 | ExoPlayer-pre2.10-Java | PlayKit | PlayKitOVPStarter | VideoView | Brightcove | AMP'
 read -p 'Specify project module ? : ' module
 
-firebase --project streamroot-tools apps:list ANDROID | grep Samples
+firebase --project streamroot-tools apps:list ANDROID | grep "DC Samples"
 read -p 'Specify Firebase App ID ? : ' fir_app
 
 read -p 'Release notes ? : ' fir_release_notes
@@ -25,7 +25,7 @@ then
 fi
 
 echo 'Executing ./gradlew clean assembleDebug'
-(cd $MODULE_LOCATION && ./gradlew clean assembleDebug)
+(cd $MODULE_LOCATION && ANDROID_SDK_ROOT=$ANDROID_SDK ./gradlew clean assembleDebug)
 
 echo 'Distribution'
 firebase appdistribution:distribute $APK_FILE_LOCATION --app $fir_app --groups 'qa' --release-notes "$fir_release_notes"

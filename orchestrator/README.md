@@ -2,36 +2,30 @@
   <link rel="icon" type="image/x-icon" href="../favicon.png" />
 </head>
 <h1 align="center">
-  Streamroot Integration Samples
+  Streamroot Orchestrator Integration Samples
 </h1>
 <p align="center">
   <img alt="Streamroot" src="https://blog.streamroot.io/wp-content/uploads/2018/04/logo_typo_long.png" width="400" />
   <br />
-  <span>This repository is showcasing Streamroot's integrations across platforms, players and external providers</span>
 </p>
-
-
-## Introduction
-
-This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [support@streamroot.io](mailto:support@streamroot.io) for any request or issue you might have.
-
-
-## Products
-
-Each of Streamroot's product has its own designated section.
-
-- [Orchestrator](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/)
-- [Mesh](https://github.com/streamroot/streamroot-samples/tree/master/dna/)
 
 ## Integration documentation
 
-A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is available to learn how to add Streamroot DNA™ into your website and how to properly configure it.
+A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is available to learn how to add Streamroot Orchestrator into your website and how to properly configure it.
 
 ## Streamroot Dashboard
 
 If you already have an account you can visite your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 
 If you don't have an account, [request a trial](https://streamroot.io/?request_trial=true)!
+
+## Existing Integrations
+
+### Android
+
+#### Players
+
+- ExoPlayer ( [Kotlin](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/ExoPlayer) | [Java](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/ExoPlayer-Java) )
 
 ## License
 
