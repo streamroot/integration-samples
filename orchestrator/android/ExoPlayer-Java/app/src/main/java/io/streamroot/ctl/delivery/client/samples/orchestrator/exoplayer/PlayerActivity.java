@@ -36,25 +36,30 @@ import io.streamroot.ctl.delivery.client.utils.CTLStatsView;
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
 
     public static final class PlayerActivityArgs {
+        @Nullable final String dcKey;
         @Nullable final String url;
         @Nullable final String orchProperty;
-        public PlayerActivityArgs(@Nullable String url, @Nullable String orchProperty) {
+        public PlayerActivityArgs(@Nullable String dcKey, @Nullable String url, @Nullable String orchProperty) {
+            this.dcKey = dcKey;
             this.url = url;
             this.orchProperty = orchProperty;
         }
     }
 
+    private static final String ARG_DC_KEY = "dcKey";
     private static final String ARG_STREAM_URL = "streamUrl";
     private static final String ARG_ORCH_PROP = "orchestratorProperty";
 
     public static Intent makeIntent(Context ctx, PlayerActivityArgs args) {
         return new Intent(ctx, PlayerActivity.class)
+            .putExtra(ARG_DC_KEY, args.dcKey)
             .putExtra(ARG_STREAM_URL, args.url)
             .putExtra(ARG_ORCH_PROP, args.orchProperty);
     }
 
     public static PlayerActivityArgs extractArgs(Intent i) {
         return new PlayerActivityArgs(
+                i.getStringExtra(ARG_DC_KEY),
                 i.getStringExtra(ARG_STREAM_URL),
                 i.getStringExtra(ARG_ORCH_PROP));
     }
@@ -62,6 +67,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     @Nullable private PlayerView exoPlayerView = null;
     @Nullable private CTLStatsView dcStatsView = null;
 
+    @Nullable private String mDCKey = null;
     @Nullable private String mStreamUrl = null;
     @Nullable private String mOrchProperty = null;
 
@@ -79,6 +85,10 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         {
             final String tmpOP = args.orchProperty;
             mOrchProperty = (tmpOP != null && !tmpOP.trim().isEmpty()) ? tmpOP : null;
+        }
+        {
+            final String tmp = args.dcKey;
+            mDCKey = (tmp != null && !tmp.trim().isEmpty()) ? tmp : null;
         }
 
         exoPlayerView = findViewById(R.id.exoplayerView);
@@ -182,8 +192,10 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
                 .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
                 .options(o -> {
                     o.qosInterface(new ExoPlayerQosModule(newPlayer))
-                        .orchestratorProperty(mOrchProperty)
-                        .logLevel(CTLLogLevel.TRACE);
+                            .logLevel(CTLLogLevel.TRACE);
+                    if (mDCKey != null) o.deliveryClientKey(mDCKey);
+                    if (mOrchProperty != null) o.orchestratorProperty(mOrchProperty);
+
                     return null;
                 }).build(mStreamUrl);
     }
