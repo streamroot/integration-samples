@@ -126,7 +126,7 @@ class ExoPlayerMediaInterface(private val player: ExoPlayer) : CTLMediaInterface
 ```
 <br>
 
-### 7.Stop the CTL Delivery Client
+### 7. Stop the CTL Delivery Client
 
 Once the video is done playing, you have to stop the SDK you created earlier. Calling the following method will finish the ongoing tasks and release the resources.
 
