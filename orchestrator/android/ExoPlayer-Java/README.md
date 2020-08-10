@@ -1,4 +1,4 @@
-# Streamroot Android Orchestrator Kotlin
+# Streamroot Android Orchestrator Java
 
 ## Dependencies
 
@@ -119,13 +119,12 @@ SDK initialization is done preferably in an application context subclass.
 
 - Initialize the SDK
 
-```kotlin
-class SRApplication: MultiDexApplication() {
-
-    override fun onCreate() {
-        super.onCreate()
-        CTLDeliveryClient.initializeApp(this)
-        ...
+```java
+public final class SRApplication extends MultiDexApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        CTLDeliveryClient.initializeApp(this);
     }
 }
 ```
@@ -140,8 +139,8 @@ android:name=".SRApplication"
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
 Please add the following classes to your project :
 
-- [MediaInterface](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerMediaInterface.kt) (Mandatory)
-- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.kt) (Optional)
+- [MediaInterface](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerMediaInterface.java) (Mandatory)
+- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.java) (Optional)
 
 However optional, we strongly recommend that you use the QosModule as well.
 
@@ -151,15 +150,16 @@ Now that you have set the `deliveryClientKey` and initialized the SDK, you are a
 
 You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a SimpleExoPlayer :
 
-```kotlin
-private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-        CTLDeliveryClient.orchestratorBuilder(applicationContext)
-                .mediaInterface(ExoPlayerMediaInterface(newPlayer))
-                .options {
-                    qosInterface(ExoPlayerQosModule(newPlayer))
-                    orchestratorProperty(<string>)
-                }
-                .build(<string>url)
+```java
+private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
+    return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
+            .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
+            .options(o -> {
+                o.qosInterface(new ExoPlayerQosModule(newPlayer))
+                    .orchestratorProperty(<string>)
+                return null;
+            }).build(<string>url);
+}
 ```
 **Note**:
 ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.  
@@ -171,9 +171,9 @@ You can turn logging on using the option `logLevel(CTLLogLevel.TRACE)`
 Calling the `start()` method on the DC will start the SDK.
 Once you have a running instance of the SDK, you must retrieve the final URL and input it to your player instead of your original one.
 
-```kotlin
-deliveryClient.start()
-val finalUrl = deliveryClient.localUrl()
+```java
+deliveryClient.start();
+final Uri uri = Uri.parse(dc.localUrl());
 ```
 
 ### 6. Give your player the final URL
@@ -182,31 +182,31 @@ To maximize compatibility with the SDK we strongly encourage you to allow HTTP <
 
 We recommend creating your ExoPlayer media source using the following way :  
 
-```kotlin
+```java
 @SuppressLint("SwitchIntDef")
-private fun buildMediaSource(uri: Uri): MediaSource {
-    val defaultDataSourceFactory =
-        DefaultHttpDataSourceFactory(
-                Util.getUserAgent(applicationContext, "StreamrootQA"),
-                DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
-                DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
-                true
-        )
+private MediaSource buildMediaSource(Uri uri) {
+    final DefaultHttpDataSourceFactory defaultDataSourceFactory = new DefaultHttpDataSourceFactory(
+            Util.getUserAgent(getApplicationContext(), "StreamrootQA"),
+            DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+            DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+            true
+    );
 
-    return when (Util.inferContentType(uri)) {
-        C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)
-            //.setDrmSessionManager()
-            .createMediaSource(uri)
-        C.TYPE_DASH -> DashMediaSource.Factory(
-            DefaultDashChunkSource.Factory(
-                defaultDataSourceFactory
-            ), defaultDataSourceFactory
-        )
-            //.setDrmSessionManager()
-            .createMediaSource(uri)
-        else -> {
-            throw IllegalStateException("Unsupported type for url: $uri")
-        }
+    switch (Util.inferContentType(uri)) {
+        case C.TYPE_HLS:
+            return new HlsMediaSource.Factory(defaultDataSourceFactory)
+                    //.setDrmSessionManager()
+                    .createMediaSource(uri);
+        case C.TYPE_DASH:
+            return new DashMediaSource.Factory(
+                    new DefaultDashChunkSource.Factory(
+                            defaultDataSourceFactory
+                    ), defaultDataSourceFactory
+            )
+                    //.setDrmSessionManager()
+                    .createMediaSource(uri);
+        default:
+            throw new IllegalStateException("Unsupported type for url: $uri");
     }
 }
 ```
@@ -215,7 +215,7 @@ private fun buildMediaSource(uri: Uri): MediaSource {
 
 Once the video is done playing, you have to stop the SDK you created earlier. Calling the following method will finish the ongoing tasks and release the resources.
 
-`deliveryClient.terminate()`
+`deliveryClient.terminate();`
 <br>
 
 ### 8. (Optional - Debug ONLY) Orchestrator StatsView
@@ -245,35 +245,33 @@ Retrieve your view by finding it by ID, or synthetically.
 
 Link the CTLStatsView between step 4 and 5, so ideally after creation and before the start().
 
-```kotlin
-dc.addStateStatsListener(dcStatsView)
+```java
+dc.addStateStatsListener(dcStatsView);
 ```
 
 You can show the stats by clicking 5 times very fast anywhere or programmatically using :
 
-```kotlin
-dcStatsView.showStats()
+```java
+dcStatsView.showStats();
 ```
 
 Complete implementation in a nutshell : 
 
-```kotlin
-val newPlayer = SimpleExoPlayer.Builder(applicationContext).build()
+```java
+final SimpleExoPlayer newPlayer = new SimpleExoPlayer.Builder(getApplicationContext()).build();
 
-newPlayer.playWhenReady = true
-newPlayer.addListener(this)
+newPlayer.setPlayWhenReady(true);
+newPlayer.addListener(this);
 
-initDeliveryClient(newPlayer).let { dc ->
-    deliveryClient = dc
+final CTLDeliveryClient dc = initDeliveryClient(newPlayer);
+deliveryClient = dc;
+dc.addStateStatsListener(dcStatsView);
+dcStatsView.showStats();
+dc.start();
 
-    dc.addStateStatsListener(dcStatsView)
-    dcStatsView.showStats()
-    dc.start()
+final Uri uri = Uri.parse(dc.localUrl());
+newPlayer.prepare(new LoopingMediaSource(buildMediaSource(uri)), true, false);
 
-    val uri = Uri.parse(dc.localUrl())
-    newPlayer.prepare(LoopingMediaSource(buildMediaSource(uri)), true, false)
-}
-
-player = newPlayer
-exoPlayerView.player = newPlayer
+player = newPlayer;
+exoPlayerView.setPlayer(newPlayer);
 ```
