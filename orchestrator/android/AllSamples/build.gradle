@@ -17,9 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://sdk.streamroot.io/android'
-        }
+        maven { url 'https://sdk.streamroot.io/android' }
     }
 }
 
