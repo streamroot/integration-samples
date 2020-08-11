@@ -32,19 +32,11 @@ dependencies {
 }
 ```
 
-Orchestrator requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
+**Notes**:
 
-Compatibility options need to be added to your **module**'s build.gradle. Make sure to add the following block : 
-
-```gradle
-android {
-    ...
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-```
+- Orchestrator requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
+- ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.
+- ExoPlayer requires targetCompatibility java 8.
 
 If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application.
 

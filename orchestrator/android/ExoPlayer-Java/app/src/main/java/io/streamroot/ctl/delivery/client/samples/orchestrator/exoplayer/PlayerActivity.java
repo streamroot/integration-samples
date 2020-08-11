@@ -31,7 +31,10 @@ import org.jetbrains.annotations.Nullable;
 
 import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient;
 import io.streamroot.ctl.delivery.client.core.CTLLogLevel;
+import io.streamroot.ctl.delivery.client.core.CTLOptionalOrchestratorBuilder;
 import io.streamroot.ctl.delivery.client.utils.CTLStatsView;
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
 
@@ -187,16 +190,19 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         }
     }
 
-    private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
+    private CTLDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
         return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
                 .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
-                .options(o -> {
-                    o.qosInterface(new ExoPlayerQosModule(newPlayer))
-                            .logLevel(CTLLogLevel.TRACE);
-                    if (mDCKey != null) o.deliveryClientKey(mDCKey);
-                    if (mOrchProperty != null) o.orchestratorProperty(mOrchProperty);
+                .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
+                    @Override
+                    public Unit invoke(CTLOptionalOrchestratorBuilder o) {
+                        o.qosInterface(new ExoPlayerQosModule(newPlayer))
+                                .logLevel(CTLLogLevel.TRACE);
+                        if (mDCKey != null) o.deliveryClientKey(mDCKey);
+                        if (mOrchProperty != null) o.orchestratorProperty(mOrchProperty);
 
-                    return null;
+                        return null;
+                    }
                 }).build(mStreamUrl);
     }
 

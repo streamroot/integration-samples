@@ -20,7 +20,6 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
@@ -28,11 +27,11 @@ android {
 dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
 
-    def dc_version = "0.1.0-feature-8e01235"
+    def dc_version = "1.0.0"
     implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk:' + dc_version
     implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk-utils:' + dc_version
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-rc1'
-    implementation 'com.google.android.material:material:1.1.0'
 }

@@ -20,7 +20,7 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
         T run();
     }
 
-    private final List<CTLTimeRange> emptyTRList = Collections.unmodifiableList(Collections.emptyList());
+    private final List<CTLTimeRange> emptyTRList = Collections.unmodifiableList(Collections.<CTLTimeRange>emptyList());
 
     private final Handler handler;
     private final ExoPlayer player;
@@ -30,14 +30,17 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
         this.handler = new Handler(player.getApplicationLooper());
     }
 
-    private <T> T runSyncOnEPHandler(InnerBlockReturner<T> block) {
+    private <T> T runSyncOnEPHandler(final InnerBlockReturner<T> block) {
         final AtomicReference<T> t = new AtomicReference<>();
         final Object lock = new Object();
         synchronized (lock) {
-            handler.post(() -> {
-                synchronized (lock) {
-                    t.set(block.run());
-                    lock.notify();
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    synchronized (lock) {
+                        t.set(block.run());
+                        lock.notify();
+                    }
                 }
             });
             try {
@@ -51,9 +54,12 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
 
     @Override
     public double playbackTime() {
-        final Double pt = runSyncOnEPHandler(
-            () -> Double.valueOf(getCurrentWindowShift() + player.getCurrentPosition())
-        );
+        final Double pt = runSyncOnEPHandler(new InnerBlockReturner<Double>() {
+            @Override
+            public Double run() {
+                return (double) (getCurrentWindowShift() + player.getCurrentPosition());
+            }
+        });
         return pt != null ? pt : 0L;
     }
 
@@ -71,14 +77,17 @@ public final class ExoPlayerMediaInterface implements CTLMediaInterface {
     @NotNull
     @Override
     public List<CTLTimeRange> timeRanges() {
-        final List<CTLTimeRange> trs = runSyncOnEPHandler(() -> {
-            final long shift = getCurrentWindowShift();
-            final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
+        final List<CTLTimeRange> trs = runSyncOnEPHandler(new InnerBlockReturner<List<CTLTimeRange>>() {
+            @Override
+            public List<CTLTimeRange> run() {
+                final long shift = getCurrentWindowShift();
+                final long rangeDurationMs = player.getBufferedPosition() - player.getCurrentPosition();
 
-            if (rangeDurationMs > 0) {
-                return Collections.singletonList(new CTLTimeRange(shift + player.getCurrentPosition(), rangeDurationMs / 1000f));
+                if (rangeDurationMs > 0) {
+                    return Collections.singletonList(new CTLTimeRange(shift + player.getCurrentPosition(), rangeDurationMs / 1000f));
+                }
+                return emptyTRList;
             }
-            return emptyTRList;
         });
         return trs != null ? trs : emptyTRList;
     }

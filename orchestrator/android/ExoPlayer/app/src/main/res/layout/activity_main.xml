@@ -53,7 +53,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/dc_key_hint"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/streamroot_key_prefill"/>
         </LinearLayout>
 
         <LinearLayout
@@ -76,7 +77,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/stream_url_hint"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/stream_url_prefill"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/orchestrator_property_hint"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/orchestrator_property_prefill"/>
         </LinearLayout>
 
     </LinearLayout>
