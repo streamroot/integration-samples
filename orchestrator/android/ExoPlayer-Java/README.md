@@ -46,7 +46,7 @@ android {
 }
 ```
 
-If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of function reached, you might need to setup a multidex application.
+If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application.
 
 Please follow the following steps from the official android documentation.  
 [Multidex documentation](https://developer.android.com/studio/build/multidex)
@@ -134,7 +134,7 @@ public final class SRApplication extends MultiDexApplication {
 android:name=".SRApplication"
 ```
 
-### 3. Bridge between your player and the delivery client
+### 3. Bridge between your Player and the delivery client.
 
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
 Please add the following classes to your project :
@@ -144,7 +144,7 @@ Please add the following classes to your project :
 
 However optional, we strongly recommend that you use the QosModule as well.
 
-### 4. Create a new CTL Delivery Client instance 
+### 4. Create a new CTL Delivery Client instance. 
 
 Now that you have set the `deliveryClientKey` and initialized the SDK, you are able to create CTL Delivery Client instances.
 
@@ -164,9 +164,9 @@ private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
 **Note**:
 ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.  
 **Note**: 
-You can turn logging on using the option `logLevel(CTLLogLevel.TRACE)`
+You can turn logging in using the option `logLevel(CTLLogLevel.TRACE)`
 
-### 5. Start the SDK instance and get the final url
+### 5. Start the SDK instance and get the final url.
 
 Calling the `start()` method on the DC will start the SDK.
 Once you have a running instance of the SDK, you must retrieve the final URL and input it to your player instead of your original one.
@@ -230,7 +230,7 @@ Add the utils dependency to your module's build.gradle
 implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk-utils:' + dc_version
 ```
 
-Add the CTLStatsView to your layout, ideally over the biggest surface. Not to worry, it won't intercept your touches.
+Add the CTLStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept your touches.
 
 ```xml
 <io.streamroot.ctl.delivery.client.utils.CTLStatsView
@@ -249,7 +249,7 @@ Link the CTLStatsView between step 4 and 5, so ideally after creation and before
 dc.addStateStatsListener(dcStatsView);
 ```
 
-You can show the stats by clicking 5 times very fast anywhere or programmatically using :
+You can display the **stats** by clicking anywhere repeatedly for 5 times or programmatically using :
 
 ```java
 dcStatsView.showStats();
