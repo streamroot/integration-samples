@@ -107,7 +107,7 @@ It is also possible to pass your deliveryClientKey at CTL Delivery Client initia
 SDK initialization is done preferably in an application context subclass. 
 <br>
 
-- Create subclass of Application or MultiDexApplication(if your code base is big and you need kitkat / minSdkVersion 19) support) 
+- Create subclass of Application or MultiDexApplication (if your code base is big and you support API level 19 or 20)
 
 - Initialize the SDK
 
@@ -131,10 +131,8 @@ android:name=".SRApplication"
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
 Please add the following classes to your project :
 
-- [MediaInterface](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerMediaInterface.java) (Mandatory)
-- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.java) (Optional)
-
-However optional, we strongly recommend that you use the QosModule as well.
+- [MediaInterface](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerMediaInterface.java)
+- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.java)
 
 ### 4. Create a new CTL Delivery Client instance. 
 
@@ -150,7 +148,6 @@ private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
                 @Override
                 public Unit invoke(CTLOptionalOrchestratorBuilder o) {
                     o.qosInterface(new ExoPlayerQosModule(newPlayer))
-                        .orchestratorProperty(<string>)
                     return null;
                 }
             }).build(<string>url);
@@ -158,8 +155,6 @@ private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
 ```
 **Note**:
 ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.  
-**Note**: 
-You can turn logging in using the option `logLevel(CTLLogLevel.TRACE)`
 
 ### 5. Start the SDK instance and get the final url.
 
@@ -213,7 +208,36 @@ Once the video is done playing, you have to stop the SDK you created earlier. Ca
 `deliveryClient.terminate();`
 <br>
 
-### 8. (Optional - Debug ONLY) Orchestrator StatsView
+## Additional options
+
+You can pass additional options when creating a delivery client.
+
+```java
+private CTLDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
+    return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
+        .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
+        .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
+            @Override
+            public Unit invoke(CTLOptionalOrchestratorBuilder o) {
+                o.<<< HERE >>>
+                return null;
+            }
+        }).build(<string>url);
+}
+```
+
+- `orchestratorProperty(<string>)` : The orchestrator property to use. Defaults to the default property.
+- `deliveryClientKey(<string>)` : This is only required if you did not provide it in your AndroidManifest.xml application's metadata (step 1).
+- `contentId(<string>)` : A string that identifies your content. Defaults to your stream url minus scheme, query parameters, and port 80/443.
+
+## Debug 
+
+### Additional debug options
+
+- `logLevel(CTLLogLevel.TRACE)` : Set Orchestrator's log level : TRACE | CRITICAL | ERROR | WARNING | INFO | DEBUG | OFF. Defaults to OFF.
+- `proxyServer(<string>)` : Allows the use of a proxy server in the middle. String with format `ip:host`.
+
+### Orchestrator StatsView
 
 Streamroot provides an utils library which allows the display of Orchestrator information on the device.
 
