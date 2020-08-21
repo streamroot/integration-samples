@@ -192,12 +192,11 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
     private CTLDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
         return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
-                .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
+                .qosInterface(new ExoPlayerQosModule(newPlayer))
                 .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
                     @Override
                     public Unit invoke(CTLOptionalOrchestratorBuilder o) {
-                        o.qosInterface(new ExoPlayerQosModule(newPlayer))
-                                .logLevel(CTLLogLevel.TRACE);
+                        o.logLevel(CTLLogLevel.TRACE);
                         if (mDCKey != null) o.deliveryClientKey(mDCKey);
                         if (mOrchProperty != null) o.orchestratorProperty(mOrchProperty);
 

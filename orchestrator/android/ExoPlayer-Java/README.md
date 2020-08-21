@@ -27,7 +27,7 @@ Add the orchestrator dependency to your module (often called app). In your **mod
 ```gradle
 dependencies {
     ...
-    def dc_version = "1.0.0"
+    def dc_version = "1.0.2"
     implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk:' + dc_version
 }
 ```
@@ -35,7 +35,7 @@ dependencies {
 **Notes**:
 
 - Orchestrator requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
-- ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.
+- ExoPlayerQosModule is referencing the bridge class from step 3.
 - ExoPlayer requires targetCompatibility java 8.
 
 If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application.
@@ -129,9 +129,8 @@ android:name=".SRApplication"
 ### 3. Bridge between your Player and the delivery client.
 
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
-Please add the following classes to your project :
+Please add the following class to your project :
 
-- [MediaInterface](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerMediaInterface.java)
 - [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer-Java/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.java)
 
 ### 4. Create a new CTL Delivery Client instance. 
@@ -143,18 +142,12 @@ You first need to create and setup your ExoPlayer instance. Then the following f
 ```java
 private CTLDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
     return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
-            .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
-            .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
-                @Override
-                public Unit invoke(CTLOptionalOrchestratorBuilder o) {
-                    o.qosInterface(new ExoPlayerQosModule(newPlayer))
-                    return null;
-                }
-            }).build(<string>url);
+            .qosInterface(new ExoPlayerQosModule(newPlayer))
+            .build(<string>url);
 }
 ```
 **Note**:
-ExoPlayerMediaInterface & ExoPlayerQosModule are referencing the bridge classes from step 3.  
+ExoPlayerQosModule is referencing the bridge class from step 3.  
 
 ### 5. Start the SDK instance and get the final url.
 
@@ -215,7 +208,7 @@ You can pass additional options when creating a delivery client.
 ```java
 private CTLDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
     return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
-        .mediaInterface(new ExoPlayerMediaInterface(newPlayer))
+        .qosInterface(new ExoPlayerQosModule(newPlayer))
         .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
             @Override
             public Unit invoke(CTLOptionalOrchestratorBuilder o) {

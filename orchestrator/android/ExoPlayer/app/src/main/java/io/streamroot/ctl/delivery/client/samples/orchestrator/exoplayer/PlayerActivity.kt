@@ -171,15 +171,14 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-            CTLDeliveryClient.orchestratorBuilder(applicationContext)
-                    .mediaInterface(ExoPlayerMediaInterface(newPlayer))
-                    .options {
-                        mDCKey?.let { deliveryClientKey(it) }
-                        qosInterface(ExoPlayerQosModule(newPlayer))
-                        mOrchProperty?.let { orchestratorProperty(it) }
-                        logLevel(CTLLogLevel.TRACE)
-                    }
-                    .build(mStreamUrl!!)
+        CTLDeliveryClient.orchestratorBuilder(applicationContext)
+            .qosInterface(ExoPlayerQosModule(newPlayer))
+            .options {
+                mDCKey?.let { deliveryClientKey(it) }
+                mOrchProperty?.let { orchestratorProperty(it) }
+                logLevel(CTLLogLevel.TRACE)
+            }
+            .build(mStreamUrl!!)
 
 
     private fun stopDeliveryClient() {
