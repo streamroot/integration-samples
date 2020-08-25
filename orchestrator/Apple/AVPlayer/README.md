@@ -61,6 +61,11 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 ```
 
 ### 2 - Build and start the DeliveryClient
+Declare the deliverClient as an instance variable:
+```
+var deliveryClient: CTLDeliveryClient?
+```
+
 Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
 deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
