@@ -8,7 +8,10 @@
 Get the SDK via [cocoapods](https://cocoapods.org/) -> `pod install` in the current directory.
 
 ```
-pod 'CTLOrchestratorSDK'
+target 'MyApp' do
+  use_frameworks!
+  pod 'CTLOrchestratorSDK'
+end
 ```
 
 #### Carthage
