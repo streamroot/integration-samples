@@ -18,7 +18,7 @@ Add the orchestrator dependency to the Cartfile, more info on [Carthage installa
 binary "https://sdk.streamroot.io/ios/CTLOrchestratorSDK.json"
 ```
 
-### 2-  Set the streamrootKey
+### 2-  Set the ClientDeliveryKey
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -62,7 +62,6 @@ Build the delivery client with the mandatory fields which are the `qosModule`, `
 ```swift
 deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
   .qosModule(qosModuleWrapper.qosModule)
-  //.deliveryClientKey(config.deliveryKey) Setting it will override the one set in the application PList.
   .contentId("wowza_demo_content")
   .orchestratorProperty("classic")
   .build(manifestUrl)
@@ -74,7 +73,7 @@ deliveryClient?.start()
 The qosModule is a component who should notify the SDK of every new player event. This is essential to monitor the Quality of Service of the current playback session.
 In this example, the QOSWrapper is a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/QosModuleWrapper.swift).
 
-The qosModule can be instanciated as following: 
+The qosModule can be instantiated as following: 
 ```
 var qosModule: CTLQosModule // Class property
 self.qosModule = CTLQosModule(type: .custom)
