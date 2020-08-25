@@ -43,7 +43,7 @@ Add the following lines with the right parameters values.
 ```
 
 ### 4 - Importing the SDK
-The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [Importing Objective-C into Swift](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/).importing_objective-c_into_swift)
+The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [More info](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis).
 
 ```
 #import <CTLOrchestratorSDK/CTLOrchestratorSDK.h>
@@ -58,10 +58,11 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 ```
 
 ### 2 - Build and start the DeliveryClient
-Build the delivery client mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`.
+Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
 deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
   .qosModule(qosModuleWrapper.qosModule)
+  //.deliveryClientKey(config.deliveryKey) Setting it will override the one set in the application PList.
   .contentId("wowza_demo_content")
   .orchestratorProperty("classic")
   .build(manifestUrl)
