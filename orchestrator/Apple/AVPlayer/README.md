@@ -18,7 +18,7 @@ Add the orchestrator dependency to the Cartfile, more info on [Carthage installa
 binary "https://sdk.streamroot.io/ios/CTLOrchestratorSDK.json"
 ```
 
-### 2-  Set the streamrootKey
+### 2-  Set the ClientDeliveryKey
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -43,7 +43,7 @@ Add the following lines with the right parameters values.
 ```
 
 ### 4 - Importing the SDK
-The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [Importing Objective-C into Swift](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/).importing_objective-c_into_swift)
+The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [More info](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis).
 
 ```
 #import <CTLOrchestratorSDK/CTLOrchestratorSDK.h>
@@ -58,7 +58,7 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 ```
 
 ### 2 - Build and start the DeliveryClient
-Build the delivery client mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`.
+Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
 deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
   .qosModule(qosModuleWrapper.qosModule)
@@ -73,7 +73,7 @@ deliveryClient?.start()
 The qosModule is a component who should notify the SDK of every new player event. This is essential to monitor the Quality of Service of the current playback session.
 In this example, the QOSWrapper is a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/QosModuleWrapper.swift).
 
-The qosModule can be instanciated as following: 
+The qosModule can be instantiated as following: 
 ```
 var qosModule: CTLQosModule // Class property
 self.qosModule = CTLQosModule(type: .custom)
