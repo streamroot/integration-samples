@@ -16,7 +16,7 @@ end
 
 #### Carthage
 
-Add the orchestrator dependency to the Cartfile, more info on [Carthage installation](https://github.com/Carthage/Carthage#quick-start).
+Add the orchestrator dependency to the Cartfile, more info on [Carthage installation](https://github.com/Carthage/Carthage#quick-start) method.
 ```
 binary "https://sdk.streamroot.io/ios/CTLOrchestratorSDK.json"
 ```
