@@ -54,7 +54,7 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 
 ## Code integration
 
-### 1 - Initialize the Delivery SDK from the App delegate
+### 1 - Initialize the Delivery SDK from the App delegate [application(_:didFinishLaunchingWithOptions:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
 ```
  CTLDeliveryClient.initializeApp()
@@ -69,10 +69,10 @@ var deliveryClient: CTLDeliveryClient?
 Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
 deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
-  .qosModule(qosModuleWrapper.qosModule)
-  .contentId("wowza_demo_content")
-  .orchestratorProperty("classic")
-  .build(manifestUrl)
+    .qosModule(<#qosModule#>)
+     .contentId(<#string#>)
+     .orchestratorProperty(<#string#>)   
+     .build(<#manifestUrl#>)
 deliveryClient?.start()
 ```
 
@@ -83,7 +83,7 @@ In this example, the QOSWrapper is a Helper class of the sample app project, wit
 
 The qosModule can be instantiated as following: 
 ```
-var qosModule: CTLQosModule // Class property
+var qosModule: CTLQosModule // Stored property
 self.qosModule = CTLQosModule(type: .custom)
 ```
 
