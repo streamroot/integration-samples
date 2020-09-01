@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BAD937D3A3208825E16606D /* Pods_AVPlayerOrchestrator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAFF20260D15016D71136CC /* Pods_AVPlayerOrchestrator.framework */; };
 		5052E99324ED5F31009D0804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
 		5052E99724ED5F31009D0804 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
 		5052E99A24ED5F31009D0804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99824ED5F31009D0804 /* Main.storyboard */; };
@@ -21,12 +20,13 @@
 		7A76191524FE4AF100366D93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
 		7A76191624FE542C00366D93 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
 		7A76191724FE551000366D93 /* QosModuleWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E9AB24ED6462009D0804 /* QosModuleWrapper.swift */; };
-		B3F6E81ADF97174CD020514A /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9962A4328B9390C9CC7A7B /* Pods_AVPlayerOrchestratorTV.framework */; };
+		BD070DA01B0CD01D6147F3DA /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */; };
+		BEAC80C2D6836E8A6FD03798 /* Pods_AVPlayerOrchestrator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		05E9D59FD58DDB0C50F4C101 /* Pods-AVPlayerOrchestrator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.debug.xcconfig"; sourceTree = "<group>"; };
-		2DD5776F027DC8BD5103B3BA /* Pods-AVPlayerOrchestrator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.release.xcconfig"; sourceTree = "<group>"; };
+		15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.release.xcconfig"; sourceTree = "<group>"; };
+		281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestratorTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5052E98F24ED5F31009D0804 /* AVPlayerOrchestrator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerOrchestrator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5052E99224ED5F31009D0804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSampleViewController.swift; sourceTree = "<group>"; };
@@ -42,10 +42,10 @@
 		7A76190C24FE4A3900366D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A76190F24FE4A3900366D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A76191124FE4A3900366D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9DECF53ADC6FA30A75E10ACA /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.debug.xcconfig"; sourceTree = "<group>"; };
-		AAB2DBD4698868A9FB9ADC83 /* Pods-AVPlayerOrchestratorTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.release.xcconfig"; sourceTree = "<group>"; };
-		AB9962A4328B9390C9CC7A7B /* Pods_AVPlayerOrchestratorTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestratorTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADAFF20260D15016D71136CC /* Pods_AVPlayerOrchestrator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestrator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.debug.xcconfig"; sourceTree = "<group>"; };
+		DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.debug.xcconfig"; sourceTree = "<group>"; };
+		F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestrator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5052E9B624EE629F009D0804 /* AVKit.framework in Frameworks */,
-				3BAD937D3A3208825E16606D /* Pods_AVPlayerOrchestrator.framework in Frameworks */,
+				BEAC80C2D6836E8A6FD03798 /* Pods_AVPlayerOrchestrator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,7 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3F6E81ADF97174CD020514A /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */,
+				BD070DA01B0CD01D6147F3DA /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,10 +72,10 @@
 		219FC9BF9BA34537FC2165D6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				05E9D59FD58DDB0C50F4C101 /* Pods-AVPlayerOrchestrator.debug.xcconfig */,
-				2DD5776F027DC8BD5103B3BA /* Pods-AVPlayerOrchestrator.release.xcconfig */,
-				9DECF53ADC6FA30A75E10ACA /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */,
-				AAB2DBD4698868A9FB9ADC83 /* Pods-AVPlayerOrchestratorTV.release.xcconfig */,
+				DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */,
+				FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */,
+				B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */,
+				15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -130,8 +130,8 @@
 			isa = PBXGroup;
 			children = (
 				5052E9B524EE629F009D0804 /* AVKit.framework */,
-				ADAFF20260D15016D71136CC /* Pods_AVPlayerOrchestrator.framework */,
-				AB9962A4328B9390C9CC7A7B /* Pods_AVPlayerOrchestratorTV.framework */,
+				F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */,
+				281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -143,11 +143,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5052E9A324ED5F34009D0804 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestrator" */;
 			buildPhases = (
-				30CB9075ECB09132F26C8E3A /* [CP] Check Pods Manifest.lock */,
+				C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */,
 				5052E98B24ED5F31009D0804 /* Sources */,
 				5052E98C24ED5F31009D0804 /* Frameworks */,
 				5052E98D24ED5F31009D0804 /* Resources */,
-				B002824A241AA881851F945B /* [CP] Embed Pods Frameworks */,
+				AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,11 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A76191424FE4A3900366D93 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestratorTV" */;
 			buildPhases = (
-				F90627F5BAB39D122C66D485 /* [CP] Check Pods Manifest.lock */,
+				26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */,
 				7A7618FF24FE4A3600366D93 /* Sources */,
 				7A76190024FE4A3600366D93 /* Frameworks */,
 				7A76190124FE4A3600366D93 /* Resources */,
-				7E8F0BA19C2DD25E1B4B8CD5 /* [CP] Embed Pods Frameworks */,
+				33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,7 +239,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		30CB9075ECB09132F26C8E3A /* [CP] Check Pods Manifest.lock */ = {
+		26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,14 +254,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestrator-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestratorTV-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7E8F0BA19C2DD25E1B4B8CD5 /* [CP] Embed Pods Frameworks */ = {
+		33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,7 +278,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B002824A241AA881851F945B /* [CP] Embed Pods Frameworks */ = {
+		AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -295,7 +295,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F90627F5BAB39D122C66D485 /* [CP] Check Pods Manifest.lock */ = {
+		C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,7 +310,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestratorTV-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestrator-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -494,7 +494,7 @@
 		};
 		5052E9A424ED5F34009D0804 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 05E9D59FD58DDB0C50F4C101 /* Pods-AVPlayerOrchestrator.debug.xcconfig */;
+			baseConfigurationReference = DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -516,7 +516,7 @@
 		};
 		5052E9A524ED5F34009D0804 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DD5776F027DC8BD5103B3BA /* Pods-AVPlayerOrchestrator.release.xcconfig */;
+			baseConfigurationReference = FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -537,7 +537,7 @@
 		};
 		7A76191224FE4A3900366D93 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DECF53ADC6FA30A75E10ACA /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */;
+			baseConfigurationReference = B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
@@ -559,7 +559,7 @@
 		};
 		7A76191324FE4A3900366D93 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAB2DBD4698868A9FB9ADC83 /* Pods-AVPlayerOrchestratorTV.release.xcconfig */;
+			baseConfigurationReference = 15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
