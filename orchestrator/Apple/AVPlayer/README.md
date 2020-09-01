@@ -21,7 +21,7 @@ Add the orchestrator dependency to the Cartfile, more info on [Carthage installa
 binary "https://sdk.streamroot.io/ios/CTLOrchestratorSDK.json"
 ```
 
-### 2-  Set the ClientDeliveryKey
+### 2 - Set the ClientDeliveryKey
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -33,7 +33,7 @@ Add the following lines with the right parameters values.
 </dict>
 ```
 
-### 3 -Disable App Transport security
+### 3 - Disable App Transport security
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -87,7 +87,7 @@ var qosModule: CTLQosModule // Stored property
 self.qosModule = CTLQosModule(type: .custom)
 ```
 
-### 3 -Play the stream
+### 3 - Play the stream
 Stat the player with the new url provided by the delivery client.
 ```swift
 guard let deliveryUrl = deliveryClient?.localManifestURL else {
