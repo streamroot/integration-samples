@@ -36,5 +36,6 @@ echo "Version will be updated to $YELLOW$dc_version$RST"
 
 echo "Updating version ..."
 LC_ALL=C find . -name 'build.gradle' -exec sed -i '' -e "s/def dc_version = \".*\"/def dc_version = \"$dc_version\"/g" {} \;
+LC_ALL=C find . -name '*.md' -exec sed -i '' -e "s/def dc_version = \".*\"/def dc_version = \"$dc_version\"/g" {} \;
 echo "Building project ..."
 cd AllSamples && ANDROID_SDK_ROOT=$ANDROID_SDK ./gradlew clean assembleDebug

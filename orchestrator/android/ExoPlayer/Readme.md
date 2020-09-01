@@ -27,7 +27,7 @@ Add the orchestrator dependency to your module (often called app). In your **mod
 ```gradle
 dependencies {
     ...
-    def dc_version = "1.0.2"
+    def dc_version = "1.0.3"
     implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk:' + dc_version
 }
 ```
