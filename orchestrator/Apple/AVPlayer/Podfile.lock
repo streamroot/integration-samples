@@ -1,0 +1,16 @@
+PODS:
+  - CTLOrchestratorSDK (0.0.2)
+
+DEPENDENCIES:
+  - CTLOrchestratorSDK
+
+SPEC REPOS:
+  trunk:
+    - CTLOrchestratorSDK
+
+SPEC CHECKSUMS:
+  CTLOrchestratorSDK: 44efe5a0d56c1b05c183a7c25ec295a17a90dda7
+
+PODFILE CHECKSUM: 55aea00a442cce8de0dd3238ec554ace98b70b87
+
+COCOAPODS: 1.9.3

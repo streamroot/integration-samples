@@ -66,7 +66,13 @@ class SwiftSampleViewController: AVPlayerViewController {
     player?.play()
     
     //Display the stat view
+    #if os(iOS)
     self.deliveryClient?.displayStatWiew(contentOverlayView!)
+    #elseif os(tvOS)
+    let sv = UIScrollView(frame: self.view.bounds)
+    self.view.addSubview(sv)
+    self.deliveryClient?.displayStatWiew(sv)
+    #endif
   }
   
 }
