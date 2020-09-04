@@ -41,6 +41,7 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 
 - [AVPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios)
 - [AMP](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios/AMP)
+- [JWPlayer](https://github.com/streamroot/streamroot-samples/tree/master/dna/ios/JWPlayer)
 
 ### Web
 
