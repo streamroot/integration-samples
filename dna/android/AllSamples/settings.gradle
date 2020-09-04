@@ -8,7 +8,8 @@ def samples = [
         'PlayKitOVPStarter',
         'VideoView',
         'Brightcove',
-        'AMP'
+        'AMP',
+        'JWPlayer'
 ]
 
 samples.each {
