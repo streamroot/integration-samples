@@ -1,4 +1,4 @@
-package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer;
+package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer;
 
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
@@ -7,17 +7,17 @@ import com.google.android.exoplayer2.Player.EventListener;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 
-import io.streamroot.ctl.delivery.client.core.CTLQosInterfaceBase;
-import io.streamroot.ctl.delivery.client.core.CTLVideoPlaybackState;
+import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase;
+import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class ExoPlayerQosModule extends CTLQosInterfaceBase implements EventListener {
+public final class ExoPlayerQosModule extends LumenQosInterfaceBase implements EventListener {
     public ExoPlayerQosModule(ExoPlayer exoPlayer) {
         exoPlayer.addListener(this);
     }
 
     @Override
     public void onSeekProcessed() {
-        super.playerStateChange(CTLVideoPlaybackState.SEEKING);
+        super.playerStateChange(LumenVideoPlaybackState.SEEKING);
     }
 
     @Override
@@ -34,16 +34,16 @@ public final class ExoPlayerQosModule extends CTLQosInterfaceBase implements Eve
     public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         switch(playbackState) {
             case Player.STATE_IDLE:
-                super.playerStateChange(CTLVideoPlaybackState.IDLE);
+                super.playerStateChange(LumenVideoPlaybackState.IDLE);
                 break;
             case Player.STATE_BUFFERING:
-                super.playerStateChange(CTLVideoPlaybackState.REBUFFERING);
+                super.playerStateChange(LumenVideoPlaybackState.REBUFFERING);
                 break;
             case Player.STATE_READY:
-                super.playerStateChange(playWhenReady ? CTLVideoPlaybackState.PLAYING : CTLVideoPlaybackState.PAUSED);
+                super.playerStateChange(playWhenReady ? LumenVideoPlaybackState.PLAYING : LumenVideoPlaybackState.PAUSED);
                 break;
             case Player.STATE_ENDED:
-                super.playerStateChange(CTLVideoPlaybackState.ENDED);
+                super.playerStateChange(LumenVideoPlaybackState.ENDED);
                 break;
         }
     }

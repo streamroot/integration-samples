@@ -4,7 +4,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer"
+        applicationId "io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer"
         minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
@@ -27,9 +27,9 @@ android {
 dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
 
-    def dc_version = "1.0.3"
-    implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk:' + dc_version
-    implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk-utils:' + dc_version
+    def dc_version = "1.0.4-rc-a1sd2qs3f"
+    implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
+    implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.0'

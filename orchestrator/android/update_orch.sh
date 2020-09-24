@@ -9,7 +9,7 @@ set -eo pipefail
 YELLOW="\033[1;33m"
 RST="\033[0m"
 
-last_version=`curl -s https://sdk.streamroot.io | grep -Eo '<Key>android/io/streamroot/ctl/delivery/client/orchestrator-sdk/[0-9\.]*/' | grep -Eo '[0-9\.]+' | sort -V | tail -1`
+last_version=`curl -s https://sdk.streamroot.io | grep -Eo '<Key>android/io/streamroot/lumen/delivery/client/orchestrator-sdk/[0-9\.]*/' | grep -Eo '[0-9\.]+' | sort -V | tail -1`
 dc_version=''
 
 if [ -z "$last_version" ]

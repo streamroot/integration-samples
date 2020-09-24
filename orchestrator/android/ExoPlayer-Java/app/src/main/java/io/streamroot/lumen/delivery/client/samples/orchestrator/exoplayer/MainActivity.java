@@ -1,4 +1,4 @@
-package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer;
+package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -28,7 +28,7 @@ Add the orchestrator dependency to your module (often called app). In your **mod
 dependencies {
     ...
     def dc_version = "1.0.3"
-    implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk:' + dc_version
+    implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
 }
 ```
 
@@ -48,7 +48,7 @@ Please follow the following steps from the official android documentation.
 If you are obfuscating your code, please add the following rules to your proguard.
 ```
 -keep class io.streamroot.** { *; }
--dontwarn io.streamroot.ctl.**
+-dontwarn io.streamroot.lumen.**
 ```
 
 ### Network security
@@ -91,7 +91,7 @@ Before doing anything, you must set the deliveryClientKey as a meta-data in the 
     <application ...>
         ...
         <meta-data
-            android:name="io.streamroot.ctl.delivery.client.DeliveryClientKey"
+            android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
             android:value="DCKey" />
     </application>
 </manifest>
@@ -100,7 +100,7 @@ Before doing anything, you must set the deliveryClientKey as a meta-data in the 
 `deliveryClientKey`: Refers to your Streamroot unique identifier that you will find in the Account section of the Streamroot Dashboard. If you don't have a deliveryClientKey, you can ask for a free trial on our website.
 
 **Note**:
-It is also possible to pass your deliveryClientKey at CTL Delivery Client initialization or instantiation.
+It is also possible to pass your deliveryClientKey at Lumen Delivery Client initialization or instantiation.
 
 ### 2. SDK Initialization
 
@@ -116,7 +116,7 @@ class SRApplication: MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        CTLDeliveryClient.initializeApp(this)
+        LumenDeliveryClient.initializeApp(this)
         ...
     }
 }
@@ -132,17 +132,17 @@ android:name=".SRApplication"
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
 Please add the following class to your project :
 
-- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer/app/src/main/java/io/streamroot/ctl/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.kt)
+- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer/app/src/main/java/io/streamroot/lumen/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.kt)
 
-### 4. Create a new CTL Delivery Client instance 
+### 4. Create a new Lumen Delivery Client instance 
 
-Now that you have set the `deliveryClientKey` and initialized the SDK, you are able to create CTL Delivery Client instances.
+Now that you have set the `deliveryClientKey` and initialized the SDK, you are able to create Lumen Delivery Client instances.
 
 You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a SimpleExoPlayer :
 
 ```kotlin
 private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-    CTLDeliveryClient.orchestratorBuilder(applicationContext)
+    LumenDeliveryClient.orchestratorBuilder(applicationContext)
         .qosInterface(ExoPlayerQosModule(newPlayer))
         .build(<string>url)
 ```
@@ -194,7 +194,7 @@ private fun buildMediaSource(uri: Uri): MediaSource {
 }
 ```
 
-### 7. Stop the CTL Delivery Client
+### 7. Stop the Lumen Delivery Client
 
 Once the video is done playing, you have to stop the SDK you created earlier. Calling the following method will finish the ongoing tasks and release the resources.
 
@@ -207,7 +207,7 @@ You can pass additional options when creating a delivery client.
 
 ```kotlin
 private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-    CTLDeliveryClient.orchestratorBuilder(applicationContext)
+    LumenDeliveryClient.orchestratorBuilder(applicationContext)
         .qosInterface(ExoPlayerQosModule(newPlayer))
         .options {
             ...
@@ -224,7 +224,7 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
 
 ### Additional debug options
 
-- `logLevel(CTLLogLevel.TRACE)` : Set Orchestrator's log level : TRACE | CRITICAL | ERROR | WARNING | INFO | DEBUG | OFF. Defaults to OFF.
+- `logLevel(LumenLogLevel.TRACE)` : Set Orchestrator's log level : TRACE | CRITICAL | ERROR | WARNING | INFO | DEBUG | OFF. Defaults to OFF.
 - `proxyServer(<string>)` : Allows the use of a proxy server in the middle. String with format `ip:host`.
 
 ### Orchestrator StatsView
@@ -236,13 +236,13 @@ Streamroot provides an utils library which allows the display of Orchestrator in
 Add the utils dependency to your module's build.gradle
 
 ```gradle
-implementation 'io.streamroot.ctl.delivery.client:orchestrator-sdk-utils:' + dc_version
+implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
 ```
 
-Add the CTLStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept your touches.
+Add the LumenStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept your touches.
 
 ```xml
-<io.streamroot.ctl.delivery.client.utils.CTLStatsView
+<io.streamroot.lumen.delivery.client.utils.LumenStatsView
     android:id="@+id/dcStatsView"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
@@ -252,7 +252,7 @@ Retrieve your view by finding it by ID, or synthetically.
 
 `dcStatsView = ...`
 
-Link the CTLStatsView between step 4 and 5, so ideally after creation and before the start().
+Link the LumenStatsView between step 4 and 5, so ideally after creation and before the start().
 
 ```kotlin
 dc.addStateStatsListener(dcStatsView)
