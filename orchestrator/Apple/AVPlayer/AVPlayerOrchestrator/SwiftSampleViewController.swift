@@ -19,12 +19,16 @@ class SwiftSampleViewController: AVPlayerViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     deliveryClient?.stop()
+    NotificationCenter.default.removeObserver(self,
+                                              name: AVAudioSession.routeChangeNotification,
+                                              object: AVAudioSession.sharedInstance())
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     initDeliveryClient()
     playContent()
+    registerAirplayNotification()
   }
   
   // MARK: - Player init
@@ -75,4 +79,38 @@ class SwiftSampleViewController: AVPlayerViewController {
     #endif
   }
   
+  // MARK: - Airplay support
+  
+  /// To detect actual airplay switc we can use the device audio output
+  // we need to register to AVAudioSession.routeChangeNotification
+  private func registerAirplayNotification() {
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(audioOutputDidChange),
+      name: AVAudioSession.routeChangeNotification,
+      object: AVAudioSession.sharedInstance())
+  }
+  
+  @objc func audioOutputDidChange() {
+    // Get the current audio route
+    let currentRoute = AVAudioSession.sharedInstance().currentRoute
+    // Check if the audio  output is an airplay type
+    guard let airplayOutput = currentRoute.outputs.filter({$0.portType == .airPlay}).first else {
+      return
+    }
+    // Save the current playbacktime
+    let time = self.player?.currentTime()
+    
+    // Create a player item with the original url
+    let newItem  = AVPlayerItem(url: manifestUrl)
+    // Replace the player item to bypass local proxy
+    self.player?.replaceCurrentItem(with: newItem)
+    
+    // Seek to last saved time, especially helpful for VOD streams
+    if time != nil {
+      self.player?.seek(to: time!)
+    }
+    print("Airplay device name: \(airplayOutput.portName)")
+  }
+    
 }
