@@ -11,7 +11,7 @@ import AVKit
 class SwiftSampleViewController: AVPlayerViewController {
   
   // MARK: - Properties
-  private var deliveryClient: CTLDeliveryClient?
+  private var deliveryClient: LMDeliveryClient?
   private var qosModuleWrapper: QoSModuleWrapper!
   private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
   
@@ -42,7 +42,7 @@ class SwiftSampleViewController: AVPlayerViewController {
     // Instanciate QOS module
     qosModuleWrapper = QoSModuleWrapper()
     // Build the delivery client with parameters
-    deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
+    deliveryClient = LMDeliveryClientBuilder.clientBuilder()
       .qosModule(qosModuleWrapper.qosModule)
       // the streamroot key will default to the one in the Info.plist if not overridden here
       //.deliveryClientKey("demoswebsiteandpartners")

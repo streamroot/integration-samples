@@ -10,14 +10,14 @@ import AVKit
 
 class QoSModuleWrapper: NSObject {
   
-  var qosModule: CTLQosModule
+  var qosModule: LMQosModule
   fileprivate var player: AVPlayer?
-  fileprivate var playbackState: CTLPlaybackState
+  fileprivate var playbackState: LMPlaybackState
   
   fileprivate var observer: Any?
   
   override init() {
-    self.qosModule = CTLQosModule(type: .custom)
+    self.qosModule = LMQosModule(type: .custom)
     self.playbackState = .idle
     super.init()
   }
@@ -69,7 +69,7 @@ class QoSModuleWrapper: NSObject {
     player?.removeObserver(self, forKeyPath: "rate")
   }
   
-  fileprivate func updateState(_ state: CTLPlaybackState) {
+  fileprivate func updateState(_ state: LMPlaybackState) {
     if playbackState != state {
       qosModule.playerStateDidChange(state)
       playbackState = state
