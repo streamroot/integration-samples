@@ -1,4 +1,4 @@
-package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer;
+package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -29,10 +29,10 @@ import com.google.android.exoplayer2.util.Util;
 
 import org.jetbrains.annotations.Nullable;
 
-import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient;
-import io.streamroot.ctl.delivery.client.core.CTLLogLevel;
-import io.streamroot.ctl.delivery.client.core.CTLOptionalOrchestratorBuilder;
-import io.streamroot.ctl.delivery.client.utils.CTLStatsView;
+import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
+import io.streamroot.lumen.delivery.client.core.LumenLogLevel;
+import io.streamroot.lumen.delivery.client.core.LumenOptionalOrchestratorBuilder;
+import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
@@ -68,7 +68,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     }
 
     @Nullable private PlayerView exoPlayerView = null;
-    @Nullable private CTLStatsView dcStatsView = null;
+    @Nullable private LumenStatsView dcStatsView = null;
 
     @Nullable private String mDCKey = null;
     @Nullable private String mStreamUrl = null;
@@ -76,7 +76,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
     @Nullable private ExoPlayer player = null;
 
-    @Nullable private CTLDeliveryClient deliveryClient = null;
+    @Nullable private LumenDeliveryClient deliveryClient = null;
 
     @Override
     protected void onCreate(@androidx.annotation.Nullable Bundle savedInstanceState) {
@@ -141,7 +141,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
             newPlayer.setPlayWhenReady(true);
             newPlayer.addListener(this);
 
-            final CTLDeliveryClient dc = initDeliveryClient(newPlayer);
+            final LumenDeliveryClient dc = initDeliveryClient(newPlayer);
             deliveryClient = dc;
             dc.addStateStatsListener(dcStatsView);
             dcStatsView.showStats();
@@ -190,13 +190,13 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         }
     }
 
-    private CTLDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
-        return CTLDeliveryClient.orchestratorBuilder(getApplicationContext())
+    private LumenDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
+        return LumenDeliveryClient.orchestratorBuilder(getApplicationContext())
                 .qosInterface(new ExoPlayerQosModule(newPlayer))
-                .options(new Function1<CTLOptionalOrchestratorBuilder, Unit>() {
+                .options(new Function1<LumenOptionalOrchestratorBuilder, Unit>() {
                     @Override
-                    public Unit invoke(CTLOptionalOrchestratorBuilder o) {
-                        o.logLevel(CTLLogLevel.TRACE);
+                    public Unit invoke(LumenOptionalOrchestratorBuilder o) {
+                        o.logLevel(LumenLogLevel.TRACE);
                         if (mDCKey != null) o.deliveryClientKey(mDCKey);
                         if (mOrchProperty != null) o.orchestratorProperty(mOrchProperty);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer">
+    package="io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer">
 
     <application
         android:name=".SRApplication"
@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
-            android:name="io.streamroot.ctl.delivery.client.DeliveryClientKey"
+            android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
             android:value="demoswebsiteandpartners" />
     </application>
 </manifest>

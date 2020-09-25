@@ -1,4 +1,4 @@
-package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer
+package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -27,9 +27,9 @@ import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
-import io.streamroot.ctl.delivery.client.core.CTLDeliveryClient
-import io.streamroot.ctl.delivery.client.core.CTLLogLevel
-import io.streamroot.ctl.delivery.client.utils.CTLStatsView
+import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient
+import io.streamroot.lumen.delivery.client.core.LumenLogLevel
+import io.streamroot.lumen.delivery.client.utils.LumenStatsView
 
 class PlayerActivity : AppCompatActivity(), Player.EventListener {
     data class PlayerActivityArgs(
@@ -60,7 +60,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private lateinit var exoPlayerView: PlayerView
-    private lateinit var dcStatsView: CTLStatsView
+    private lateinit var dcStatsView: LumenStatsView
 
     private var mDCKey: String? = null
     private var mStreamUrl: String? = null
@@ -68,7 +68,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private var player: ExoPlayer? = null
 
-    private var deliveryClient: CTLDeliveryClient? = null
+    private var deliveryClient: LumenDeliveryClient? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -171,12 +171,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-        CTLDeliveryClient.orchestratorBuilder(applicationContext)
+        LumenDeliveryClient.orchestratorBuilder(applicationContext)
             .qosInterface(ExoPlayerQosModule(newPlayer))
             .options {
                 mDCKey?.let { deliveryClientKey(it) }
                 mOrchProperty?.let { orchestratorProperty(it) }
-                logLevel(CTLLogLevel.TRACE)
+                logLevel(LumenLogLevel.TRACE)
             }
             .build(mStreamUrl!!)
 

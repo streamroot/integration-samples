@@ -1,19 +1,19 @@
-package io.streamroot.ctl.delivery.client.samples.orchestrator.exoplayer
+package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer
 
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import io.streamroot.ctl.delivery.client.core.CTLQosInterfaceBase
-import io.streamroot.ctl.delivery.client.core.CTLVideoPlaybackState
+import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase
+import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState
 
-class ExoPlayerQosModule(exoPlayer: ExoPlayer) : CTLQosInterfaceBase(), Player.EventListener {
+class ExoPlayerQosModule(exoPlayer: ExoPlayer) : LumenQosInterfaceBase(), Player.EventListener {
 
     init { exoPlayer.addListener(this) }
 
     override fun onSeekProcessed() {
-        super.playerStateChange(CTLVideoPlaybackState.SEEKING)
+        super.playerStateChange(LumenVideoPlaybackState.SEEKING)
     }
 
     override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {
@@ -35,16 +35,16 @@ class ExoPlayerQosModule(exoPlayer: ExoPlayer) : CTLQosInterfaceBase(), Player.E
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         when (playbackState) {
             Player.STATE_IDLE -> {
-                super.playerStateChange(CTLVideoPlaybackState.IDLE)
+                super.playerStateChange(LumenVideoPlaybackState.IDLE)
             }
             Player.STATE_BUFFERING -> {
-                super.playerStateChange(CTLVideoPlaybackState.REBUFFERING)
+                super.playerStateChange(LumenVideoPlaybackState.REBUFFERING)
             }
             Player.STATE_READY -> {
-                super.playerStateChange(if (playWhenReady) CTLVideoPlaybackState.PLAYING else CTLVideoPlaybackState.PAUSED)
+                super.playerStateChange(if (playWhenReady) LumenVideoPlaybackState.PLAYING else LumenVideoPlaybackState.PAUSED)
             }
             Player.STATE_ENDED -> {
-                super.playerStateChange(CTLVideoPlaybackState.ENDED)
+                super.playerStateChange(LumenVideoPlaybackState.ENDED)
             }
         }
     }
