@@ -10,7 +10,7 @@ Get the SDK via [cocoapods](https://cocoapods.org/) -> `pod install` in the curr
 ```
 target 'MyApp' do
   use_frameworks!
-  pod 'CTLOrchestratorSDK'
+  pod 'LumenOrchestratorSDK'
 end
 ```
 
@@ -18,7 +18,7 @@ end
 
 Add the orchestrator dependency to the Cartfile, more info on [Carthage installation](https://github.com/Carthage/Carthage#quick-start) method.
 ```
-binary "https://sdk.streamroot.io/ios/CTLOrchestratorSDK.json"
+binary "https://sdk.streamroot.io/ios/LumenOrchestratorSDK.json"
 ```
 
 ### 2 - Set the ClientDeliveryKey
@@ -49,7 +49,7 @@ Add the following lines with the right parameters values.
 The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [More info](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis).
 
 ```
-#import <CTLOrchestratorSDK/CTLOrchestratorSDK.h>
+#import <LumenOrchestratorSDK/LumenOrchestratorSDK.h>
 ```
 
 ## Code integration
@@ -57,18 +57,18 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 ### 1 - Initialize the Delivery SDK from the App delegate [application(_:didFinishLaunchingWithOptions:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
 ```
- CTLDeliveryClient.initializeApp()
+ LMDeliveryClient.initializeApp()
 ```
 
 ### 2 - Build and start the DeliveryClient
 Declare the deliverClient as an instance variable:
 ```
-var deliveryClient: CTLDeliveryClient?
+var deliveryClient: LMDeliveryClient?
 ```
 
 Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
-deliveryClient = CTLDeliveryClientBuilder.clientBuilder()
+deliveryClient = LMDeliveryClientBuilder.clientBuilder()
     .qosModule(<#qosModule#>)
      .contentId(<#string#>)
      .orchestratorProperty(<#string#>)   
@@ -83,8 +83,8 @@ In this example, the QOSWrapper is a Helper class of the sample app project, wit
 
 The qosModule can be instantiated as following: 
 ```
-var qosModule: CTLQosModule // Stored property
-self.qosModule = CTLQosModule(type: .custom)
+var qosModule: LMQosModule // Stored property
+self.qosModule = LMQosModule(type: .custom)
 ```
 
 ### 3 - Play the stream
