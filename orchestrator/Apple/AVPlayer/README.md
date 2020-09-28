@@ -70,9 +70,9 @@ Build the delivery client with the mandatory fields which are the `qosModule`, `
 ```swift
 deliveryClient = LMDeliveryClientBuilder.clientBuilder()
     .qosModule(<#qosModule#>)
-     .contentId(<#string#>)
-     .orchestratorProperty(<#string#>)   
-     .build(<#manifestUrl#>)
+    .contentId(<#string#>)
+    .orchestratorProperty(<#string#>)   
+    .build(<#manifestUrl#>)
 deliveryClient?.start()
 ```
 
