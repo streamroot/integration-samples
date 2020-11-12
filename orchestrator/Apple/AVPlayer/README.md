@@ -66,10 +66,10 @@ Declare the deliverClient as an instance variable:
 var deliveryClient: LMDeliveryClient?
 ```
 
-Build the delivery client with the mandatory fields which are the `qosModule`, `orchestratorProperty`, and the `manifestUrl`
+Build the delivery client with the mandatory fields which are the `playerIntertactor`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
 deliveryClient = LMDeliveryClientBuilder.clientBuilder()
-    .qosModule(<#qosModule#>)
+    .playerInteractor(<#playerInteractor#>)
     .contentId(<#string#>)
     .orchestratorProperty(<#string#>)   
     .build(<#manifestUrl#>)
@@ -77,14 +77,16 @@ deliveryClient?.start()
 ```
 
 
-** QosModule**
-The qosModule is a component who should notify the SDK of every new player event. This is essential to monitor the Quality of Service of the current playback session.
-In this example, the QOSWrapper is a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/QosModuleWrapper.swift).
+** PlayerInteractor**
+The playerInteractor is a component in charge of the interactions with the player. This is essential to monitor the Quality of Service of the current playback session.
+In this example, the `PlayerIntetactor` implements `LMPlayerIntetactorBase` and serves as a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/PlayerInteractor.swift).
 
-The qosModule can be instantiated as following: 
+The player Interactor is a class which implements `LMPlayerInteractorBase` and raises events with the associated `super` methods.
+
+Example:
+- When the playback starts, the `.playing` event is raised as following:
 ```
-var qosModule: LMQosModule // Stored property
-self.qosModule = LMQosModule(type: .custom)
+ super.playerStateDidChange(.playing)
 ```
 
 ### 3 - Play the stream
@@ -99,10 +101,10 @@ let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 player = AVPlayer(playerItem: playerItem)
 /*
 * 
-* We are calling here linkPlayer to start the qosWrapper
+* We are calling here linkPlayer to start the playerInteractor
 * 
 */
-qosModuleWrapper.linkPlayer(player!)
+playerInteractor.linkPlayer(player!)
 // Call the player play() method
 player?.play()
 ```
