@@ -1,5 +1,5 @@
 //
-//  QosModuleWrapper.swift
+//  PlayerInteractor.swift
 //  AVPlayerOrchestrator
 //
 //  Created by Ndiaye, Lamine on 19/08/2020.
@@ -8,16 +8,14 @@
 
 import AVKit
 
-class QoSModuleWrapper: NSObject {
+class PlayerInteractor: LMPlayerInteractorBase {
   
-  var qosModule: LMQosModule
   fileprivate var player: AVPlayer?
   fileprivate var playbackState: LMPlaybackState
   
   fileprivate var observer: Any?
   
   override init() {
-    self.qosModule = LMQosModule(type: .custom)
     self.playbackState = .idle
     super.init()
   }
@@ -71,7 +69,7 @@ class QoSModuleWrapper: NSObject {
   
   fileprivate func updateState(_ state: LMPlaybackState) {
     if playbackState != state {
-      qosModule.playerStateDidChange(state)
+      super.playerStateDidChange(state)
       playbackState = state
     }
   }
@@ -117,9 +115,9 @@ class QoSModuleWrapper: NSObject {
 
 
 // MARK: - Handler
-extension QoSModuleWrapper {
+extension PlayerInteractor {
   @objc private func handlePlayedToEndFail(_: Notification) {
-    qosModule.playbackErrorOccurred()
+    super.playbackErrorOccurred()
   }
   
   @objc private func handlePlayToEndSucceded(_: Notification) {
@@ -132,16 +130,16 @@ extension QoSModuleWrapper {
     }
     // trackswitch
     if playerEvents.switchBitrate > 0 {
-      qosModule.trackSwitchOccurred()
+      super.trackSwitchOccurred()
     }
     // dropframe
     if playerEvents.numberOfDroppedVideoFrames > 0 {
-      qosModule.updateDroppedFrameCount(playerEvents.numberOfDroppedVideoFrames)
+      super.updateDroppedFrameCount(playerEvents.numberOfDroppedVideoFrames)
     }
   }
   
   @objc private func handleErrorLogEntry(_: Notification) {
-    qosModule.playbackErrorOccurred()
+    super.playbackErrorOccurred()
   }
   
   @objc private func handleItemPlayBackJumped(_: Notification) {
