@@ -12,7 +12,7 @@ class SwiftSampleViewController: AVPlayerViewController {
   
   // MARK: - Properties
   private var deliveryClient: LMDeliveryClient?
-  private var qosModuleWrapper: QoSModuleWrapper!
+  private var playerInteractor: PlayerInteractor!
   private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
   
   // MARK: - View Controller Init
@@ -34,16 +34,17 @@ class SwiftSampleViewController: AVPlayerViewController {
   // MARK: - Player init
   
   /// Init the delivery client by passing:
-  /// The qos module, the contentId,
+  /// The player interactor
+  /// The contentId
   /// The property defined within the streamroot dashboard
   /// The log level (logging Warning and above)
   /// The main manifest of the stream
   func initDeliveryClient() {
-    // Instanciate QOS module
-    qosModuleWrapper = QoSModuleWrapper()
+    // Instanciate Player Interactor
+    playerInteractor = PlayerInteractor()
     // Build the delivery client with parameters
     deliveryClient = LMDeliveryClientBuilder.clientBuilder()
-      .qosModule(qosModuleWrapper.qosModule)
+      .playerInteractor(playerInteractor)
       // the streamroot key will default to the one in the Info.plist if not overridden here
       //.deliveryClientKey("demoswebsiteandpartners")
       .contentId("wowza_demo_content")
@@ -63,8 +64,8 @@ class SwiftSampleViewController: AVPlayerViewController {
     
     let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
     player = AVPlayer(playerItem: playerItem)
-    // Link the player to the QOSWrapper so it can register to the player event and notify properly the deliveryCLient
-    qosModuleWrapper.linkPlayer(player!)
+    // Link the player to the PlayerInteractor so it can register to the player event and notify properly the deliveryCLient
+    playerInteractor.linkPlayer(player!)
     
     // Start the playback
     player?.play()
@@ -81,7 +82,7 @@ class SwiftSampleViewController: AVPlayerViewController {
   
   // MARK: - Airplay support
   
-  /// To detect actual airplay switc we can use the device audio output
+  /// To detect actual airplay switches we can use the device audio output
   // we need to register to AVAudioSession.routeChangeNotification
   private func registerAirplayNotification() {
     NotificationCenter.default.addObserver(
