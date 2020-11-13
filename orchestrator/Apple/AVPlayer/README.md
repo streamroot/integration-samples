@@ -79,7 +79,7 @@ deliveryClient?.start()
 
 ** PlayerInteractor**
 The playerInteractor is a component in charge of the interactions with the player. This is essential to monitor the Quality of Service of the current playback session.
-In this example, the `PlayerIntetactor` implements `LMPlayerIntetactorBase` and serves as a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/PlayerInteractor.swift).
+In this example, the `PlayerInteractor` implements `LMPlayerInteractorBase` and serves as a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/PlayerInteractor.swift).
 
 The player Interactor is a class which implements `LMPlayerInteractorBase` and raises events with the associated `super` methods.
 
