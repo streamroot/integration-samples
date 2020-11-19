@@ -2,7 +2,7 @@
 
 ## Common integration
 
-Make sure you start with the [common Java integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README.kt)
+Make sure you start with the [common Java integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README.md)
 
 ## Specific integration override
 

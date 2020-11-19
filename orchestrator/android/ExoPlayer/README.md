@@ -2,7 +2,7 @@
 
 ## Common integration
 
-Make sure you start with the [common Kotlin integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README_kotlin.kt)
+Make sure you start with the [common Kotlin integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README_kotlin.md)
 
 ## Specific integration override
 
