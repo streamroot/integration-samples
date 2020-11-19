@@ -11,6 +11,6 @@ public final class SRApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         LumenDeliveryClient.initializeApp(this);
-        PlayerSDK.init(getApplicationContext());
+        PlayerSDK.init(this);
     }
 }

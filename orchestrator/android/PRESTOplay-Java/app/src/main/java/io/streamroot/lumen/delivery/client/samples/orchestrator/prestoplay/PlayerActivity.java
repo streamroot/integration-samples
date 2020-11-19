@@ -1,32 +1,15 @@
 package io.streamroot.lumen.delivery.client.samples.orchestrator.prestoplay;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Surface;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.castlabs.android.player.DisplayInfo;
 import com.castlabs.android.player.PlayerConfig;
 import com.castlabs.android.player.PlayerController;
-import com.castlabs.android.player.PlayerControllerListener;
-import com.castlabs.android.player.PlayerListener;
 import com.castlabs.android.player.PlayerView;
-import com.castlabs.android.player.VideoRendererListener;
-import com.castlabs.android.player.exceptions.CastlabsPlayerException;
-import com.google.android.exoplayer2.ExoPlaybackException;
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.decoder.DecoderCounters;
-import com.google.android.exoplayer2.mediacodec.MediaCodecInfo;
-import com.google.android.exoplayer2.mediacodec.MediaCodecRenderer;
-import com.google.android.exoplayer2.mediacodec.MediaCodecUtil;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -37,7 +20,7 @@ import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
-public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
+public class PlayerActivity extends AppCompatActivity {
 
     public static final class PlayerActivityArgs {
         @Nullable final String dcKey;
@@ -157,51 +140,6 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         if (deliveryClient != null) {
             deliveryClient.terminate();
             deliveryClient = null;
-        }
-    }
-
-    /**
-     * Utils
-     */
-
-    private void showToast(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-    }
-
-    /**
-     * Player EventListener
-     */
-
-    @Override
-    public void onPlayerError(ExoPlaybackException error) {
-        @Nullable String errorString = null;
-        if (error.type == ExoPlaybackException.TYPE_RENDERER) {
-            final Exception cause = error.getRendererException();
-            if (cause instanceof MediaCodecRenderer.DecoderInitializationException) {
-                final MediaCodecRenderer.DecoderInitializationException castedCause =
-                        (MediaCodecRenderer.DecoderInitializationException) cause;
-                // Special case for decoder initialization failures.
-                final MediaCodecInfo codecInfo = castedCause.codecInfo;
-
-                if (codecInfo != null) {
-                    errorString = getString(
-                            R.string.error_instantiating_decoder,
-                            codecInfo.name
-                    );
-                } else if (castedCause.getCause() instanceof MediaCodecUtil.DecoderQueryException) {
-                    errorString = getString(R.string.error_querying_decoders);
-                } else if (castedCause.secureDecoderRequired) {
-                    errorString = getString(
-                            R.string.error_no_secure_decoder,
-                            castedCause.mimeType);
-                } else {
-                    errorString = getString(R.string.error_no_decoder, castedCause.mimeType);
-                }
-            }
-        }
-
-        if (errorString != null) {
-            showToast(errorString);
         }
     }
 }
