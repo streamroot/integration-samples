@@ -1,6 +1,5 @@
 package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer
 
-import android.os.Handler
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.PlaybackParameters
@@ -9,7 +8,7 @@ import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import io.streamroot.lumen.delivery.client.core.*
 
-class ExoPlayerInteractor(private val player: ExoPlayer) : LumenPlayerInteractorBase(), Player.EventListener {
+class ExoPlayerInteractor(player: ExoPlayer) : LumenPlayerInteractorBase(), Player.EventListener {
 
     init { player.addListener(this) }
 
