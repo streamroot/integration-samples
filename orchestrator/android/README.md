@@ -35,8 +35,7 @@ dependencies {
 **Notes**:
 
 - Orchestrator requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
-- ExoPlayerQosModule is referencing the bridge class from step 3.
-- ExoPlayer requires targetCompatibility java 8.
+- PlayerInteractor is referencing the bridge class from step 3.
 
 If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application.
 
@@ -141,12 +140,12 @@ You first need to create and setup your ExoPlayer instance. Then the following f
 ```java
 private LumenDeliveryClient initDeliveryClient(SimpleExoPlayer newPlayer) {
     return LumenDeliveryClient.orchestratorBuilder(getApplicationContext())
-            .qosInterface(new ExoPlayerQosModule(newPlayer))
+            .playerInteractor(new PlayerInteractor(newPlayer))
             .build(<string>url);
 }
 ```
 **Note**:
-ExoPlayerQosModule is referencing the bridge class from step 3.  
+PlayerInteractor is referencing the bridge class from step 3.  
 
 ### 5. Start the SDK instance and get the final url.
 
@@ -207,7 +206,7 @@ You can pass additional options when creating a delivery client.
 ```java
 private LumenDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
     return LumenDeliveryClient.orchestratorBuilder(getApplicationContext())
-        .qosInterface(new ExoPlayerQosModule(newPlayer))
+        .playerInteractor(new PlayerInteractor(newPlayer))
         .options(new Function1<LumenOptionalOrchestratorBuilder, Unit>() {
             @Override
             public Unit invoke(LumenOptionalOrchestratorBuilder o) {

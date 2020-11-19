@@ -145,7 +145,7 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
         .build(<string>url)
 ```
 **Note**:
-QosModule is referencing the bridge class from step 3, name may be different
+PlayerInteractor is referencing the bridge class from step 3, name may be different
 
 ### 5. Start the SDK instance and get the final url.
 
@@ -206,7 +206,7 @@ You can pass additional options when creating a delivery client.
 ```kotlin
 private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
     LumenDeliveryClient.orchestratorBuilder(applicationContext)
-        .qosInterface(QosModule(newPlayer))
+        .playerInteractor(PlayerInteractor(newPlayer))
         .options {
             ...
             <<< HERE >>>

@@ -12,8 +12,6 @@ class ExoPlayerInteractor(player: ExoPlayer) : LumenPlayerInteractorBase(), Play
 
     init { player.addListener(this) }
 
-    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
-
     override fun onSeekProcessed() {
         super.playerStateChange(LumenVideoPlaybackState.SEEKING)
     }
@@ -25,14 +23,6 @@ class ExoPlayerInteractor(player: ExoPlayer) : LumenPlayerInteractorBase(), Play
     override fun onPlayerError(error: ExoPlaybackException) {
         super.playerError()
     }
-
-    override fun onLoadingChanged(isLoading: Boolean) {}
-
-    override fun onPositionDiscontinuity(reason: Int) {}
-
-    override fun onRepeatModeChanged(repeatMode: Int) {}
-
-    override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         when (playbackState) {

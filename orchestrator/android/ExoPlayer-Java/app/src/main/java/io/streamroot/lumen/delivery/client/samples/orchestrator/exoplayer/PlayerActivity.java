@@ -192,7 +192,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
     private LumenDeliveryClient initDeliveryClient(final SimpleExoPlayer newPlayer) {
         return LumenDeliveryClient.orchestratorBuilder(getApplicationContext())
-                .qosInterface(new ExoPlayerQosModule(newPlayer))
+                .playerInteractor(new ExoPlayerInteractor(newPlayer))
                 .options(new Function1<LumenOptionalOrchestratorBuilder, Unit>() {
                     @Override
                     public Unit invoke(LumenOptionalOrchestratorBuilder o) {
