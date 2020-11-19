@@ -1,4 +1,4 @@
-# Streamroot Android Orchestrator ExoPlayer Java
+# Streamroot Android Orchestrator castLabs PRESTOplay Java
 ## Common integration
 
 Make sure you start with the [common Java integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README.kt)
