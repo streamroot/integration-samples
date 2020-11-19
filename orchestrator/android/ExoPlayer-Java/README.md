@@ -1,7 +1,8 @@
 # Streamroot Android Orchestrator ExoPlayer Java
+
 ## Common integration
 
-Please start with the [common Java integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README.kt)
+Make sure you start with the [common Java integration](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/README.kt)
 
 ## Specific integration override
 
