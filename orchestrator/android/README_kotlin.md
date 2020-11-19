@@ -27,7 +27,7 @@ Add the orchestrator dependency to your module (often called app). In your **mod
 ```gradle
 dependencies {
     ...
-    def dc_version = '1.1.0'
+    def dc_version = '1.1.1'
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
 }
 ```
@@ -35,8 +35,7 @@ dependencies {
 **Notes**:
 
 - Orchestrator requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
-- ExoPlayerQosModule is referencing the bridge class from step 3.
-- ExoPlayer requires targetCompatibility java 8.
+- PlayerInteractor is referencing the bridge class from step 3.
 
 If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application.
 
@@ -130,9 +129,8 @@ android:name=".SRApplication"
 ### 3. Bridge between your Player and the delivery client
 
 In order to work perfectly, the SDK instances need to interact with the player and listen to its events.  
-Please add the following class to your project :
 
-- [QosModule](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/ExoPlayer/app/src/main/java/io/streamroot/lumen/delivery/client/samples/orchestrator/exoplayer/ExoPlayerQosModule.kt)
+Please refer to the README.md from the player's sample you are integrating.
 
 ### 4. Create a new Lumen Delivery Client instance 
 
@@ -143,11 +141,11 @@ You first need to create and setup your ExoPlayer instance. Then the following f
 ```kotlin
 private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
     LumenDeliveryClient.orchestratorBuilder(applicationContext)
-        .qosInterface(ExoPlayerQosModule(newPlayer))
+        .playerInteractor(PlayerInteractor(newPlayer))
         .build(<string>url)
 ```
 **Note**:
-ExoPlayerQosModule is referencing the bridge class from step 3.  
+PlayerInteractor is referencing the bridge class from step 3, name may be different
 
 ### 5. Start the SDK instance and get the final url.
 
@@ -208,7 +206,7 @@ You can pass additional options when creating a delivery client.
 ```kotlin
 private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
     LumenDeliveryClient.orchestratorBuilder(applicationContext)
-        .qosInterface(QosModule(newPlayer))
+        .playerInteractor(PlayerInteractor(newPlayer))
         .options {
             ...
             <<< HERE >>>

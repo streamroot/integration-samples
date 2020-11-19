@@ -2,15 +2,15 @@ package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer
 
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.PlaybackParameters
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase
-import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState
+import io.streamroot.lumen.delivery.client.core.*
 
-class ExoPlayerQosModule(exoPlayer: ExoPlayer) : LumenQosInterfaceBase(), Player.EventListener {
+class ExoPlayerInteractor(player: ExoPlayer) : LumenPlayerInteractorBase(), Player.EventListener {
 
-    init { exoPlayer.addListener(this) }
+    init { player.addListener(this) }
 
     override fun onSeekProcessed() {
         super.playerStateChange(LumenVideoPlaybackState.SEEKING)
@@ -23,14 +23,6 @@ class ExoPlayerQosModule(exoPlayer: ExoPlayer) : LumenQosInterfaceBase(), Player
     override fun onPlayerError(error: ExoPlaybackException) {
         super.playerError()
     }
-
-    override fun onLoadingChanged(isLoading: Boolean) {}
-
-    override fun onPositionDiscontinuity(reason: Int) {}
-
-    override fun onRepeatModeChanged(repeatMode: Int) {}
-
-    override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {}
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         when (playbackState) {

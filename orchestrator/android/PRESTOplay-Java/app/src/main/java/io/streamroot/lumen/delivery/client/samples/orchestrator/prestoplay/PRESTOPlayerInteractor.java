@@ -12,16 +12,14 @@ import com.castlabs.android.player.models.VideoTrackQuality;
 
 import java.lang.ref.WeakReference;
 
-import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase;
+import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class PRESTOQosModule extends LumenQosInterfaceBase implements PlayerListener, TrackSelectionListener {
+public final class PRESTOPlayerInteractor extends LumenPlayerInteractorBase implements PlayerListener, TrackSelectionListener {
 
     private WeakReference<PlayerController> mPlayerInterface = null;
 
-    public PRESTOQosModule() {}
-
-    public PRESTOQosModule(PlayerController playerInterface) {
+    public PRESTOPlayerInteractor(PlayerController playerInterface) {
         setPlayerInterface(playerInterface);
     }
 

@@ -7,11 +7,11 @@ import com.google.android.exoplayer2.Player.EventListener;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 
-import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase;
+import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class ExoPlayerQosModule extends LumenQosInterfaceBase implements EventListener {
-    public ExoPlayerQosModule(ExoPlayer exoPlayer) {
+public final class ExoPlayerInteractor extends LumenPlayerInteractorBase implements EventListener {
+    public ExoPlayerInteractor(ExoPlayer exoPlayer) {
         exoPlayer.addListener(this);
     }
 
