@@ -27,7 +27,7 @@ Add the orchestrator dependency to your module (often called app). In your **mod
 ```gradle
 dependencies {
     ...
-    def dc_version = "1.1.0"
+    def dc_version = '1.1.0'
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
 }
 ```
