@@ -1,0 +1,55 @@
+//noinspection GradleCompatible
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    defaultConfig {
+        applicationId "io.streamroot.lumen.delivery.client.samples.orchestrator.prestoplay"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    maven { url './repository' }
+    maven { url '../repository' }
+    maven { url "https://www.jitpack.io" }
+    jcenter()
+    google()
+}
+
+dependencies {
+    def dc_version = '1.0.4'
+    implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
+    implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
+
+    def castlab_version = '4.2.34'
+    implementation 'com.castlabs.player:castlabs-sdk:' + castlab_version
+    /*
+    implementation 'com.castlabs.player:player-ui-plugin:' + castlab_version
+    implementation 'com.castlabs.player:oma-plugin:4.2.34'
+    implementation 'com.castlabs.player:subtitles-plugin:4.2.34'
+    implementation 'com.castlabs.player:ima-plugin:4.2.34'
+    implementation 'com.castlabs.player:debug-plugin:4.2.34'
+    implementation 'com.castlabs.player:drm-device-time-checker-plugin:4.2.34'
+    implementation 'com.castlabs.player:thumbs-plugin:4.2.34'
+    implementation 'com.castlabs.player:okhttp-plugin:4.2.34'*/
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+}
