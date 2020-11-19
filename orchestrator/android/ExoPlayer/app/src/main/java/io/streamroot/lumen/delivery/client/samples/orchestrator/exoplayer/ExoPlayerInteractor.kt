@@ -1,16 +1,19 @@
 package io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer
 
+import android.os.Handler
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.PlaybackParameters
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
-import io.streamroot.lumen.delivery.client.core.LumenQosInterfaceBase
-import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState
+import io.streamroot.lumen.delivery.client.core.*
 
-class ExoPlayerQosModule(exoPlayer: ExoPlayer) : LumenQosInterfaceBase(), Player.EventListener {
+class ExoPlayerInteractor(private val player: ExoPlayer) : LumenPlayerInteractorBase(), Player.EventListener {
 
-    init { exoPlayer.addListener(this) }
+    init { player.addListener(this) }
+
+    override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters) {}
 
     override fun onSeekProcessed() {
         super.playerStateChange(LumenVideoPlaybackState.SEEKING)
