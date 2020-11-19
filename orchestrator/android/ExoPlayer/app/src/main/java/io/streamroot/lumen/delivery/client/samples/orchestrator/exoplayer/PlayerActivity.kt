@@ -172,7 +172,7 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
         LumenDeliveryClient.orchestratorBuilder(applicationContext)
-            .qosInterface(ExoPlayerQosModule(newPlayer))
+            .playerInteractor(ExoPlayerInteractor(newPlayer))
             .options {
                 mDCKey?.let { deliveryClientKey(it) }
                 mOrchProperty?.let { orchestratorProperty(it) }

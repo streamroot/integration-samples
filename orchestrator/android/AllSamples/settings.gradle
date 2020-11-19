@@ -1,7 +1,8 @@
 // Sample apps
 def samples = [
         'ExoPlayer',
-        'ExoPlayer-Java'
+        'ExoPlayer-Java',
+        'PRESTOplay-Java'
 ]
 
 samples.each {

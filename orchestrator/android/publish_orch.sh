@@ -4,7 +4,7 @@ set -eo pipefail
 
 echo 'Make sure you are logged in to firebase using Firebase CLI "firebase login"'
 
-echo 'Available targets : ExoPlayer | ExoPlayer-Java'
+echo 'Available targets : ExoPlayer | ExoPlayer-Java | PRESTOplay-Java'
 read -p 'Specify project module ? : ' module
 
 firebase --project streamroot-tools apps:list ANDROID | grep "DC Samples"
