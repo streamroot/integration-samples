@@ -26,6 +26,7 @@ If you don't have an account, [request a trial](https://streamroot.io/?request_t
 #### Players
 
 - ExoPlayer ( [Kotlin](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/ExoPlayer) | [Java](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/ExoPlayer-Java) )
+- castLabs PRESTOplay ( [Java](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/PRESTOplay-Java) )
 
 ### Apple (iOS/tvOS)
 
