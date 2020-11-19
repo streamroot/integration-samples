@@ -15,5 +15,5 @@ Please add the following class to your project :
 
 ## Additional steps
 
--> Move "repository" folder from castLabs's sdk package to ./repository
+-> Move "repository" folder from castLabs's sdk package to ./repository  
 -> Make sure you override license key in manifest (beware license is package name & keystore SHA1 related)
