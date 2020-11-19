@@ -110,7 +110,7 @@ public class PlayerActivity extends AppCompatActivity {
 
     private void initPlayer() {
         final PlayerController controller = playerView.getPlayerController();
-        final PRESTOQosModule qosModule = new PRESTOQosModule(controller);
+        final PRESTOPlayerInteractor qosModule = new PRESTOPlayerInteractor(controller);
         final LumenDeliveryClient dc = initDeliveryClient(qosModule);
         deliveryClient = dc;
         dc.addStateStatsListener(dcStatsView);
@@ -121,9 +121,9 @@ public class PlayerActivity extends AppCompatActivity {
         controller.open(new PlayerConfig.Builder(uri.toString()).get());
     }
 
-    private LumenDeliveryClient initDeliveryClient(PRESTOQosModule qosModule) {
+    private LumenDeliveryClient initDeliveryClient(PRESTOPlayerInteractor playerInteractor) {
         return LumenDeliveryClient.orchestratorBuilder(getApplicationContext())
-                .qosInterface(qosModule)
+                .playerInteractor(playerInteractor)
                 .options(new Function1<LumenOptionalOrchestratorBuilder, Unit>() {
                     @Override
                     public Unit invoke(LumenOptionalOrchestratorBuilder o) {
