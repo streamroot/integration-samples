@@ -31,7 +31,7 @@ android {
 dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
 
-    def dc_version = '1.1.0'
+    def dc_version = '1.1.1'
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
 
