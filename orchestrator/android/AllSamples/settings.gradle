@@ -2,7 +2,8 @@
 def samples = [
         'ExoPlayer',
         'ExoPlayer-Java',
-        'PRESTOplay-Java'
+        'PRESTOplay-Java',
+        'ExoPlayer-Yospace'
 ]
 
 samples.each {
