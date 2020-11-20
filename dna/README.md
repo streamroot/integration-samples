@@ -11,7 +11,7 @@
 
 ## Web Demo
 
-You can find simple integration web-pages [here](http://samples.streamroot.io/web/).
+You can find simple integration web-pages [here](http://samples.streamroot.io/dna/web/).
 
 ## Integration documentation
 
