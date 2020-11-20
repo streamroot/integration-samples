@@ -20,8 +20,8 @@ This repository is demonstrating part of our existing integrations, we are const
 
 Each of Streamroot's product has its own designated section.
 
-- [Orchestrator](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/)
-- [Mesh](https://github.com/streamroot/streamroot-samples/tree/master/dna/)
+- [DNA/Mesh](https://samples.streamroot.io/dna/)
+- [Orchestrator](https://samples.streamroot.io/orchestrator/)
 
 ## Integration Documentation
 
