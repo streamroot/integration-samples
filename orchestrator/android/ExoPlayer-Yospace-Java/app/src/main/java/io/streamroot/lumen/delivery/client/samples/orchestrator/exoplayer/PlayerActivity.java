@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.exoplayer2.C;
@@ -26,6 +29,12 @@ import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
+import com.yospace.android.hls.analytic.AnalyticEventListener;
+import com.yospace.android.hls.analytic.Session;
+import com.yospace.android.hls.analytic.advert.AdBreak;
+import com.yospace.android.hls.analytic.advert.Advert;
+import com.yospace.android.xml.VastPayload;
+import com.yospace.android.xml.VmapPayload;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -33,11 +42,15 @@ import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
 import io.streamroot.lumen.delivery.client.core.LumenLogLevel;
 import io.streamroot.lumen.delivery.client.core.LumenOptionalOrchestratorBuilder;
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
+import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.PlayerAdapter;
+import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.PlayerAdapterLive;
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
-public class PlayerActivity extends AppCompatActivity implements Player.EventListener {
+public class PlayerActivity extends AppCompatActivity implements Player.EventListener, AnalyticEventListener {
+
+    private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LIVE;
 
     public static final class PlayerActivityArgs {
         @Nullable final String dcKey;
@@ -72,20 +85,24 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     @Nullable private LumenStatsView dcStatsView = null;
 
     @Nullable private String mDCKey = null;
-    @Nullable private String mStreamUrl = null;
+    // @Nullable private String mStreamUrl = null;
     @Nullable private String mOrchProperty = null;
 
     @Nullable private ExoPlayer player = null;
 
     @Nullable private LumenDeliveryClient deliveryClient = null;
 
+    @NonNull private YospaceModule.YospaceBridgeStruct yoBridge = new YospaceModule.YospaceBridgeStruct();
+    @Nullable private Handler mMainHandler = null;
+
     @Override
     protected void onCreate(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
 
+        mMainHandler = new Handler(); // created with main looper
         final PlayerActivityArgs args = extractArgs(getIntent());
-        mStreamUrl = args.url;
+        // mStreamUrl = args.url;
         {
             final String tmpOP = args.orchProperty;
             mOrchProperty = (tmpOP != null && !tmpOP.trim().isEmpty()) ? tmpOP : null;
@@ -137,24 +154,49 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
     private void initPlayer() {
         if (player == null) {
-            final SimpleExoPlayer newPlayer = new SimpleExoPlayer.Builder(getApplicationContext()).build();
+            YospaceModule.createAdapterAndSession(this, this, YOSPACE_MODE, new YospaceModule.YospaceModuleCallback() {
+                @Override
+                public void onSessionAvailable(Session session) {
+                    yoBridge.mSession = session;
+                }
 
-            newPlayer.setPlayWhenReady(true);
-            newPlayer.addListener(this);
+                @Override
+                public void onFinalUrlReady(PlayerAdapter adapter, String finalYospaceUrl) {
+                    yoBridge.mAdapter = adapter;
+                    yoBridge.mFinalYospaceUrl = finalYospaceUrl;
 
-            final ExoPlayerInteractor interactor = new ExoPlayerInteractor(newPlayer);
+                    // Build the player
+                    final SimpleExoPlayer newPlayer = new SimpleExoPlayer.Builder(getApplicationContext()).build();
 
-            final LumenDeliveryClient dc = initDeliveryClient(interactor, mStreamUrl);
-            deliveryClient = dc;
-            dc.addStateStatsListener(dcStatsView);
-            dcStatsView.showStats();
-            dc.start();
+                    newPlayer.setPlayWhenReady(true);
 
-            final Uri uri = Uri.parse(dc.localUrl());
-            newPlayer.prepare(new LoopingMediaSource(buildMediaSource(uri)), true, false);
+                    newPlayer.addListener(PlayerActivity.this);
+                    newPlayer.addListener(adapter);
+                    adapter.setVideoPlayer(newPlayer);
 
-            player = newPlayer;
-            exoPlayerView.setPlayer(newPlayer);
+                    if (adapter instanceof PlayerAdapterLive) {
+                        newPlayer.addMetadataOutput((PlayerAdapterLive) adapter);
+                    }
+
+                    // Include streamroot in the middle
+                    final ExoPlayerInteractor interactor = new ExoPlayerInteractor(newPlayer);
+
+                    final LumenDeliveryClient dc = initDeliveryClient(interactor, finalYospaceUrl);
+                    deliveryClient = dc;
+                    dc.addStateStatsListener(dcStatsView);
+                    dcStatsView.showStats();
+                    dc.start();
+
+                    final Uri uri = Uri.parse(dc.localUrl());
+                    final MediaSource ms = buildMediaSource(uri);
+                    ms.addEventListener(mMainHandler, adapter);
+
+                    newPlayer.prepare(new LoopingMediaSource(ms), true, false);
+
+                    player = newPlayer;
+                    exoPlayerView.setPlayer(newPlayer);
+                }
+            });
         }
     }
 
@@ -260,6 +302,51 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
         if (errorString != null) {
             showToast(errorString);
+        }
+    }
+
+    ///////////////////////////////////////
+    // AnalyticEventListener implementation
+
+    @Override
+    public void onAdvertBreakEnd(AdBreak adBreak) {
+        showToast("Adbreak end");
+    }
+
+    @Override
+    public void onAdvertBreakStart(AdBreak adBreak) {
+        showToast("Adbreak start");
+    }
+
+    @Override
+    public void onAdvertEnd(final Advert advert)
+    {
+        showToast("Adbreak end");
+    }
+
+    @Override
+    public void onAdvertStart(final Advert advert)
+    {
+        showToast(advert.getId() + ":0");
+    }
+
+    @Override
+    public void onTimelineUpdateReceived(VmapPayload vmap) { /* do nothing */ }
+
+    @Override
+    public void onVastReceived(VastPayload vast) {
+        showToast("VAST received");
+    }
+
+    @Override
+    public void onTrackingUrlCalled(final Advert advert, final String type, String url)
+    {
+        String quartile = type.equals("firstQuartile") ? ":1" : null;
+        quartile = type.equals("midpoint") ? ":2" : quartile;
+        quartile = type.equals("thirdQuartile") ? ":3" : quartile;
+
+        if (quartile != null) {
+            showToast(advert.getId() + quartile);
         }
     }
 }
