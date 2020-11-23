@@ -1,10 +1,6 @@
 //noinspection GradleCompatible
 apply plugin: 'com.android.application'
 
-apply plugin: 'kotlin-android'
-
-apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion 29
     defaultConfig {
@@ -28,12 +24,6 @@ android {
     }
 }
 
-repositories {
-    flatDir {
-        dirs 'libs'
-    }
-}
-
 dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.11.7'
 
@@ -41,11 +31,7 @@ dependencies {
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-rc1'
-
-    implementation(name: 'yoAdManagement-debug', ext: 'aar')
-    implementation(name: 'yoUtil-debug', ext: 'aar')
 }

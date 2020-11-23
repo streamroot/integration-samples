@@ -8,7 +8,3 @@
 /build
 /captures
 .externalNativeBuild
-
-yoAdManagement-debug.aar
-yoUtil-debug.aar
-PlayerPolicyImpl.java
