@@ -206,6 +206,12 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
             player = null;
         }
         stopDeliveryClient();
+
+        if (yoBridge.mSession != null)
+        {
+            yoBridge.mSession.shutdown();
+            yoBridge.mSession = null;
+        }
     }
 
     @SuppressLint("SwitchIntDef")
