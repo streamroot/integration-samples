@@ -22,4 +22,4 @@ Please add the following class to your project :
 private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LIVE;
 ```
 
--> You can find the missing files (adapters, policy impl, etc), inside the Yospace SDK sample application.
+-> Some files are private and thus symlinked. You can find the missing files (AARs, adapters, policy impl, etc), inside the Yospace SDK sample application. 
