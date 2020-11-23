@@ -1,14 +1,14 @@
 PODS:
-  - AVPlayerDNAPlugin (1.1.21):
-    - StreamrootSDK (~> 3.21.0)
+  - AVPlayerDNAPlugin (1.1.23):
+    - StreamrootSDK (~> 3.23.1)
   - GoogleAds-IMA-iOS-SDK (3.11.1)
   - Sentry (5.1.4):
     - Sentry/Core (= 5.1.4)
   - Sentry/Core (5.1.4)
-  - Starscream (3.1.1)
-  - StreamrootSDK (3.21.0):
-    - Sentry
-    - Starscream (= 3.1.1)
+  - Starscream (4.0.4)
+  - StreamrootSDK (3.23.1):
+    - Sentry (= 5.1.4)
+    - Starscream (= 4.0.4)
     - SwiftProtobuf (= 1.7.0)
   - SwiftProtobuf (1.7.0)
 
@@ -26,13 +26,13 @@ SPEC REPOS:
     - SwiftProtobuf
 
 SPEC CHECKSUMS:
-  AVPlayerDNAPlugin: 166ca8b980ac78fd83625530d4eb2cef06a70526
+  AVPlayerDNAPlugin: f9cc3553c32a377504e13e47c8b958ceae631648
   GoogleAds-IMA-iOS-SDK: 5bc743cca6f70bb403f34a6a336a2dbe70e12e1e
   Sentry: 74f2ad93a20a5567a1badaedf5b3f60b142ad082
-  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
-  StreamrootSDK: a0b84bcbc84c662fbc7680ca42a4fe44ffba5a94
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  StreamrootSDK: 47648658c2e0e05901c890f08656134d7976bd86
   SwiftProtobuf: 4fd9645e69b72cbae6ec8da5be0cdd20ca6565dd
 
-PODFILE CHECKSUM: 1daf10b1a76213bdd4e3d978829ec7778df5e50e
+PODFILE CHECKSUM: 0d9ce43010646002de518281cf83e5817213cab8
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
