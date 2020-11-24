@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.Constant;
 import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.PlayerAdapter;
 import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.PlayerAdapterLive;
+import io.streamroot.lumen.delivery.client.samples.orchestrator.exoplayer.common.PlayerPolicyImpl;
 
 import com.yospace.android.hls.analytic.AnalyticEventListener;
 import com.yospace.android.hls.analytic.Session;
