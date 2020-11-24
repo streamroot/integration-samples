@@ -1,3 +1,6 @@
 [submodule "orchestrator/android/ExoPlayer-Yospace-Java/ssp"]
 	path = orchestrator/android/ExoPlayer-Yospace-Java/ssp
 	url = git@github.com:streamroot/streamroot-samples-private.git
+[submodule "orchestrator/android/PRESTOplay-Yospace-Java/ssp"]
+	path = orchestrator/android/PRESTOplay-Yospace-Java/ssp
+	url = git@github.com:streamroot/streamroot-samples-private.git
