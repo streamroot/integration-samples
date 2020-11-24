@@ -26,7 +26,9 @@ private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LI
 
 ## Integrate with PRESTOplay
 
-Please change player interactor class to the following :
+- [PRESTOplay-Java project](https://github.com/streamroot/streamroot-samples/tree/master/orchestrator/android/PRESTOplay-Java)
+
+In particular, make sure you replace the player interactor by PRESTO's :
 
 - [PlayerInteractor](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/PRESTOplay-Java/app/src/main/java/io/streamroot/lumen/delivery/client/samples/orchestrator/prestoplay/PRESTOPlayerInteractor.java)
 
