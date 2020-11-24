@@ -23,3 +23,10 @@ private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LI
 ```
 
 -> Some files are private and thus symlinked. You can find the missing files (AARs, adapters, policy impl, etc), inside the Yospace SDK sample application. 
+
+## Integrate with PRESTOplay
+
+Please change player interactor class to the following :
+
+- [PlayerInteractor](https://github.com/streamroot/streamroot-samples/blob/master/orchestrator/android/PRESTOplay-Java/app/src/main/java/io/streamroot/lumen/delivery/client/samples/orchestrator/prestoplay/PRESTOPlayerInteractor.java)
+
