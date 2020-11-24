@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ import kotlin.jvm.functions.Function1;
 
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener, AnalyticEventListener {
 
-    private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LIVE;
+    private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.NONLINEARSTARTOVER;
 
     public static final class PlayerActivityArgs {
         @Nullable final String dcKey;
@@ -162,6 +163,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
                 @Override
                 public void onFinalUrlReady(PlayerAdapter adapter, String finalYospaceUrl) {
+                    Log.v("PlayerActivity", "finalYospace url => " + finalYospaceUrl);
                     yoBridge.mAdapter = adapter;
                     yoBridge.mFinalYospaceUrl = finalYospaceUrl;
 
@@ -188,7 +190,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
                     dc.start();
 
                     final Uri uri = Uri.parse(dc.localUrl());
-                    final MediaSource ms = buildMediaSource(uri);
+                    final MediaSource ms = buildMediaSource(uri, YOSPACE_MODE == Session.PlaybackMode.NONLINEARSTARTOVER ? true : null);
                     ms.addEventListener(mMainHandler, adapter);
 
                     newPlayer.prepare(new LoopingMediaSource(ms), true, false);
@@ -215,7 +217,10 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     }
 
     @SuppressLint("SwitchIntDef")
-    private MediaSource buildMediaSource(Uri uri) {
+    /**
+     * Quick solution but isHls should be replaced with an enum
+     */
+    private MediaSource buildMediaSource(Uri uri, Boolean isHls) {
         final DefaultHttpDataSourceFactory defaultDataSourceFactory = new DefaultHttpDataSourceFactory(
                 Util.getUserAgent(getApplicationContext(), "StreamrootQA"),
                 DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
@@ -223,21 +228,21 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
                 true
         );
 
-        switch (Util.inferContentType(uri)) {
-            case C.TYPE_HLS:
-                return new HlsMediaSource.Factory(defaultDataSourceFactory)
-                        //.setDrmSessionManager()
-                        .createMediaSource(uri);
-            case C.TYPE_DASH:
-                return new DashMediaSource.Factory(
-                        new DefaultDashChunkSource.Factory(
-                                defaultDataSourceFactory
-                        ), defaultDataSourceFactory
-                )
-                        //.setDrmSessionManager()
-                        .createMediaSource(uri);
-            default:
-                throw new IllegalStateException("Unsupported type for url: $uri");
+        int type = Util.inferContentType(uri);
+        if (isHls || type == C.TYPE_HLS) {
+            return new HlsMediaSource.Factory(defaultDataSourceFactory)
+                    //.setDrmSessionManager()
+                    .createMediaSource(uri);
+        } else if (type == C.TYPE_DASH) {
+            return new DashMediaSource.Factory(
+                    new DefaultDashChunkSource.Factory(
+                            defaultDataSourceFactory
+                    ), defaultDataSourceFactory
+            )
+                    //.setDrmSessionManager()
+                    .createMediaSource(uri);
+        } else {
+            throw new IllegalStateException("Unsupported type for url: $uri");
         }
     }
 
