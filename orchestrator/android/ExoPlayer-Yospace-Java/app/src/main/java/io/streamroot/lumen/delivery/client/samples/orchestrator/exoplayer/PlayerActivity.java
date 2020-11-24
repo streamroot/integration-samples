@@ -51,7 +51,7 @@ import kotlin.jvm.functions.Function1;
 
 public class PlayerActivity extends AppCompatActivity implements Player.EventListener, AnalyticEventListener {
 
-    private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.NONLINEARSTARTOVER;
+    private static final Session.PlaybackMode YOSPACE_MODE = Session.PlaybackMode.LIVE;
 
     public static final class PlayerActivityArgs {
         @Nullable final String dcKey;
@@ -229,7 +229,7 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
         );
 
         int type = Util.inferContentType(uri);
-        if (isHls || type == C.TYPE_HLS) {
+        if ((isHls != null && isHls) || type == C.TYPE_HLS) {
             return new HlsMediaSource.Factory(defaultDataSourceFactory)
                     //.setDrmSessionManager()
                     .createMediaSource(uri);
