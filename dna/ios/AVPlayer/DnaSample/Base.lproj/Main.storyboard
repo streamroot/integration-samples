@@ -1,31 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zzS-jc-Ud8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zzS-jc-Ud8">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Compass Sample View Controller-->
-        <scene sceneID="SSn-CA-ZcR">
-            <objects>
-                <viewController id="pAv-Bl-LJD" customClass="CompassSampleViewController" customModule="DnaSample_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qMx-Uf-nbS"/>
-                        <viewControllerLayoutGuide type="bottom" id="gmX-qn-EhR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mc3-4b-a0e">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="xBS-3t-ZCN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Cr-jd-W6k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-444" y="-790"/>
-        </scene>
         <!--Swift Sample View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -59,7 +40,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oc-6l-oFY">
                                 <rect key="frame" x="50" y="173.5" width="275" height="320"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lvi-8O-vIJ">
                                         <rect key="frame" x="50" y="80" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -72,7 +53,7 @@
                                             <segue destination="c1b-QR-8JQ" kind="show" id="v07-5a-C5P"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-p5-r5E">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lHC-p5-r5E">
                                         <rect key="frame" x="50" y="20" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -85,7 +66,7 @@
                                             <segue destination="BYZ-38-t0r" kind="show" id="269-bC-DWy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-ba-l0N">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lz1-ba-l0N">
                                         <rect key="frame" x="50" y="140" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -98,20 +79,7 @@
                                             <segue destination="VlJ-4g-fpl" kind="show" id="zQw-iY-Wav"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVO-EN-Xvb">
-                                        <rect key="frame" x="50" y="260" width="175" height="40"/>
-                                        <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="eG3-8u-OQ2"/>
-                                        </constraints>
-                                        <state key="normal" title="Compass">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="pAv-Bl-LJD" kind="show" id="jUU-Sr-vwh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-9z-4ZY" userLabel="Google DAI">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJA-9z-4ZY" userLabel="Google DAI">
                                         <rect key="frame" x="50" y="200" width="175" height="40"/>
                                         <color key="backgroundColor" red="0.2274509804" green="0.62745098040000002" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -124,21 +92,18 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="PVO-EN-Xvb" firstAttribute="leading" secondItem="lz1-ba-l0N" secondAttribute="leading" id="5si-yM-wmB"/>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="leading" secondItem="Lvi-8O-vIJ" secondAttribute="leading" id="65v-Oh-ziJ"/>
                                     <constraint firstItem="OJA-9z-4ZY" firstAttribute="top" secondItem="lz1-ba-l0N" secondAttribute="bottom" constant="20" id="6Be-dx-uEp"/>
                                     <constraint firstItem="OJA-9z-4ZY" firstAttribute="leading" secondItem="lz1-ba-l0N" secondAttribute="leading" id="GcH-KT-wSo"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="leading" secondItem="lHC-p5-r5E" secondAttribute="leading" id="JOe-W5-0PD"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="top" secondItem="4oc-6l-oFY" secondAttribute="top" constant="20" id="KRh-Sb-4xb"/>
-                                    <constraint firstItem="PVO-EN-Xvb" firstAttribute="top" secondItem="OJA-9z-4ZY" secondAttribute="bottom" constant="20" id="OVV-yq-3NA"/>
                                     <constraint firstItem="lHC-p5-r5E" firstAttribute="leading" secondItem="4oc-6l-oFY" secondAttribute="leading" constant="50" id="TZu-1E-HW9"/>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="top" secondItem="Lvi-8O-vIJ" secondAttribute="bottom" constant="20" id="TwF-jm-DhR"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="top" secondItem="lHC-p5-r5E" secondAttribute="bottom" constant="20" id="ce7-hT-CRC"/>
                                     <constraint firstItem="Lvi-8O-vIJ" firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" id="dyZ-WF-Yei"/>
-                                    <constraint firstAttribute="bottom" secondItem="PVO-EN-Xvb" secondAttribute="bottom" constant="20" id="fYe-Kv-dhH"/>
                                     <constraint firstItem="lz1-ba-l0N" firstAttribute="trailing" secondItem="Lvi-8O-vIJ" secondAttribute="trailing" id="jDb-xx-sde"/>
-                                    <constraint firstItem="PVO-EN-Xvb" firstAttribute="trailing" secondItem="lz1-ba-l0N" secondAttribute="trailing" id="mTL-H6-dVK"/>
                                     <constraint firstItem="OJA-9z-4ZY" firstAttribute="trailing" secondItem="lz1-ba-l0N" secondAttribute="trailing" id="nim-hz-BMd"/>
+                                    <constraint firstAttribute="bottom" secondItem="OJA-9z-4ZY" secondAttribute="bottom" constant="80" id="oZk-q0-4MS"/>
                                     <constraint firstAttribute="trailing" secondItem="lHC-p5-r5E" secondAttribute="trailing" constant="50" id="xlx-TM-5I5"/>
                                 </constraints>
                             </view>
