@@ -1,14 +1,11 @@
 package io.streamroot.lumen.delivery.client.samples.orchestrator.prestoplay;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.castlabs.android.player.DisplayInfo;
 import com.castlabs.android.player.PlayerController;
 import com.castlabs.android.player.PlayerListener;
-import com.castlabs.android.player.TrackSelectionListener;
 import com.castlabs.android.player.exceptions.CastlabsPlayerException;
-import com.castlabs.android.player.models.VideoTrackQuality;
 
 import java.lang.ref.WeakReference;
 
