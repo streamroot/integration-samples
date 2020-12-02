@@ -15,7 +15,7 @@ import java.lang.ref.WeakReference;
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class PRESTOPlayerInteractor extends LumenPlayerInteractorBase implements PlayerListener, TrackSelectionListener {
+public final class PRESTOPlayerInteractor extends LumenPlayerInteractorBase implements PlayerListener {
 
     private WeakReference<PlayerController> mPlayerInterface = null;
 
@@ -27,7 +27,6 @@ public final class PRESTOPlayerInteractor extends LumenPlayerInteractorBase impl
         if (mPlayerInterface == null) {
             mPlayerInterface = new WeakReference<>(playerInterface);
             playerInterface.addPlayerListener(this);
-            playerInterface.addTrackSelectionListener(this);
         }
     }
 
@@ -77,13 +76,4 @@ public final class PRESTOPlayerInteractor extends LumenPlayerInteractorBase impl
     @Override public void onSpeedChanged(float v) {}
     @Override public void onPlayerModelChanged() {}
     @Override public void onFullyBuffered() {}
-
-    /**
-     * TrackSelectionListener
-     */
-
-    @Override
-    public void onVideoQualitySelectionChanged(@NonNull VideoTrackQuality videoTrackQuality, int i, @Nullable String s, long l, long l1) {
-        super.playerTrackSwitch();
-    }
 }
