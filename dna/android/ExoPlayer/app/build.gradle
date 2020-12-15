@@ -30,18 +30,18 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.exoplayer:exoplayer:2.11.3'
+    implementation 'com.google.android.exoplayer:exoplayer:2.12.2'
 
     def dna_version = "3.21.0"
     implementation "io.streamroot.dna:dna-core:$dna_version"
     implementation "io.streamroot.dna:dna-utils:$dna_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta4'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0-alpha1'
+    implementation 'com.google.android.material:material:1.2.1'
 
-    implementation 'com.npaw.youbora.adapters:exoplayer2-adapter:6.5.+'
+    implementation 'com.npaw.youbora.adapters:exoplayer2-adapter:6.7.9'
 }
 
 apply from: "https://bitbucket.org/!api/2.0/snippets/npaw/yAk85G/files/exoplayer2-adapter-android-picker"

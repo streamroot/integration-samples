@@ -72,7 +72,7 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
         @Override
         public void setBufferTarget(double bufferTarget) {
             final long maxBufferUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
-            if (maxBufferUs > minBufferUs) try {
+            if (maxBufferUs >= minBufferUs) try {
                 maxBufferField.setLong(
                         loadControl,
                         maxBufferUs

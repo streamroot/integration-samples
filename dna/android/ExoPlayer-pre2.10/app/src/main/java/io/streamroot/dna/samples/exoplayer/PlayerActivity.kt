@@ -121,7 +121,13 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     private fun initPlayer() {
         if (player == null) {
             val bandwidthMeter = ExoPlayerBandwidthMeter()
-            val loadControl = DefaultLoadControl()
+            val loadControl = DefaultLoadControl.Builder().setBufferDurationsMs(
+                            5_000,
+                            DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
+                            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
+            ).createDefaultLoadControl()
+
             val trackSelector = DefaultTrackSelector()
             val renderersFactory = DefaultRenderersFactory(applicationContext)
 

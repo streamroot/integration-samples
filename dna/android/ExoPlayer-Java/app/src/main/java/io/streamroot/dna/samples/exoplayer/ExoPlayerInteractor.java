@@ -72,7 +72,7 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
         @Override
         public void setBufferTarget(double bufferTarget) {
             final long maxBufferUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
-            if (maxBufferUs > minBufferUs) try {
+            if (maxBufferUs >= minBufferUs) try {
                 maxBufferField.setLong(
                         loadControl,
                         maxBufferUs
@@ -81,6 +81,19 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
         }
     }
 
+    // 2.10- & 2.12+
+    private static final class LoadControlBufferTargetBridgeV1 extends LoadControlBufferTargetBridge {
+        private static final String MIN_BUFFER_FIELD_NAME = "minBufferUs";
+
+        private LoadControlBufferTargetBridgeV1(LoadControl loadControl) {
+            super(
+                    loadControl,
+                    getLongFromFieldElseThrow(loadControl, MIN_BUFFER_FIELD_NAME)
+            );
+        }
+    }
+
+    // 2.11
     private static final class LoadControlBufferTargetBridgeV2 extends LoadControlBufferTargetBridge {
         private static final String MIN_BUFFER_AUDIO_FIELD_NAME = "minBufferAudioUs";
         private static final String MIN_BUFFER_VIDEO_FIELD_NAME = "minBufferVideoUs";
@@ -99,9 +112,13 @@ public final class ExoPlayerInteractor implements PlayerInteractor {
     private static final class BufferTargetBridgeFactory {
         private static BufferTargetBridge createInteractor(LoadControl loadControl, boolean audioOnly) {
             try {
-                return new LoadControlBufferTargetBridgeV2(loadControl, audioOnly);
-            } catch (Exception e) {
-                throw new RuntimeException("Unsupported ExoPlayer version");
+                return new LoadControlBufferTargetBridgeV1(loadControl);
+            } catch (Exception ignored) {
+                try {
+                    return new LoadControlBufferTargetBridgeV2(loadControl, audioOnly);
+                } catch (Exception e) {
+                    throw new RuntimeException("Unsupported ExoPlayer version");
+                }
             }
         }
     }

@@ -139,7 +139,12 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     private void initPlayer() {
         if (player == null) {
             final ExoPlayerBandwidthMeter bandwidthMeter = new ExoPlayerBandwidthMeter();
-            final DefaultLoadControl loadControl = new DefaultLoadControl();
+            final DefaultLoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(
+                                    5_000,
+                                    DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
+                                    DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                                    DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
+                            ).createDefaultLoadControl();
 
             final TrackSelector trackSelector = new DefaultTrackSelector();
             final RenderersFactory renderersFactory = new DefaultRenderersFactory(getApplicationContext());

@@ -12,6 +12,7 @@ import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.LoadControl
+import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.PlaybackParameters
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -118,7 +119,14 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
     private fun initPlayer() {
         if (player == null) {
             val bandwidthMeter = ExoPlayerBandwidthMeter()
-            val loadControl = DefaultLoadControl()
+            val loadControl = DefaultLoadControl.Builder()
+                    .setBufferDurationsMs(
+                            5_000,
+                            DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
+                            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                            DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
+                    )
+                    .build()
 
             val newPlayer = SimpleExoPlayer.Builder(applicationContext)
                     .setBandwidthMeter(bandwidthMeter)
@@ -130,7 +138,9 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
             dnaClient = initStreamroot(newPlayer, loadControl, bandwidthMeter)
             val manifestUri = dnaClient?.manifestUrl ?: Uri.parse(mStreamUrl)
-            newPlayer.prepare(LoopingMediaSource(buildMediaSource(manifestUri)), true, false)
+
+            newPlayer.setMediaSource(LoopingMediaSource(buildMediaSource(manifestUri)), true)
+            newPlayer.prepare()
 
             player = newPlayer
             exoPlayerView.player = newPlayer
@@ -148,9 +158,12 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
     @SuppressLint("SwitchIntDef")
     private fun buildMediaSource(uri: Uri): MediaSource {
+        val mi = MediaItem.fromUri(uri)
+        val ua = Util.getUserAgent(this, "StreamrootQA")
+
         val defaultDataSourceFactory =
             DefaultHttpDataSourceFactory(
-                    Util.getUserAgent(applicationContext, "StreamrootQA"),
+                    ua,
                     DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                     DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
                     true
@@ -158,13 +171,13 @@ class PlayerActivity : AppCompatActivity(), Player.EventListener {
 
         return when (Util.inferContentType(uri)) {
             C.TYPE_HLS -> HlsMediaSource.Factory(defaultDataSourceFactory)
-                .createMediaSource(uri)
+                .createMediaSource(mi)
             C.TYPE_DASH -> DashMediaSource.Factory(
                 DefaultDashChunkSource.Factory(
                     defaultDataSourceFactory
                 ), defaultDataSourceFactory
             )
-                .createMediaSource(uri)
+                .createMediaSource(mi)
             else -> {
                 throw IllegalStateException("Unsupported type for url: $uri")
             }
