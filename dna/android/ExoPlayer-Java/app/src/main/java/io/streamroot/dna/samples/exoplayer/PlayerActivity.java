@@ -14,6 +14,7 @@ import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.LoadControl;
+import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 import com.google.android.exoplayer2.mediacodec.MediaCodecInfo;
@@ -135,7 +136,12 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
     private void initPlayer() {
         if (player == null) {
             final ExoPlayerBandwidthMeter bandwidthMeter = new ExoPlayerBandwidthMeter();
-            final DefaultLoadControl loadControl = new DefaultLoadControl();
+            final DefaultLoadControl loadControl = new DefaultLoadControl.Builder().setBufferDurationsMs(
+                    5_000,
+                    DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
+                    DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                    DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
+            ).build();
 
             final SimpleExoPlayer newPlayer = new SimpleExoPlayer.Builder(getApplicationContext())
                     .setBandwidthMeter(bandwidthMeter)
@@ -148,7 +154,8 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
             dnaClient = initStreamroot(newPlayer, loadControl, bandwidthMeter);
             final Uri manifestUri = dnaClient != null ? dnaClient.getManifestUrl() : Uri.parse(mStreamUrl);
 
-            newPlayer.prepare(new LoopingMediaSource(buildMediaSource(manifestUri)), true, false);
+            newPlayer.setMediaSource(new LoopingMediaSource(buildMediaSource(manifestUri)), true);
+            newPlayer.prepare();
 
             player = newPlayer;
             exoPlayerView.setPlayer(newPlayer);
@@ -167,8 +174,11 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
     @SuppressLint("SwitchIntDef")
     private MediaSource buildMediaSource(Uri uri) {
+        final MediaItem mi = MediaItem.fromUri(uri);
+        final String ua = Util.getUserAgent(this, "StreamrootQA");
+
         final DefaultHttpDataSourceFactory defaultDataSourceFactory = new DefaultHttpDataSourceFactory(
-                Util.getUserAgent(getApplicationContext(), "StreamrootQA"),
+                ua,
                 DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                 DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
                 true
@@ -176,13 +186,13 @@ public class PlayerActivity extends AppCompatActivity implements Player.EventLis
 
         switch (Util.inferContentType(uri)) {
             case C.TYPE_HLS:
-                return new HlsMediaSource.Factory(defaultDataSourceFactory).createMediaSource(uri);
+                return new HlsMediaSource.Factory(defaultDataSourceFactory).createMediaSource(mi);
             case C.TYPE_DASH:
                 return new DashMediaSource.Factory(
                         new DefaultDashChunkSource.Factory(
                                 defaultDataSourceFactory
                         ), defaultDataSourceFactory
-                ).createMediaSource(uri);
+                ).createMediaSource(mi);
             default:
                 throw new IllegalStateException("Unsupported type for url: $uri");
         }

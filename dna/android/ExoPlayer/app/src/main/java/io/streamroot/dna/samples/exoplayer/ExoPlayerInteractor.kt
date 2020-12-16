@@ -41,7 +41,7 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
 
     override fun setBufferTarget(bufferTarget: Double) {
         val maxBufferUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
-        if (maxBufferUs > minBufferUs) runCatching {
+        if (maxBufferUs >= minBufferUs) runCatching {
             maxBufferField.setLong(
                     loadControl,
                     maxBufferUs
@@ -50,6 +50,17 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     }
 }
 
+// 2.10- & 2.12+
+private class LoadControlBufferTargetBridgeV1(loadControl: LoadControl)
+    : LoadControlBufferTargetBridge(loadControl) {
+    companion object {
+        private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
+    }
+
+    override val minBufferUs = loadControl.getLongFromFieldElseThrow(MIN_BUFFER_FIELD_NAME)
+}
+
+// 2.11
 private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnly: Boolean)
     : LoadControlBufferTargetBridge(loadControl) {
     companion object {
@@ -64,7 +75,8 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
 
 private object BufferTargetBridgeFactory {
     fun createInteractor(loadControl: LoadControl, audioOnly: Boolean) : BufferTargetBridge {
-        return runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
+        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()
+                ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()
                 ?: throw Exception("Unsupported ExoPlayer version")
     }
 }
