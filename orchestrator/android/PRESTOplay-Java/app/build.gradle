@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    def dc_version = '1.1.1'
+    def dc_version = '1.1.4'
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk:' + dc_version
     implementation 'io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:' + dc_version
 
