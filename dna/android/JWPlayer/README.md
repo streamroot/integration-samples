@@ -8,7 +8,7 @@
 
 The dependency can be found in app's **build.gradle**
 ```
-def dna_version = "3.21.0"
+def dna_version = "3.22.0"
 implementation "io.streamroot.dna:dna-core:$dna_version"
 implementation "io.streamroot.dna:dna-utils:$dna_version"
 ```
