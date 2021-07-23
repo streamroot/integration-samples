@@ -12,6 +12,8 @@
 		50F1DEB11E687C0E00B59D4B /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */; };
 		50F1DEB41E687C0E00B59D4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB21E687C0E00B59D4B /* Main.storyboard */; };
 		50F1DEB91E687C0E00B59D4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F1DEB71E687C0E00B59D4B /* LaunchScreen.storyboard */; };
+		582B275526AAD14900FF841A /* Encoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 582B275426AAD14900FF841A /* Encoder.m */; };
+		582B275726AAD1CA00FF841A /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582B275626AAD1CA00FF841A /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */; };
 		CAA0E9AEDDC906F5BEF111CB /* Pods_DnaSample_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E5BED3A8B81A3F6EDB6631 /* Pods_DnaSample_iOS.framework */; };
 		D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61171C0209B06F000CBE36B /* ObjCSampleViewController.m */; };
 		D61171CE209B200900CBE36B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61171CD209B200900CBE36B /* MainViewController.swift */; };
@@ -50,6 +52,9 @@
 		50F1DEB51E687C0E00B59D4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50F1DEB81E687C0E00B59D4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50F1DEBA1E687C0E00B59D4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		582B275326AAD0F200FF841A /* Encoder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Encoder.h; sourceTree = "<group>"; };
+		582B275426AAD14900FF841A /* Encoder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Encoder.m; sourceTree = "<group>"; };
+		582B275626AAD1CA00FF841A /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftSampleVC+AVAssetResourceLoaderDelegate.swift"; sourceTree = "<group>"; };
 		8A1AE41641E12975E9608B34 /* Pods-DnaSample-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.release.xcconfig"; path = "Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		C2E8D81015CD2590B799E97C /* Pods-DnaSample-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DnaSample-iOS.debug.xcconfig"; path = "Target Support Files/Pods-DnaSample-iOS/Pods-DnaSample-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPluginSampleViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +118,7 @@
 		50F1DEAD1E687C0E00B59D4B /* DnaSample */ = {
 			isa = PBXGroup;
 			children = (
+				582B275326AAD0F200FF841A /* Encoder.h */,
 				D6328C58228417B8003518DE /* GoogleDAI */,
 				D61171C3209B072300CBE36B /* ObjC */,
 				50F1DEAE1E687C0E00B59D4B /* AppDelegate.swift */,
@@ -123,6 +129,7 @@
 				50F1DEBA1E687C0E00B59D4B /* Info.plist */,
 				D61171BF209B06F000CBE36B /* DnaSample-Bridging-Header.h */,
 				D61171CD209B200900CBE36B /* MainViewController.swift */,
+				582B275426AAD14900FF841A /* Encoder.m */,
 			);
 			path = DnaSample;
 			sourceTree = "<group>";
@@ -162,6 +169,7 @@
 		D61171C4209B072F00CBE36B /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				582B275626AAD1CA00FF841A /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift */,
 				50F1DEB01E687C0E00B59D4B /* SwiftSampleViewController.swift */,
 				D6087576219079F50034CB62 /* SwiftPluginSampleViewController.swift */,
 			);
@@ -407,7 +415,9 @@
 				D6328C5C228417B8003518DE /* GoogleDAISampleViewController.swift in Sources */,
 				50F1DEAF1E687C0E00B59D4B /* AppDelegate.swift in Sources */,
 				D61171C2209B06F100CBE36B /* ObjCSampleViewController.m in Sources */,
+				582B275526AAD14900FF841A /* Encoder.m in Sources */,
 				D6328C5B228417B8003518DE /* DNAAAVPlayerVideoDisplay.swift in Sources */,
+				582B275726AAD1CA00FF841A /* SwiftSampleVC+AVAssetResourceLoaderDelegate.swift in Sources */,
 				D698F9A82293075700056135 /* SwiftPluginSampleViewController.swift in Sources */,
 				D61171CE209B200900CBE36B /* MainViewController.swift in Sources */,
 			);
