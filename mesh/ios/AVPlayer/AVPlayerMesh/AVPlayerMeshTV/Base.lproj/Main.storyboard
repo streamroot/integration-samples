@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="19455" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="appleTV" appearance="light"/>
     <dependencies>
-        <deployment identifier="tvOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVPlayerOrchestratorTV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AVPlayerMeshTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,45 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77p-M2-j50">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k5Q-a7-0cK">
                                 <rect key="frame" x="864" y="487" width="192" height="106"/>
                                 <inset key="contentEdgeInsets" minX="60" minY="30" maxX="60" maxY="30"/>
                                 <state key="normal" title="Play"/>
                                 <connections>
-                                    <segue destination="6mr-Rh-vVg" kind="show" id="Jf0-Dk-MXB"/>
+                                    <action selector="play:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="HRn-Du-yXD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="77p-M2-j50" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CDR-oN-Y9a"/>
-                            <constraint firstItem="77p-M2-j50" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xcN-DD-r8u"/>
+                            <constraint firstItem="k5Q-a7-0cK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hcg-nA-V2v"/>
+                            <constraint firstItem="k5Q-a7-0cK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yw9-9a-SBl"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="43" y="62"/>
-        </scene>
-        <!--Swift Sample View Controller-->
-        <scene sceneID="bHt-XS-i6o">
-            <objects>
-                <viewController id="6mr-Rh-vVg" customClass="SwiftSampleViewController" customModule="AVPlayerOrchestratorTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="p8m-n2-1Up"/>
-                        <viewControllerLayoutGuide type="bottom" id="ffa-rw-Mlp"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mZp-ui-Nn1">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="H63-Ju-ouD"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="guj-Zl-nyl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PRU-wp-PNV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2581" y="62"/>
+            <point key="canvasLocation" x="-50" y="-81"/>
         </scene>
     </scenes>
 </document>
