@@ -137,10 +137,10 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
 
     override fun setBufferTarget(bufferTarget: Double) {
         val maxBufferUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
-        if (maxBufferUs > minBufferUs) runCatching {
+        runCatching {
             maxBufferField.setLong(
                 loadControl,
-                maxBufferUs
+                maxOf(minBufferUs, maxBufferUs)
             )
         }
     }
