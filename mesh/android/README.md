@@ -193,7 +193,7 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
             /*
              * Set Mesh properties
              *
-             * param: string
+             * param: String
              */
             meshProperty("MY_PROPERTIES")
 
@@ -202,7 +202,7 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
              * Is only required if it was not set in AndroidManifest.xml
              * Will override the AndroidManifest.xml DeliveryClientKey
              *
-             * param: string
+             * param: String
              */
             deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
 
@@ -211,7 +211,7 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
              * A string that identifies your content
              * By default, it uses the stream url
              *
-             * param: string
+             * param: String
              */
              contentId("MY_CONTENT_ID")
 
@@ -226,9 +226,18 @@ private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
              /*
               * Set latency in seconds
               *
-              * param: integer
+              * param: Int
               */
              latency(3)
+
+             /*
+              * Set a proxy server
+              * Allows the use of a proxy server in the middle
+              * The format is host:port
+              *
+              * params: String
+              */
+             proxyServer("MY_PROXY_HOST:PORT")
         }
         .build(<string>url)
 ```
