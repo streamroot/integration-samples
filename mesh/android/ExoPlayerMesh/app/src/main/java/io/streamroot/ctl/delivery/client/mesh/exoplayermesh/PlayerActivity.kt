@@ -33,7 +33,7 @@ class PlayerActivity : AppCompatActivity() {
         setContentView(bindings.root)
     }
 
-    private fun initializeDeliveryClient(player: ExoPlayer, loadControl: DefaultLoadControl, bandwidthMeter: ExoPlayerBandwidthMeter) {
+    private fun initDeliveryClient(player: ExoPlayer, loadControl: DefaultLoadControl, bandwidthMeter: ExoPlayerBandwidthMeter) {
         val playerInteractor = PlayerInteractor(player as SimpleExoPlayer, loadControl, bandwidthMeter)
 
         lumenDeliveryClient = LumenDeliveryClient.meshBuilder(this)
@@ -52,6 +52,11 @@ class PlayerActivity : AppCompatActivity() {
             statsView.showStats()
             addView(statsView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         }
+    }
+
+    private fun stopDeliveryClient() {
+        lumenDeliveryClient?.terminate()
+        lumenDeliveryClient = null
     }
 
     override fun onStart() {
@@ -105,7 +110,7 @@ class PlayerActivity : AppCompatActivity() {
                 exoPlayer.playWhenReady = true
 
                 // Below, we initialize and start Lumen delivery client
-                initializeDeliveryClient(exoPlayer, loadControl, bandwidthMeter)
+                initDeliveryClient(exoPlayer, loadControl, bandwidthMeter)
                 lumenDeliveryClient?.start()
                 initStatsView()
 
@@ -125,8 +130,7 @@ class PlayerActivity : AppCompatActivity() {
     private fun releasePlayer() {
         if (player == null) return
 
-        lumenDeliveryClient?.terminate()
-        lumenDeliveryClient = null
+        stopDeliveryClient()
 
         player?.release()
         player = null
