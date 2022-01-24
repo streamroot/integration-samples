@@ -25,7 +25,7 @@ class PlayerActivity : AppCompatActivity() {
     private var mediaItem: MediaItem? = null
     private var lumenDeliveryClient: LumenDeliveryClient? = null
 
-    private val manifestUrl: String = "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8"
+    private val manifestUrl: String = "http://wowza-test-cloudfront.streamroot.io/liveOrigin/Sintel1/playlist.m3u8"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
