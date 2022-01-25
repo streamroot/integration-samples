@@ -92,7 +92,7 @@ android:value="MY_DELIVERY_CLIENT_KEY"
 />
 ````
 
-We strongly recommend to set the deliveryClientKey in your `AndroidManifest.xml`. However, if not possible, it is also possible to pass your deliveryClientKey at Lumen Delivery Client initialization or instantiation.
+We strongly recommend to set the deliveryClientKey in your `AndroidManifest.xml`. However, if not possible, it is also possible to pass your deliveryClientKey at Lumen Delivery Client initialization.
 
 ## Code integration
 
@@ -108,6 +108,9 @@ class SRApplication: MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        /* If you could not add your deliveryClientKey in your AndroidManifest.xml
+         * Call LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY") instead
+         */
         LumenDeliveryClient.initializeApp(this)
         ...
     }
