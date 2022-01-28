@@ -17,7 +17,5 @@ class MainActivity : AppCompatActivity() {
 
             setContentView(this.root)
         }
-
-        LumenDeliveryClient.initializeApp(this)
     }
 }
