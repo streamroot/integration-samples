@@ -3,7 +3,10 @@ package io.streamroot.ctl.delivery.client.mesh.exoplayermesh
 import android.content.Context
 import android.os.Handler
 import android.util.Log
-import com.google.android.exoplayer2.*
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.LoadControl
+import com.google.android.exoplayer2.PlaybackException
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.BandwidthMeter
@@ -82,16 +85,12 @@ class PlayerInteractor(
 
     override fun setEstimatedBandwidth(bps: Long?) {
         bps?.let {
-            bandwidthMeter.setEstimatedBandwidth(bps)
+            bandwidthMeter.setEstimatedBandwidth(it)
         }
     }
 }
 
-class ExoPlayerBandwidthMeter private constructor(context: Context) : BandwidthMeter {
-    companion object {
-        fun new(context: Context) = ExoPlayerBandwidthMeter(context)
-    }
-
+class ExoPlayerBandwidthMeter constructor(context: Context) : BandwidthMeter {
     private val estimatedBandwidth = AtomicLong(DefaultBandwidthMeter.Builder(context).build().bitrateEstimate)
 
     fun setEstimatedBandwidth(bps: Long) {
@@ -169,7 +168,7 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
     )
 }
 
-internal object BufferTargetBridgeFactory {
+private object BufferTargetBridgeFactory {
     fun createInteractor(loadControl: LoadControl, audioOnly: Boolean = false): BufferTargetBridge {
         return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()?.also { Log.v("Misc", "Using interactor V1") }
             ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()?.also { Log.v("Misc", "Using interactor V2") }

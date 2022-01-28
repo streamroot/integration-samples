@@ -1,23 +1,18 @@
 package io.streamroot.ctl.delivery.client.mesh.exoplayermesh
 
-import android.content.Context
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
-import com.google.android.exoplayer2.upstream.BandwidthMeter
-import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
-import com.google.android.exoplayer2.upstream.TransferListener
+import com.google.android.exoplayer2.DefaultLoadControl
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.util.Util
 import io.streamroot.ctl.delivery.client.mesh.exoplayermesh.databinding.ActivityPlayerBinding
 import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient
 import io.streamroot.lumen.delivery.client.core.LumenLogLevel
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView
-import java.util.concurrent.atomic.AtomicLong
 
 class PlayerActivity : AppCompatActivity() {
     private lateinit var bindings: ActivityPlayerBinding
@@ -33,35 +28,8 @@ class PlayerActivity : AppCompatActivity() {
         setContentView(bindings.root)
     }
 
-    private fun initDeliveryClient(player: ExoPlayer, loadControl: DefaultLoadControl, bandwidthMeter: ExoPlayerBandwidthMeter) {
-        val playerInteractor = PlayerInteractor(player as SimpleExoPlayer, loadControl, bandwidthMeter)
-
-        lumenDeliveryClient = LumenDeliveryClient.meshBuilder(this)
-            .playerInteractor(playerInteractor)
-            .options {
-                deliveryClientKey("demoswebsiteandpartners")
-            }
-            .build(manifestUrl)
-    }
-
-    private fun initStatsView() {
-        bindings.statsviewContainer.apply {
-            removeAllViews()
-            val statsView = LumenStatsView(context)
-            lumenDeliveryClient?.addStateStatsListener(statsView)
-            statsView.showStats()
-            addView(statsView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-        }
-    }
-
-    private fun stopDeliveryClient() {
-        lumenDeliveryClient?.terminate()
-        lumenDeliveryClient = null
-    }
-
     override fun onStart() {
         super.onStart()
-
         if (Util.SDK_INT > 23) {
             initializePlayer()
         }
@@ -69,24 +37,23 @@ class PlayerActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-
         if (Util.SDK_INT <= 23 || player == null) {
             initializePlayer()
         }
     }
 
     override fun onPause() {
-        super.onPause()
         if (Util.SDK_INT <= 23) {
             releasePlayer()
         }
+        super.onPause()
     }
 
     override fun onStop() {
-        super.onStop()
         if (Util.SDK_INT > 23) {
             releasePlayer()
         }
+        super.onStop()
     }
 
     private fun initializePlayer() {
@@ -99,32 +66,53 @@ class PlayerActivity : AppCompatActivity() {
                 )
                 .build()
 
-            val trackSelector = DefaultTrackSelector(this)
-            val bandwidthMeter = ExoPlayerBandwidthMeter.new(this)
+            val bandwidthMeter = ExoPlayerBandwidthMeter(this)
 
-            with(SimpleExoPlayer.Builder(this)) {
-                setTrackSelector(trackSelector)
-                setBandwidthMeter(bandwidthMeter)
+            with(ExoPlayer.Builder(this)) {
                 setLoadControl(loadControl)
+                setBandwidthMeter(bandwidthMeter)
             }.build().also { exoPlayer ->
                 exoPlayer.playWhenReady = true
 
                 // Below, we initialize and start Lumen delivery client
-                initDeliveryClient(exoPlayer, loadControl, bandwidthMeter)
-                lumenDeliveryClient?.start()
-                initStatsView()
+                val dc = createDeliveryClient(exoPlayer, loadControl, bandwidthMeter)
+                dc.start()
+                showStatsView(dc)
 
-                val deliveryManifest = Uri.parse(lumenDeliveryClient?.localUrl())
+                // We fetch the final URL from the delivery client
+                val deliveryManifest = Uri.parse(dc.localUrl())
+
                 mediaItem = MediaItem.fromUri(deliveryManifest)
-
                 player = exoPlayer
                 bindings.playerView.player = exoPlayer
+                lumenDeliveryClient = dc
             }
         }
 
         player!!.addMediaItem(mediaItem!!)
         player!!.repeatMode = Player.REPEAT_MODE_ALL
         player!!.prepare()
+    }
+
+    private fun createDeliveryClient(player: ExoPlayer, loadControl: DefaultLoadControl, bandwidthMeter: ExoPlayerBandwidthMeter) : LumenDeliveryClient {
+        val playerInteractor = PlayerInteractor(player, loadControl, bandwidthMeter)
+
+        return LumenDeliveryClient.meshBuilder(this)
+            .playerInteractor(playerInteractor)
+            .options {
+                logLevel(LumenLogLevel.INFO)
+            }
+            .build(manifestUrl)
+    }
+
+    private fun showStatsView(dc: LumenDeliveryClient) {
+        bindings.statsviewContainer.apply {
+            removeAllViews()
+            val statsView = LumenStatsView(this@PlayerActivity)
+            dc.addStateStatsListener(statsView)
+            statsView.showStats()
+            addView(statsView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        }
     }
 
     private fun releasePlayer() {
@@ -135,6 +123,11 @@ class PlayerActivity : AppCompatActivity() {
         player?.release()
         player = null
         mediaItem = null
+    }
+
+    private fun stopDeliveryClient() {
+        lumenDeliveryClient?.terminate()
+        lumenDeliveryClient = null
     }
 }
 
