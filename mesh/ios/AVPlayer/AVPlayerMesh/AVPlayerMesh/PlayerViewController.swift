@@ -19,37 +19,29 @@ class PlayerViewController: UIViewController {
   private var statViewController: UIViewController!
   private let manifestUrl = URL(string: "https://rbmn-live.akamaized.net/hls/live/590964/BoRB-AT/master.m3u8")!
   
-  func commonInit() {
-    // Build the delivery client
-    deliveryClient = LMDeliveryClientBuilder.clientBuilder()
-      .playerInteractor(playerInteractor)
-      // the streamroot key will default to the one in the Info.plist if not overridden here
-      .deliveryClientKey("demoswebsiteandpartners")
-      .meshProperty("classic")
-      .logLevel(.warning)
-      .build(manifestUrl)
-  }
-  
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    commonInit()
   }
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
-    commonInit()
   }
   
-  // MARK: - View Controller Init
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+      
     // Setup AVPlayerViewController view
     avpController.view.frame = self.view.bounds
     self.view.addSubview(avpController.view)
+      
+    deliveryClient = LMDeliveryClientBuilder.clientBuilder()
+      .playerInteractor(playerInteractor)
+      .meshProperty("classic")
+      .logLevel(.warning)
+      .build(manifestUrl)
     
     // Start delivery client
-    deliveryClient?.start()
+    deliveryClient!.start()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -69,13 +61,13 @@ class PlayerViewController: UIViewController {
     }
     
     let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
-    avpController.player = AVPlayer(playerItem: playerItem)
+    let player = AVPlayer(playerItem: playerItem)
+    avpController.player = player
     
     // Link the player to the PlayerInteractor so it can register to the player event and notify properly the deliveryCLient
     // Must be done before starting the playback.
-    playerInteractor.linkPlayer(avpController.player!)
-    
-    avpController.player?.play()
+    playerInteractor.linkPlayer(player)
+    player.play()
     
     /* Setup stat view
      * AVPlayerViewController propose `contentOverlayView` to enrich
