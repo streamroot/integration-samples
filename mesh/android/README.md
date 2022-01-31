@@ -52,6 +52,7 @@ If you are obfuscating your code, add the following rules to your proguard
 In your `AndroidManifest.xml` add the following permissions
 ````xml
 <uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 ````
 
 ### Network security
@@ -137,20 +138,21 @@ Now the SDK is initialized, you are able to create `LumenDeliveryClient` instanc
 You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a SimpleExoPlayer :
 
 ```kotlin
-private fun initDeliveryClient(player: SimpleExoPlayer) =
-    LumenDeliveryClient.meshBuilder(this) //< applicationContext
-        /*
-         * Set the player interactor that will be used by the SDK
-         *
-         * param: an instance of a class subclassing LumenPlayerInteractorBase. Check the bridge section to know more
-         */
-        .playerInteractor(PlayerInteractor(player))
-        /*
-         * Build a LumenDeliveryClient instance
-         *
-         * param: The stream url (string)
-         */
-        .build(url)
+private fun createDeliveryClient(player: SimpleExoPlayer) : LumenDeliveryClient {
+    return LumenDeliveryClient.meshBuilder(this) //< applicationContext
+            /*
+            * Set the player interactor that will be used by the SDK
+            *
+            * param: an instance of a class subclassing LumenPlayerInteractorBase. Check the bridge section to know more
+            */
+            .playerInteractor(PlayerInteractor(player))
+            /*
+            * Build a LumenDeliveryClient instance
+            *
+            * param: The video stream url (string)
+            */
+            .build(url)
+}
 ```
 **Note**:
 PlayerInteractor is referencing the bridge class from step 3, the name may be different
@@ -180,8 +182,8 @@ val mediaItem = MediaItem.fromUri(deliveryManifest)
 Once the video is done playing, you have to stop the SDK created earlier.
 
 ````kotlin
-// Calling terminate will finish ongoing tasks and release all resources used
-deliveryClient.terminate()
+// Calling stop will finish ongoing tasks and release all resources used
+deliveryClient.stop()
 ````
 
 ## Additional options
@@ -189,60 +191,61 @@ deliveryClient.terminate()
 You can pass additional options when creating a `LumenDeliveryClient`.
 
 ```kotlin
-private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-    LumenDeliveryClient.meshBuilder(applicationContext)
-        .playerInteractor(PlayerInteractor(newPlayer))
-        .options {
-            /*
-             * Set Mesh properties
-             *
-             * param: String
-             */
-            meshProperty("MY_PROPERTIES")
+private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClient {
+    return LumenDeliveryClient.meshBuilder(applicationContext)
+            .playerInteractor(PlayerInteractor(newPlayer))
+            .options {
+                /*
+                * Set Mesh properties
+                *
+                * param: String
+                */
+                meshProperty("MY_PROPERTIES")
 
-            /*
-             * Set the DeliveryClientKey
-             * Is only required if it was not set in AndroidManifest.xml
-             * Will override the AndroidManifest.xml DeliveryClientKey
-             *
-             * param: String
-             */
-            deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
+                /*
+                * Set the DeliveryClientKey
+                * Is only required if it was not set in AndroidManifest.xml
+                * Will override the AndroidManifest.xml DeliveryClientKey
+                *
+                * param: String
+                */
+                deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
 
-            /*
-             * Set the content id
-             * A string that identifies your content
-             * By default, it uses the stream url
-             *
-             * param: String
-             */
-             contentId("MY_CONTENT_ID")
+                /*
+                * Set the content id
+                * A string that identifies your content
+                * By default, it uses the stream url
+                *
+                * param: String
+                */
+                contentId("MY_CONTENT_ID")
 
-             /*
-              * Set the log level
-              * See the "How to investigate?" to know more
-              *
-              * param: LumenLogLevel
-              */
-             logLevel(LumenLogLeven.INFO)
+                /*
+                * Set the log level
+                * See the "How to investigate?" to know more
+                *
+                * param: LumenLogLevel
+                */
+                logLevel(LumenLogLeven.INFO)
 
-             /*
-              * Set latency in seconds
-              *
-              * param: Int
-              */
-             latency(3)
+                /*
+                * Set latency in seconds
+                *
+                * param: Int
+                */
+                latency(3)
 
-             /*
-              * Set a proxy server
-              * Allows the use of a proxy server in the middle
-              * The format is host:port
-              *
-              * params: String
-              */
-             proxyServer("MY_PROXY_HOST:PORT")
-        }
-        .build(<string>url)
+                /*
+                * Set a proxy server
+                * Allows the use of a proxy server in the middle
+                * The format is host:port
+                *
+                * params: String
+                */
+                proxyServer("MY_PROXY_HOST:PORT")
+            }
+            .build("VIDEO_STREAM_URL")
+}
 ```
 
 ## How to investigate? Make sure the integration is working?
@@ -256,13 +259,14 @@ LumenDeliveryClient.initializeApp(this)
 
 or during a `LumenDeliveryClient` creation:
 ````kotlin
-private fun initDeliveryClient(newPlayer: SimpleExoPlayer) =
-    LumenDeliveryClient.meshBuilder(applicationContext)
+private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClient {
+    return LumenDeliveryClient.meshBuilder(applicationContext)
         .playerInteractor(PlayerInteractor(newPlayer))
         .options {
           logLevel(LumenLogLeven.INFO)
         }
-        .build(<string>url)
+        .build(url)
+}
 ````
 
 **Notes:**

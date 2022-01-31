@@ -126,7 +126,7 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun stopDeliveryClient() {
-        lumenDeliveryClient?.terminate()
+        lumenDeliveryClient?.stop()
         lumenDeliveryClient = null
     }
 }
