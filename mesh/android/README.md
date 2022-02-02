@@ -12,7 +12,7 @@ Add Streamroot's maven repository to the project settings in `settings.gradle`
 ````gradle
 dependencyResolutionManagement {
     repositories {
-        maven { url 'https://beta.streamroot.io/android' }
+        maven { url 'https://sdk.streamroot.io/android' }
     }
 }
 ````
@@ -20,9 +20,9 @@ dependencyResolutionManagement {
 Add Mesh SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
 ````gradle
 // It is good practice to lock dependencies version
-def dc_version = '1.5.0-beta-3dda3f7'
+def dc_version = "22.01.1"
 
-implementation 'io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version'
+implementation "io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version"
 ````
 Mesh SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
 
@@ -295,7 +295,7 @@ Add the utils dependency to your module's build.gradle
 
 ```gradle
 // /!\ Optional package for stats view. Not intended for production /!\
-implementation 'io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version'
+implementation "io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version"
 ```
 
 Add the LumenStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.

@@ -3,7 +3,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://beta.streamroot.io/android' }
+        maven { url 'https://sdk.streamroot.io/android' }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
