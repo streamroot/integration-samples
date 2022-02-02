@@ -110,7 +110,7 @@ class SRApplication: MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         /* If you could not add your deliveryClientKey in your AndroidManifest.xml
-         * Call LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY") instead
+         * Call instead: LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY")
          */
         LumenDeliveryClient.initializeApp(this)
         ...
@@ -123,7 +123,7 @@ class SRApplication: MultiDexApplication() {
 android:name=".SRApplication"
 ```
 
-### 2. Bridge between your Player and the delivery client
+### 2. Bridge between your Player and the DeliveryClient
 
 In order to work perfectly, the SDK instance uses a `PlayerInteractor`.
 
@@ -131,7 +131,7 @@ It is a component in charge of the interactions between the player and the SDK. 
 
 You can find an ExoPlayer implementation example in [ExoPlayerMesh](ExoPlayerMesh/app/src/main/java/io/streamroot/ct/delivery/client/mesh/PlayerInteractor.kt).
 
-### 3. Instanciate a LumenDeliveryClient
+### 3. Instanciate a `LumenDeliveryClient`
 
 Now the SDK is initialized, you are able to create `LumenDeliveryClient` instances.
 
@@ -141,21 +141,22 @@ You first need to create and setup your ExoPlayer instance. Then the following f
 private fun createDeliveryClient(player: SimpleExoPlayer) : LumenDeliveryClient {
     return LumenDeliveryClient.meshBuilder(this) //< applicationContext
             /*
-            * Set the player interactor that will be used by the SDK
-            *
-            * param: an instance of a class subclassing LumenPlayerInteractorBase. Check the bridge section to know more
-            */
+             * Set the player interactor that will be used by the SDK
+             * Check the bridge section to know more
+             *
+             * param: an instance of a class subclassing LumenPlayerInteractorBase.
+             */
             .playerInteractor(PlayerInteractor(player))
             /*
-            * Build a LumenDeliveryClient instance
-            *
-            * param: The video stream url (string)
-            */
+             * Build a LumenDeliveryClient instance
+             *
+             * param: String. The video stream url
+             */
             .build(url)
 }
 ```
 **Note**:
-PlayerInteractor is referencing the bridge class from step 3, the name may be different
+PlayerInteractor is referencing the bridge class from step 2, the name may be different.
 
 ### 4. Start the SDK instance and get the final url.
 
@@ -196,12 +197,11 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
             .playerInteractor(PlayerInteractor(newPlayer))
             .options {
                 /*
-                * Set Mesh properties
+                * Set Mesh property
                 *
                 * param: String
                 */
-                meshProperty("MY_PROPERTIES")
-
+                meshProperty("MY_PROPERTY")
                 /*
                 * Set the DeliveryClientKey
                 * Is only required if it was not set in AndroidManifest.xml
@@ -210,7 +210,6 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 * param: String
                 */
                 deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
-
                 /*
                 * Set the content id
                 * A string that identifies your content
@@ -219,7 +218,6 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 * param: String
                 */
                 contentId("MY_CONTENT_ID")
-
                 /*
                 * Set the log level
                 * See the "How to investigate?" to know more
@@ -227,18 +225,16 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 * param: LumenLogLevel
                 */
                 logLevel(LumenLogLeven.INFO)
-
                 /*
                 * Set latency in seconds
                 *
                 * param: Int
                 */
                 latency(3)
-
                 /*
                 * Set a proxy server
                 * Allows the use of a proxy server in the middle
-                * The format is host:port
+                * Format is host:port
                 *
                 * params: String
                 */

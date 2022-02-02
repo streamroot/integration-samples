@@ -91,3 +91,6 @@ Carthage
 
 ##  Pods
 Pods/
+
+## Frameworks
+*.framework

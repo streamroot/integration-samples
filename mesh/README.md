@@ -27,6 +27,11 @@ If you don't have an account, [request a free trial on our website](https://www.
 
 - ExoPlayer ([Kotlin](android/ExoPlayerMesh))
 
+## iOS/ipadOS/tvOS
+
+### Players
+
+- [AVPlayer](ios/AVPlayer)
 
 # License
 
