@@ -1,11 +1,18 @@
-# Uncomment the next line to define a global platform for your project
-platform :ios, '11.0'
 
 target 'AVPlayerMesh' do
+  platform :ios, '11.0'
+
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for AVPlayerMesh
   pod 'LumenMeshSDK'
 
+  # Pods for AVPlayerMesh
+  #pod 'LumenMeshSDK'
+end
+
+target 'AVPlayerMeshTV' do
+  platform :tvos, '13.0'
+
+  use_frameworks!
+  pod 'LumenMeshSDK'
 end
