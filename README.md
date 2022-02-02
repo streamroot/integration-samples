@@ -20,7 +20,8 @@ This repository is demonstrating part of our existing integrations, we are const
 
 Each of Streamroot's product has its own designated section.
 
-- [DNA/Mesh](https://samples.streamroot.io/dna/)
+- [Mesh](mesh)
+- [DNA/Mesh (Legacy)](https://samples.streamroot.io/dna/)
 - [Orchestrator](https://samples.streamroot.io/orchestrator/)
 
 ## Integration Documentation
