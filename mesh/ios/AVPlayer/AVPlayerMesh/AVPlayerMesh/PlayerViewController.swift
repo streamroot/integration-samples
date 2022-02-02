@@ -27,20 +27,21 @@ class PlayerViewController: UIViewController {
     super.init(coder: coder)
   }
   
+  func createDeliveryClient() -> LMDeliveryClient {
+    return LMDeliveryClientBuilder.clientBuilder()
+          .playerInteractor(playerInteractor)
+          .build(manifestUrl)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
       
     // Setup AVPlayerViewController view
     avpController.view.frame = self.view.bounds
     self.view.addSubview(avpController.view)
-      
-    deliveryClient = LMDeliveryClientBuilder.clientBuilder()
-      .playerInteractor(playerInteractor)
-      .meshProperty("classic")
-      .logLevel(.warning)
-      .build(manifestUrl)
     
-    // Start delivery client
+    // Create and start a delivery client
+    deliveryClient = createDeliveryClient()
     deliveryClient!.start()
   }
 
