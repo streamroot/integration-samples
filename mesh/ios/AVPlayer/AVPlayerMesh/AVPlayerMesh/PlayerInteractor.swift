@@ -10,15 +10,6 @@
 import AVKit
 import LumenMeshSDK
 
-/*
- * PlayerInteractor monitor the player state and notify the delivery client
- *
- * In this example, the `PlayerInteractor` implements `LMPlayerInteractorBase` and serves as a Helper class.
- * The player Interactor is a class which implements `LMPlayerInteractorBase` and raises events with the associated `super` methods.
- *
- * Example:
- *  - When the playback starts, a `.playing` event is raised as following:
- */
 class PlayerInteractor: LMPlayerInteractorBase {
   fileprivate var player: AVPlayer?
   fileprivate var playbackState: LMPlaybackState
@@ -54,7 +45,7 @@ class PlayerInteractor: LMPlayerInteractorBase {
     player.addObserver(self, forKeyPath: "rate", options: NSKeyValueObservingOptions.new, context: nil)
     observePlayback()
   }
-  
+
   func unlink() {
     if let observer = self.observer {
       player?.removeTimeObserver(observer)
