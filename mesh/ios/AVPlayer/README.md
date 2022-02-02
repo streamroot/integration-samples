@@ -98,12 +98,6 @@ Now the SDK is initialized, you are able to create `LumenDeliveryClient` instanc
 
 You first need to create and setup your AVPlayer instance. Then the following function shows you how to configure `LumenDeliveryClient` instances using a AVPlayer:
 
-Declare the deliverClient as an instance variable:
-```
-var deliveryClient: LMDeliveryClient?
-```
-
-Build the delivery client with the mandatory fields which are the `playerIntertactor` and the `manifestUrl`
 ```swift
 func createDeliveryClient() -> LMDeliveryClient {
   return LMDeliveryClientBuilder.clientBuilder()
