@@ -1,0 +1,2 @@
+-keep class io.streamroot.** { *; }
+-dontwarn io.streamroot.lumen.**
