@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+apply plugin: lumen.DeliveryClientGradlePlugin
+
 android {
     compileSdk 31
 
@@ -43,7 +45,4 @@ dependencies {
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation "com.google.android.exoplayer:exoplayer:2.16.1"
-
-    implementation 'io.streamroot.lumen.delivery.client:mesh-exo-plugin:poc9'
-    implementation 'io.streamroot.lumen.delivery.client:mesh-sdk-utils:22.03.24-pocboris'
 }
