@@ -19,15 +19,15 @@ target 'MyApp' do
 end
 ````
 
-Then, excute `pod install`.
+Then, execute `pod install`
 
 ### Carthage
-To get the SDK via Carthage, add a dependencie on `LumenMeshSDK` like this:
+To get the SDK via Carthage, add a dependency on `LumenMeshSDK` like this:
 ````
 binary "https://sdk.streamroot.io/ios/LumenMeshSDK.json"
 ````
 
-Then, execute `carthage update --use-xcframeworks`.
+Then, execute `carthage update --use-xcframeworks`
 
 ## Configuration
 
@@ -85,18 +85,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ### 2. Bridge between AVPlayer and the DeliveryClient
 
-In order to work perfectly, the SDK instance uses a `PlayerInteractor`.
+In order to work perfectly, the SDK needs a `PlayerInteractor`
 
 It is a component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-You can find an implementation example in [AVPlayerMesh/PlayerInteractor.swift](AVPlayerMesh/AVPlayerMesh/PlayerInteractor.swift).
+It will be up to you to implement this component, although, you can find an implementation example in [AVPlayerMesh/PlayerInteractor.swift](AVPlayerMesh/AVPlayerMesh/PlayerInteractor.swift)
 
 
 ### 3. Instanciate a `LumenDeliveryClient`
 
 Now the SDK is initialized, you are able to create `LumenDeliveryClient` instances.
 
-You first need to create and setup your AVPlayer instance. Then the following function shows you how to configure `LumenDeliveryClient` instances using a AVPlayer:
+Once your AVPlayer is up and ready, you will need to configure your `LumenDeliveryClient` instance:
 
 ```swift
 func createDeliveryClient() -> LMDeliveryClient {
@@ -117,29 +117,29 @@ func createDeliveryClient() -> LMDeliveryClient {
 }
 ```
 
-**Note**: PlayerInteractor is referencing the bridge clss from step 2, the bame may be different.
+**Note**: `PlayerInteractor` is referencing the bridge class from step 2, depending of your implementation the naming can differ from our example, but, it **must** subclass `LMPlayerInteractorBase`
 
 ### 4. Start the SDK instance and get the final url
 
-Calling the `start()` method on the `LMDeliveryClient` instance will start the SDK.
-Once you have an up and running instance of the SDK, you must retrieve the final URL and input it to AVPlayer instead of the original one.
+Calling `start()` on the `LMDeliveryClient` instance will, as may guessed, start the SDK.
+
+While starting, the SDK will generate a new URL to leverage mesh streaming capabilities. Once it is started, **make sure** to retrieve the final URL and instanciate an `AVPlayerItem` with it.
 
 ````swift
 var deliveryClient = createDeliveryClient()
 deliveryClient.start();
 
 guard let deliveryUrl = deliveryClient.localManifestURL else {
-  print("Local url manifest could not be generated")
-  return
+  fatalError("Local url manifest could not be generated")
 }
+
+let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 ````
 
 ### 5. Play the stream
 
 Start the player with the new url provided by the delivery client and link it with the player interactor:
 ```swift
-let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
-
 let player = AVPlayer(playerItem: playerItem)
 playerInteractor.linkPlayer(player!)
 
@@ -149,13 +149,13 @@ player?.play()
 Hopefully, the video is playing as expected, congrats!
 
 ### 6. Stop the SDK
-Make sure to stop the delivery client once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback closing the player.
+Make sure to stop the delivery client once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
 ```swift
 self.deliveryClient.stop()
 ```
 
 ## Additional options
-You can pass additional options when create a `LumenDeliveryClient`.
+You can pass additional options during the creation of a `LumenDeliveryClient`
 
 ````swift
 func createDeliveryClient() -> LMDeliveryClient {
@@ -176,7 +176,7 @@ func createDeliveryClient() -> LMDeliveryClient {
          /*
           * Set the DeliveryClientKey
           * Is only required if it was not set in AndroidManifest.xml
-          * Will override the AndroidManifest.xml DeliveryClientKey
+          * Will override the Info.plist DeliveryClientKey value
           *
           * param: String
           */
@@ -239,4 +239,4 @@ A helper method is available to display various Mesh related stats on a specifie
 // The implementer is in charge to create the view and to display it on top of the player controller/layer
 self.deliveryClient.displayStatWiew(someView!)
 ````
-Note: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller).
+**Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.
