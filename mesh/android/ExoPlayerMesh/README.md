@@ -129,7 +129,7 @@ In order to work perfectly, the SDK instance uses a `PlayerInteractor`.
 
 It is a component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-It will be up to you to implement this component, although, you can find an ExoPlayer implementation example in [ExoPlayerMesh](ExoPlayerMesh/app/src/main/java/io/streamroot/ct/delivery/client/mesh/PlayerInteractor.kt).
+It will be up to you to implement this component, although, you can find an ExoPlayer implementation example in [ExoPlayerMesh](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerActivity.kt).
 
 ### 3. Instanciate a `LumenDeliveryClient`
 
@@ -246,23 +246,11 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
 
 ## How to investigate? Make sure the integration is working?
 
-### Enable logs
-By default the log level is set to `OFF`, it can be override either at initilization which will propagate to all `LumenDeliveryClient` instances:
+### Enable logs for initialization
+By default the log level is set to `OFF` for initalization, it can be turned on before calling the initializeApp:
 ````kotlin
 LumenDeliveryClient.setLogLevel(LumenLogLevel.INFO)
 LumenDeliveryClient.initializeApp(this)
-````
-
-or during a `LumenDeliveryClient` creation:
-````kotlin
-private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClient {
-    return LumenDeliveryClient.meshBuilder(applicationContext)
-        .playerInteractor(PlayerInteractor(newPlayer))
-        .options {
-          logLevel(LumenLogLeven.INFO)
-        }
-        .build(url)
-}
 ````
 
 **Notes:**

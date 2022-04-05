@@ -1,4 +1,4 @@
-# Mesh SDK Common Integration for Android (Kotlin)
+# Mesh SDK Common Integration for Android (Java)
 
 ## Prerequisite
 To integrate Mesh SDK, we need:
@@ -104,22 +104,18 @@ SDK initialization is done preferably in an application context subclass.
 * Create a subclass of Application or MultiDexApplication (if your codebase is big and you support API level 19 or 20)
 * Initialize the SDK
 
-```kotlin
-class SRApplication: MultiDexApplication() {
-
-    override fun onCreate() {
-        super.onCreate()
-        /* If you could not add your deliveryClientKey in your AndroidManifest.xml
-         * Call instead: LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY")
-         */
-        LumenDeliveryClient.initializeApp(this)
-        ...
+```java
+public class Application extends MultiDexApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        LumenDeliveryClient.initializeApp(this);
     }
 }
 ```
 * Point to your custom application subclass in the `AndroidManifest.xml`
 
-```kotlin
+```java
 android:name=".SRApplication"
 ```
 
@@ -129,7 +125,7 @@ In order to work perfectly, the SDK instance uses a `PlayerInteractor`.
 
 It is a component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-It will be up to you to implement this component, although, you can find an ExoPlayer implementation example in [ExoPlayerMesh](ExoPlayerMesh/app/src/main/java/io/streamroot/ct/delivery/client/mesh/PlayerInteractor.kt).
+It will be up to you to implement this component, although, you can find an ExoPlayer implementation example in [ExoPlayerMeshJava](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerActivity.java).
 
 ### 3. Instanciate a `LumenDeliveryClient`
 
@@ -137,22 +133,25 @@ Now the SDK is initialized, you are able to create `LumenDeliveryClient` instanc
 
 You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a SimpleExoPlayer :
 
-```kotlin
-private fun createDeliveryClient(player: SimpleExoPlayer) : LumenDeliveryClient {
-    return LumenDeliveryClient.meshBuilder(this) //< applicationContext
+```java
+private LumenDeliveryClient createDeliveryClient(ExoPlayer player, DefaultLoadControl loadControl, PlayerInteractor.ExoPlayerBandwidthMeter bandwidthMeter) {
+    final PlayerInteractor playerInteractor = new PlayerInteractor(player, loadControl, bandwidthMeter);
+
+    return LumenDeliveryClient
+            .meshBuilder(this)
             /*
              * Set the player interactor that will be used by the SDK
              * Check the bridge section to know more
              *
              * param: an instance of a class subclassing LumenPlayerInteractorBase.
              */
-            .playerInteractor(PlayerInteractor(player))
+            .playerInteractor(playerInteractor)
             /*
              * Build a LumenDeliveryClient instance
              *
              * param: String. The video stream url
              */
-            .build(url)
+            .build(manifestUrl);
 }
 ```
 **Note**:
@@ -163,9 +162,9 @@ PlayerInteractor is referencing the bridge class from step 2, the name may be di
 Calling the `start()` method on the DeliveryClient instance will start the SDK.
 Once you have a running instance of the SDK, you must retrieve the final URL and input it to your player instead of your original one.
 
-```kotlin
+```java
 deliveryClient.start()
-val finalUrl = deliveryClient.localUrl()
+final String deliveryManifest = deliveryClient.localUrl();
 ```
 
 ### 5. Give your player the final URL
@@ -174,34 +173,37 @@ To maximize compatibility with the SDK we strongly encourage you to allow HTTP <
 
 With `finalUrl` you can create the `mediamItem` for ExoPlayer, like this:
 
-```kotlin
-val mediaItem = MediaItem.fromUri(deliveryManifest)
+```java
+MediaItem mediaItem = MediaItem.fromUri(Uri.parse(deliveryManifest));
 ```
 
 ### 6. Stop the Lumen Delivery Client
 
 Once the video is done playing, you have to stop the SDK created earlier.
 
-````kotlin
+```java
 // Calling stop will finish ongoing tasks and release all resources used
-deliveryClient.stop()
-````
+deliveryClient.stop();
+```
 
 ## Additional options
 
 You can pass additional options when creating a `LumenDeliveryClient`.
 
-```kotlin
-private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClient {
-    return LumenDeliveryClient.meshBuilder(applicationContext)
-            .playerInteractor(PlayerInteractor(newPlayer))
-            .options {
+```java
+private LumenDeliveryClient createDeliveryClient(ExoPlayer player, DefaultLoadControl loadControl, PlayerInteractor.ExoPlayerBandwidthMeter bandwidthMeter) {
+    final PlayerInteractor playerInteractor = new PlayerInteractor(player, loadControl, bandwidthMeter);
+
+    return LumenDeliveryClient
+            .meshBuilder(this)
+            .playerInteractor(playerInteractor)
+            .options(o -> {
                 /*
                 * Set Mesh property
                 *
                 * param: String
                 */
-                meshProperty("MY_PROPERTY")
+                o.meshProperty("MY_PROPERTY");
                 /*
                 * Set the DeliveryClientKey
                 * Is only required if it was not set in AndroidManifest.xml
@@ -209,7 +211,7 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 *
                 * param: String
                 */
-                deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
+                o.deliveryClientKey("MY_DELIVERY_CLIENT_KEY");
                 /*
                 * Set the content id
                 * A string that identifies your content
@@ -217,20 +219,20 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 *
                 * param: String
                 */
-                contentId("MY_CONTENT_ID")
+                o.contentId("MY_CONTENT_ID");
                 /*
                 * Set the log level
                 * See the "How to investigate?" to know more
                 *
                 * param: LumenLogLevel
                 */
-                logLevel(LumenLogLeven.INFO)
+                o.logLevel(LumenLogLeven.INFO);
                 /*
                 * Set latency in seconds
                 *
                 * param: Int
                 */
-                latency(3)
+                o.latency(3);
                 /*
                 * Set a proxy server
                 * Allows the use of a proxy server in the middle
@@ -238,32 +240,21 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 *
                 * params: String
                 */
-                proxyServer("MY_PROXY_HOST:PORT")
-            }
-            .build("VIDEO_STREAM_URL")
+                o.proxyServer("MY_PROXY_HOST:PORT");
+
+                return null;
+            }).build(manifestUrl);
 }
 ```
 
 ## How to investigate? Make sure the integration is working?
 
-### Enable logs
-By default the log level is set to `OFF`, it can be override either at initilization which will propagate to all `LumenDeliveryClient` instances:
-````kotlin
-LumenDeliveryClient.setLogLevel(LumenLogLevel.INFO)
-LumenDeliveryClient.initializeApp(this)
-````
-
-or during a `LumenDeliveryClient` creation:
-````kotlin
-private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClient {
-    return LumenDeliveryClient.meshBuilder(applicationContext)
-        .playerInteractor(PlayerInteractor(newPlayer))
-        .options {
-          logLevel(LumenLogLeven.INFO)
-        }
-        .build(url)
-}
-````
+### Enable logs for initialization
+By default the log level is set to `OFF` for initalization, it can be turned on before calling the initializeApp:
+```java
+LumenDeliveryClient.setLogLevel(LumenLogLevel.INFO);
+LumenDeliveryClient.initializeApp(this);
+```
 
 **Notes:**
 * Logs related to Mesh SDK will be prefixed with `[SR-KT]`
@@ -305,22 +296,18 @@ Add the LumenStatsView to your layout, ideally over the biggest surface. You can
 
 Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance
 
-````kotlin
+```java
 // Helper function to initializing the stats view
-private fun initStatsView(dcStatsView: View) {
-    dcStatsView.apply {
-        // Instanciate a LumenStatsVie
-        val statsView = LumenStatsView(context)
-        lumenDeliveryClient?.addStateStatsListener(statsView)
-
-        // Display the stat view. Otherwise it is hidden by default
-        statsView.showStats()
-
-        addView(statsView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-    }
+private void showStatsView(LumenDeliveryClient dc) {
+    ViewGroup svc = bindings.statsviewContainer;
+    svc.removeAllViews();
+    final LumenStatsView statsView = new LumenStatsView(this);
+    dc.addStateStatsListener(statsView);
+    statsView.showStats();
+    svc.addView(statsView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 }
 
 dcStatsView = ...
 initStatsView(dcStatsView)
-````
+```
 A red overlay with Mesh SDK related stats should be displayed. The stats view overlay can be reopened by clicking frenetically anywhere on the screen.
