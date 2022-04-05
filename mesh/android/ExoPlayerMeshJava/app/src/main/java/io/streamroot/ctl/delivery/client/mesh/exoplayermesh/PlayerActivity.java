@@ -2,7 +2,6 @@ package io.streamroot.ctl.delivery.client.mesh.exoplayermesh;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,16 +12,13 @@ import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.MediaItem;
+import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.util.Util;
 
 import io.streamroot.ctl.delivery.client.mesh.exoplayermesh.databinding.ActivityPlayerBinding;
 import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
 import io.streamroot.lumen.delivery.client.core.LumenLogLevel;
-import io.streamroot.lumen.delivery.client.core.LumenOptionalMeshBuilder;
-import io.streamroot.lumen.delivery.client.core.LumenOptionalOrchestratorBuilder;
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 public class PlayerActivity extends AppCompatActivity {
     private @NonNull ActivityPlayerBinding bindings;
@@ -73,7 +69,7 @@ public class PlayerActivity extends AppCompatActivity {
 
     private void initializePlayer() {
         if (player == null) {
-            final LoadControl loadControl = new DefaultLoadControl.Builder()
+            final DefaultLoadControl loadControl = new DefaultLoadControl.Builder()
                     .setBufferDurationsMs(10_000,
                             DefaultLoadControl.DEFAULT_MAX_BUFFER_MS,
                             DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
@@ -103,6 +99,10 @@ public class PlayerActivity extends AppCompatActivity {
             player = exoPlayer;
             bindings.playerView.setPlayer(exoPlayer);
             lumenDeliveryClient = dc;
+
+            player.addMediaItem(mediaItem);
+            player.setRepeatMode(Player.REPEAT_MODE_ALL);
+            player.prepare();
         }
     }
 
