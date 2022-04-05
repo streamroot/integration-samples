@@ -1,9 +1,11 @@
+import lumen.DeliveryClientGradlePlugin
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
 
-apply plugin: lumen.DeliveryClientGradlePlugin
+apply plugin: DeliveryClientGradlePlugin
 
 android {
     compileSdk 31
