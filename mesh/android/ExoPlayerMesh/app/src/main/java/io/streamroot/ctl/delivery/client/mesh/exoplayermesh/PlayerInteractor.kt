@@ -22,16 +22,13 @@ import java.util.concurrent.TimeUnit
 typealias Driver = LumenPlayerInteractorWrapperInterface.Driver
 
 private const val TAG = "ExoPlayerInteractor"
-private const val EXO_BW_TAG = "ExoPlayerBandwidthMeter"
 
 open class DefaultBandwidthMeterSR(context: Context) : BandwidthMeter, TransferListener {
     private val wrappedEstimator = DefaultBandwidthMeter.Builder(context).build()
 
     override fun getTransferListener() = this
 
-    override fun getBitrateEstimate() = wrappedEstimator.bitrateEstimate.also {
-        Log.d(EXO_BW_TAG, "[Lumen][android][DefaultBandwidthMeterSR] => Exo requested the BW, returned : $it")
-    }
+    override fun getBitrateEstimate() = wrappedEstimator.bitrateEstimate
 
     override fun addEventListener(
         eventHandler: Handler,
@@ -58,10 +55,7 @@ open class DefaultBandwidthMeterSR(context: Context) : BandwidthMeter, TransferL
     ) = wrappedEstimator.onBytesTransferred(source, dataSpec, isNetwork, bytesTransferred)
 
     override fun onTransferEnd(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) =
-        wrappedEstimator.onTransferEnd(source, dataSpec, isNetwork).also {
-            val est = wrappedEstimator.bitrateEstimate
-            Log.d(EXO_BW_TAG, "[Lumen][android][DefaultBandwidthMeterSR] => New estimated BW : $est")
-        }
+        wrappedEstimator.onTransferEnd(source, dataSpec, isNetwork)
 }
 
 class ExoPlayerBandwidthMeter(private val context: Context, playerBuilder: ExoPlayer.Builder) : BandwidthMeter, TransferListener {
@@ -84,7 +78,7 @@ class ExoPlayerBandwidthMeter(private val context: Context, playerBuilder: ExoPl
     fun setDriver(driver: Driver) {
         if (this::bwDriver.isInitialized && bwDriver == driver) return
         bwDriver = driver
-        Log.d(EXO_BW_TAG, "[Lumen][android][BandwidthMeter] => set BW driver : $driver")
+        Log.d(TAG, "[Lumen][android][BandwidthMeter] => set BW driver : $driver")
         if (driver == Driver.PLAYER) {
             // Transfer listeners to a new BW meter
             if (this::defaultBandwidthMeterSR.isInitialized) {
@@ -101,14 +95,12 @@ class ExoPlayerBandwidthMeter(private val context: Context, playerBuilder: ExoPl
             Driver.PLAYER -> defaultBandwidthMeterSR.bitrateEstimate
             Driver.MESH -> meshEstimatedBandwidth
         }
-        Log.d(EXO_BW_TAG, "[Lumen][android][BandwidthMeter] => Exo requested the BW, driver : ${bwDriver.name}, returned : $estimate")
         return estimate
     }
 
     @Synchronized
     fun setMeshEstimatedBandwidth(bps: Long) {
         meshEstimatedBandwidth = bps
-        Log.d(EXO_BW_TAG, "[Lumen][android][BandwidthMeter] => New estimated BW : $bps")
     }
 
     override fun getTransferListener() = this
@@ -219,7 +211,6 @@ class PlayerInteractor(
         bandwidthMeter.setMeshEstimatedBandwidth(bps)
     }
     override fun setEstimatedBandwidth(bps: Long?) {
-        Log.d(EXO_BW_TAG, "[Lumen][BandwidthMeter] setEstimatedBandwidth called with value : $bps")
         bps?.let {
             updateBWMeter(bps)
         }
