@@ -1,0 +1,11 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://sdk.streamroot.io/android' }
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "ExoPlayerMeshJava"
+include ':app'

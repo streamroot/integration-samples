@@ -1,31 +1,190 @@
 package io.streamroot.ctl.delivery.client.mesh.exoplayermesh;
 
+import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-
-import org.jetbrains.annotations.NotNull;
+import com.google.android.exoplayer2.upstream.BandwidthMeter;
+import com.google.android.exoplayer2.upstream.DataSource;
+import com.google.android.exoplayer2.upstream.DataSpec;
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
+import com.google.android.exoplayer2.upstream.TransferListener;
 
 import java.lang.reflect.Field;
-import java.util.Collections;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
+import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorWrapperInterface;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class ExoPlayerInteractor extends LumenPlayerInteractorBase implements Player.Listener {
+public final class PlayerInteractor extends LumenPlayerInteractorBase implements Player.Listener {
+
+    private static final String TAG = "ExoPlayerInteractor";
+
+    public class DefaultBandwidthMeterSR implements BandwidthMeter, TransferListener {
+        private final DefaultBandwidthMeter wrappedEstimator;
+
+        public DefaultBandwidthMeterSR(Context context) {
+            this.wrappedEstimator = new DefaultBandwidthMeter.Builder(context).build();
+        }
+
+        @Nullable
+        @Override
+        public TransferListener getTransferListener() {
+            return this;
+        }
+
+        @Override
+        public long getBitrateEstimate() {
+            return wrappedEstimator.getBitrateEstimate();
+        }
+
+        @Override
+        public void addEventListener(Handler eventHandler, EventListener eventListener) {
+            wrappedEstimator.addEventListener(eventHandler, eventListener);
+        }
+
+        @Override
+        public void removeEventListener(EventListener eventListener) {
+            wrappedEstimator.removeEventListener(eventListener);
+        }
+
+        @Override
+        public void onTransferInitializing(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            wrappedEstimator.onTransferInitializing(source, dataSpec, isNetwork);
+        }
+
+        @Override
+        public void onTransferStart(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            wrappedEstimator.onTransferStart(source, dataSpec, isNetwork);
+        }
+
+        @Override
+        public void onBytesTransferred(DataSource source, DataSpec dataSpec, boolean isNetwork, int bytesTransferred) {
+            wrappedEstimator.onBytesTransferred(source, dataSpec, isNetwork, bytesTransferred);
+        }
+
+        @Override
+        public void onTransferEnd(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            wrappedEstimator.onTransferEnd(source, dataSpec, isNetwork);
+        }
+    }
+
+    public class ExoPlayerBandwidthMeter implements BandwidthMeter, TransferListener {
+        private class HandlerAndListener {
+            final Handler handler;
+            final BandwidthMeter.EventListener eventListener;
+
+            private HandlerAndListener(Handler handler, EventListener eventListener) {
+                this.handler = handler;
+                this.eventListener = eventListener;
+            }
+        }
+
+        private final Context context;
+        private final ArrayList<HandlerAndListener> listeners;
+
+        private DefaultBandwidthMeterSR defaultBandwidthMeterSR = null;
+        private LumenPlayerInteractorWrapperInterface.Driver bwDriver = null;
+
+        private Long meshEstimatedBandwidth;
+
+        ExoPlayerBandwidthMeter(Context context, ExoPlayer.Builder playerBuilder) {
+            this.context = context;
+            this.listeners = new ArrayList<>();
+
+            setDriver(Driver.PLAYER);
+            meshEstimatedBandwidth = defaultBandwidthMeterSR.getBitrateEstimate();
+            playerBuilder.setBandwidthMeter(this);
+        }
+
+        synchronized void setDriver(Driver driver) {
+            if (bwDriver != null && bwDriver == driver) return;
+
+            bwDriver = driver;
+            Log.d(TAG, "[Lumen][android][BandwidthMeter] => set BW driver : " + driver);
+
+            if (driver == Driver.PLAYER) {
+                // Transfer listeners to a new BW meter
+                if (defaultBandwidthMeterSR != null) {
+                    for (HandlerAndListener it : listeners) {
+                        defaultBandwidthMeterSR.removeEventListener(it.eventListener);
+                    }
+                }
+                defaultBandwidthMeterSR = new DefaultBandwidthMeterSR(context);
+                for (HandlerAndListener it : listeners) {
+                    defaultBandwidthMeterSR.addEventListener(it.handler, it.eventListener);
+                }
+            }
+        }
+
+        @Override
+        public synchronized long getBitrateEstimate() {
+            switch (bwDriver) {
+                case PLAYER: return defaultBandwidthMeterSR.getBitrateEstimate();
+                case MESH: return meshEstimatedBandwidth;
+                default: return 0L;
+            }
+        }
+
+        public synchronized void setMeshEstimatedBandwidth(Long bps) {
+            meshEstimatedBandwidth = bps;
+        }
+
+        @Nullable
+        @Override
+        public TransferListener getTransferListener() {
+            return this;
+        }
+
+        @Override
+        public synchronized void addEventListener(Handler eventHandler, EventListener eventListener) {
+            listeners.add(new HandlerAndListener(eventHandler, eventListener));
+            defaultBandwidthMeterSR.addEventListener(eventHandler, eventListener);
+        }
+
+        @Override
+        public synchronized void removeEventListener(EventListener eventListener) {
+            for (Iterator<HandlerAndListener> iterator = listeners.iterator(); iterator.hasNext();) {
+                if (iterator.next().eventListener == eventListener) {
+                    iterator.remove();
+                }
+            }
+            defaultBandwidthMeterSR.removeEventListener(eventListener);
+        }
+
+        @Override
+        public synchronized void onTransferInitializing(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            defaultBandwidthMeterSR.onTransferInitializing(source, dataSpec, isNetwork);
+        }
+
+        @Override
+        public synchronized void onTransferStart(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            defaultBandwidthMeterSR.onTransferStart(source, dataSpec, isNetwork);
+        }
+
+        @Override
+        public synchronized void onBytesTransferred(DataSource source, DataSpec dataSpec, boolean isNetwork, int bytesTransferred) {
+            defaultBandwidthMeterSR.onBytesTransferred(source, dataSpec, isNetwork, bytesTransferred);
+        }
+
+        @Override
+        public synchronized void onTransferEnd(DataSource source, DataSpec dataSpec, boolean isNetwork) {
+            defaultBandwidthMeterSR.onTransferEnd(source, dataSpec, isNetwork);
+        }
+    }
 
     private interface BufferTargetBridge {
         double bufferTarget();
@@ -145,7 +304,7 @@ public final class ExoPlayerInteractor extends LumenPlayerInteractorBase impleme
     // to keep a floating precision
     final private BufferTargetBridge bridge;
 
-    public ExoPlayerInteractor(ExoPlayer player, LoadControl loadControl, ExoPlayerBandwidthMeter bandwidthMeter) {
+    public PlayerInteractor(ExoPlayer player, LoadControl loadControl, ExoPlayerBandwidthMeter bandwidthMeter) {
         this.handler = new Handler(player.getApplicationLooper());
         this.player = player;
         this.loadControl = loadControl;
@@ -153,6 +312,7 @@ public final class ExoPlayerInteractor extends LumenPlayerInteractorBase impleme
         this.bridge = BufferTargetBridgeFactory.createInteractor(loadControl, false);
 
         player.addListener(this);
+        updateBWMeter(bandwidthMeter.getBitrateEstimate());
     }
 
     @Override
@@ -241,10 +401,21 @@ public final class ExoPlayerInteractor extends LumenPlayerInteractorBase impleme
         } catch (InterruptedException ignored) {}
     }
 
+    // Bandwidth
+
+    private void updateBWMeter(Long bps) {
+        bandwidthMeter.setMeshEstimatedBandwidth(bps);
+    }
+
     @Override
     public void setEstimatedBandwidth(@Nullable Long bps) {
         if (bps != null) {
-            bandwidthMeter.setEstimatedBandwidth(bps);
+            updateBWMeter(bps);
         }
+    }
+
+    @Override
+    public void setBandwidthDriver(@NonNull Driver driver) {
+        bandwidthMeter.setDriver(driver);
     }
 }
