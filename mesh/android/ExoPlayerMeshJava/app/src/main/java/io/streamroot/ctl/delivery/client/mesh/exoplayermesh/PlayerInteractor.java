@@ -33,7 +33,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
 
     private static final String TAG = "ExoPlayerInteractor";
 
-    public class DefaultBandwidthMeterSR implements BandwidthMeter, TransferListener {
+    public static class DefaultBandwidthMeterSR implements BandwidthMeter, TransferListener {
         private final DefaultBandwidthMeter wrappedEstimator;
 
         public DefaultBandwidthMeterSR(Context context) {
@@ -82,7 +82,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
         }
     }
 
-    public class ExoPlayerBandwidthMeter implements BandwidthMeter, TransferListener {
+    public static class ExoPlayerBandwidthMeter implements BandwidthMeter, TransferListener {
         private class HandlerAndListener {
             final Handler handler;
             final BandwidthMeter.EventListener eventListener;
