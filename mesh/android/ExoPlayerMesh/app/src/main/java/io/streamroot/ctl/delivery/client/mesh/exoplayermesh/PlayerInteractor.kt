@@ -10,12 +10,133 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.source.TrackGroupArray
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.upstream.BandwidthMeter
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DataSpec
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.TransferListener
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase
+import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorWrapperInterface
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState
 import java.util.concurrent.TimeUnit
-import java.util.concurrent.atomic.AtomicLong
+
+typealias Driver = LumenPlayerInteractorWrapperInterface.Driver
+
+private const val TAG = "ExoPlayerInteractor"
+
+open class DefaultBandwidthMeterSR(context: Context) : BandwidthMeter, TransferListener {
+    private val wrappedEstimator = DefaultBandwidthMeter.Builder(context).build()
+
+    override fun getTransferListener() = this
+
+    override fun getBitrateEstimate() = wrappedEstimator.bitrateEstimate
+
+    override fun addEventListener(
+        eventHandler: Handler,
+        eventListener: BandwidthMeter.EventListener
+    ) = wrappedEstimator.addEventListener(eventHandler, eventListener)
+
+    override fun removeEventListener(eventListener: BandwidthMeter.EventListener) =
+        wrappedEstimator.removeEventListener(eventListener)
+
+    override fun onTransferInitializing(
+        source: DataSource,
+        dataSpec: DataSpec,
+        isNetwork: Boolean
+    ) = wrappedEstimator.onTransferInitializing(source, dataSpec, isNetwork)
+
+    override fun onTransferStart(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) =
+        wrappedEstimator.onTransferStart(source, dataSpec, isNetwork)
+
+    override fun onBytesTransferred(
+        source: DataSource,
+        dataSpec: DataSpec,
+        isNetwork: Boolean,
+        bytesTransferred: Int
+    ) = wrappedEstimator.onBytesTransferred(source, dataSpec, isNetwork, bytesTransferred)
+
+    override fun onTransferEnd(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) =
+        wrappedEstimator.onTransferEnd(source, dataSpec, isNetwork)
+}
+
+class ExoPlayerBandwidthMeter(private val context: Context, playerBuilder: ExoPlayer.Builder) : BandwidthMeter, TransferListener {
+    data class HandlerAndListener(val handler: Handler, val eventListener: BandwidthMeter.EventListener)
+
+    private val listeners = arrayListOf<HandlerAndListener>()
+
+    private lateinit var defaultBandwidthMeterSR: DefaultBandwidthMeterSR
+    private lateinit var bwDriver: LumenPlayerInteractorWrapperInterface.Driver
+
+    private var meshEstimatedBandwidth: Long
+
+    init {
+        setDriver(Driver.PLAYER)
+        meshEstimatedBandwidth = defaultBandwidthMeterSR.bitrateEstimate
+        playerBuilder.setBandwidthMeter(this)
+    }
+
+    @Synchronized
+    fun setDriver(driver: Driver) {
+        if (this::bwDriver.isInitialized && bwDriver == driver) return
+        bwDriver = driver
+        Log.d(TAG, "[Lumen][android][BandwidthMeter] => set BW driver : $driver")
+        if (driver == Driver.PLAYER) {
+            // Transfer listeners to a new BW meter
+            if (this::defaultBandwidthMeterSR.isInitialized) {
+                listeners.forEach { defaultBandwidthMeterSR.removeEventListener(it.eventListener) }
+            }
+            defaultBandwidthMeterSR = DefaultBandwidthMeterSR(context)
+            listeners.forEach { defaultBandwidthMeterSR.addEventListener(it.handler, it.eventListener) }
+        }
+    }
+
+    @Synchronized
+    override fun getBitrateEstimate(): Long {
+        val estimate = when (bwDriver) {
+            Driver.PLAYER -> defaultBandwidthMeterSR.bitrateEstimate
+            Driver.MESH -> meshEstimatedBandwidth
+        }
+        return estimate
+    }
+
+    @Synchronized
+    fun setMeshEstimatedBandwidth(bps: Long) {
+        meshEstimatedBandwidth = bps
+    }
+
+    override fun getTransferListener() = this
+
+    @Synchronized
+    override fun addEventListener(eventHandler: Handler, eventListener: BandwidthMeter.EventListener) {
+        listeners.add(HandlerAndListener(eventHandler, eventListener))
+        defaultBandwidthMeterSR.addEventListener(eventHandler, eventListener)
+    }
+
+    @Synchronized
+    override fun removeEventListener(eventListener: BandwidthMeter.EventListener) {
+        listeners.removeAll { it.eventListener == eventListener }
+        defaultBandwidthMeterSR.removeEventListener(eventListener)
+    }
+
+    @Synchronized
+    override fun onTransferInitializing(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) {
+        defaultBandwidthMeterSR.onTransferInitializing(source, dataSpec, isNetwork)
+    }
+
+    @Synchronized
+    override fun onTransferStart(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) {
+        defaultBandwidthMeterSR.onTransferStart(source, dataSpec, isNetwork)
+    }
+
+    @Synchronized
+    override fun onBytesTransferred(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean, bytesTransferred: Int) {
+        defaultBandwidthMeterSR.onBytesTransferred(source, dataSpec, isNetwork, bytesTransferred)
+    }
+
+    @Synchronized
+    override fun onTransferEnd(source: DataSource, dataSpec: DataSpec, isNetwork: Boolean) {
+        defaultBandwidthMeterSR.onTransferEnd(source, dataSpec, isNetwork)
+    }
+}
 
 class PlayerInteractor(
     private val player: ExoPlayer,
@@ -26,6 +147,7 @@ class PlayerInteractor(
 
     init {
         player.addListener(this)
+        updateBWMeter(bandwidthMeter.bitrateEstimate)
     }
 
     override fun onSeekProcessed() {
@@ -83,24 +205,19 @@ class PlayerInteractor(
 
     override fun setBufferTarget(target: Double) = runSyncOnEPHandler { bridge.setBufferTarget(target) }!!
 
+    // Bandwidth
+
+    private fun updateBWMeter(bps: Long) {
+        bandwidthMeter.setMeshEstimatedBandwidth(bps)
+    }
     override fun setEstimatedBandwidth(bps: Long?) {
         bps?.let {
-            bandwidthMeter.setEstimatedBandwidth(it)
+            updateBWMeter(bps)
         }
     }
-}
-
-class ExoPlayerBandwidthMeter constructor(context: Context) : BandwidthMeter {
-    private val estimatedBandwidth = AtomicLong(DefaultBandwidthMeter.Builder(context).build().bitrateEstimate)
-
-    fun setEstimatedBandwidth(bps: Long) {
-        estimatedBandwidth.set(bps)
+    override fun setBandwidthDriver(driver: Driver) {
+        bandwidthMeter.setDriver(driver)
     }
-
-    override fun getBitrateEstimate() = estimatedBandwidth.get()
-    override fun getTransferListener(): TransferListener? = null
-    override fun addEventListener(eventHandler: Handler, eventListener: BandwidthMeter.EventListener) { }
-    override fun removeEventListener(eventListener: BandwidthMeter.EventListener) { }
 }
 
 internal interface BufferTargetBridge {
@@ -170,8 +287,8 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
 
 private object BufferTargetBridgeFactory {
     fun createInteractor(loadControl: LoadControl, audioOnly: Boolean = false): BufferTargetBridge {
-        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()?.also { Log.v("Misc", "Using interactor V1") }
-            ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()?.also { Log.v("Misc", "Using interactor V2") }
-            ?: throw java.lang.Exception("Unsupported ExoPlayer version")
+        return runCatching { LoadControlBufferTargetBridgeV1(loadControl) }.getOrNull()?.also { Log.v("Misc", "[Lumen] Using interactor V1") }
+            ?: runCatching { LoadControlBufferTargetBridgeV2(loadControl, audioOnly) }.getOrNull()?.also { Log.v(TAG, "[Lumen] Using interactor V2") }
+            ?: throw java.lang.Exception("[Lumen] Unsupported ExoPlayer version")
     }
 }

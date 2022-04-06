@@ -66,12 +66,13 @@ class PlayerActivity : AppCompatActivity() {
                 )
                 .build()
 
-            val bandwidthMeter = ExoPlayerBandwidthMeter(this)
+            val exoPlayerBuilder = ExoPlayer.Builder(this)
+            val bandwidthMeter = ExoPlayerBandwidthMeter(this, exoPlayerBuilder)
 
-            with(ExoPlayer.Builder(this)) {
-                setLoadControl(loadControl)
-                setBandwidthMeter(bandwidthMeter)
-            }.build().also { exoPlayer ->
+            exoPlayerBuilder
+                .setLoadControl(loadControl)
+                .setBandwidthMeter(bandwidthMeter)
+                .build().also { exoPlayer ->
                 exoPlayer.playWhenReady = true
 
                 // Below, we initialize and start Lumen delivery client
