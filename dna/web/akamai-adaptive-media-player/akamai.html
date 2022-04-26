@@ -18,6 +18,8 @@
     <!-- Builds -->
     <script src="//samples.streamroot.io/dna/web/assets/akamai/amp/core/amp.min.js"></script>
 
+    <!-- Lumen SDK -->
+    <script src="//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js"></script>
     <!-- Graphs -->
     <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
 
@@ -37,22 +39,14 @@
         window.addEventListener("load", function () {
 
             var config = {
-                autoplay: true,
-                autoplayPolicy: "muted",
+                autoplay: "muted",
+                playsinline: true,
                 paths: {
                     base: "https://samples.streamroot.io/dna/web/assets/"
                 },
                 media: {
-                        src: 'https://demo-vod.streamroot.io/index.m3u8',
-                        type: 'application/x-mpegURL'
-                },
-                plugins: {
-                    streamroot: {
-                        resources: [{
-                            src: "//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js",
-                            type: "text/javascript"
-                        }]
-                    }
+                    src: 'https://demo-vod.streamroot.io/index.m3u8',
+                    type: 'application/x-mpegURL'
                 }
             };
 
