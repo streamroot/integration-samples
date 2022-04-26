@@ -16,7 +16,7 @@
     <script src="//samples.streamroot.io/dna/web/assets/header.js"></script>
 
     <!-- Builds -->
-    <script src="//samples.streamroot.io/dna/web/assets/akamai/amp/amp.min.js"></script>
+    <script src="//samples.streamroot.io/dna/web/assets/akamai/amp/core/amp.min.js"></script>
 
     <!-- Graphs -->
     <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
@@ -40,28 +40,19 @@
                 autoplay: true,
                 autoplayPolicy: "muted",
                 paths: {
-                    base: "//samples.streamroot.io/dna/web/assets/akamai/",
-                    root: "//samples.streamroot.io/dna/web/assets/akamai/",
-                    player: "//samples.streamroot.io/dna/web/assets/akamai/amp/",
-                    plugins: "//samples.streamroot.io/dna/web/assets/akamai/akamai/amp/",
-                    ressources: "//samples.streamroot.io/dna/web/assets/akamai/ressources/"
+                    player: "//samples.streamroot.io/dna/web/assets/akamai/amp/"
                 },
                 media: {
-                    source: [{
                         src: 'https://demo-vod.streamroot.io/index.m3u8',
                         type: 'application/x-mpegURL'
-                    }]
                 },
-                hls: {
-                    resources: [{
-                            type: "text/javascript",
-                            src: "//cdn.jsdelivr.net/npm/hls.js@0.11.0/dist/hls.min.js",
-                        },
-                        {
-                            type: 'text/javascript',
-                            src: '//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js'
-                        }
-                    ]
+                plugins: {
+                    streamroot: {
+                        resources: [{
+                            src: "//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js",
+                            type: "text/javascript"
+                        }]
+                    }
                 }
             };
 
