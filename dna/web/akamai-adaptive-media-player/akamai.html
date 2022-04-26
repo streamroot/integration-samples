@@ -22,37 +22,6 @@
     <script src="//cdn.streamroot.io/akamaimp-hls-dna-plugin/1/stable/akamaimp-hls-dna-plugin.js"></script>
     <!-- Graphs -->
     <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
-
-    <script>
-        // Streamroot-injected informations
-        var streamrootDna = {
-            streamrootKey: 'demoswebsiteandpartners',
-            dnaConfig: {}
-        };
-
-        var hlsjsConfig = {
-            "maxBufferSize": 0,
-            "maxBufferLength": 30,
-            "liveSyncDuration": 30
-        }
-
-        window.addEventListener("load", function () {
-
-            var config = {
-                autoplay: "muted",
-                playsinline: true,
-                paths: {
-                    base: "https://samples.streamroot.io/dna/web/assets/"
-                },
-                media: {
-                    src: 'https://demo-vod.streamroot.io/index.m3u8',
-                    type: 'application/x-mpegURL'
-                }
-            };
-
-            amp = akamai.amp.AMP.create("akamai-media-player", config);
-        })
-    </script>
 </head>
 ​
 
@@ -60,7 +29,37 @@
     <header></header>
     <center>
         <div>
-            <div id="akamai-media-player" style="height:288px; width:512px"></div>
+            <div id="amp" style="height:288px; width:512px"></div>
+            <script>
+                // Streamroot-injected informations
+                var streamrootDna = {
+                    streamrootKey: 'demoswebsiteandpartners',
+                    dnaConfig: {}
+                };
+
+                var hlsjsConfig = {
+                    "maxBufferSize": 0,
+                    "maxBufferLength": 30,
+                    "liveSyncDuration": 30
+                }
+
+                window.addEventListener("load", function () {
+
+                    var config = {
+                        autoplay: "muted",
+                        playsinline: true,
+                        paths: {
+                            base: "https://samples.streamroot.io/dna/web/assets/"
+                        },
+                        media: {
+                            src: 'https://demo-vod.streamroot.io/index.m3u8',
+                            type: 'application/x-mpegURL'
+                        }
+                    };
+
+                    amp = akamai.amp.AMP.create("amp", config);
+                })
+            </script>
         </div>
         <div id="streamroot-graphs"></div>
     </center>
