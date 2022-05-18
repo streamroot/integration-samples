@@ -32,10 +32,9 @@ Forcing a different ExoPlayer version may lead to runtime errors such as Unsatis
 Add Mesh ExoPlayer plugin dependency. Add in your **module** `build.gradle` (it often ends with .app)
 ````gradle
 // It is good practice to lock dependencies version
-def dc_version = "22.03.4"
-def exo_version = "2-17"
-def plugin_patch = "0"
-
+def dc_version = '22.03.4'
+def exo_version = '2-17'
+def plugin_patch = 1
 implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_version:$dc_version.$plugin_patch"
 ````
 Here is an exhaustive list of all pulled dependencies
@@ -361,14 +360,12 @@ Streamroot provides an optional utils library that allows the display of Mesh in
 
 ## **⚠️ This is not intended for production ⚠️**
 
-Add the utils dependency to your module's build.gradle
+Add the utils dependency to your module's build.gradle by changing the name of the artifact. Append -utils to the artifact name to pull the utils package as well.
 
 ```gradle
 // /!\ Optional package for stats view. Not intended for production /!\
-implementation "io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version"
+implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_version-utils:$dc_version.$plugin_patch"
 ```
-
-The utils library needs to be synchronized with the delivery client version (dc_version). ExoPlayer version or plugin patch don't impact the utils library.
 
 Add the LumenStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
 
@@ -379,7 +376,7 @@ Add the LumenStatsView to your layout, ideally over the biggest surface. You can
     android:layout_height="match_parent" />
 ```
 
-Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance
+Retrieve your view by your preferred method and link it with a `LumenDeliveryClientPlugin` instance
 
 ````kotlin
 // Helper function to initializing the stats view

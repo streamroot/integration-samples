@@ -4,7 +4,6 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://sdk.streamroot.io/android' }
-        maven { url 'https://beta.streamroot.io/android' }
     }
 }
 rootProject.name = "ExoPlayerMeshPlugin"
