@@ -7,5 +7,5 @@ dependencyResolutionManagement {
         maven { url 'https://beta.streamroot.io/android' }
     }
 }
-rootProject.name = "ExoPlayerMesh"
+rootProject.name = "ExoPlayerMeshPlugin"
 include ':app'
