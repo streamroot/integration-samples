@@ -1,0 +1,1547 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2CED614A234FDFF0811B930D /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E45E4A27A206B30E41452C /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework */; };
+		5F8B8DF6658ED2193409A886 /* Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E6F8E0AF5FA1D2CB76081 /* Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework */; };
+		669237CF02AC8667AFAB0B38 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B853F790C99A192257B3DBD7 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework */; };
+		7A9121CD286CAF33000C6702 /* AVPluginMeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686A8286B925000450C0A /* AVPluginMeshTests.swift */; };
+		7A9121E4286CB7BC000C6702 /* AVPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A96869C286B925000450C0A /* AVPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A9121E6286CB7BC000C6702 /* LMDeliveryClientPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */; };
+		7A9121E7286CB7BC000C6702 /* LMAVPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */; };
+		7A9121F3286CB7C8000C6702 /* AVPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A96869C286B925000450C0A /* AVPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A9121F5286CB7C8000C6702 /* LMDeliveryClientPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */; };
+		7A9121F6286CB7C8000C6702 /* LMAVPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */; };
+		7A912208286CBE68000C6702 /* LumenAVOrchestratorPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9121EF286CB7BC000C6702 /* LumenAVOrchestratorPlugin.framework */; platformFilter = ios; };
+		7A912216286CBEA8000C6702 /* LumenAVOrchestratorPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9121FD286CB7C8000C6702 /* LumenAVOrchestratorPlugin.framework */; };
+		7A91221E286CBF29000C6702 /* AVPluginOrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A912206286CBE67000C6702 /* AVPluginOrchestratorTests.swift */; };
+		7A91221F286CBF2A000C6702 /* AVPluginOrchestratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A912206286CBE67000C6702 /* AVPluginOrchestratorTests.swift */; };
+		7A9686A4286B925000450C0A /* LumenAVMeshPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A968699286B925000450C0A /* LumenAVMeshPlugin.framework */; };
+		7A9686A9286B925000450C0A /* AVPluginMeshTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686A8286B925000450C0A /* AVPluginMeshTests.swift */; };
+		7A9686AA286B925000450C0A /* AVPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A96869C286B925000450C0A /* AVPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A9686B4286B954600450C0A /* LMDeliveryClientPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */; };
+		7A9686B6286B970600450C0A /* LMAVPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */; };
+		7A968702286C80ED00450C0A /* LumenAVMeshPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9686F8286C80ED00450C0A /* LumenAVMeshPlugin.framework */; };
+		7A968710286C81E900450C0A /* LMDeliveryClientPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */; };
+		7A968711286C81EC00450C0A /* LMAVPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */; };
+		7A968712286C82E700450C0A /* AVPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A96869C286B925000450C0A /* AVPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F0A93AC5579A5A15946E7DB /* Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F7F66542B63B0FD8655AF2 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework */; };
+		8C7F6A4365605383A3AFC992 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B945359000312E86A8E644E9 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework */; };
+		91492F5B0F684CAA0E64823D /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C6BE1FD8A937CE9901D05F3 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework */; };
+		A35A68B0BD045DFB7A78F124 /* Pods_Plugin_Mesh_LumenAVMeshPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8B81964D0344B850596BF7 /* Pods_Plugin_Mesh_LumenAVMeshPlugin.framework */; };
+		FFB8D5B18F1D932984261A80 /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB84E9005A0AA688993D092E /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A912209286CBE68000C6702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A968690286B925000450C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9121E1286CB7BC000C6702;
+			remoteInfo = LumenAVOrchestratorPlugin;
+		};
+		7A912217286CBEA8000C6702 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A968690286B925000450C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9121F0286CB7C8000C6702;
+			remoteInfo = LumenAVOrchestratorPluginTV;
+		};
+		7A9686A5286B925000450C0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A968690286B925000450C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A968698286B925000450C0A;
+			remoteInfo = AVPlugin;
+		};
+		7A968703286C80ED00450C0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A968690286B925000450C0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9686F7286C80ED00450C0A;
+			remoteInfo = LumenAVPlayerMeshTV;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D8E6F8E0AF5FA1D2CB76081 /* Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E239754F8B0F244CEA079F9 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.debug.xcconfig"; sourceTree = "<group>"; };
+		10D62BB38378E66814F56009 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.release.xcconfig"; path = "Target Support Files/Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV/Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.release.xcconfig"; sourceTree = "<group>"; };
+		13A8BC92140D3AF0A11B1436 /* Pods-Plugin-Mesh-LumenAVMeshPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Mesh-LumenAVMeshPlugin.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-Mesh-LumenAVMeshPlugin/Pods-Plugin-Mesh-LumenAVMeshPlugin.debug.xcconfig"; sourceTree = "<group>"; };
+		13AF6555B91943D0251458C0 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.release.xcconfig"; path = "Target Support Files/Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin/Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.release.xcconfig"; sourceTree = "<group>"; };
+		1A873AD264E586A250D7009B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin/Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.debug.xcconfig"; sourceTree = "<group>"; };
+		20685676AF9EFC54242A8C23 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		24EF5E29FAB1425DF27F7CF7 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.release.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.release.xcconfig"; sourceTree = "<group>"; };
+		38E45E4A27A206B30E41452C /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C05421B10CD68E9FF809E83 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.release.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.release.xcconfig"; sourceTree = "<group>"; };
+		3D060B00E1AEE15F7B01705F /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Mesh-LumenAVMeshPluginTV.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-Mesh-LumenAVMeshPluginTV/Pods-Plugin-Mesh-LumenAVMeshPluginTV.debug.xcconfig"; sourceTree = "<group>"; };
+		4ACC1037077771F68729DD1B /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C6BE1FD8A937CE9901D05F3 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		648E90EA60D4806524643B05 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVMeshPluginTests.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		682CD148E56BF313E2F67E91 /* Pods-Plugin-LumenAVPluginMesh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-LumenAVPluginMesh.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-LumenAVPluginMesh/Pods-Plugin-LumenAVPluginMesh.debug.xcconfig"; sourceTree = "<group>"; };
+		6E1AD473B6DB6D7A006D619A /* Pods-Plugin-LumenAVPluginMeshTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-LumenAVPluginMeshTV.release.xcconfig"; path = "Target Support Files/Pods-Plugin-LumenAVPluginMeshTV/Pods-Plugin-LumenAVPluginMeshTV.release.xcconfig"; sourceTree = "<group>"; };
+		7756D1154FFE2FA53ABF6B58 /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Mesh-LumenAVMeshPluginTV.release.xcconfig"; path = "Target Support Files/Pods-Plugin-Mesh-LumenAVMeshPluginTV/Pods-Plugin-Mesh-LumenAVMeshPluginTV.release.xcconfig"; sourceTree = "<group>"; };
+		7874C69A897DAD928D258733 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVMeshPluginTests.release.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTests.release.xcconfig"; sourceTree = "<group>"; };
+		78A9A7536560B000C808C1AA /* Pods-Plugin-LumenAVPluginMeshTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-LumenAVPluginMeshTV.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-LumenAVPluginMeshTV/Pods-Plugin-LumenAVPluginMeshTV.debug.xcconfig"; sourceTree = "<group>"; };
+		7A9121EF286CB7BC000C6702 /* LumenAVOrchestratorPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LumenAVOrchestratorPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9121FD286CB7C8000C6702 /* LumenAVOrchestratorPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LumenAVOrchestratorPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A912204286CBE67000C6702 /* LumenAVOrchestratorPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumenAVOrchestratorPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A912206286CBE67000C6702 /* AVPluginOrchestratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPluginOrchestratorTests.swift; sourceTree = "<group>"; };
+		7A912212286CBEA8000C6702 /* LumenAVOrchestratorPluginTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumenAVOrchestratorPluginTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A968699286B925000450C0A /* LumenAVMeshPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LumenAVMeshPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A96869C286B925000450C0A /* AVPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AVPlugin.h; sourceTree = "<group>"; };
+		7A9686A3286B925000450C0A /* LumenAVMeshPluginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumenAVMeshPluginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9686A8286B925000450C0A /* AVPluginMeshTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPluginMeshTests.swift; sourceTree = "<group>"; };
+		7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMDeliveryClientPlugin.swift; sourceTree = "<group>"; };
+		7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMAVPlayerInteractor.swift; sourceTree = "<group>"; };
+		7A9686CE286BBA5A00450C0A /* LumenMeshSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LumenMeshSDK.framework; path = ../Pods/LumenMeshSDK/Carthage/Build/iOS/LumenMeshSDK.framework; sourceTree = "<group>"; };
+		7A9686F8286C80ED00450C0A /* LumenAVMeshPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LumenAVMeshPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A968701286C80ED00450C0A /* LumenAVMeshPluginTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LumenAVMeshPluginTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A96871F286C925400450C0A /* LumenMeshSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LumenMeshSDK.framework; path = ../Pods/LumenMeshSDK/Carthage/Build/tvOS/LumenMeshSDK.framework; sourceTree = "<group>"; };
+		81F7F66542B63B0FD8655AF2 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A52FF021659D4595817E6BCD /* Pods-Plugin-Mesh-LumenAVMeshPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Mesh-LumenAVMeshPlugin.release.xcconfig"; path = "Target Support Files/Pods-Plugin-Mesh-LumenAVMeshPlugin/Pods-Plugin-Mesh-LumenAVMeshPlugin.release.xcconfig"; sourceTree = "<group>"; };
+		B853F790C99A192257B3DBD7 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8FB39A5E7DC57582D52AE9B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.debug.xcconfig"; path = "Target Support Files/Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV/Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.debug.xcconfig"; sourceTree = "<group>"; };
+		B945359000312E86A8E644E9 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C958C399515B0AA2D921BA16 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.release.xcconfig"; path = "Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.release.xcconfig"; sourceTree = "<group>"; };
+		E1CF48460524470038091CD3 /* Pods-Plugin-LumenAVPluginMesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin-LumenAVPluginMesh.release.xcconfig"; path = "Target Support Files/Pods-Plugin-LumenAVPluginMesh/Pods-Plugin-LumenAVPluginMesh.release.xcconfig"; sourceTree = "<group>"; };
+		FB84E9005A0AA688993D092E /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD8B81964D0344B850596BF7 /* Pods_Plugin_Mesh_LumenAVMeshPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Plugin_Mesh_LumenAVMeshPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A9121E9286CB7BC000C6702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C7F6A4365605383A3AFC992 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9121F7286CB7C8000C6702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91492F5B0F684CAA0E64823D /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A912201286CBE67000C6702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A912208286CBE68000C6702 /* LumenAVOrchestratorPlugin.framework in Frameworks */,
+				2CED614A234FDFF0811B930D /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A91220F286CBEA8000C6702 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A912216286CBEA8000C6702 /* LumenAVOrchestratorPlugin.framework in Frameworks */,
+				FFB8D5B18F1D932984261A80 /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A968696286B925000450C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A35A68B0BD045DFB7A78F124 /* Pods_Plugin_Mesh_LumenAVMeshPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686A0286B925000450C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9686A4286B925000450C0A /* LumenAVMeshPlugin.framework in Frameworks */,
+				7F0A93AC5579A5A15946E7DB /* Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686F5286C80ED00450C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F8B8DF6658ED2193409A886 /* Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686FE286C80ED00450C0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A968702286C80ED00450C0A /* LumenAVMeshPlugin.framework in Frameworks */,
+				669237CF02AC8667AFAB0B38 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A2697978D7E3944960F8922 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				682CD148E56BF313E2F67E91 /* Pods-Plugin-LumenAVPluginMesh.debug.xcconfig */,
+				E1CF48460524470038091CD3 /* Pods-Plugin-LumenAVPluginMesh.release.xcconfig */,
+				78A9A7536560B000C808C1AA /* Pods-Plugin-LumenAVPluginMeshTV.debug.xcconfig */,
+				6E1AD473B6DB6D7A006D619A /* Pods-Plugin-LumenAVPluginMeshTV.release.xcconfig */,
+				13A8BC92140D3AF0A11B1436 /* Pods-Plugin-Mesh-LumenAVMeshPlugin.debug.xcconfig */,
+				A52FF021659D4595817E6BCD /* Pods-Plugin-Mesh-LumenAVMeshPlugin.release.xcconfig */,
+				3D060B00E1AEE15F7B01705F /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.debug.xcconfig */,
+				7756D1154FFE2FA53ABF6B58 /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.release.xcconfig */,
+				1A873AD264E586A250D7009B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.debug.xcconfig */,
+				13AF6555B91943D0251458C0 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.release.xcconfig */,
+				B8FB39A5E7DC57582D52AE9B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.debug.xcconfig */,
+				10D62BB38378E66814F56009 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.release.xcconfig */,
+				4ACC1037077771F68729DD1B /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.debug.xcconfig */,
+				3C05421B10CD68E9FF809E83 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.release.xcconfig */,
+				648E90EA60D4806524643B05 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.debug.xcconfig */,
+				7874C69A897DAD928D258733 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.release.xcconfig */,
+				0E239754F8B0F244CEA079F9 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.debug.xcconfig */,
+				C958C399515B0AA2D921BA16 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.release.xcconfig */,
+				20685676AF9EFC54242A8C23 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.debug.xcconfig */,
+				24EF5E29FAB1425DF27F7CF7 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		5D081CA461C963A3B74E0616 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A9686CE286BBA5A00450C0A /* LumenMeshSDK.framework */,
+				7A96871F286C925400450C0A /* LumenMeshSDK.framework */,
+				FD8B81964D0344B850596BF7 /* Pods_Plugin_Mesh_LumenAVMeshPlugin.framework */,
+				0D8E6F8E0AF5FA1D2CB76081 /* Pods_Plugin_Mesh_LumenAVMeshPluginTV.framework */,
+				B945359000312E86A8E644E9 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPlugin.framework */,
+				5C6BE1FD8A937CE9901D05F3 /* Pods_Plugin_Orchestrator_LumenAVOrchestratorPluginTV.framework */,
+				B853F790C99A192257B3DBD7 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTVTests.framework */,
+				81F7F66542B63B0FD8655AF2 /* Pods_Plugin_PluginTests_LumenAVMeshPluginTests.framework */,
+				FB84E9005A0AA688993D092E /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTVTests.framework */,
+				38E45E4A27A206B30E41452C /* Pods_Plugin_PluginTests_LumenAVOrchestratorPluginTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A96868F286B925000450C0A = {
+			isa = PBXGroup;
+			children = (
+				7A96869B286B925000450C0A /* AVPlugin */,
+				7A9686A7286B925000450C0A /* AVPluginTests */,
+				7A96869A286B925000450C0A /* Products */,
+				5D081CA461C963A3B74E0616 /* Frameworks */,
+				0A2697978D7E3944960F8922 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		7A96869A286B925000450C0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A968699286B925000450C0A /* LumenAVMeshPlugin.framework */,
+				7A9686A3286B925000450C0A /* LumenAVMeshPluginTests.xctest */,
+				7A9686F8286C80ED00450C0A /* LumenAVMeshPlugin.framework */,
+				7A968701286C80ED00450C0A /* LumenAVMeshPluginTVTests.xctest */,
+				7A9121EF286CB7BC000C6702 /* LumenAVOrchestratorPlugin.framework */,
+				7A9121FD286CB7C8000C6702 /* LumenAVOrchestratorPlugin.framework */,
+				7A912204286CBE67000C6702 /* LumenAVOrchestratorPluginTests.xctest */,
+				7A912212286CBEA8000C6702 /* LumenAVOrchestratorPluginTVTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A96869B286B925000450C0A /* AVPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				7A96869C286B925000450C0A /* AVPlugin.h */,
+				7A9686B3286B954600450C0A /* LMDeliveryClientPlugin.swift */,
+				7A9686B5286B970600450C0A /* LMAVPlayerInteractor.swift */,
+			);
+			path = AVPlugin;
+			sourceTree = "<group>";
+		};
+		7A9686A7286B925000450C0A /* AVPluginTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A9686A8286B925000450C0A /* AVPluginMeshTests.swift */,
+				7A912206286CBE67000C6702 /* AVPluginOrchestratorTests.swift */,
+			);
+			path = AVPluginTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7A9121E3286CB7BC000C6702 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9121E4286CB7BC000C6702 /* AVPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9121F2286CB7C8000C6702 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9121F3286CB7C8000C6702 /* AVPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A968694286B925000450C0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9686AA286B925000450C0A /* AVPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686F3286C80ED00450C0A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A968712286C82E700450C0A /* AVPlugin.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		7A9121E1286CB7BC000C6702 /* LumenAVOrchestratorPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9121EC286CB7BC000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPlugin" */;
+			buildPhases = (
+				7A9121E2286CB7BC000C6702 /* [CP] Check Pods Manifest.lock */,
+				7A9121E3286CB7BC000C6702 /* Headers */,
+				7A9121E5286CB7BC000C6702 /* Sources */,
+				7A9121E9286CB7BC000C6702 /* Frameworks */,
+				7A9121EB286CB7BC000C6702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LumenAVOrchestratorPlugin;
+			productName = AVPlugin;
+			productReference = 7A9121EF286CB7BC000C6702 /* LumenAVOrchestratorPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7A9121F0286CB7C8000C6702 /* LumenAVOrchestratorPluginTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9121FA286CB7C8000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTV" */;
+			buildPhases = (
+				7A9121F1286CB7C8000C6702 /* [CP] Check Pods Manifest.lock */,
+				7A9121F2286CB7C8000C6702 /* Headers */,
+				7A9121F4286CB7C8000C6702 /* Sources */,
+				7A9121F7286CB7C8000C6702 /* Frameworks */,
+				7A9121F9286CB7C8000C6702 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LumenAVOrchestratorPluginTV;
+			productName = LumenAVPlayerMeshTV;
+			productReference = 7A9121FD286CB7C8000C6702 /* LumenAVOrchestratorPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7A912203286CBE67000C6702 /* LumenAVOrchestratorPluginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A91220B286CBE68000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTests" */;
+			buildPhases = (
+				45B681B59B95D9D65F76585B /* [CP] Check Pods Manifest.lock */,
+				7A912200286CBE67000C6702 /* Sources */,
+				7A912201286CBE67000C6702 /* Frameworks */,
+				7A912202286CBE67000C6702 /* Resources */,
+				F2134EFAA57176BF87C660F1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A91220A286CBE68000C6702 /* PBXTargetDependency */,
+			);
+			name = LumenAVOrchestratorPluginTests;
+			productName = LumenAVOrchestratorPluginTests;
+			productReference = 7A912204286CBE67000C6702 /* LumenAVOrchestratorPluginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A912211286CBEA8000C6702 /* LumenAVOrchestratorPluginTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A912219286CBEA8000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTVTests" */;
+			buildPhases = (
+				046609695661BA65E5E39E06 /* [CP] Check Pods Manifest.lock */,
+				7A91220E286CBEA8000C6702 /* Sources */,
+				7A91220F286CBEA8000C6702 /* Frameworks */,
+				7A912210286CBEA8000C6702 /* Resources */,
+				D58DD8355341F44628C7AEB2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A912218286CBEA8000C6702 /* PBXTargetDependency */,
+			);
+			name = LumenAVOrchestratorPluginTVTests;
+			productName = LumenAVOrchestratorPluginTVTests;
+			productReference = 7A912212286CBEA8000C6702 /* LumenAVOrchestratorPluginTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A968698286B925000450C0A /* LumenAVMeshPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9686AD286B925000450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPlugin" */;
+			buildPhases = (
+				5C7C07EB952DD0B9EBC565DF /* [CP] Check Pods Manifest.lock */,
+				7A968694286B925000450C0A /* Headers */,
+				7A968695286B925000450C0A /* Sources */,
+				7A968696286B925000450C0A /* Frameworks */,
+				7A968697286B925000450C0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LumenAVMeshPlugin;
+			productName = AVPlugin;
+			productReference = 7A968699286B925000450C0A /* LumenAVMeshPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7A9686A2286B925000450C0A /* LumenAVMeshPluginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9686B0286B925000450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTests" */;
+			buildPhases = (
+				ED5177D63348AA38298723FD /* [CP] Check Pods Manifest.lock */,
+				7A96869F286B925000450C0A /* Sources */,
+				7A9686A0286B925000450C0A /* Frameworks */,
+				7A9686A1286B925000450C0A /* Resources */,
+				6660007F8C047CA40EFF1350 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A9686A6286B925000450C0A /* PBXTargetDependency */,
+			);
+			name = LumenAVMeshPluginTests;
+			productName = AVPluginTests;
+			productReference = 7A9686A3286B925000450C0A /* LumenAVMeshPluginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A9686F7286C80ED00450C0A /* LumenAVMeshPluginTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A968709286C80ED00450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTV" */;
+			buildPhases = (
+				865ACA6A3EEED4F9D0F5952B /* [CP] Check Pods Manifest.lock */,
+				7A9686F3286C80ED00450C0A /* Headers */,
+				7A9686F4286C80ED00450C0A /* Sources */,
+				7A9686F5286C80ED00450C0A /* Frameworks */,
+				7A9686F6286C80ED00450C0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LumenAVMeshPluginTV;
+			productName = LumenAVPlayerMeshTV;
+			productReference = 7A9686F8286C80ED00450C0A /* LumenAVMeshPlugin.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7A968700286C80ED00450C0A /* LumenAVMeshPluginTVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A96870C286C80ED00450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTVTests" */;
+			buildPhases = (
+				B0F51BECD4FE55395C8D4C38 /* [CP] Check Pods Manifest.lock */,
+				7A9686FD286C80ED00450C0A /* Sources */,
+				7A9686FE286C80ED00450C0A /* Frameworks */,
+				7A9686FF286C80ED00450C0A /* Resources */,
+				F47A026793677C4EEC5D7631 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A968704286C80ED00450C0A /* PBXTargetDependency */,
+			);
+			name = LumenAVMeshPluginTVTests;
+			productName = LumenAVPlayerMeshTVTests;
+			productReference = 7A968701286C80ED00450C0A /* LumenAVMeshPluginTVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A968690286B925000450C0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					7A912203286CBE67000C6702 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7A912211286CBEA8000C6702 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7A968698286B925000450C0A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7A9686A2286B925000450C0A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7A9686F7286C80ED00450C0A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					7A968700286C80ED00450C0A = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 7A968693286B925000450C0A /* Build configuration list for PBXProject "AVPlugin" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A96868F286B925000450C0A;
+			productRefGroup = 7A96869A286B925000450C0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A968698286B925000450C0A /* LumenAVMeshPlugin */,
+				7A9686A2286B925000450C0A /* LumenAVMeshPluginTests */,
+				7A9686F7286C80ED00450C0A /* LumenAVMeshPluginTV */,
+				7A968700286C80ED00450C0A /* LumenAVMeshPluginTVTests */,
+				7A9121E1286CB7BC000C6702 /* LumenAVOrchestratorPlugin */,
+				7A912203286CBE67000C6702 /* LumenAVOrchestratorPluginTests */,
+				7A9121F0286CB7C8000C6702 /* LumenAVOrchestratorPluginTV */,
+				7A912211286CBEA8000C6702 /* LumenAVOrchestratorPluginTVTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A9121EB286CB7BC000C6702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9121F9286CB7C8000C6702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A912202286CBE67000C6702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A912210286CBEA8000C6702 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A968697286B925000450C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686A1286B925000450C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686F6286C80ED00450C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686FF286C80ED00450C0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		046609695661BA65E5E39E06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45B681B59B95D9D65F76585B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C7C07EB952DD0B9EBC565DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-Mesh-LumenAVMeshPlugin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6660007F8C047CA40EFF1350 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A9121E2286CB7BC000C6702 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7A9121F1286CB7C8000C6702 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		865ACA6A3EEED4F9D0F5952B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-Mesh-LumenAVMeshPluginTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0F51BECD4FE55395C8D4C38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D58DD8355341F44628C7AEB2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED5177D63348AA38298723FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Plugin-PluginTests-LumenAVMeshPluginTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2134EFAA57176BF87C660F1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests/Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F47A026793677C4EEC5D7631 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests/Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A9121E5286CB7BC000C6702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9121E6286CB7BC000C6702 /* LMDeliveryClientPlugin.swift in Sources */,
+				7A9121E7286CB7BC000C6702 /* LMAVPlayerInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9121F4286CB7C8000C6702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9121F5286CB7C8000C6702 /* LMDeliveryClientPlugin.swift in Sources */,
+				7A9121F6286CB7C8000C6702 /* LMAVPlayerInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A912200286CBE67000C6702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A91221E286CBF29000C6702 /* AVPluginOrchestratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A91220E286CBEA8000C6702 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A91221F286CBF2A000C6702 /* AVPluginOrchestratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A968695286B925000450C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9686B4286B954600450C0A /* LMDeliveryClientPlugin.swift in Sources */,
+				7A9686B6286B970600450C0A /* LMAVPlayerInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A96869F286B925000450C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9686A9286B925000450C0A /* AVPluginMeshTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686F4286C80ED00450C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A968710286C81E900450C0A /* LMDeliveryClientPlugin.swift in Sources */,
+				7A968711286C81EC00450C0A /* LMAVPlayerInteractor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9686FD286C80ED00450C0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9121CD286CAF33000C6702 /* AVPluginMeshTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A91220A286CBE68000C6702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 7A9121E1286CB7BC000C6702 /* LumenAVOrchestratorPlugin */;
+			targetProxy = 7A912209286CBE68000C6702 /* PBXContainerItemProxy */;
+		};
+		7A912218286CBEA8000C6702 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9121F0286CB7C8000C6702 /* LumenAVOrchestratorPluginTV */;
+			targetProxy = 7A912217286CBEA8000C6702 /* PBXContainerItemProxy */;
+		};
+		7A9686A6286B925000450C0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A968698286B925000450C0A /* LumenAVMeshPlugin */;
+			targetProxy = 7A9686A5286B925000450C0A /* PBXContainerItemProxy */;
+		};
+		7A968704286C80ED00450C0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9686F7286C80ED00450C0A /* LumenAVMeshPluginTV */;
+			targetProxy = 7A968703286C80ED00450C0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		7A9121ED286CB7BC000C6702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A873AD264E586A250D7009B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVOrchestratorPlugin;
+				PRODUCT_NAME = LumenAVOrchestratorPlugin;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7A9121EE286CB7BC000C6702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13AF6555B91943D0251458C0 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPlugin.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVOrchestratorPlugin;
+				PRODUCT_NAME = LumenAVOrchestratorPlugin;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7A9121FB286CB7C8000C6702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8FB39A5E7DC57582D52AE9B /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVOrchestratorPlugin;
+				PRODUCT_NAME = LumenAVOrchestratorPlugin;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7A9121FC286CB7C8000C6702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10D62BB38378E66814F56009 /* Pods-Plugin-Orchestrator-LumenAVOrchestratorPluginTV.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVOrchestratorPlugin;
+				PRODUCT_NAME = LumenAVOrchestratorPlugin;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7A91220C286CBE68000C6702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20685676AF9EFC54242A8C23 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVOrchestratorPluginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A91220D286CBE68000C6702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24EF5E29FAB1425DF27F7CF7 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVOrchestratorPluginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A91221A286CBEA8000C6702 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E239754F8B0F244CEA079F9 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVOrchestratorPluginTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
+			};
+			name = Debug;
+		};
+		7A91221B286CBEA8000C6702 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C958C399515B0AA2D921BA16 /* Pods-Plugin-PluginTests-LumenAVOrchestratorPluginTVTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVOrchestratorPluginTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
+			};
+			name = Release;
+		};
+		7A9686AB286B925000450C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7A9686AC286B925000450C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7A9686AE286B925000450C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13A8BC92140D3AF0A11B1436 /* Pods-Plugin-Mesh-LumenAVMeshPlugin.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DMESH";
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVMeshPlugin;
+				PRODUCT_NAME = LumenAVMeshPlugin;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7A9686AF286B925000450C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A52FF021659D4595817E6BCD /* Pods-Plugin-Mesh-LumenAVMeshPlugin.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DMESH";
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVMeshPlugin;
+				PRODUCT_NAME = LumenAVMeshPlugin;
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7A9686B1286B925000450C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 648E90EA60D4806524643B05 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVPluginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A9686B2286B925000450C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7874C69A897DAD928D258733 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVPluginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A96870A286C80ED00450C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D060B00E1AEE15F7B01705F /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DMESH";
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVMeshPlugin;
+				PRODUCT_NAME = LumenAVMeshPlugin;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Debug;
+		};
+		7A96870B286C80ED00450C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7756D1154FFE2FA53ABF6B58 /* Pods-Plugin-Mesh-LumenAVMeshPluginTV.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_SWIFT_FLAGS = "-DMESH";
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.AVMeshPlugin;
+				PRODUCT_NAME = LumenAVMeshPlugin;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+				VALIDATE_WORKSPACE = YES;
+			};
+			name = Release;
+		};
+		7A96870D286C80ED00450C0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ACC1037077771F68729DD1B /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVPlayerMeshTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
+			};
+			name = Debug;
+		};
+		7A96870E286C80ED00450C0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C05421B10CD68E9FF809E83 /* Pods-Plugin-PluginTests-LumenAVMeshPluginTVTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.lumen.delivery.client.LumenAVPlayerMeshTVTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A9121EC286CB7BC000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9121ED286CB7BC000C6702 /* Debug */,
+				7A9121EE286CB7BC000C6702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9121FA286CB7C8000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9121FB286CB7C8000C6702 /* Debug */,
+				7A9121FC286CB7C8000C6702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A91220B286CBE68000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A91220C286CBE68000C6702 /* Debug */,
+				7A91220D286CBE68000C6702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A912219286CBEA8000C6702 /* Build configuration list for PBXNativeTarget "LumenAVOrchestratorPluginTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A91221A286CBEA8000C6702 /* Debug */,
+				7A91221B286CBEA8000C6702 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A968693286B925000450C0A /* Build configuration list for PBXProject "AVPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9686AB286B925000450C0A /* Debug */,
+				7A9686AC286B925000450C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9686AD286B925000450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9686AE286B925000450C0A /* Debug */,
+				7A9686AF286B925000450C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9686B0286B925000450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9686B1286B925000450C0A /* Debug */,
+				7A9686B2286B925000450C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A968709286C80ED00450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A96870A286C80ED00450C0A /* Debug */,
+				7A96870B286C80ED00450C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A96870C286C80ED00450C0A /* Build configuration list for PBXNativeTarget "LumenAVMeshPluginTVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A96870D286C80ED00450C0A /* Debug */,
+				7A96870E286C80ED00450C0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A968690286B925000450C0A /* Project object */;
+}

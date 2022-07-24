@@ -1,0 +1,20 @@
+PODS:
+  - LumenMeshSDK (22.03.5)
+  - LumenOrchestratorSDK (22.03.5)
+
+DEPENDENCIES:
+  - LumenMeshSDK
+  - LumenOrchestratorSDK
+
+SPEC REPOS:
+  trunk:
+    - LumenMeshSDK
+    - LumenOrchestratorSDK
+
+SPEC CHECKSUMS:
+  LumenMeshSDK: 1b9e8cd0a4c9142a0b344a4ff8b8f14dc2ab2be3
+  LumenOrchestratorSDK: dd0e5d40e6c4bd01a422827d80c472bcede8b0fd
+
+PODFILE CHECKSUM: 07cb7e4b87a86172d6b142ef23ec360c2f17c586
+
+COCOAPODS: 1.11.2
