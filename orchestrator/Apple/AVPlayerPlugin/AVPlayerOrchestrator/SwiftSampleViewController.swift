@@ -19,9 +19,6 @@ class SwiftSampleViewController: AVPlayerViewController {
   override func viewDidDisappear(_ animated: Bool) {
     super.viewDidDisappear(animated)
     plugin?.stop()
-    NotificationCenter.default.removeObserver(self,
-                                              name: AVAudioSession.routeChangeNotification,
-                                              object: AVAudioSession.sharedInstance())
   }
   
   override func viewDidAppear(_ animated: Bool) {

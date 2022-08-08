@@ -47,11 +47,16 @@ Add the following lines with the right parameters values.
 </dict>
 ```
 
-### 4 - Importing the SDK
+### 4 - Importing the SDK & plugin
 The SDK has been implemented in Objective-C, so to import it in a swift project a bridge-header is needed. [More info](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis).
 
 ```
 #import <LumenOrchestratorSDK/LumenOrchestratorSDK.h>
+```
+
+then where the plugin is needed
+```
+import LumenCDNLoadBalancerAVPlayerPlugin
 ```
 
 ## Code integration
@@ -59,68 +64,50 @@ The SDK has been implemented in Objective-C, so to import it in a swift project 
 ### 1 - Initialize the Delivery SDK from the App delegate [application(_:didFinishLaunchingWithOptions:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
 ```
- LMDeliveryClient.initializeApp()
+ LMDeliveryClientPlugin.initializeApp()
 ```
 
-### 2 - Build and start the DeliveryClient
+### 2 - Build and start the plugin
 Declare the deliverClient as an instance variable:
 ```
-var deliveryClient: LMDeliveryClient?
+var plugin: LMDeliveryClientPlugin?
 ```
 
 Build the delivery client with the mandatory fields which are the `playerIntertactor`, `orchestratorProperty`, and the `manifestUrl`
 ```swift
-deliveryClient = LMDeliveryClientBuilder.clientBuilder()
-    .playerInteractor(<#playerInteractor#>)
-    .contentId(<#string#>)
-    .orchestratorProperty(<#string#>)   
-    .build(<#manifestUrl#>)
-deliveryClient?.start()
-```
-
-
-** PlayerInteractor**
-The playerInteractor is a component in charge of the interactions with the player. This is essential to monitor the Quality of Service of the current playback session.
-In this example, the `PlayerInteractor` implements `LMPlayerInteractorBase` and serves as a Helper class of the sample app project, with a reference to the player -> [More info](AVPlayerOrchestrator/PlayerInteractor.swift).
-
-The player Interactor is a class which implements `LMPlayerInteractorBase` and raises events with the associated `super` methods.
-
-Example:
-- When the playback starts, the `.playing` event is raised as following:
-```
- super.playerStateDidChange(.playing)
+plugin = LMDeliveryClientPlugin.newBuilder(uri: <#manifestUrl)
+      .createAVPlayer()
+      .orchestratorOptions({ o in
+        o.contentId(<#string#>)
+        o.orchestratorProperty(<#string#>)
+      }).start()
 ```
 
 ### 3 - Play the stream
-Stat the player with the new url provided by the delivery client.
-```swift
-guard let deliveryUrl = deliveryClient?.localManifestURL else {
-  print("Local Url manifets could not be generated")
-  return
-}
-    
-let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
-player = AVPlayer(playerItem: playerItem)
-/*
-* 
-* We are calling here linkPlayer to start the playerInteractor
-* 
-*/
-playerInteractor.linkPlayer(player!)
-// Call the player play() method
-player?.play()
+
+An AVPlayer instance was automatically created with the correct AVPlayerItem.
+
+Retrieve it and set it to your AVPlayerController
+```
+player = plugin.avPlayer
 ```
 
-### Stop the SDK
-Make sure to stop the delivery client, we recommend to put it in the `viewDidDisappear(:bool)` or any callback closing the player.
+Start playback
+```swift
+plugin.avPlayer.play()
+```
+
+### Stop the plugin
+
+Make sure to stop the plugin, we recommend to put it in the `viewDidDisappear(:bool)` or any callback closing the player.
 ```swift 
-self.deliveryClient?.stop()
+plugin?.stop()
 ```
 
 ### Display stats
 
-A helper method is provided byt the client to display the stats on a defined `UIView`.
+A helper method is provided by the plugin to display the stats on a defined `UIView`.
 ```swift 
- self.deliveryClient?.displayStatWiew(someView!)
+ plugin.displayStatsView(someView!)
 ```
 Note: In this sample app project, we are using `contentOverlayView` a subview of `AVPlayerViewController`.
