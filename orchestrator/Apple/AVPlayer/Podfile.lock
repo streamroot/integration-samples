@@ -1,5 +1,5 @@
 PODS:
-  - LumenOrchestratorSDK (1.1.0)
+  - LumenOrchestratorSDK (22.06.0)
 
 DEPENDENCIES:
   - LumenOrchestratorSDK
@@ -9,8 +9,8 @@ SPEC REPOS:
     - LumenOrchestratorSDK
 
 SPEC CHECKSUMS:
-  LumenOrchestratorSDK: 58a17d1ef175620d190a81705f091ac4e24ac5eb
+  LumenOrchestratorSDK: 8bb38384d09a48429833edb214361713714d8475
 
 PODFILE CHECKSUM: 93b2aabbd8251e6daef67d8a5f089d7800e2dc76
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.11.2
