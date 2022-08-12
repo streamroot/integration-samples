@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5052E99324ED5F31009D0804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
+		5052E99724ED5F31009D0804 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
+		5052E99A24ED5F31009D0804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99824ED5F31009D0804 /* Main.storyboard */; };
+		5052E99C24ED5F34009D0804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99B24ED5F34009D0804 /* Assets.xcassets */; };
+		5052E99F24ED5F34009D0804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */; };
+		5052E9B624EE629F009D0804 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5052E9B524EE629F009D0804 /* AVKit.framework */; };
+		7A76190B24FE4A3600366D93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190924FE4A3600366D93 /* Main.storyboard */; };
+		7A76190D24FE4A3900366D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190C24FE4A3900366D93 /* Assets.xcassets */; };
+		7A76191024FE4A3900366D93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */; };
+		7A76191524FE4AF100366D93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
+		7A76191624FE542C00366D93 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
+		BD070DA01B0CD01D6147F3DA /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */; };
+		BEAC80C2D6836E8A6FD03798 /* Pods_AVPlayerOrchestrator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.release.xcconfig"; sourceTree = "<group>"; };
+		281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestratorTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5052E98F24ED5F31009D0804 /* AVPlayerOrchestrator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerOrchestrator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5052E99224ED5F31009D0804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSampleViewController.swift; sourceTree = "<group>"; };
+		5052E99924ED5F31009D0804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5052E99B24ED5F34009D0804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5052E99E24ED5F34009D0804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5052E9A024ED5F34009D0804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5052E9A724ED62F6009D0804 /* AVPlayerOrchestrator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVPlayerOrchestrator-Bridging-Header.h"; sourceTree = "<group>"; };
+		5052E9B524EE629F009D0804 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		7A76190324FE4A3600366D93 /* AVPlayerOrchestratorTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerOrchestratorTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A76190A24FE4A3600366D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A76190C24FE4A3900366D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A76190F24FE4A3900366D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A76191124FE4A3900366D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestratorTV.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV.debug.xcconfig"; sourceTree = "<group>"; };
+		DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.debug.xcconfig"; sourceTree = "<group>"; };
+		F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerOrchestrator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerOrchestrator.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5052E98C24ED5F31009D0804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E9B624EE629F009D0804 /* AVKit.framework in Frameworks */,
+				BEAC80C2D6836E8A6FD03798 /* Pods_AVPlayerOrchestrator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A76190024FE4A3600366D93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD070DA01B0CD01D6147F3DA /* Pods_AVPlayerOrchestratorTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		219FC9BF9BA34537FC2165D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */,
+				FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */,
+				B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */,
+				15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5052E98624ED5F31009D0804 = {
+			isa = PBXGroup;
+			children = (
+				5052E99124ED5F31009D0804 /* AVPlayerOrchestrator */,
+				7A76190424FE4A3600366D93 /* AVPlayerOrchestratorTV */,
+				5052E99024ED5F31009D0804 /* Products */,
+				219FC9BF9BA34537FC2165D6 /* Pods */,
+				80FA041AEA5BC3E9CD581152 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5052E99024ED5F31009D0804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5052E98F24ED5F31009D0804 /* AVPlayerOrchestrator.app */,
+				7A76190324FE4A3600366D93 /* AVPlayerOrchestratorTV.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5052E99124ED5F31009D0804 /* AVPlayerOrchestrator */ = {
+			isa = PBXGroup;
+			children = (
+				5052E9A724ED62F6009D0804 /* AVPlayerOrchestrator-Bridging-Header.h */,
+				5052E9A024ED5F34009D0804 /* Info.plist */,
+				5052E99224ED5F31009D0804 /* AppDelegate.swift */,
+				5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */,
+				5052E99B24ED5F34009D0804 /* Assets.xcassets */,
+				5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */,
+				5052E99824ED5F31009D0804 /* Main.storyboard */,
+			);
+			path = AVPlayerOrchestrator;
+			sourceTree = "<group>";
+		};
+		7A76190424FE4A3600366D93 /* AVPlayerOrchestratorTV */ = {
+			isa = PBXGroup;
+			children = (
+				7A76190924FE4A3600366D93 /* Main.storyboard */,
+				7A76190C24FE4A3900366D93 /* Assets.xcassets */,
+				7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */,
+				7A76191124FE4A3900366D93 /* Info.plist */,
+			);
+			path = AVPlayerOrchestratorTV;
+			sourceTree = "<group>";
+		};
+		80FA041AEA5BC3E9CD581152 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5052E9B524EE629F009D0804 /* AVKit.framework */,
+				F79B3299812CB4F0DBB213A7 /* Pods_AVPlayerOrchestrator.framework */,
+				281761EA04BA1638CF0AE832 /* Pods_AVPlayerOrchestratorTV.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5052E98E24ED5F31009D0804 /* AVPlayerOrchestrator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5052E9A324ED5F34009D0804 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestrator" */;
+			buildPhases = (
+				C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */,
+				5052E98B24ED5F31009D0804 /* Sources */,
+				5052E98C24ED5F31009D0804 /* Frameworks */,
+				5052E98D24ED5F31009D0804 /* Resources */,
+				AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVPlayerOrchestrator;
+			productName = AVPlayerOrchestrator;
+			productReference = 5052E98F24ED5F31009D0804 /* AVPlayerOrchestrator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A76190224FE4A3600366D93 /* AVPlayerOrchestratorTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A76191424FE4A3900366D93 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestratorTV" */;
+			buildPhases = (
+				26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */,
+				7A7618FF24FE4A3600366D93 /* Sources */,
+				7A76190024FE4A3600366D93 /* Frameworks */,
+				7A76190124FE4A3600366D93 /* Resources */,
+				33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVPlayerOrchestratorTV;
+			productName = AVPlayerOrchestratorTV;
+			productReference = 7A76190324FE4A3600366D93 /* AVPlayerOrchestratorTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5052E98724ED5F31009D0804 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = Streamroot;
+				TargetAttributes = {
+					5052E98E24ED5F31009D0804 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					7A76190224FE4A3600366D93 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 5052E98A24ED5F31009D0804 /* Build configuration list for PBXProject "AVPlayerOrchestrator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5052E98624ED5F31009D0804;
+			productRefGroup = 5052E99024ED5F31009D0804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5052E98E24ED5F31009D0804 /* AVPlayerOrchestrator */,
+				7A76190224FE4A3600366D93 /* AVPlayerOrchestratorTV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5052E98D24ED5F31009D0804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E99F24ED5F34009D0804 /* LaunchScreen.storyboard in Resources */,
+				5052E99C24ED5F34009D0804 /* Assets.xcassets in Resources */,
+				5052E99A24ED5F31009D0804 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A76190124FE4A3600366D93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A76191024FE4A3900366D93 /* LaunchScreen.storyboard in Resources */,
+				7A76190D24FE4A3900366D93 /* Assets.xcassets in Resources */,
+				7A76190B24FE4A3600366D93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestratorTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestratorTV/Pods-AVPlayerOrchestratorTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerOrchestrator/Pods-AVPlayerOrchestrator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerOrchestrator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5052E98B24ED5F31009D0804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E99724ED5F31009D0804 /* SwiftSampleViewController.swift in Sources */,
+				5052E99324ED5F31009D0804 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A7618FF24FE4A3600366D93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A76191524FE4AF100366D93 /* AppDelegate.swift in Sources */,
+				7A76191624FE542C00366D93 /* SwiftSampleViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5052E99824ED5F31009D0804 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5052E99924ED5F31009D0804 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5052E99E24ED5F34009D0804 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7A76190924FE4A3600366D93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A76190A24FE4A3600366D93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A76190F24FE4A3900366D93 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5052E9A124ED5F34009D0804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5052E9A224ED5F34009D0804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5052E9A424ED5F34009D0804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB1EA5F2ACA3026B6D465E27 /* Pods-AVPlayerOrchestrator.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = AVPlayerOrchestrator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.ctl.delivery.sample.orch.AVPlayerOrchestrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerOrchestrator/AVPlayerOrchestrator-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5052E9A524ED5F34009D0804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD0326466C6A105DAA792B45 /* Pods-AVPlayerOrchestrator.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = AVPlayerOrchestrator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.ctl.delivery.sample.orch.AVPlayerOrchestrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerOrchestrator/AVPlayerOrchestrator-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A76191224FE4A3900366D93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B071C325DE67FAB484DF7488 /* Pods-AVPlayerOrchestratorTV.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = "$(SRCROOT)/AVPlayerOrchestrator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.ctl.delivery.sample.orch.AVPlayerOrchestrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerOrchestrator/AVPlayerOrchestrator-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Debug;
+		};
+		7A76191324FE4A3900366D93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15A414F87283619C813F9D0F /* Pods-AVPlayerOrchestratorTV.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = "$(SRCROOT)/AVPlayerOrchestrator/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.streamroot.ctl.delivery.sample.orch.AVPlayerOrchestrator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerOrchestrator/AVPlayerOrchestrator-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5052E98A24ED5F31009D0804 /* Build configuration list for PBXProject "AVPlayerOrchestrator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5052E9A124ED5F34009D0804 /* Debug */,
+				5052E9A224ED5F34009D0804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5052E9A324ED5F34009D0804 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestrator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5052E9A424ED5F34009D0804 /* Debug */,
+				5052E9A524ED5F34009D0804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A76191424FE4A3900366D93 /* Build configuration list for PBXNativeTarget "AVPlayerOrchestratorTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A76191224FE4A3900366D93 /* Debug */,
+				7A76191324FE4A3900366D93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5052E98724ED5F31009D0804 /* Project object */;
+}

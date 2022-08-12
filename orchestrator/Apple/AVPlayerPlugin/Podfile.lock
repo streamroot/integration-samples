@@ -1,0 +1,20 @@
+PODS:
+  - LumenCDNLoadBalancerAVPlayerPlugin (22.06.0.0):
+    - LumenOrchestratorSDK (~> 22.06.0)
+  - LumenOrchestratorSDK (22.06.0)
+
+DEPENDENCIES:
+  - LumenCDNLoadBalancerAVPlayerPlugin
+
+SPEC REPOS:
+  trunk:
+    - LumenCDNLoadBalancerAVPlayerPlugin
+    - LumenOrchestratorSDK
+
+SPEC CHECKSUMS:
+  LumenCDNLoadBalancerAVPlayerPlugin: b0c0ffb128331588044147afc2acbbfb167ab3ac
+  LumenOrchestratorSDK: 8bb38384d09a48429833edb214361713714d8475
+
+PODFILE CHECKSUM: 7f753bc22af1451a9f3921b1fc8d14403438ad8c
+
+COCOAPODS: 1.11.2
