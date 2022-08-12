@@ -2,9 +2,6 @@
 //  ViewController.swift
 //  AVPlayerOrchestrator
 //
-//  Created by Ndiaye, Lamine on 19/08/2020.
-//  Copyright © 2020 Streamroot. All rights reserved.
-//
 
 import AVKit
 import LumenCDNLoadBalancerAVPlayerPlugin

@@ -2,8 +2,6 @@
 //  PlayerViewController.swift
 //  AVPlayerMesh
 //
-//  Created by Mehala, Damien on 14/01/2022.
-//
 
 import UIKit
 import AVKit
@@ -71,4 +69,3 @@ class PlayerViewController: UIViewController {
     plugin.displayStatsView(statView)
   }
 }
-

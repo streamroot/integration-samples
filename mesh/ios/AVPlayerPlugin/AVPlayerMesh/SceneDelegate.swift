@@ -2,8 +2,6 @@
 //  SceneDelegate.swift
 //  AVPlayerMesh
 //
-//  Created by Mehala, Damien on 14/01/2022.
-//
 
 import UIKit
 
@@ -47,6 +45,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // to restore the scene back to its current state.
   }
 
-
 }
-

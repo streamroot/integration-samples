@@ -2,8 +2,6 @@
 //  AppDelegate.swift
 //  AVPlayerMesh
 //
-//  Created by Mehala, Damien on 14/01/2022.
-//
 
 import UIKit
 import LumenMeshAVPlayerPlugin
@@ -29,6 +27,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
   }
 
-
 }
-

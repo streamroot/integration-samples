@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  AVPlayerMesh
 //
-//  Created by Mehala, Damien on 14/01/2022.
-//
 
 import UIKit
 import AVKit
@@ -23,4 +21,3 @@ class ViewController: UIViewController {
     self.present(playerViewController, animated: true);
   }
 }
-
