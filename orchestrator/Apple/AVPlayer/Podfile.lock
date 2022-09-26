@@ -1,5 +1,5 @@
 PODS:
-  - LumenOrchestratorSDK (22.06.0)
+  - LumenOrchestratorSDK (22.09.0)
 
 DEPENDENCIES:
   - LumenOrchestratorSDK
@@ -9,7 +9,7 @@ SPEC REPOS:
     - LumenOrchestratorSDK
 
 SPEC CHECKSUMS:
-  LumenOrchestratorSDK: 8bb38384d09a48429833edb214361713714d8475
+  LumenOrchestratorSDK: 735bc203c27d3e7bf8a671fcd181b85d6576a931
 
 PODFILE CHECKSUM: 93b2aabbd8251e6daef67d8a5f089d7800e2dc76
 

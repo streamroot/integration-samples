@@ -4,12 +4,12 @@ target 'AVPlayerMesh' do
 
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'LumenMeshAVPlayerPlugin'
+  pod 'LumenMeshDeliveryAVPlayerPlugin'
 end
 
 target 'AVPlayerMeshTV' do
   platform :tvos, '13.0'
 
   use_frameworks!
-  pod 'LumenMeshAVPlayerPlugin'
+  pod 'LumenMeshDeliveryAVPlayerPlugin'
 end
