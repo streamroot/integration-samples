@@ -18,9 +18,9 @@ dependencyResolutionManagement {
 }
 ````
 ### Plugin versioning
-For given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-17:22.03.4.0`:
+For given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-17:22.09.0.0`:
 - `2-17` is the ExoPlayer `MAJOR-MINOR` => a specific plugin version will automatically take the last PATCH of ExoPlayer (ex: `2.17.3`)
-- `22.03.4.0` is the Mesh SDK version (`22.03.4`) appended with a plugin version (`.0`)
+- `22.09.0.0` is the Mesh SDK version (`22.09.0`) appended with a plugin version (`.0`)
 To summarize, one plugin version = one specific Mesh SDK version + one specific `MAJOR.MINOR` ExoPlayer version.
 **For that reason, it is recommended that you do not include ExoPlayer as a dependency by yourself but let the Plugin pull the right ExoPlayer version for you.**
 Forcing a different ExoPlayer version may lead to runtime errors such as `UnsatisfiedLinkError`, `ClassNotFoundException`, etc.
@@ -28,7 +28,7 @@ Forcing a different ExoPlayer version may lead to runtime errors such as `Unsati
 Add Mesh ExoPlayer plugin dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
 ````gradle
 // It is good practice to lock dependencies version
-def dc_version = '22.03.4'
+def dc_version = '22.09.0'
 def exo_version = '2-17'
 def plugin_patch = 0
 implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_version:$dc_version.$plugin_patch"
@@ -335,7 +335,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 
 Log example:
 ````
-I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"[REDACTED]","platform":"android","sdkVersion":"22.03.4","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
+I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"[REDACTED]","platform":"android","sdkVersion":"22.09.0","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Received response code/message => 200 / OK
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Inbound payload => {"activateDeliveryClient":true}
     2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Backend request done in 122 ms

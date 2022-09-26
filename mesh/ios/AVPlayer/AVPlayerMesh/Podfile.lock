@@ -1,5 +1,5 @@
 PODS:
-  - LumenMeshSDK (22.01.0)
+  - LumenMeshSDK (22.09.0)
 
 DEPENDENCIES:
   - LumenMeshSDK
@@ -9,7 +9,7 @@ SPEC REPOS:
     - LumenMeshSDK
 
 SPEC CHECKSUMS:
-  LumenMeshSDK: 0b970e8c996985faac9140f8e43f09bc3f54426e
+  LumenMeshSDK: 1db60098510a1b2387ce6ea541205b3dd96eea1a
 
 PODFILE CHECKSUM: 62deb70b2026f3da2f1b4d499f7376d700407664
 
