@@ -20,7 +20,7 @@ dependencyResolutionManagement {
 Add Mesh SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
 ````gradle
 // It is good practice to lock dependencies version
-def dc_version = "22.01.1"
+def dc_version = "22.09.0"
 
 implementation "io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version"
 ````
