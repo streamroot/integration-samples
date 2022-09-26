@@ -197,19 +197,19 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
         private final LoadControl loadControl;
 
         private final Field maxBufferField;
-        private final long minBufferUs;
+        private final Field minBufferField;
 
-        private LoadControlBufferTargetBridge(LoadControl loadControl, long minBufferUs) {
+        private LoadControlBufferTargetBridge(LoadControl loadControl, Field minBufferField) {
             this.loadControl = loadControl;
             maxBufferField = getAccessibleFieldElseThrow(loadControl.getClass(), MAX_BUFFER_FIELD_NAME);
-            this.minBufferUs = minBufferUs;
+            this.minBufferField = minBufferField;
         }
 
         private static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
             try {
-                final Field minBufferField = clazz.getDeclaredField(fieldName);
-                minBufferField.setAccessible(true);
-                return minBufferField;
+                final Field myField = clazz.getDeclaredField(fieldName);
+                myField.setAccessible(true);
+                return myField;
             } catch (Exception e) {
                 throw new IllegalArgumentException(String.format(
                         "Impossible to retrieve field `%s` value from LoadControl of type `%s`",
@@ -238,11 +238,15 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
 
         @Override
         public void setBufferTarget(double bufferTarget) {
-            final long maxBufferUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
-            if (maxBufferUs >= minBufferUs) try {
+            final long bufferTargetUs = TimeUnit.SECONDS.toMicros((long)bufferTarget);
+            try {
                 maxBufferField.setLong(
                         loadControl,
-                        maxBufferUs
+                        bufferTargetUs
+                );
+                minBufferField.setLong(
+                        loadControl,
+                        bufferTargetUs
                 );
             } catch (Exception ignored) {}
         }
@@ -255,7 +259,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
         private LoadControlBufferTargetBridgeV1(LoadControl loadControl) {
             super(
                     loadControl,
-                    getLongFromFieldElseThrow(loadControl, MIN_BUFFER_FIELD_NAME)
+                    getAccessibleFieldElseThrow(loadControl, MIN_BUFFER_FIELD_NAME)
             );
         }
     }
@@ -268,7 +272,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
         private LoadControlBufferTargetBridgeV2(LoadControl loadControl, boolean audioOnly) {
             super(
                     loadControl,
-                    getLongFromFieldElseThrow(
+                    getAccessibleFieldElseThrow(
                             loadControl,
                             audioOnly ? MIN_BUFFER_AUDIO_FIELD_NAME : MIN_BUFFER_VIDEO_FIELD_NAME
                     )

@@ -17,6 +17,7 @@ import com.google.android.exoplayer2.upstream.TransferListener
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorWrapperInterface
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState
+import java.lang.reflect.Field
 import java.util.concurrent.TimeUnit
 
 typealias Driver = LumenPlayerInteractorWrapperInterface.Driver
@@ -229,9 +230,9 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     BufferTargetBridge {
 
     protected fun LoadControl.getAccessibleFieldElseThrow(fieldName: String) = runCatching {
-        val minBufferField = this::class.java.getDeclaredField(fieldName)
-        minBufferField.isAccessible = true
-        minBufferField
+        val myField = this::class.java.getDeclaredField(fieldName)
+        myField.isAccessible = true
+        myField
     }.getOrNull() ?: throw IllegalArgumentException("Impossible to retrieve field `$fieldName` value from LoadControl of type `${this::class.java.simpleName}`")
 
     protected fun LoadControl.getLongFromFieldElseThrow(fieldName: String) = runCatching {
@@ -243,7 +244,7 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     }
 
     protected val maxBufferField = loadControl.getAccessibleFieldElseThrow(MAX_BUFFER_FIELD_NAME)
-    protected abstract val minBufferUs: Long
+    protected abstract val minBufferField: Field
 
     override fun bufferTarget(): Double {
         return runCatching {
@@ -252,11 +253,15 @@ private abstract class LoadControlBufferTargetBridge(protected val loadControl: 
     }
 
     override fun setBufferTarget(bufferTarget: Double) {
-        val maxBufferUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
+        val bufferTargetUs = TimeUnit.SECONDS.toMicros(bufferTarget.toLong())
         runCatching {
             maxBufferField.setLong(
                 loadControl,
-                maxOf(minBufferUs, maxBufferUs)
+                bufferTargetUs
+            )
+            minBufferField.setLong(
+                loadControl,
+                bufferTargetUs
             )
         }
     }
@@ -269,7 +274,7 @@ private class LoadControlBufferTargetBridgeV1(loadControl: LoadControl) :
         private const val MIN_BUFFER_FIELD_NAME = "minBufferUs"
     }
 
-    override val minBufferUs = loadControl.getLongFromFieldElseThrow(MIN_BUFFER_FIELD_NAME)
+    override val minBufferField = loadControl.getAccessibleFieldElseThrow(MIN_BUFFER_FIELD_NAME)
 }
 
 // 2.11
@@ -280,7 +285,7 @@ private class LoadControlBufferTargetBridgeV2(loadControl: LoadControl, audioOnl
         private const val MIN_BUFFER_VIDEO_FIELD_NAME = "minBufferVideoUs"
     }
 
-    override val minBufferUs = loadControl.getLongFromFieldElseThrow(
+    override val minBufferField = loadControl.getAccessibleFieldElseThrow(
         if (audioOnly) MIN_BUFFER_AUDIO_FIELD_NAME else MIN_BUFFER_VIDEO_FIELD_NAME
     )
 }
