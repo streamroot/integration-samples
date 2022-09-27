@@ -8,6 +8,8 @@ To integrate the Mesh Delivery SDK, we need:
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
 ## SDK installation
+The easiest way to get the Mesh Delivery SDK is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
+
 Add Streamroot's maven repository to the project settings in `settings.gradle`
 ````gradle
 dependencyResolutionManagement {
@@ -84,6 +86,8 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 </manifest>
 ```
 
+More info can be found in the [Android documentation](https://developer.android.com/training/articles/security-config).
+
 ## Set the Delivery Client Key
 In your `AndroidManifest.xml` add the Delivery Client Key in the application node
 ````xml
@@ -126,7 +130,19 @@ In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
 It is the component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-When integrating the SDK, you are free to implement this component but we provide an implementation example for ExoPlayer in [ExoPlayerMeshJava](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerInteractor.java).
+To feed the SDK properly, this class has to meet the following requirements:
+* The `playerError()` method must be called whenever an error occurs.
+* The `playerFrameDrop()` method must be called when a frame is dropped.
+* The `playerStateChange()` method must be notified of each player state change.
+* The `playerTrackSwitch()` method must be called when the player changes the current track.
+* The `playbackTime()` method should return the current playback time since the beginning in milliseconds.
+* The `bufferHealth()` should return the duration it is possible to play starting from the playback position using what has been buffered.
+* The `bufferTarget()` should return the target duration the player tries to have buffered at any time.
+* The `setBufferTarget(target: Double)` should set the target duration the player should try to have buffered at any time.
+* The `setEstimatedBandwidth(bps: Long?)` should force the bandwidth estimate of the player to the given value.
+* The `setBandwidthDriver(driver: Driver)` should set who is the driver for the bandwidth estimate between the SDK and the player.
+
+When integrating the SDK, you are free to implement this component but we provide an implementation example that satisifies these requirements for ExoPlayer in [ExoPlayerMeshJava](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerInteractor.java).
 
 ### 3. Instantiate a `LumenDeliveryClient`
 
