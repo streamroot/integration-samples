@@ -12,20 +12,20 @@ The Mesh Delivery SDK is delivered as an Xcode framework and is available on [Co
 
 ### Cocoapods
 To get the SDK via cocoapods, add `pod 'LumenMeshSDK'` to your podfile like this:
-````
+```
 target 'MyApp' do
   use_frameworks!
   pod 'LumenMeshSDK'
 end
-````
+```
 
 Then, execute `pod install`
 
 ### Carthage
 To get the SDK via Carthage, add a dependency on `LumenMeshSDK` like this:
-````
+```
 binary "https://sdk.streamroot.io/ios/LumenMeshSDK.json"
-````
+```
 
 Then, execute `carthage update --use-xcframeworks`
 
@@ -124,7 +124,7 @@ Calling `start()` on the `LMDeliveryClient` instance will start the SDK.
 
 While starting, the SDK will generate a new URL to leverage Mesh Delivery streaming capabilities. Once it is started, **make sure** to retrieve the final URL and instantiate an `AVPlayerItem` with it.
 
-````swift
+```swift
 var deliveryClient = createDeliveryClient()
 deliveryClient.start();
 
@@ -133,7 +133,7 @@ guard let deliveryUrl = deliveryClient.localManifestURL else {
 }
 
 let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
-````
+```
 
 ### 5. Play the stream
 
@@ -156,7 +156,7 @@ self.deliveryClient.stop()
 ## Additional options
 You can pass additional options during the creation of a `LMDeliveryClient`
 
-````swift
+```swift
 func createDeliveryClient() -> LMDeliveryClient {
   return LMDeliveryClientBuilder.clientBuilder()
          /*
@@ -216,26 +216,26 @@ func createDeliveryClient() -> LMDeliveryClient {
           */
          .build(url)
 }
-````
+```
 
 ## Troubleshooting
 
 ### Enable logs
 By default the log level is set to `OFF`, it can be override during a `LMDeliveryClient` creation:
-````swift
+```swift
 func createDeliveryClient() -> LMDeliveryClient {
   return LMDeliveryClientBuilder.clientBuilder()
          .playerInteractor(PlayerInteractor())
          .logLevel(.warning)
          .build(url)
 }
-````
+```
 
 ### StatsView
 A helper method is available to display various Mesh Delivery related stats on a specified UIView.
 
-````swift
+```swift
 // The implementer is in charge to create the view and to display it on top of the player controller/layer
 self.deliveryClient.displayStatWiew(someView!)
-````
+```
 **Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.

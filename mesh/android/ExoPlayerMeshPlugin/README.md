@@ -12,13 +12,13 @@ To integrate the Mesh Delivery plugin for ExoPlayer, you will need a valid Deliv
 The easiest way to get the Mesh Delivery plugin is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
 
 Add Streamroot's maven repository to the project settings in `settings.gradle` or project `build.gradle` depending or your repository declaration system.
-````gradle
+```gradle
 dependencyResolutionManagement {
     repositories {
         maven { url 'https://sdk.streamroot.io/android' }
     }
 }
-````
+```
 ### Plugin versioning
 For a given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-17:22.09.0.0`:
 - `2-17` is the ExoPlayer `MAJOR-MINOR` => a specific plugin version will automatically take the last PATCH of ExoPlayer (ex: `2.17.3`)
@@ -28,13 +28,13 @@ To summarize, one plugin version = one specific Mesh Delivery SDK version + one 
 Forcing a different ExoPlayer version may lead to runtime errors such as `UnsatisfiedLinkError`, `ClassNotFoundException`, etc.
 
 Add Mesh Delivery plugin for ExoPlayer dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
-````gradle
+```gradle
 // It is good practice to lock dependencies version
 def dc_version = '22.09.0'
 def exo_version = '2-17'
 def plugin_patch = 0
 implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_version:$dc_version.$plugin_patch"
-````
+```
 
 ### List of pulled dependencies
 
@@ -62,10 +62,10 @@ If you are obfuscating your code, add the following rules to your proguard:
 
 ### Declare permisions
 In your `AndroidManifest.xml` add the following permissions:
-````xml
+```xml
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-````
+```
 
 ### Network security
 
@@ -98,12 +98,12 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 
 ## Set the Delivery Client Key
 In your `AndroidManifest.xml`, add the `DeliveryClientKey` in the application node:
-````xml
+```xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
 android:value="<delivery-client-key>"
 />
-````
+```
 
 We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
 
@@ -289,10 +289,10 @@ val mediaItem = MediaItem.fromUri(finalUrl)
 
 Once the video is done playing, you have to stop the SDK created earlier.
 
-````kotlin
+```kotlin
 // Calling stop will finish ongoing tasks and release all resources used
 plugin.stop()
-````
+```
 
 ## Compact integration example
 
@@ -316,24 +316,24 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 
 ### Enable logs
 By default the log level is set to `OFF`, it can be override either at initilization which will propagate to all `LumenDeliveryClient` instances:
-````kotlin
+```kotlin
 LumenDeliveryClient.setLogLevel(LumenLogLevel.INFO)
 LumenDeliveryClient.initializeApp(this)
-````
+```
 
 or during `meshOptions`:
-````kotlin
+```kotlin
 LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
     logLevel(LumenLogLevel.INFO)
 }
-````
+```
 
 **Notes:**
 * Logs related to Mesh Delivery SDK will be prefixed with `[SR-KT]`.
 * Valid value for `LumenLogLevel` are `TRACE`, `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG` or `OFF`.
 
 Log example:
-````
+```
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"[REDACTED]","platform":"android","sdkVersion":"22.09.0","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Received response code/message => 200 / OK
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Inbound payload => {"activateDeliveryClient":true}
@@ -343,7 +343,7 @@ I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Contacting b
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] native library dir /data/app/io.streamroot.ctl.delivery.client.mesh.exoplayermesh-qvY91VH2lMA_qz5t0UEIwA==/lib/arm64
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] Load shared lib maestro_mesh SUCCESS
     2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Ending with final state => SUCCESS / YES, activated ? true, success ? true; took 154 ms
-````
+```
 ### StatsView
 
 Streamroot provides an optional utils library that allows the display of Mesh Delivery information on the device.
@@ -372,7 +372,7 @@ Add the `LumenStatsView` to your layout, ideally over the biggest surface. You c
 
 Retrieve your view by your preferred method and link it with a `LumenDeliveryClientPlugin` instance
 
-````kotlin
+```kotlin
 // Helper function to initializing the stats view
 private fun initStatsView(dcStatsView: View) {
     dcStatsView.apply {
@@ -389,5 +389,5 @@ private fun initStatsView(dcStatsView: View) {
 
 dcStatsView = ...
 initStatsView(dcStatsView)
-````
+```
 A red overlay with Mesh Delivery SDK related stats should be displayed. The stats view overlay can be reopened by clicking repeatedly anywhere on the screen.

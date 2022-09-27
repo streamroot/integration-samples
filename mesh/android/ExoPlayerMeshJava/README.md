@@ -11,21 +11,21 @@ To integrate the Mesh Delivery SDK, we need:
 The easiest way to get the Mesh Delivery SDK is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
 
 Add Streamroot's maven repository to the project settings in `settings.gradle`
-````gradle
+```gradle
 dependencyResolutionManagement {
     repositories {
         maven { url 'https://sdk.streamroot.io/android' }
     }
 }
-````
+```
 
 Add Mesh Delivery SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
-````gradle
+```gradle
 // It is good practice to lock dependencies version
 def dc_version = "22.09.0"
 
 implementation "io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version"
-````
+```
 Mesh Delivery SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
 
 - `org.jetbrains.kotlin:kotlin-reflect`
@@ -52,10 +52,10 @@ If you are obfuscating your code, add the following rules to your proguard
 
 ### Declare permisions
 In your `AndroidManifest.xml` add the following permissions
-````xml
+```xml
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-````
+```
 
 ### Network security
 
@@ -90,20 +90,20 @@ More info can be found in the [Android documentation](https://developer.android.
 
 ## Set the Delivery Client Key
 In your `AndroidManifest.xml` add the Delivery Client Key in the application node
-````xml
+```xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
 android:value="<delivery-client-key>"
 />
-````
+```
 
-We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if not possible, it is also possible to pass it at `LumenDeliveryClient` initialization.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient` initialization.
 
 ## Code integration
 
 ### 1. SDK Initialization
 
-SDK initialization is done preferably in an application context subclass. For that, you need to create a subclass of `Application` (or `MultiDexApplication` if your codebase is big and you support API level 19 or 20). Then, you can initialize the SDK.
+SDK initialization is done preferably in an application context subclass. For that, you need to create a subclass of `Application` (or `MultiDexApplication` if your codebase is big and you support API level 19 or 20). Then, you can initialize the SDK:
 
 ```java
 public class SRApplication extends MultiDexApplication {
@@ -124,7 +124,7 @@ In your `AndroidManifest.xml`, point to your custom application subclass:
 android:name=".SRApplication"
 ```
 
-### 2. Bridge between your Player and the `LumenDeliveryClient`
+### 2. Bridge between your player and the `LumenDeliveryClient`
 
 In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
@@ -278,7 +278,7 @@ LumenDeliveryClient.initializeApp(this);
 * Valid value for `LumenLogLevel` are `TRACE`, `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG` or `OFF`.
 
 Log example:
-````
+```
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"<delivery-client-key>","platform":"android","sdkVersion":"1.5.0-beta-3dda3f7","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Received response code/message => 200 / OK
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Inbound payload => {"activateDeliveryClient":true}
@@ -288,7 +288,7 @@ I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Contacting b
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] native library dir /data/app/io.streamroot.ctl.delivery.client.mesh.exoplayermesh-qvY91VH2lMA_qz5t0UEIwA==/lib/arm64
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] Load shared lib maestro_mesh SUCCESS
     2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Ending with final state => SUCCESS / YES, activated ? true, success ? true; took 154 ms
-````
+```
 ### StatsView
 
 Streamroot provides a utils library that allows the display of Mesh Delivery information on the device.
@@ -302,7 +302,7 @@ Add the utils dependency to your module's `build.gradle`
 implementation "io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version"
 ```
 
-Add the LumenStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
+Add the `LumenStatsView` to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
 
 ```xml
 <io.streamroot.lumen.delivery.client.utils.LumenStatsView
@@ -311,7 +311,7 @@ Add the LumenStatsView to your layout, ideally over the biggest surface. You can
     android:layout_height="match_parent" />
 ```
 
-Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance
+Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance.
 
 ```java
 // Helper function to initializing the stats view

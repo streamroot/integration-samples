@@ -12,12 +12,12 @@ Mesh Delivery plugin for AVPlayer is delivered as an Xcode framework and is avai
 
 ### Cocoapods
 To get the SDK via cocoapods, add `pod 'LumenMeshDeliveryAVPlayerPlugin'` to your podfile like this:
-````
+```
 target 'MyApp' do
   use_frameworks!
   pod 'LumenMeshDeliveryAVPlayerPlugin'
 end
-````
+```
 
 Then, execute `pod install`
 
@@ -116,7 +116,7 @@ plugin?.stop()
 ## Additional options
 You can pass additional options during the creation of a `LMDeliveryClientPlugin`
 
-````swift
+```swift
 func createPlugin() -> LMDeliveryClientPlugin {
   return LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
       .createAVPlayer()
@@ -172,26 +172,26 @@ func createPlugin() -> LMDeliveryClientPlugin {
       })
       .start()
 }
-````
+```
 
 ## Troubleshooting
 
 ### Enable logs
 By default the log level is set to `OFF`, it can be override during a `LMDeliveryClientPlugin` creation:
-````swift
+```swift
 plugin = LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
       .createAVPlayer()
       .meshOptions({ o in
         o.logLevel(.warning)
       })
       .start()
-````
+```
 
 ### StatsView
 A helper method is available to display various Mesh Delivery related stats on a specified UIView.
 
-````swift
+```swift
 // The implementer is in charge to create the view and to display it on top of the player controller/layer
 plugin.displayStatsView(someView!)
-````
+```
 **Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.
