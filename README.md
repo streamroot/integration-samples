@@ -20,13 +20,13 @@ This repository is demonstrating part of our existing integrations, we are const
 
 Each of Streamroot's product has its own designated section.
 
-- [Mesh](mesh)
-- [DNA/Mesh (Legacy)](https://samples.streamroot.io/dna/)
-- [Orchestrator](https://samples.streamroot.io/orchestrator/)
+- [Mesh Delivery for Streaming](mesh)
+- [DNA/Mesh (Legacy)](dna)
+- [CDN Load Balancer](orchestrator)
 
 ## Integration Documentation
 
-A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is available to learn how to add Streamroot DNA™ into your website and how to properly configure it.
+A dedicated [documentation website](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming.html) is available to learn how to integrate Lumen Mesh Delivery and CDN Load Balancer products to your platform and how to properly configure it.
 
 ## Streamroot Dashboard
 

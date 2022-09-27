@@ -11,7 +11,7 @@
 
 # Integration documentation
 
-A dedicated [documentation website](https://support.streamroot.io/hc/en-us) is available to learn how to add Streamroot Mesh into your website and how to properly configure it.
+A dedicated [documentation website](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming.html) is available to learn how to add Lumen Mesh Delivery on various platforms and how to properly configure it.
 
 # Streamroot Dashboard
 
@@ -26,12 +26,15 @@ If you don't have an account, [request a free trial on our website](https://www.
 ### Players
 
 - ExoPlayer ([Kotlin](android/ExoPlayerMesh))
+- ExoPlayer ([Java](android/ExoPlayerMeshJava))
+- ExoPlayer ([Plugin](android/ExoPlayerMeshPlugin))
 
 ## iOS/ipadOS/tvOS
 
 ### Players
 
-- [AVPlayer](ios/AVPlayer)
+- AVPlayer [SDK](ios/AVPlayer)
+- AVPlayer [Plugin](ios/AVPlayerPlugin)
 
 # License
 
