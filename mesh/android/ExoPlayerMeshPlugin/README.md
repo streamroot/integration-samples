@@ -1,12 +1,12 @@
-# Mesh SDK ExoPlayer plugin integration for Android (Kotlin)
+# Mesh Delivery plugin for ExoPlayer integration on Android (Kotlin)
 
-Mesh SDK is player agnostic. You can use Mesh with any player but you need to embed and connect several classes together to make it work. 
+The Mesh Delivery SDK is player agnostic. You can use Mesh Delivery with any player but you need to embed and connect several classes together to make it work. 
 For most players, Lumen is providing the "glue" classes and how to connect them but that still leaves some integration on your side.
 
-The ExoPlayer Mesh plugin is an Android Archive maven artifact that will automatically pull the right version of the SDK, the right version of ExoPlayer, and that will embed all the requires classes. By using Mesh via the plugin, you can avoid unwanted integration issues since it will automatically bind them all together, thus reducing the boilerplate and guaranting an up-to-date and compatible integration.
+The Mesh Delivery plugin for ExoPlayer is an Android Archive maven artifact that will automatically pull the right version of the SDK, the right version of ExoPlayer, and that will embed all the required classes. By using Mesh Delivery via the plugin, you can avoid unwanted integration issues since it will automatically bind them all together, thus reducing the boilerplate and guaranting an up-to-date and compatible integration.
 
 ## Prerequisite
-To integrate Mesh SDK, you will need a valid Delivery Client key. It is available in the Account section of your dashboard. If you do not have a delivery client key, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html).
+To integrate the Mesh Delivery plugin for ExoPlayer, you will need a valid Delivery Client Key. It is available in the Account section of your dashboard. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
 ## Framework installation
 Add Streamroot's maven repository to the project settings in `settings.gradle` or project `build.gradle` depending or your repository declaration system.
@@ -18,14 +18,14 @@ dependencyResolutionManagement {
 }
 ````
 ### Plugin versioning
-For given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-17:22.09.0.0`:
+For a given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-17:22.09.0.0`:
 - `2-17` is the ExoPlayer `MAJOR-MINOR` => a specific plugin version will automatically take the last PATCH of ExoPlayer (ex: `2.17.3`)
-- `22.09.0.0` is the Mesh SDK version (`22.09.0`) appended with a plugin version (`.0`)
-To summarize, one plugin version = one specific Mesh SDK version + one specific `MAJOR.MINOR` ExoPlayer version.
+- `22.09.0.0` is the Mesh Delivery SDK version (`22.09.0`) appended with a plugin version (`.0`)
+To summarize, one plugin version = one specific Mesh Delivery SDK version + one specific `MAJOR.MINOR` ExoPlayer version.
 **For that reason, it is recommended that you do not include ExoPlayer as a dependency by yourself but let the Plugin pull the right ExoPlayer version for you.**
 Forcing a different ExoPlayer version may lead to runtime errors such as `UnsatisfiedLinkError`, `ClassNotFoundException`, etc.
 
-Add Mesh ExoPlayer plugin dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
+Add Mesh Delivery plugin for ExoPlayer dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
 ````gradle
 // It is good practice to lock dependencies version
 def dc_version = '22.09.0'
@@ -37,7 +37,7 @@ implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_v
 ### List of pulled dependencies
 
 - ExoPlayer (using `exo_version` variable, newest patch)
-- Mesh SDK (using `dc_version` variable)
+- Mesh Delivery SDK (using `dc_version` variable)
 - `org.jetbrains.kotlin:kotlin-reflect`
 - `org.jetbrains.kotlin:kotlin-stdlib-jdk8`
 - `org.jetbrains.kotling:kotlin-android-extensions-runtime`
@@ -46,7 +46,7 @@ implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_v
 - `androidx.annotation:annotation`
 
 > **Notes**:
-> - Mesh SDK requires Android KitKat 4.4 / API 19. Make sure your `minSdkVersion` is set to 19 or higher.
+> - Mesh Delivery SDK requires Android KitKat 4.4 / API 19. Make sure your `minSdkVersion` is set to 19 or higher.
 > - If your `minSdkVersion` is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application. Follow the following steps from the [official Android documentation](https://developer.android.com/studio/build/multidex).
 
 ## Configuration
@@ -94,50 +94,47 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 </manifest>
 ```
 
-## Set the DeliveryClientKey
+## Set the Delivery Client Key
 In your `AndroidManifest.xml`, add the `DeliveryClientKey` in the application node:
 ````xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
-android:value="MY_DELIVERY_CLIENT_KEY"
+android:value="<delivery-client-key>"
 />
 ````
 
-We strongly recommend to set the `DeliveryClientKey` in your `AndroidManifest.xml`. However, if not possible, it is also possible to pass your `DeliveryClientKey` at Lumen Delivery Client initialization.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
 
 ## Code integration
 
 ### 1. SDK Initialization
 
-SDK initialization is done preferably in an application context subclass.
-
-* Create a subclass of Application or MultiDexApplication (if your codebase is big and you support API level 19 or 20)
-* Initialize the SDK
+SDK initialization is done preferably in an application context subclass. For that, you need to create a subclass of `Application` (or `MultiDexApplication` if your codebase is big and you support API level 19 or 20). Then, you can initialize the SDK:
 
 ```kotlin
 class SRApplication: MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        /* If you could not add your deliveryClientKey in your AndroidManifest.xml
-         * Call instead: LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY")
+        /* If you could not add your Delivery Client Key in your AndroidManifest.xml
+         * Call instead: LumenDeliveryClient.initializeApp(this, "<delivery-client-key>")
          */
         LumenDeliveryClient.initializeApp(this)
         ...
     }
 }
 ```
-* Point to your custom application subclass in the `AndroidManifest.xml`
+In your `AndroidManifest.xml`, point to your custom application subclass: 
 
 ```kotlin
 android:name=".SRApplication"
 ```
 
-### 2. Instanciate a `LumenDeliveryClientPlugin`
+### 2. Instantiate a `LumenDeliveryClientPlugin`
 
 The plugin creation is divided in two phases:
 - A plugin configuration phase which needs to interact with an `ExoPlayer` instance. This uses a builder pattern.
-- A `meshOptions` continuation method which allows you to add extra parameters for Mesh.
+- A `meshOptions` continuation method which allows you to add extra parameters for Mesh Delivery.
 
 #### **Plugin configuration**
 
@@ -187,9 +184,9 @@ val pluginBuilder = LumenDeliveryClientPlugin.Builder(this, manifestUrl).bandwid
 
 Any other interaction with the `ExoPlayer.Builder` class should be safe to use as Lumen does not interact with anything else (including DRM, etc).
 
-#### **Mesh configuration**
+#### **Mesh Delivery configuration**
 
-Once the plugin is configured, you can optionally call the method `meshOptions()` on it. Inside that scope you can call one or multiple methods to configure Mesh.
+Once the plugin is configured, you can optionally call the method `meshOptions()` on it. Inside that scope you can call one or multiple methods to configure Mesh Delivery.
 
 ```kotlin
 LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
@@ -200,13 +197,13 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
     */
     meshProperty("MY_PROPERTY")
     /*
-    * Set the DeliveryClientKey
+    * Set the Delivery Client Key
     * Is only required if it was not set in AndroidManifest.xml
     * Will override the AndroidManifest.xml DeliveryClientKey
     *
     * param: String
     */
-    deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
+    deliveryClientKey("<delivery-client-key>")
     /*
     * Set the content id
     * A string that identifies your content
@@ -239,7 +236,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 }
 ```
 
-#### Mesh plugin resolution
+#### Mesh Delivery plugin resolution
 
 Once resolved the plugin keeps a strong reference on all used items and gives access to most of it including:
 
@@ -280,13 +277,13 @@ For convenience, you can also call `start()` directly on a `DeliveryClientPlugin
 
 To maximize compatibility with the SDK we strongly encourage you to allow HTTP <-> HTTPS cross protocol redirects in your ExoPlayer media sources.
 
-With `finalUrl` you can create the `mediamItem` for ExoPlayer, like this:
+With `finalUrl` you can create the `mediaItem` for ExoPlayer, like this:
 
 ```kotlin
 val mediaItem = MediaItem.fromUri(finalUrl)
 ```
 
-### 6. Stop the Lumen Delivery Client
+### 6. Stop the SDK instance
 
 Once the video is done playing, you have to stop the SDK created earlier.
 
@@ -313,7 +310,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 }
 ```
 
-## How to investigate? Make sure the integration is working?
+## Troubleshooting
 
 ### Enable logs
 By default the log level is set to `OFF`, it can be override either at initilization which will propagate to all `LumenDeliveryClient` instances:
@@ -330,8 +327,8 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 ````
 
 **Notes:**
-* Logs related to Mesh SDK will be prefixed with `[SR-KT]`
-* LumenLogLevel: `TRACE` | `CRITICAL` | `ERROR` | `WARNING` | `INFO` | `DEBUG` | `OFF`
+* Logs related to Mesh Delivery SDK will be prefixed with `[SR-KT]`.
+* Valid value for `LumenLogLevel` are `TRACE`, `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG` or `OFF`.
 
 Log example:
 ````
@@ -347,7 +344,7 @@ I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] Load shared lib
 ````
 ### StatsView
 
-Streamroot provides an optional utils library that allows the display of Mesh information on the device.
+Streamroot provides an optional utils library that allows the display of Mesh Delivery information on the device.
 
 ---
 **⚠️ This is NOT intended for production ⚠️**
@@ -391,4 +388,4 @@ private fun initStatsView(dcStatsView: View) {
 dcStatsView = ...
 initStatsView(dcStatsView)
 ````
-A red overlay with Mesh SDK related stats should be displayed. The stats view overlay can be reopened by clicking frenetically anywhere on the screen.
+A red overlay with Mesh Delivery SDK related stats should be displayed. The stats view overlay can be reopened by clicking repeatedly anywhere on the screen.

@@ -1,13 +1,13 @@
-# Mesh SDK Common Integration for Android (Kotlin)
+# Mesh Delivery SDK Integration for Android (Kotlin)
 
 ## Prerequisite
-To integrate Mesh SDK, we need:
-* A valid delivery client key. It is available in the Account section of your dashboard
-* Mesh SDK Framework installed
+To integrate the Mesh Delivery SDK, we need:
+* A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
+* The Mesh Delivery SDK installed.
 
-**NOTE:** For this sample app, we are using `demoswebsiteandpartners` delivery client key. If you do not have a delivery client key, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html).
+**NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
-## Framework installation
+## SDK installation
 Add Streamroot's maven repository to the project settings in `settings.gradle`
 ````gradle
 dependencyResolutionManagement {
@@ -17,26 +17,26 @@ dependencyResolutionManagement {
 }
 ````
 
-Add Mesh SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
+Add Mesh Delivery SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
 ````gradle
 // It is good practice to lock dependencies version
 def dc_version = "22.09.0"
 
 implementation "io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version"
 ````
-Mesh SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
+Mesh Delivery SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
 
-- org.jetbrains.kotlin:kotlin-reflect
-- org.jetbrains.kotlin:kotlin-stdlib-jdk8
-- org.jetbrains.kotling:kotlin-android-extensions-runtime
-- org.jetbrains.kotlinx:kotlinx-coroutines-android
-- com.getkeepsafe.relinker:relinker
-- androidx.annotation:annotation
+- `org.jetbrains.kotlin:kotlin-reflect`
+- `org.jetbrains.kotlin:kotlin-stdlib-jdk8`
+- `org.jetbrains.kotling:kotlin-android-extensions-runtime`
+- `org.jetbrains.kotlinx:kotlinx-coroutines-android`
+- `com.getkeepsafe.relinker:relinker`
+- `androidx.annotation:annotation`
 
 **Notes**:
 
-- Mesh SDK requires Android KitKat 4.4 <=> API 19. Make sure your minSdkVersion is set to 19 or higher.
-- If your minSdkVersion is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application. Follow the following steps from the official android documentation.
+- Mesh Delivery SDK requires Android KitKat 4.4 <=> API 19. Make sure your `minSdkVersion` is set to 19 or higher.
+- If your `minSdkVersion` is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application. Follow the following steps from the official android documentation.
 [Multidex documentation](https://developer.android.com/studio/build/multidex)
 
 ## Configuration
@@ -84,58 +84,55 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 </manifest>
 ```
 
-## Set the DeliveryClientKey
-In your `AndroidManifest.xml` add the DeliveryClientKey in the application node
+## Set the Delivery Client Key
+In your `AndroidManifest.xml` add the Delivery Client Key in the application node
 ````xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
-android:value="MY_DELIVERY_CLIENT_KEY"
+android:value="<delivery-client-key>"
 />
 ````
 
-We strongly recommend to set the deliveryClientKey in your `AndroidManifest.xml`. However, if not possible, it is also possible to pass your deliveryClientKey at Lumen Delivery Client initialization.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
 
 ## Code integration
 
 ### 1. SDK Initialization
 
-SDK initialization is done preferably in an application context subclass.
-
-* Create a subclass of Application or MultiDexApplication (if your codebase is big and you support API level 19 or 20)
-* Initialize the SDK
+SDK initialization is done preferably in an application context subclass. For that, you need to create a subclass of `Application` (or `MultiDexApplication` if your codebase is big and you support API level 19 or 20). Then, you can initialize the SDK:
 
 ```kotlin
 class SRApplication: MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        /* If you could not add your deliveryClientKey in your AndroidManifest.xml
-         * Call instead: LumenDeliveryClient.initializeApp(this, "MY_DELIVERY_CLIENT_KEY")
+        /* If you could not add your Delivery Client Key in your AndroidManifest.xml
+         * Call instead: LumenDeliveryClient.initializeApp(this, "<delivery-client-key>")
          */
         LumenDeliveryClient.initializeApp(this)
         ...
     }
 }
 ```
-* Point to your custom application subclass in the `AndroidManifest.xml`
+In your `AndroidManifest.xml`, point to your custom application subclass: 
 
 ```kotlin
 android:name=".SRApplication"
 ```
 
-### 2. Bridge between your Player and the DeliveryClient
+### 2. Bridge between your player and the `LumenDeliveryClient`
 
-In order to work perfectly, the SDK instance uses a `PlayerInteractor`.
+In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
-It is a component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
+It is the component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-It will be up to you to implement this component, although, you can find an ExoPlayer implementation example in [ExoPlayerMesh](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerActivity.kt).
+When integrating the SDK, you are free to implement this component but we provide an implementation example for ExoPlayer in [ExoPlayerMesh](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerActivity.kt).
 
-### 3. Instanciate a `LumenDeliveryClient`
+### 3. Instantiate a `LumenDeliveryClient`
 
-Now the SDK is initialized, you are able to create `LumenDeliveryClient` instances.
+Now that the SDK is initialized, you are able to create `LumenDeliveryClient` instances.
 
-You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a SimpleExoPlayer :
+You first need to create and setup your ExoPlayer instance. Then the following function shows you how to configure DC instances using a `SimpleExoPlayer` :
 
 ```kotlin
 private fun createDeliveryClient(player: SimpleExoPlayer) : LumenDeliveryClient {
@@ -156,11 +153,11 @@ private fun createDeliveryClient(player: SimpleExoPlayer) : LumenDeliveryClient 
 }
 ```
 **Note**:
-PlayerInteractor is referencing the bridge class from step 2, the name may be different.
+`PlayerInteractor` is referencing the bridge class from step 2, the name may be different.
 
-### 4. Start the SDK instance and get the final url.
+### 4. Start the SDK instance and get the final url
 
-Calling the `start()` method on the DeliveryClient instance will start the SDK.
+Calling the `start()` method on the `LumenDeliveryClient` instance will start the SDK.
 Once you have a running instance of the SDK, you must retrieve the final URL and input it to your player instead of your original one.
 
 ```kotlin
@@ -172,13 +169,13 @@ val finalUrl = deliveryClient.localUrl()
 
 To maximize compatibility with the SDK we strongly encourage you to allow HTTP <-> HTTPS cross protocol redirects in your ExoPlayer media sources.
 
-With `finalUrl` you can create the `mediamItem` for ExoPlayer, like this:
+With `finalUrl` you can create the `mediaItem` for ExoPlayer, like this:
 
 ```kotlin
-val mediaItem = MediaItem.fromUri(deliveryManifest)
+val mediaItem = MediaItem.fromUri(finalUrl)
 ```
 
-### 6. Stop the Lumen Delivery Client
+### 6. Stop the SDK instance
 
 Once the video is done playing, you have to stop the SDK created earlier.
 
@@ -203,13 +200,13 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
                 */
                 meshProperty("MY_PROPERTY")
                 /*
-                * Set the DeliveryClientKey
+                * Set the Delivery Client Key
                 * Is only required if it was not set in AndroidManifest.xml
                 * Will override the AndroidManifest.xml DeliveryClientKey
                 *
                 * param: String
                 */
-                deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
+                deliveryClientKey("<delivery-client-key>")
                 /*
                 * Set the content id
                 * A string that identifies your content
@@ -244,22 +241,22 @@ private fun createDeliveryClient(newPlayer: SimpleExoPlayer) : LumenDeliveryClie
 }
 ```
 
-## How to investigate? Make sure the integration is working?
+## Troubleshooting
 
 ### Enable logs for initialization
-By default the log level is set to `OFF` for initalization, it can be turned on before calling the initializeApp:
+By default the log level is set to `OFF` for initalization, it can be turned on before calling the `initializeApp`:
 ````kotlin
 LumenDeliveryClient.setLogLevel(LumenLogLevel.INFO)
 LumenDeliveryClient.initializeApp(this)
 ````
 
 **Notes:**
-* Logs related to Mesh SDK will be prefixed with `[SR-KT]`
-* LumenLogLevel: `TRACE` | `CRITICAL` | `ERROR` | `WARNING` | `INFO` | `DEBUG` | `OFF`
+* Logs related to Mesh Delivery SDK will be prefixed with `[SR-KT]`.
+* Valid value for `LumenLogLevel` are `TRACE`, `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG` or `OFF`.
 
 Log example:
 ````
-I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"demoswebsiteandpartners","platform":"android","sdkVersion":"1.5.0-beta-3dda3f7","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
+I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Outbound payload => {"dcKey":"<delivery-client-key>","platform":"android","sdkVersion":"1.5.0-beta-3dda3f7","arch":"aarch64","osName":"Q","appHostVersion":"1.0","osVersion":"10","bundleId":"io.streamroot.ctl.delivery.client.mesh.exoplayermesh","model":"ANA-NX9"}
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Received response code/message => 200 / OK
 I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Inbound payload => {"activateDeliveryClient":true}
     2022-01-21T11:51:46.046Z info [misc] : [DC_ACTIVATION] - Backend request done in 122 ms
@@ -271,18 +268,18 @@ I/[SR-KT]: 2022-01-21T11:51:46.046Z info [misc] : [DNADLLBinder] Load shared lib
 ````
 ### StatsView
 
-Streamroot provides a utils library that allows the display of Mesh information on the device.
+Streamroot provides a utils library that allows the display of Mesh Delivery information on the device.
 
 ## **⚠️ This is not intended for production ⚠️**
 
-Add the utils dependency to your module's build.gradle
+Add the utils dependency to your module's `build.gradle`
 
 ```gradle
 // /!\ Optional package for stats view. Not intended for production /!\
 implementation "io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version"
 ```
 
-Add the LumenStatsView to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
+Add the `LumenStatsView` to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
 
 ```xml
 <io.streamroot.lumen.delivery.client.utils.LumenStatsView
@@ -291,13 +288,13 @@ Add the LumenStatsView to your layout, ideally over the biggest surface. You can
     android:layout_height="match_parent" />
 ```
 
-Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance
+Retrieve your view by your preferred method and link it with a `LumenDeliveryClient` instance.
 
 ````kotlin
 // Helper function to initializing the stats view
 private fun initStatsView(dcStatsView: View) {
     dcStatsView.apply {
-        // Instanciate a LumenStatsVie
+        // Instantiate a LumenStatsVie
         val statsView = LumenStatsView(context)
         lumenDeliveryClient?.addStateStatsListener(statsView)
 
@@ -311,4 +308,4 @@ private fun initStatsView(dcStatsView: View) {
 dcStatsView = ...
 initStatsView(dcStatsView)
 ````
-A red overlay with Mesh SDK related stats should be displayed. The stats view overlay can be reopened by clicking frenetically anywhere on the screen.
+A red overlay with Mesh Delivery SDK related stats should be displayed. The stats view overlay can be reopened by clicking repeatedly anywhere on the screen.

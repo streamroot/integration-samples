@@ -1,14 +1,14 @@
-# Mesh SDK Integration for iOS, iPadOS and tvOS
+# Mesh Delivery SDK Integration for iOS, iPadOS and tvOS
 
 ## Prerequisite
-To integrate Mesh SDK, we need:
-1. A valid delivery client key. It is available in the Account section of your dashboard
-2. Mesh SDK Framework installed
+To integrate the Mesh Delivery SDK, we need:
+1. A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
+2. The Mesh Delivery SDK Framework installed.
 
-**NOTE:** For this sample app, we are using `demoswebsiteandpartners` delivery client key. If you do not have a delivery client key, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html).
+**NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
 ## Framework installation
-Mesh SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage#quick-start).
+The Mesh Delivery SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage#quick-start).
 
 ### Cocoapods
 To get the SDK via cocoapods, add `pod 'LumenMeshSDK'` to your podfile like this:
@@ -38,12 +38,12 @@ Add the following lines with the right parameters values.
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
-	<key>NSAllowsArbitraryLoads</key>
-	<true/>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
 </dict>
 ```
 
-### Set the ClientDeliveryKey
+### Set the Client Delivery Key
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -51,29 +51,29 @@ Add the following lines with the right parameters values.
 <key>DeliveryClient</key>
 <dict>
   <key>Key</key>
-  <string>customerKey</string>
+  <string><delivery-client-key></string>
 </dict>
 ```
 
-We strongly recommand to set the delivery client key in `Info.plist`. However, if not possible, it is also possible to pass your delivieryClientKey during the initialization step.
+We strongly recommend to set the Delivery Client Key in `Info.plist`. However, if not possible, it is also possible to pass it during the initialization step.
 
 ## Code integration
 
 First, import the SDK:
 ```swift
-#import LumenMeshSDK
+import LumenMeshSDK
 ```
 
 ### 1. SDK Initialization
-Initialize the Delivery SDK from the `AppDelegate`
+Initialize the Mesh Delivery SDK from the `AppDelegate`
 
 ```swift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     /*
-     * If you can not add your deliveryClientKey in Info.plist
-     * Call instead: LMDeliveryClient.initializeApp(withDeliveryKey: "MY_DELIVERY_CLIENT_KEY")
+     * If you can not add your Delivery Client Key in Info.plist
+     * Call instead: LMDeliveryClient.initializeApp(withDeliveryKey: "<delivery-client-key>")
      */
     LMDeliveryClient.initializeApp()
     ...
@@ -83,20 +83,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### 2. Bridge between AVPlayer and the DeliveryClient
+### 2. Bridge between AVPlayer and the `LMDeliveryClient`
 
-In order to work perfectly, the SDK needs a `PlayerInteractor`
+In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
-It is a component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
+It is the component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-It will be up to you to implement this component, although, you can find an implementation example in [AVPlayerMesh/PlayerInteractor.swift](AVPlayerMesh/AVPlayerMesh/PlayerInteractor.swift)
+When integrating the SDK, you are free to implement this component but we provide an implementation example for AVPlayer in [AVPlayerMesh/PlayerInteractor.swift](AVPlayerMesh/AVPlayerMesh/PlayerInteractor.swift).
 
+### 3. Instantiate a `LMDeliveryClient`
 
-### 3. Instanciate a `LumenDeliveryClient`
+Now that the SDK is initialized, you are able to create `LMDeliveryClient` instances.
 
-Now the SDK is initialized, you are able to create `LumenDeliveryClient` instances.
-
-Once your AVPlayer is up and ready, you will need to configure your `LumenDeliveryClient` instance:
+Once your AVPlayer is up and ready, you will need to configure your `LMDeliveryClient` instance:
 
 ```swift
 func createDeliveryClient() -> LMDeliveryClient {
@@ -121,9 +120,9 @@ func createDeliveryClient() -> LMDeliveryClient {
 
 ### 4. Start the SDK instance and get the final url
 
-Calling `start()` on the `LMDeliveryClient` instance will, as may guessed, start the SDK.
+Calling `start()` on the `LMDeliveryClient` instance will start the SDK.
 
-While starting, the SDK will generate a new URL to leverage mesh streaming capabilities. Once it is started, **make sure** to retrieve the final URL and instanciate an `AVPlayerItem` with it.
+While starting, the SDK will generate a new URL to leverage Mesh Delivery streaming capabilities. Once it is started, **make sure** to retrieve the final URL and instantiate an `AVPlayerItem` with it.
 
 ````swift
 var deliveryClient = createDeliveryClient()
@@ -138,7 +137,7 @@ let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 
 ### 5. Play the stream
 
-Start the player with the new url provided by the delivery client and link it with the player interactor:
+Start the player with the new url provided by the `LMDeliveryClient` and link it with the `PlayerInteractor`:
 ```swift
 let player = AVPlayer(playerItem: playerItem)
 playerInteractor.linkPlayer(player!)
@@ -149,13 +148,13 @@ player?.play()
 Hopefully, the video is playing as expected, congrats!
 
 ### 6. Stop the SDK
-Make sure to stop the delivery client once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
+Make sure to stop the `LMDeliveryClient` once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
 ```swift
 self.deliveryClient.stop()
 ```
 
 ## Additional options
-You can pass additional options during the creation of a `LumenDeliveryClient`
+You can pass additional options during the creation of a `LMDeliveryClient`
 
 ````swift
 func createDeliveryClient() -> LMDeliveryClient {
@@ -174,13 +173,13 @@ func createDeliveryClient() -> LMDeliveryClient {
           */
          .meshProperty("MY_PROPERTY")
          /*
-          * Set the DeliveryClientKey
-          * Is only required if it was not set in AndroidManifest.xml
+          * Set the Delivery Client Key
+          * Is only required if it was not set in Info.plist
           * Will override the Info.plist DeliveryClientKey value
           *
           * param: String
           */
-         .deliveryClientKey("MY_DELIVERY_CLIENT_KEY")
+         .deliveryClientKey("<delivery-client-key>")
          /*
           * Set the content id
           * A string that identifies your content
@@ -219,10 +218,10 @@ func createDeliveryClient() -> LMDeliveryClient {
 }
 ````
 
-## How to investigate? Make sure the integration is working?
+## Troubleshooting
 
 ### Enable logs
-By default the log level is set to `OFF`, it can be override during a `LumenDeliveryClient` creation:
+By default the log level is set to `OFF`, it can be override during a `LMDeliveryClient` creation:
 ````swift
 func createDeliveryClient() -> LMDeliveryClient {
   return LMDeliveryClientBuilder.clientBuilder()
@@ -233,7 +232,7 @@ func createDeliveryClient() -> LMDeliveryClient {
 ````
 
 ### StatsView
-A helper method is available to display various Mesh related stats on a specified UIView.
+A helper method is available to display various Mesh Delivery related stats on a specified UIView.
 
 ````swift
 // The implementer is in charge to create the view and to display it on top of the player controller/layer
