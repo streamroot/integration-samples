@@ -97,7 +97,7 @@ android:value="<delivery-client-key>"
 />
 ```
 
-We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient` initialization.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
 
 ## Code integration
 
