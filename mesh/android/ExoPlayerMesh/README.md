@@ -126,7 +126,7 @@ In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
 It is the component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
 
-When integrating the SDK, you are free to implement this component but we provide an implementation example for ExoPlayer in [ExoPlayerMesh](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerActivity.kt).
+When integrating the SDK, you are free to implement this component but we provide an implementation example for ExoPlayer in [ExoPlayerMesh](app/src/main/java/io/streamroot/ctl/delivery/client/mesh/exoplayermesh/PlayerInteractor.kt).
 
 ### 3. Instantiate a `LumenDeliveryClient`
 
