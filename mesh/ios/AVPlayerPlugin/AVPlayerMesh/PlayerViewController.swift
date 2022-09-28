@@ -6,7 +6,7 @@
 import UIKit
 import AVKit
 import AVFoundation
-import LumenMeshAVPlayerPlugin
+import LumenMeshDeliveryAVPlayerPlugin
 
 class PlayerViewController: UIViewController {
   private var avpController = AVPlayerViewController()

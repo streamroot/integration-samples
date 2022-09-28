@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import LumenMeshAVPlayerPlugin
+import LumenMeshDeliveryAVPlayerPlugin
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
