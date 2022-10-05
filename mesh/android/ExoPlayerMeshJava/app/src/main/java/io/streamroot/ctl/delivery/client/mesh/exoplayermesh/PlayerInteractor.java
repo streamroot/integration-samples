@@ -11,8 +11,7 @@ import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
+import com.google.android.exoplayer2.Tracks;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
@@ -325,7 +324,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
     }
 
     @Override
-    public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+    public void onTracksChanged(Tracks tracks) {
         super.playerTrackSwitch();
     }
 
@@ -335,7 +334,14 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
     }
 
     @Override
-    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+    public void onIsPlayingChanged(boolean isPlaying) {
+        if (player.getPlaybackState() != Player.STATE_BUFFERING && player.getPlaybackState() != Player.STATE_ENDED && player.getPlaybackState() != Player.STATE_IDLE) {
+            super.playerStateChange(isPlaying ? LumenVideoPlaybackState.PLAYING : LumenVideoPlaybackState.PAUSED);
+        }
+    }
+
+    @Override
+    public void onPlaybackStateChanged(int playbackState) {
         switch (playbackState) {
             case Player.STATE_IDLE:
                 super.playerStateChange(LumenVideoPlaybackState.IDLE);
@@ -344,7 +350,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
                 super.playerStateChange(LumenVideoPlaybackState.REBUFFERING);
                 break;
             case Player.STATE_READY:
-                super.playerStateChange(playWhenReady ? LumenVideoPlaybackState.PLAYING : LumenVideoPlaybackState.PAUSED);
+                super.playerStateChange(player.getPlayWhenReady() ? LumenVideoPlaybackState.PLAYING : LumenVideoPlaybackState.PAUSED);
                 break;
             case Player.STATE_ENDED:
                 super.playerStateChange(LumenVideoPlaybackState.ENDED);

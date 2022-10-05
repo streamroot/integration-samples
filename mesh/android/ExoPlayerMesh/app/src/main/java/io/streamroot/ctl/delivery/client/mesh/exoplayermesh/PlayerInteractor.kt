@@ -7,8 +7,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.LoadControl
 import com.google.android.exoplayer2.PlaybackException
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.source.TrackGroupArray
-import com.google.android.exoplayer2.trackselection.TrackSelectionArray
+import com.google.android.exoplayer2.Tracks
 import com.google.android.exoplayer2.upstream.BandwidthMeter
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DataSpec
@@ -155,12 +154,18 @@ class PlayerInteractor(
         super.playerStateChange(LumenVideoPlaybackState.SEEKING)
     }
 
-    override fun onTracksChanged(trackGroups: TrackGroupArray, trackSelections: TrackSelectionArray) {
+    override fun onTracksChanged(tracks: Tracks) {
         super.playerTrackSwitch()
     }
 
     override fun onPlayerError(error: PlaybackException) {
         super.playerError()
+    }
+
+    override fun onIsPlayingChanged(isPlaying: Boolean) {
+        if (player.playbackState != Player.STATE_BUFFERING && player.playbackState != Player.STATE_ENDED && player.playbackState != Player.STATE_IDLE) {
+            super.playerStateChange(if (isPlaying) LumenVideoPlaybackState.PLAYING else LumenVideoPlaybackState.PAUSED)
+        }
     }
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {

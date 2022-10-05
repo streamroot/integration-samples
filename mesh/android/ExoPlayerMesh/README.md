@@ -4,6 +4,7 @@
 To integrate the Mesh Delivery SDK, we need:
 * A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
 * The Mesh Delivery SDK installed.
+* ExoPlayer versions supported by this sample are 2.18.1
 
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
