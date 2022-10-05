@@ -205,7 +205,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
             this.minBufferField = minBufferField;
         }
 
-        private static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
+        static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
             try {
                 final Field myField = clazz.getDeclaredField(fieldName);
                 myField.setAccessible(true);
@@ -259,7 +259,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
         private LoadControlBufferTargetBridgeV1(LoadControl loadControl) {
             super(
                     loadControl,
-                    getAccessibleFieldElseThrow(loadControl, MIN_BUFFER_FIELD_NAME)
+                    getAccessibleFieldElseThrow(loadControl.getClass(), MIN_BUFFER_FIELD_NAME)
             );
         }
     }
@@ -273,7 +273,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
             super(
                     loadControl,
                     getAccessibleFieldElseThrow(
-                            loadControl,
+                            loadControl.getClass(),
                             audioOnly ? MIN_BUFFER_AUDIO_FIELD_NAME : MIN_BUFFER_VIDEO_FIELD_NAME
                     )
             );
