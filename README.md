@@ -13,16 +13,15 @@
 
 ## Introduction
 
-This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [support@streamroot.io](mailto:support@streamroot.io) for any request or issue you might have.
-
+This repository is demonstrating part of our existing integrations, we are constantly adding support for new ones. Please send an email to [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com) for any request or issue you might have.
 
 ## Products
 
 Each of Streamroot's product has its own designated section.
 
-- [Mesh Delivery for Streaming](mesh)
+- [Mesh Delivery for Streaming](mesh-delivery)
+- [CDN Load Balancer](cdn-load-balancer)
 - [DNA/Mesh (Legacy)](dna)
-- [CDN Load Balancer](orchestrator)
 
 ## Integration Documentation
 
@@ -32,7 +31,7 @@ A dedicated [documentation website](https://www.lumen.com/help/en-us/cdn/mesh-de
 
 If you already have an account you can visit your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 
-If you don't have an account, [request a trial](https://streamroot.io/?request_trial=true)!
+If you don't have an account, request a trial for [Mesh Delivery](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html) or [CDN Load Balancer](https://www.lumen.com/en-us/edge-computing/cdn-load-balancer.html).
 
 ## License
 

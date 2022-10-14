@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5052E99324ED5F31009D0804 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
+		5052E99724ED5F31009D0804 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
+		5052E99A24ED5F31009D0804 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99824ED5F31009D0804 /* Main.storyboard */; };
+		5052E99C24ED5F34009D0804 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99B24ED5F34009D0804 /* Assets.xcassets */; };
+		5052E99F24ED5F34009D0804 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */; };
+		5052E9B624EE629F009D0804 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5052E9B524EE629F009D0804 /* AVKit.framework */; };
+		7A76190B24FE4A3600366D93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190924FE4A3600366D93 /* Main.storyboard */; };
+		7A76190D24FE4A3900366D93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190C24FE4A3900366D93 /* Assets.xcassets */; };
+		7A76191024FE4A3900366D93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */; };
+		7A76191524FE4AF100366D93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99224ED5F31009D0804 /* AppDelegate.swift */; };
+		7A76191624FE542C00366D93 /* SwiftSampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */; };
+		AF49CD35BBBC6DABA9F37AC4 /* Pods_AVPlayerCDNLoadBalancerPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4D0D60C83DF023C81A5A3B /* Pods_AVPlayerCDNLoadBalancerPlugin.framework */; };
+		EAC90C032E0BB59DEB73AC43 /* Pods_AVPlayerCDNLoadBalancerPluginTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA52A01E142FFEB83213C24 /* Pods_AVPlayerCDNLoadBalancerPluginTV.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3208B746BC20012485CA578C /* Pods-AVPlayerCDNLoadBalancerPluginTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerCDNLoadBalancerPluginTV.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerCDNLoadBalancerPluginTV/Pods-AVPlayerCDNLoadBalancerPluginTV.release.xcconfig"; sourceTree = "<group>"; };
+		5052E98F24ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerCDNLoadBalancerPlugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5052E99224ED5F31009D0804 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSampleViewController.swift; sourceTree = "<group>"; };
+		5052E99924ED5F31009D0804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5052E99B24ED5F34009D0804 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5052E99E24ED5F34009D0804 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5052E9A024ED5F34009D0804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5052E9A724ED62F6009D0804 /* AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h"; sourceTree = "<group>"; };
+		5052E9B524EE629F009D0804 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		6B5D88CD4683CE96DB49F610 /* Pods-AVPlayerCDNLoadBalancerPluginTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerCDNLoadBalancerPluginTV.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerCDNLoadBalancerPluginTV/Pods-AVPlayerCDNLoadBalancerPluginTV.debug.xcconfig"; sourceTree = "<group>"; };
+		7A76190324FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVPlayerCDNLoadBalancerPluginTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A76190A24FE4A3600366D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A76190C24FE4A3900366D93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A76190F24FE4A3900366D93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A76191124FE4A3900366D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../AVPlayerCDNLoadBalancerPlugin/Info.plist; sourceTree = "<group>"; };
+		A28EE8F668014182BF49703F /* Pods-AVPlayerCDNLoadBalancerPlugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerCDNLoadBalancerPlugin.release.xcconfig"; path = "Target Support Files/Pods-AVPlayerCDNLoadBalancerPlugin/Pods-AVPlayerCDNLoadBalancerPlugin.release.xcconfig"; sourceTree = "<group>"; };
+		AE4D0D60C83DF023C81A5A3B /* Pods_AVPlayerCDNLoadBalancerPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerCDNLoadBalancerPlugin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF57D9FB8F98BA17E481B7AD /* Pods-AVPlayerCDNLoadBalancerPlugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AVPlayerCDNLoadBalancerPlugin.debug.xcconfig"; path = "Target Support Files/Pods-AVPlayerCDNLoadBalancerPlugin/Pods-AVPlayerCDNLoadBalancerPlugin.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA52A01E142FFEB83213C24 /* Pods_AVPlayerCDNLoadBalancerPluginTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AVPlayerCDNLoadBalancerPluginTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5052E98C24ED5F31009D0804 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E9B624EE629F009D0804 /* AVKit.framework in Frameworks */,
+				AF49CD35BBBC6DABA9F37AC4 /* Pods_AVPlayerCDNLoadBalancerPlugin.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A76190024FE4A3600366D93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAC90C032E0BB59DEB73AC43 /* Pods_AVPlayerCDNLoadBalancerPluginTV.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		219FC9BF9BA34537FC2165D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CF57D9FB8F98BA17E481B7AD /* Pods-AVPlayerCDNLoadBalancerPlugin.debug.xcconfig */,
+				A28EE8F668014182BF49703F /* Pods-AVPlayerCDNLoadBalancerPlugin.release.xcconfig */,
+				6B5D88CD4683CE96DB49F610 /* Pods-AVPlayerCDNLoadBalancerPluginTV.debug.xcconfig */,
+				3208B746BC20012485CA578C /* Pods-AVPlayerCDNLoadBalancerPluginTV.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5052E98624ED5F31009D0804 = {
+			isa = PBXGroup;
+			children = (
+				5052E99124ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin */,
+				7A76190424FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV */,
+				5052E99024ED5F31009D0804 /* Products */,
+				219FC9BF9BA34537FC2165D6 /* Pods */,
+				80FA041AEA5BC3E9CD581152 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5052E99024ED5F31009D0804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5052E98F24ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin.app */,
+				7A76190324FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5052E99124ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				5052E9A724ED62F6009D0804 /* AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h */,
+				5052E9A024ED5F34009D0804 /* Info.plist */,
+				5052E99224ED5F31009D0804 /* AppDelegate.swift */,
+				5052E99624ED5F31009D0804 /* SwiftSampleViewController.swift */,
+				5052E99B24ED5F34009D0804 /* Assets.xcassets */,
+				5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */,
+				5052E99824ED5F31009D0804 /* Main.storyboard */,
+			);
+			path = AVPlayerCDNLoadBalancerPlugin;
+			sourceTree = "<group>";
+		};
+		7A76190424FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV */ = {
+			isa = PBXGroup;
+			children = (
+				7A76190924FE4A3600366D93 /* Main.storyboard */,
+				7A76190C24FE4A3900366D93 /* Assets.xcassets */,
+				7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */,
+				7A76191124FE4A3900366D93 /* Info.plist */,
+			);
+			path = AVPlayerCDNLoadBalancerPluginTV;
+			sourceTree = "<group>";
+		};
+		80FA041AEA5BC3E9CD581152 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5052E9B524EE629F009D0804 /* AVKit.framework */,
+				AE4D0D60C83DF023C81A5A3B /* Pods_AVPlayerCDNLoadBalancerPlugin.framework */,
+				ECA52A01E142FFEB83213C24 /* Pods_AVPlayerCDNLoadBalancerPluginTV.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5052E98E24ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5052E9A324ED5F34009D0804 /* Build configuration list for PBXNativeTarget "AVPlayerCDNLoadBalancerPlugin" */;
+			buildPhases = (
+				C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */,
+				5052E98B24ED5F31009D0804 /* Sources */,
+				5052E98C24ED5F31009D0804 /* Frameworks */,
+				5052E98D24ED5F31009D0804 /* Resources */,
+				AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVPlayerCDNLoadBalancerPlugin;
+			productName = AVPlayerOrchestrator;
+			productReference = 5052E98F24ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A76190224FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A76191424FE4A3900366D93 /* Build configuration list for PBXNativeTarget "AVPlayerCDNLoadBalancerPluginTV" */;
+			buildPhases = (
+				26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */,
+				7A7618FF24FE4A3600366D93 /* Sources */,
+				7A76190024FE4A3600366D93 /* Frameworks */,
+				7A76190124FE4A3600366D93 /* Resources */,
+				33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVPlayerCDNLoadBalancerPluginTV;
+			productName = AVPlayerOrchestratorTV;
+			productReference = 7A76190324FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5052E98724ED5F31009D0804 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = Streamroot;
+				TargetAttributes = {
+					5052E98E24ED5F31009D0804 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					7A76190224FE4A3600366D93 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+				};
+			};
+			buildConfigurationList = 5052E98A24ED5F31009D0804 /* Build configuration list for PBXProject "AVPlayerCDNLoadBalancerPlugin" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5052E98624ED5F31009D0804;
+			productRefGroup = 5052E99024ED5F31009D0804 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5052E98E24ED5F31009D0804 /* AVPlayerCDNLoadBalancerPlugin */,
+				7A76190224FE4A3600366D93 /* AVPlayerCDNLoadBalancerPluginTV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5052E98D24ED5F31009D0804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E99F24ED5F34009D0804 /* LaunchScreen.storyboard in Resources */,
+				5052E99C24ED5F34009D0804 /* Assets.xcassets in Resources */,
+				5052E99A24ED5F31009D0804 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A76190124FE4A3600366D93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A76191024FE4A3900366D93 /* LaunchScreen.storyboard in Resources */,
+				7A76190D24FE4A3900366D93 /* Assets.xcassets in Resources */,
+				7A76190B24FE4A3600366D93 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26C4D8A5619CCE99E932351B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerCDNLoadBalancerPluginTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33B950AB5B0656AF6A16DEDB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPluginTV/Pods-AVPlayerCDNLoadBalancerPluginTV-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPluginTV/Pods-AVPlayerCDNLoadBalancerPluginTV-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPluginTV/Pods-AVPlayerCDNLoadBalancerPluginTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA5AC2D1E014BDC951F925E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPlugin/Pods-AVPlayerCDNLoadBalancerPlugin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPlugin/Pods-AVPlayerCDNLoadBalancerPlugin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AVPlayerCDNLoadBalancerPlugin/Pods-AVPlayerCDNLoadBalancerPlugin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9C604E950E78CAD6732FC69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AVPlayerCDNLoadBalancerPlugin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5052E98B24ED5F31009D0804 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5052E99724ED5F31009D0804 /* SwiftSampleViewController.swift in Sources */,
+				5052E99324ED5F31009D0804 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A7618FF24FE4A3600366D93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A76191524FE4AF100366D93 /* AppDelegate.swift in Sources */,
+				7A76191624FE542C00366D93 /* SwiftSampleViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5052E99824ED5F31009D0804 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5052E99924ED5F31009D0804 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5052E99D24ED5F34009D0804 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5052E99E24ED5F34009D0804 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		7A76190924FE4A3600366D93 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A76190A24FE4A3600366D93 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A76190E24FE4A3900366D93 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A76190F24FE4A3900366D93 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5052E9A124ED5F34009D0804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5052E9A224ED5F34009D0804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5052E9A424ED5F34009D0804 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF57D9FB8F98BA17E481B7AD /* Pods-AVPlayerCDNLoadBalancerPlugin.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = AVPlayerCDNLoadBalancerPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.lumen.delivery.client.samples.cdn-load-balancer.AVPlayerCDNLoadBalancerPlugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerCDNLoadBalancerPlugin/AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5052E9A524ED5F34009D0804 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A28EE8F668014182BF49703F /* Pods-AVPlayerCDNLoadBalancerPlugin.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = AVPlayerCDNLoadBalancerPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.lumen.delivery.client.samples.cdn-load-balancer.AVPlayerCDNLoadBalancerPlugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerCDNLoadBalancerPlugin/AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7A76191224FE4A3900366D93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B5D88CD4683CE96DB49F610 /* Pods-AVPlayerCDNLoadBalancerPluginTV.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = "$(SRCROOT)/AVPlayerCDNLoadBalancerPlugin/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.lumen.delivery.client.samples.cdn-load-balancer.AVPlayerCDNLoadBalancerPlugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerCDNLoadBalancerPlugin/AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Debug;
+		};
+		7A76191324FE4A3900366D93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3208B746BC20012485CA578C /* Pods-AVPlayerCDNLoadBalancerPluginTV.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U8XV9XDER7;
+				INFOPLIST_FILE = "$(SRCROOT)/AVPlayerCDNLoadBalancerPlugin/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.streamroot.lumen.delivery.client.samples.cdn-load-balancer.AVPlayerCDNLoadBalancerPlugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "AVPlayerCDNLoadBalancerPlugin/AVPlayerCDNLoadBalancerPlugin-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5052E98A24ED5F31009D0804 /* Build configuration list for PBXProject "AVPlayerCDNLoadBalancerPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5052E9A124ED5F34009D0804 /* Debug */,
+				5052E9A224ED5F34009D0804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5052E9A324ED5F34009D0804 /* Build configuration list for PBXNativeTarget "AVPlayerCDNLoadBalancerPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5052E9A424ED5F34009D0804 /* Debug */,
+				5052E9A524ED5F34009D0804 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A76191424FE4A3900366D93 /* Build configuration list for PBXNativeTarget "AVPlayerCDNLoadBalancerPluginTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A76191224FE4A3900366D93 /* Debug */,
+				7A76191324FE4A3900366D93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5052E98724ED5F31009D0804 /* Project object */;
+}

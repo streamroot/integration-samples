@@ -1,0 +1,20 @@
+PODS:
+  - LumenMeshDeliveryAVPlayerPlugin (22.09.0.1):
+    - LumenMeshSDK (~> 22.09.0)
+  - LumenMeshSDK (22.09.0)
+
+DEPENDENCIES:
+  - LumenMeshDeliveryAVPlayerPlugin
+
+SPEC REPOS:
+  trunk:
+    - LumenMeshDeliveryAVPlayerPlugin
+    - LumenMeshSDK
+
+SPEC CHECKSUMS:
+  LumenMeshDeliveryAVPlayerPlugin: abc8207fd432ff5c9a01be39099a6c35d572f511
+  LumenMeshSDK: 1db60098510a1b2387ce6ea541205b3dd96eea1a
+
+PODFILE CHECKSUM: 2fe222a5ac3cd1ac4e2c19dc909b670043ca113b
+
+COCOAPODS: 1.10.1

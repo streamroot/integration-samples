@@ -1,0 +1,16 @@
+PODS:
+  - LumenOrchestratorSDK (22.09.0)
+
+DEPENDENCIES:
+  - LumenOrchestratorSDK
+
+SPEC REPOS:
+  trunk:
+    - LumenOrchestratorSDK
+
+SPEC CHECKSUMS:
+  LumenOrchestratorSDK: 735bc203c27d3e7bf8a671fcd181b85d6576a931
+
+PODFILE CHECKSUM: dcc8ac53209dd533ad813aa608b780c23ae63f90
+
+COCOAPODS: 1.11.3

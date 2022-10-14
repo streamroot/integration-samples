@@ -1,0 +1,17 @@
+source 'https://cdn.cocoapods.org/'
+inhibit_all_warnings!
+use_frameworks!
+
+def streamrootPod
+  pod 'LumenCDNLoadBalancerAVPlayerPlugin'
+end
+
+target 'AVPlayerCDNLoadBalancerPlugin' do
+  platform :ios, '10.0'
+  streamrootPod
+end
+
+target 'AVPlayerCDNLoadBalancerPluginTV' do
+  platform :tvos, '10.0'
+  streamrootPod
+end
