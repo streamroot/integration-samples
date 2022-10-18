@@ -282,7 +282,7 @@ LumenDeliveryClient.initializeApp(this)
 
 ### StatsView
 
-Streamroot provides a utils library that allows the display of Mesh Delivery information on the device.
+Lumen provides a utils library that allows the display of Mesh Delivery information on the device.
 
 ## **⚠️ This is not intended for production ⚠️**
 

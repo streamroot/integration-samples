@@ -332,7 +332,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).orchestratorOptions {
 
 ### StatsView
 
-Streamroot provides an optional utils library that allows the display of CDN Load Balancer information on the device.
+Lumen provides an optional utils library that allows the display of CDN Load Balancer information on the device.
 
 ---
 **⚠️ This is NOT intended for production ⚠️**

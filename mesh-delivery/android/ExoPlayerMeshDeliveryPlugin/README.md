@@ -332,7 +332,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
 
 ### StatsView
 
-Streamroot provides an optional utils library that allows the display of Mesh Delivery information on the device.
+Lumen provides an optional utils library that allows the display of Mesh Delivery information on the device.
 
 ---
 **⚠️ This is NOT intended for production ⚠️**
