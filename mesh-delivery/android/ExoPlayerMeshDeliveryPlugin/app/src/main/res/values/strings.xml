@@ -1,0 +1,15 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Mesh Delivery ExoPlayer Plugin Sample</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    <string name="logo_cd">Logo</string>
+    <string name="dc_key_text">Delivery client Key / Streamroot key</string>
+    <string name="dc_key_hint">Defaults to demoswebsiteandpartners</string>
+    <string name="stream_url_text">Stream URL</string>
+    <string name="stream_url_hint">Enter your stream URL</string>
+    <string name="mesh_property_text">Mesh property</string>
+    <string name="mesh_property_hint">Enter Mesh property</string>
+    <string name="launch_demo_text">Launch demo</string>
+    <string name="streamroot_key_prefill">demoswebsiteandpartners</string>
+    <string name="mesh_property_prefill">classic</string>
+    <string name="stream_url_prefill">http://wowza-test-cloudfront.streamroot.io/liveOrigin/Sintel1/playlist.m3u8</string>
+</resources>
