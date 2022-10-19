@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>THEOplayer DNA Wrapper</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="//samples.streamroot.io/dna/web/assets/demo-pages.css"
+    />
+
+    <!-- Makes the header -->
+    <script src="//samples.streamroot.io/dna/web/assets/header.js"></script>
+
+    <!-- THEOplayer build and UI -->
+    <script src="//cdn.myth.theoplayer.com/c195a0cd-3811-40c6-80d7-384f09506239/THEOplayer.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.myth.theoplayer.com/c195a0cd-3811-40c6-80d7-384f09506239/ui.css"
+    />
+
+    <!-- Streamroot wrapper -->
+    <script src="//cdn.streamroot.io/theoplayer-dna-wrapper/1/stable/theoplayer-dna-wrapper.js"></script>
+
+    <!-- Graphs -->
+    <script src="//tools.streamroot.io/usage-graphs/stable/graphs.js"></script>
+  </head>
+
+  <body>
+    <header></header>
+    <center>
+      <div
+        class="theoplayer-container video-js theoplayer-skin theo-seekbar-above-controls"
+      ></div>
+      <div id="streamroot-graphs"></div>
+    </center>
+
+    <script>
+      var dnaConfig = {};
+      var element = document.querySelector(".theoplayer-container");
+      var player = new THEOplayer.Player(element, {
+        libraryLocation: "https://cdn.myth.theoplayer.com/c195a0cd-3811-40c6-80d7-384f09506239",
+        ui: {
+          width: "512px",
+          height: "288px",
+        },
+		license: "sZP7IYe6T6fZIKxlTQP136zzIKCLFSxgTu0-CSggImzzTSeL3Lfi0uaZIlf6FOPlUY3zWokgbgjNIOf9fK4l0KxeCL31FDat0Da-3uBk3mk6IuI6FSbc3LfiCL36IQ4606fVfK4_bQgZCYxNWoryIQXzImf90SCZ0lhz0SCi0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3l5r0lfc3lBt0lerFOPeWok1dDrLYtA1Ioh6TgV6UQ1gWtAVCYggb6rlWoz6FOPVWo31WQ1qbta6FOPLUwPgCDkZWojzFKgqf6i6v6PUFOPeWok1dDrLYt3qUYPlImf9DZPzdQ4qbQc1sD4ZFK3qWmfVfKcqCoXVdQjLUOfVfG3zbK41WYPqWtapdD26FOfJfgzVfG3edt06TgV6dwx-Wuh6Ymi6bo4pIXjNWYAZIY3LdDjpflNzbG4gya",
+      });
+      var wrapper = new TheoPlayerDnaWrapper(
+        player,
+        "demoswebsiteandpartners",
+        dnaConfig
+      );
+
+      player.muted = true;
+      player.autoplay = true;
+
+      player.source = {
+        sources: [
+          {
+            src: "https://demo-vod.streamroot.io/index.m3u8",
+            type: "application/x-mpegURL",
+          },
+        ],
+      };
+    </script>
+  </body>
+</html>

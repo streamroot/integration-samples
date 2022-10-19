@@ -37,6 +37,27 @@ If you don't have an account, [request a free trial on our website](https://www.
 - AVPlayer ([Swift](ios/AVPlayerMeshDelivery))
 - AVPlayer ([Plugin](ios/AVPlayerMeshDeliveryPlugin))
 
+### Web
+
+#### Players
+
+- [Azure Media Player](web/azure-media-player/azuremp.html)
+- [Castlabs](web/castlabs/castlabs.html)
+- [Clappr](web/clappr/hlsjs-clappr.html)
+- [Dash.js](web/dash.js/dashjs-wrapper.html)
+- [FlowPlayer](web/flowplayer/flowplayer.html)
+- [Hls.js](web/hls.js/hlsjs-wrapper.html)
+- [JWPlayer](web/jwplayer/hlsjs-jwplayer.html)
+- [Radiant Media Player](web/radiant-media-player/radiant.html)
+- [ShakaPlayer](web/shaka-player/shakaplayer-wrapper.html)
+- [VideoJS](web/video.js/hlsjs-videojs.html)
+- [Bitmovin](web/bitmovin/bitmovin.html)
+- [THEOplayer](web/theoplayer/theoplayer.html)
+- [Brightcove](web/brightcove/brightcove.html)
+- [Mpx](web/mpx/mpx.html)
+- [Akamai Adaptive Media Player](web/akamai-adaptive-media-player/akamai.html)
+- [Kaltura](web/kaltura/kaltura.html)
+
 ## License
 
-The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at cdnsupport@lumen.com for information about Privacy and Open-Source & Third-Party Software Licenses.
+The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com) for information about Privacy and Open-Source & Third-Party Software Licenses.

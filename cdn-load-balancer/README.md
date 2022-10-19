@@ -39,4 +39,4 @@ If you don't have an account, [request a free trial on our website](https://www.
 
 ## License
 
-The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at cdnsupport@lumen.com for information about Privacy and Open-Source & Third-Party Software Licenses.
+The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com) for information about Privacy and Open-Source & Third-Party Software Licenses.

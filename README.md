@@ -24,7 +24,7 @@ Each of Lumen's product has its own designated section.
 
 ## Integration Documentation
 
-A dedicated [documentation website](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming.html) is available to learn how to integrate Lumen Mesh Delivery and CDN Load Balancer products to your platform and how to properly configure it.
+A dedicated documentation website is available to learn how to integrate Lumen [Mesh Delivery](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming.html) and [CDN Load Balancer](https://www.lumen.com/help/en-us/cdn/cdn-load-balancer.html) products to your platform and how to properly configure it.
 
 ## Streamroot Dashboard
 
@@ -34,4 +34,4 @@ If you don't have an account, request a trial for [Mesh Delivery](https://www.lu
 
 ## License
 
-The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at cdnsupport@lumen.com for information about Privacy and Open-Source & Third-Party Software Licenses.
+The Lumen SDKs and Plugins may include open source software or third party software. Any such software is made available to you under the terms of the applicable licenses. Contact support at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com) for information about Privacy and Open-Source & Third-Party Software Licenses.
