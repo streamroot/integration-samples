@@ -5,7 +5,7 @@
   Lumen Mesh Delivery and CDN Load Balancer Integration Samples
 </h1>
 <p align="center">
-  <img alt="Streamroot" src="assets/lumen_logo.png" width="400" />
+  <img alt="Lumen" src="assets/lumen_logo.png" width="400" />
   <br />
   <span>This repository is showcasing Lumen's Mesh Delivery and CDN Load Balancer products integrations across platforms, players and external providers</span>
 </p>
@@ -26,7 +26,7 @@ Each of Lumen's product has its own designated section.
 
 A dedicated documentation website is available to learn how to integrate Lumen [Mesh Delivery](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming.html) and [CDN Load Balancer](https://www.lumen.com/help/en-us/cdn/cdn-load-balancer.html) products to your platform and how to properly configure it.
 
-## Streamroot Dashboard
+## Dashboard
 
 If you already have an account you can visit your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 

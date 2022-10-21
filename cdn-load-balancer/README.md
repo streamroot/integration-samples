@@ -5,7 +5,7 @@
   Lumen CDN Load Balancer Integration Samples
 </h1>
 <p align="center">
-  <img alt="Streamroot" src="../assets/lumen_logo.png" width="400" />
+  <img alt="Lumen" src="../assets/lumen_logo.png" width="400" />
   <br />
   <span>This repository is showcasing Lumen's CDN Load Balancer product integrations across platforms, players and external providers</span>
 </p>
@@ -14,7 +14,7 @@
 
 A dedicated [documentation website](https://www.lumen.com/help/en-us/cdn/cdn-load-balancer.html) is available to learn how to add Lumen CDN Load Balancer on various platforms and how to properly configure it.
 
-## Streamroot Dashboard
+## Dashboard
 
 If you already have an account you can visit your own [dashboard](https://dashboard.streamroot.io) to validate your integration or monitor your customers.
 
