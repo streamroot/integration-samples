@@ -9,8 +9,8 @@ import io.streamroot.lumen.delivery.client.samples.theoplayer.databinding.Activi
 import java.util.Locale;
 
 /**
- * This class only implements trivial controls for the Unified THEOplayer SDK
- * It should not be ported in any final implementation
+ * This class only implements trivial controls for the Unified THEOplayer SDK It should not be
+ * ported in any final implementation
  */
 public final class PlayerControls {
   private static String secondsToTimeString(final double seconds) {

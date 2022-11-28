@@ -13,7 +13,6 @@ import com.theoplayer.android.api.THEOplayerView;
 import com.theoplayer.android.api.player.Player;
 import com.theoplayer.android.api.source.SourceDescription;
 import com.theoplayer.android.api.source.TypedSource;
-import com.theoplayer.android.api.ui.UIConfiguration;
 import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
 import io.streamroot.lumen.delivery.client.samples.theoplayer.databinding.ActivityPlayerBinding;
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
@@ -94,9 +93,7 @@ public class PlayerActivity extends AppCompatActivity {
     if (player == null) {
       bindings.playerContainer.removeAllViews();
       THEOplayerConfig playerConfig =
-          new THEOplayerConfig.Builder()
-              .license(Application.THEO_LICENSE(this))
-              .build();
+          new THEOplayerConfig.Builder().license(Application.THEO_LICENSE(this)).build();
       player = new THEOplayerView(this, playerConfig);
 
       bindings.playerContainer.addView(
