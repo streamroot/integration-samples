@@ -29,6 +29,7 @@ If you don't have an account, [request a free trial on our website](https://www.
 - ExoPlayer ([Kotlin](android/ExoPlayerMeshDelivery))
 - ExoPlayer ([Java](android/ExoPlayerMeshDeliveryJava))
 - ExoPlayer ([Plugin](android/ExoPlayerMeshDeliveryPlugin))
+- THEOplayer ([Java](android/THEOplayerMeshDeliveryJava))
 
 ### iOS/ipadOS/tvOS
 
