@@ -29,6 +29,7 @@ If you don't have an account, [request a free trial on our website](https://www.
 - ExoPlayer ([Kotlin](android/ExoPlayerCDNLoadBalancer))
 - ExoPlayer ([Java](android/ExoPlayerCDNLoadBalancerJava))
 - ExoPlayer ([Plugin](android/ExoPlayerCDNLoadBalancerPlugin))
+- THEOplayer ([Java](android/THEOplayerCDNLoadBalancerJava))
 
 ### iOS/ipadOS/tvOS
 
