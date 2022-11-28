@@ -1,15 +1,15 @@
 # CDN Load Balancer SDK Integration for Android (THEOplayer) (Java)
 
 ## Prerequisite
-To integrate the Mesh Delivery SDK, we need:
+To integrate the CDN Load Balancer SDK, we need:
 * A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
 * A valid THEOplayer license for the THEOplayer SDK you are using.
 * THEOplayer versions supported by this sample are 4.3.1 (unified & modular)
 
-**NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
+**NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/orchestrator-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
 ## SDK installation
-The easiest way to get the Mesh Delivery SDK is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
+The easiest way to get the CDN Load Balancer SDK is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
 
 Add Streamroot's maven repository to the project settings in `settings.gradle`
 ```gradle
@@ -20,14 +20,14 @@ dependencyResolutionManagement {
 }
 ```
 
-Add Mesh Delivery SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
+Add CDN Load Balancer SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
 ```gradle
 // It is good practice to lock dependencies version
-def dc_version = "22.09.0"
+def dc_version = "22.09.1"
 
-implementation "io.streamroot.lumen.delivery.client:mesh-sdk:$dc_version"
+implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk:$dc_version"
 ```
-Mesh Delivery SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
+CDN Load Balancer SDK will be pulled, but also other dependencies it depends on. Here is an exhaustive list:
 
 - `org.jetbrains.kotlin:kotlin-reflect`
 - `org.jetbrains.kotlin:kotlin-stdlib-jdk8`
@@ -38,7 +38,7 @@ Mesh Delivery SDK will be pulled, but also other dependencies it depends on. Her
 
 **Notes**:
 
-- Mesh Delivery SDK requires Android KitKat 4.4 <=> API 19. Make sure your `minSdkVersion` is set to 19 or higher.
+- CDN Load Balancer SDK requires Android KitKat 4.4 <=> API 19. Make sure your `minSdkVersion` is set to 19 or higher.
 - If your `minSdkVersion` is strictly below API 21 (usually 19) and you encounter a maximum number of functions reached, you might need to setup a multidex application. Follow the following steps from the official android documentation.
 [Multidex documentation](https://developer.android.com/studio/build/multidex)
 
@@ -185,7 +185,7 @@ private LumenDeliveryClient createDeliveryClient(Player player) {
     final PlayerInteractor playerInteractor = new PlayerInteractor(player);
 
     return LumenDeliveryClient
-            .meshBuilder(this)
+            .orchestratorBuilder(this)
             /*
              * Set the player interactor that will be used by the SDK
              * Check the bridge section to know more
@@ -241,15 +241,15 @@ private LumenDeliveryClient createDeliveryClient(Player player) {
     final PlayerInteractor playerInteractor = new PlayerInteractor(player);
 
     return LumenDeliveryClient
-            .meshBuilder(this)
+            .orchestratorBuilder(this)
             .playerInteractor(playerInteractor)
             .options(o -> {
                 /*
-                * Set Mesh property
+                * Set Orchestrator property
                 *
                 * param: String
                 */
-                o.meshProperty("MY_PROPERTY");
+                o.orchestratorProperty("MY_PROPERTY");
                 /*
                 * Set the Delivery Client Key
                 * Is only required if it was not set in AndroidManifest.xml
@@ -307,7 +307,7 @@ LumenDeliveryClient.initializeApp(this);
 
 ### StatsView
 
-Lumen provides a utils library that allows the display of Mesh Delivery information on the device.
+Lumen provides a utils library that allows the display of CDN Load Balancer information on the device.
 
 ## **⚠️ This is not intended for production ⚠️**
 
@@ -315,7 +315,7 @@ Add the utils dependency to your module's `build.gradle`
 
 ```gradle
 // /!\ Optional package for stats view. Not intended for production /!\
-implementation "io.streamroot.lumen.delivery.client:mesh-sdk-utils:$dc_version"
+implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:$dc_version"
 ```
 
 Add the `LumenStatsView` to your layout, ideally over the biggest surface. You can do this freely as it won't intercept user interaction.
@@ -343,4 +343,4 @@ private void showStatsView(LumenDeliveryClient dc) {
 dcStatsView = ...
 initStatsView(dcStatsView)
 ```
-A red overlay with Mesh Delivery SDK related stats should be displayed. The stats view overlay can be reopened by clicking repeatedly anywhere on the screen.
+A red overlay with CDN Load Balancer SDK related stats should be displayed. The stats view overlay can be reopened by clicking repeatedly anywhere on the screen.
