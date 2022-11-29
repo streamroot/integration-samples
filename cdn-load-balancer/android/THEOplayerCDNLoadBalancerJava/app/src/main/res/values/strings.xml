@@ -12,5 +12,5 @@
 
     <string name="streamroot_key_prefill">demoswebsiteandpartners</string>
     <string name="property_prefill">classic</string>
-    <string name="stream_url_prefill">http://wowza-test-cloudfront.streamroot.io/liveOrigin/Sintel1/playlist.m3u8</string>
+    <string name="stream_url_prefill">https://wowza-test-cloudfront.streamroot.io/liveOrigin/Sintel1/playlist.m3u8</string>
 </resources>
