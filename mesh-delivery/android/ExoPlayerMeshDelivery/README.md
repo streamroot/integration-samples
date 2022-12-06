@@ -1,5 +1,35 @@
 # Mesh Delivery SDK Integration for Android (Kotlin)
 
+## Interactor capabilities
+The SDK is player agnostic. All communication between the player and the delivery client that are player specific are implemented in a PlayerInteractor class.
+Each player has a different API that the SDK tries to use at its full potential. The lack of some interfaces may :
+- Reduce QoS detection
+- Reduce efficiency
+
+### QoS
+
+**States**
+* INVALID : Unused
+* IDLE : OK
+* PLAYING : OK
+* PAUSED : OK
+* SEEKING : OK
+* REBUFFERING : OK
+* ENDED : OK
+
+**Misc**
+* Playback time : OK
+* Bandwidth control : OK
+* Buffer health : OK
+* Track switch : Unreliable
+* Player error : OK
+* Frame drop : Unsupported
+
+### Efficiency
+
+* Set buffer target : OK
+* Get buffer target : OK
+
 ## Prerequisite
 To integrate the Mesh Delivery SDK, we need:
 * A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
