@@ -1,0 +1,129 @@
+plugins {
+    id 'com.android.application'
+    id 'com.github.sherter.google-java-format' version '0.9'
+}
+
+ext {
+    // Sample string configuration
+    product = 'CDNLoadBalancer'
+    player = 'THEOplayer'
+    language  = 'Java'
+
+    package_suffix = [product, player, language].collect { it.replaceAll('[ -]', '_').toLowerCase() }.join(".")
+    deeplink_base = [product, player, language].collect { it.replaceAll('[ _]', '-').toLowerCase() }.join("-")
+
+    // Versioning
+    dc_version = "22.09.1"
+    player_version = "4.3.1"
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+
+        System.getenv('FIREBASE_TARGET') != null
+            ? applicationId("io.streamroot.lumen.delivery.client.samples.default")
+            : applicationId("io.streamroot.lumen.delivery.client.samples.${project.ext.package_suffix}")
+
+        minSdk 21
+        targetSdk 33
+        versionCode generateTimeVersionCode()
+        versionName "1.0"
+        multiDexEnabled true
+
+        manifestPlaceholders.product = project.ext.product
+        manifestPlaceholders.player = project.ext.player
+        manifestPlaceholders.language = project.ext.language
+        manifestPlaceholders.deeplinkDefault = 'dc-sample-default'
+
+        buildConfigField('String', 'PLAYER_VERSION', "\"${project.ext.player_version}\"")
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        release_dummy {
+            storeFile file('./dummy.jks')
+            storePassword 'dummydummy'
+            keyAlias 'dummy'
+            keyPassword 'dummydummy'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    flavorDimensions "theosdk"
+    productFlavors {
+        modular {
+            dimension "theosdk"
+            manifestPlaceholders.flavor = "Modular"
+            manifestPlaceholders.deeplinkFlavor = "modular"
+            manifestPlaceholders.deeplinkSpecific = "dc-sample-${project.ext.deeplink_base}-modular"
+
+            def deeplink = "dc-sample-${project.ext.deeplink_base}-modular"
+            manifestPlaceholders.deeplinkSpecific = deeplink
+            resValue "string", "dc_deeplink", "Deeplink : $deeplink"
+        }
+        unified {
+            dimension "theosdk"
+            manifestPlaceholders.flavor = "Unified"
+            manifestPlaceholders.deeplinkFlavor = "unified"
+
+            def deeplink = "dc-sample-${project.ext.deeplink_base}-unified"
+            manifestPlaceholders.deeplinkSpecific = deeplink
+            resValue "string", "dc_deeplink", "Deeplink : $deeplink"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release_dummy
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk:$project.ext.dc_version"
+    implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:$project.ext.dc_version"
+
+    // Modular API
+    modularImplementation "com.theoplayer.theoplayer-sdk-android:basic-minapi21:$project.ext.player_version"
+    // modularImplementation "com.theoplayer.theoplayer-sdk-android:basic-fireTV:$project.ext.player_version"
+    // modularImplementation "com.theoplayer.theoplayer-sdk-android:basic-minapi16:$project.ext.player_version"
+    // modularImplementation "com.theoplayer.theoplayer-sdk-android:basic-androidTV:$project.ext.player_version"
+    // modularImplementation "com.theoplayer.theoplayer-sdk-android:basic-fireTV:$project.ext.player_version"
+
+    // Unified API
+    unifiedImplementation "com.theoplayer.theoplayer-sdk-android:unified:$project.ext.player_version"
+
+    testImplementation 'junit:junit:4.13.2'
+}
+
+private static int generateTimeVersionCode() {
+    // WARN: Integer overflow around year 2031
+    return ((int)(new Date().getTime()/1000))
+}
+
+task getVersionReport {
+    doLast {
+        def injected_flavor_hint = System.getenv('INJECTED_FLAVOR_HINT').capitalize()
+        print "${project.ext.product} ${project.ext.dc_version}" +
+                " - ${project.ext.player} ${project.ext.player_version} ($injected_flavor_hint)" +
+                " - ${project.ext.language}"
+    }
+}
