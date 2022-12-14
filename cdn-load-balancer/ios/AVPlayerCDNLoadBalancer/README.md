@@ -249,3 +249,23 @@ A helper method is available to display various CDN Load Balancer related stats 
 self.deliveryClient.displayStatWiew(someView!)
 ```
 **Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.
+
+## Interactor capabilities
+The SDK is player agnostic. All communication between the player and the delivery client that are player specific are implemented in a PlayerInteractor class.
+Each player has a different API that the SDK tries to use at its full potential in order to monitor and maximize the Quality of Service.
+
+**States**
+* INVALID : Unused
+* IDLE : OK
+* PLAYING : OK
+* PAUSED : OK
+* SEEKING : OK
+* REBUFFERING : OK
+* ENDED : OK
+
+**Misc**
+* Playback time : OK
+* Buffer health : OK
+* Track switch : Experimental
+* Player error : OK
+* Frame drop : OK
