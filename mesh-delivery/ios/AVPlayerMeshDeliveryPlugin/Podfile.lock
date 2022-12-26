@@ -1,5 +1,5 @@
 PODS:
-  - LumenMeshDeliveryAVPlayerPlugin (22.09.1.0):
+  - LumenMeshDeliveryAVPlayerPlugin (22.09.1.3):
     - LumenMeshSDK (~> 22.09.1)
   - LumenMeshSDK (22.09.1)
 
@@ -12,9 +12,9 @@ SPEC REPOS:
     - LumenMeshSDK
 
 SPEC CHECKSUMS:
-  LumenMeshDeliveryAVPlayerPlugin: 30404951ee7049b0f04dd433b12ec9ae708263a1
+  LumenMeshDeliveryAVPlayerPlugin: 6076eb14d0f1c8afa95bba99c985315e4980276c
   LumenMeshSDK: f1675839df20482f54fdc97b43650ec0ed793ec4
 
 PODFILE CHECKSUM: 2fe222a5ac3cd1ac4e2c19dc909b670043ca113b
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
