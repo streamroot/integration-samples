@@ -66,19 +66,19 @@ class SwiftSampleViewController: AVPlayerViewController {
     let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
     player = AVPlayer(playerItem: playerItem)
     // Link the player to the PlayerInteractor so it can register to the player event and notify properly the deliveryCLient
-    playerInteractor.linkPlayer(player!)
+    playerInteractor.linkPlayer(player!, playerItem: playerItem)
     
     // Start the playback
     player?.play()
     
     //Display the stat view
     #if os(iOS)
-    self.deliveryClient?.displayStatView(contentOverlayView!)
+    let svContainer = UIView(frame: self.view.bounds)
     #elseif os(tvOS)
-    let sv = UIScrollView(frame: self.view.bounds)
-    self.view.addSubview(sv)
-    self.deliveryClient?.displayStatView(sv)
+    let svContainer = UIScrollView(frame: self.view.bounds)
     #endif
+    self.view.addSubview(svContainer)
+    self.deliveryClient?.displayStatView(svContainer)
   }
   
   // MARK: - Airplay support
