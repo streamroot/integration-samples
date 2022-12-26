@@ -67,7 +67,7 @@ class PlayerViewController: UIViewController {
     
     // Link the player to the PlayerInteractor so it can register to the player event and notify properly the deliveryCLient
     // Must be done before starting the playback.
-    playerInteractor.linkPlayer(player)
+    playerInteractor.linkPlayer(player, playerItem: playerItem)
     player.play()
     
     /* Setup stat view
