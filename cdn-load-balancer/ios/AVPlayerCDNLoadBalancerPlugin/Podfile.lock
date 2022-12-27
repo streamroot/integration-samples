@@ -1,5 +1,5 @@
 PODS:
-  - LumenCDNLoadBalancerAVPlayerPlugin (22.09.1.0):
+  - LumenCDNLoadBalancerAVPlayerPlugin (22.09.1.3):
     - LumenOrchestratorSDK (~> 22.09.1)
   - LumenOrchestratorSDK (22.09.1)
 
@@ -12,7 +12,7 @@ SPEC REPOS:
     - LumenOrchestratorSDK
 
 SPEC CHECKSUMS:
-  LumenCDNLoadBalancerAVPlayerPlugin: 88ba3f31a3bd53c75e363c7118d241b3300308b0
+  LumenCDNLoadBalancerAVPlayerPlugin: a9601503e32e9eb353bf6a29ecaaf7a8502259a0
   LumenOrchestratorSDK: 78022d321c0a91806459938389258ea4a863655d
 
 PODFILE CHECKSUM: b5b04ee8b2ec0fb8c20239e41543f6b1bf5e4dec

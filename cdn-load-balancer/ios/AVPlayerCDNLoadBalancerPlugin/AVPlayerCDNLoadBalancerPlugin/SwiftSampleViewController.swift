@@ -10,7 +10,7 @@ class SwiftSampleViewController: AVPlayerViewController {
   
   // MARK: - Properties
   private var plugin: LMDeliveryClientPlugin?
-  private let manifestUrl = URL(string: "http://wowza-test.streamroot.io/liveOrigin/BBB-bl-1500/playlist.m3u8")!
+  private let manifestUrl = URL(string: "https://wowza-test-cloudfront.streamroot.io/liveOriginTimestamps/bbb_30fps_live.smil/playlist.m3u8")!
   
   // MARK: - View Controller Init
   override func viewDidDisappear(_ animated: Bool) {
@@ -54,11 +54,11 @@ class SwiftSampleViewController: AVPlayerViewController {
     
     //Display the stat view
     #if os(iOS)
-    plugin.displayStatsView(contentOverlayView!)
+    let svContainer = UIView(frame: self.view.bounds)
     #elseif os(tvOS)
-    let sv = UIScrollView(frame: self.view.bounds)
-    self.view.addSubview(sv)
-    plugin.displayStatsView(sv)
+    let svContainer = UIScrollView(frame: self.view.bounds)
     #endif
+    self.view.addSubview(svContainer)
+    plugin.displayStatsView(svContainer)
   }
 }
