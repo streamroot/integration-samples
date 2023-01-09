@@ -56,7 +56,7 @@ If you don't have an account, [request a free trial on our website](https://www.
 - [FlowPlayer](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-flowplayer.html) ([démo](web/flowplayer/flowplayer.html))
 - [Radiant Media Player](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-radiant.html) ([démo](web/radiant-media-player/radiant.html))
 - [Brightcove](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-brightcove.html) ([démo](web/brightcove/brightcove.html))
-- [Mpx](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-mpx.html) ([démo](web/mpx/mpx.html))
+- [Cloud Video Platform (MPX Player)](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-mpx.html) ([démo](web/mpx/mpx.html))
 - [Akamai Adaptive Media Player](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-akamai.html) ([démo](web/akamai-adaptive-media-player/akamai.html))
 - [Kaltura](https://www.lumen.com/help/en-us/cdn/mesh-delivery-for-streaming/mesh-delivery-web/integration-for-web/mesh-delivery-kaltura-v7.html) ([démo](web/kaltura/kaltura.html))
 
