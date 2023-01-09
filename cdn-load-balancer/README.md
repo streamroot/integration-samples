@@ -60,7 +60,7 @@ _The complete list of integrations we support and guides for setting them up can
 - FlowPlayer
 - Radiant Media Player
 - Brightcove
-- Mpx
+- Cloud Video Platform (MPX Player)
 - Akamai Adaptive Media Player
 - Kaltura
 
