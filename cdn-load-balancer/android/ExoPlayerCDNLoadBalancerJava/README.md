@@ -23,7 +23,7 @@ dependencyResolutionManagement {
 Add CDN Load Balancer SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
 ```gradle
 // It is good practice to lock dependencies version
-def dc_version = "22.09.1"
+def dc_version = "23.1.0"
 
 implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk:$dc_version"
 ```

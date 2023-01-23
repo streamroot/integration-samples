@@ -46,7 +46,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.exoplayer:exoplayer:2.18.1'
 
-    def dc_version = '22.09.1'
+    def dc_version = '23.1.0'
     implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk:$dc_version"
     implementation "io.streamroot.lumen.delivery.client:orchestrator-sdk-utils:$dc_version"
 }
