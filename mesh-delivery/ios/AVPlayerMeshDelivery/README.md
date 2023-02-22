@@ -143,9 +143,9 @@ guard let deliveryUrl = deliveryClient.localManifestURL else {
 let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 ```
 
-### 5. Play the stream
+### 5. Link the player with PlayerInteractor THEN play the stream
 
-Start the player with the new url provided by the `LMDeliveryClient` and link it with the `PlayerInteractor`:
+Start the player with the new url provided by the `LMDeliveryClient`, link it with the `PlayerInteractor` and then play the stream:
 ```swift
 let player = AVPlayer(playerItem: playerItem)
 playerInteractor.linkPlayer(player!, playerItem: playerItem)
