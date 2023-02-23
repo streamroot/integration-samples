@@ -143,19 +143,25 @@ guard let deliveryUrl = deliveryClient.localManifestURL else {
 let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 ```
 
-### 5. Play the stream
+### 5. Link the player with PlayerInteractor
 
-Start the player with the new url provided by the `LMDeliveryClient` and link it with the `PlayerInteractor`:
+Start the player with the new url provided by the `LMDeliveryClient` then link it with the `PlayerInteractor` :
 ```swift
 let player = AVPlayer(playerItem: playerItem)
 playerInteractor.linkPlayer(player!, playerItem: playerItem)
-
-player?.play()
 ```
 
 **Note**: The interactor is linked with a specific player AND a specific player item. The same object should be used inside AVPlayer and inside the linkPlayer() method.
 
-### 6. Stop the SDK
+### 6. Play the stream
+
+To play the stream, simply do:
+
+```swift
+player?.play()
+```
+
+### 7. Stop the SDK
 Make sure to stop the `LMDeliveryClient` once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
 ```swift
 self.deliveryClient.stop()
