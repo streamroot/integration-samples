@@ -10,16 +10,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.exoplayer2.C;
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.drm.DefaultDrmSessionManager;
+import com.google.android.exoplayer2.drm.DrmSessionManager;
+import com.google.android.exoplayer2.drm.ExoMediaCrypto;
+import com.google.android.exoplayer2.drm.HttpMediaDrmCallback;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.dash.DashMediaSource;
+import com.google.android.exoplayer2.source.dash.DefaultDashChunkSource;
+import com.google.android.exoplayer2.source.hls.HlsMediaSource;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.google.android.exoplayer2.drm.FrameworkMediaDrm;
 import com.google.android.exoplayer2.util.Util;
+
+import java.util.UUID;
 
 import io.streamroot.lumen.delivery.client.samples.mesh_delivery.exoplayer.databinding.ActivityPlayerBinding;
 import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
 import io.streamroot.lumen.delivery.client.core.LumenLogLevel;
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
+import kotlin.jvm.Throws;
 
 public class PlayerActivity extends AppCompatActivity {
     public static final class PlayerActivityArgs {
@@ -67,7 +82,7 @@ public class PlayerActivity extends AppCompatActivity {
     private @Nullable
     ExoPlayer player = null;
     private @Nullable
-    MediaItem mediaItem = null;
+    MediaSource mediaSource = null;
     private @Nullable
     LumenDeliveryClient lumenDeliveryClient = null;
 
@@ -129,9 +144,9 @@ public class PlayerActivity extends AppCompatActivity {
                             DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_MS,
                             DefaultLoadControl.DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS
                     )
-                    .build();
+                    .createDefaultLoadControl();
 
-            final ExoPlayer.Builder exoPlayerBuilder = new ExoPlayer.Builder(this);
+            final SimpleExoPlayer.Builder exoPlayerBuilder = new SimpleExoPlayer.Builder(this);
             final PlayerInteractor.ExoPlayerBandwidthMeter bandwidthMeter = new PlayerInteractor.ExoPlayerBandwidthMeter(this, exoPlayerBuilder);
 
             final ExoPlayer exoPlayer = exoPlayerBuilder
@@ -148,15 +163,16 @@ public class PlayerActivity extends AppCompatActivity {
 
             // We fetch the final URL from the delivery client
             final Uri deliveryManifest = Uri.parse(dc.localUrl());
+            final String drmLicenseServerUrl = "https://cwip-shaka-proxy.appspot.com/no_auth";
+            final UUID drmUuid = C.WIDEVINE_UUID;
 
-            mediaItem = MediaItem.fromUri(deliveryManifest);
+            mediaSource = buildMediaSource(deliveryManifest, drmLicenseServerUrl, drmUuid);
             player = exoPlayer;
             bindings.playerView.setPlayer(exoPlayer);
             lumenDeliveryClient = dc;
 
-            player.addMediaItem(mediaItem);
             player.setRepeatMode(Player.REPEAT_MODE_ALL);
-            player.prepare();
+            player.prepare(mediaSource);
         }
     }
 
@@ -191,12 +207,40 @@ public class PlayerActivity extends AppCompatActivity {
 
         player.release();
         player = null;
-        mediaItem = null;
+        mediaSource = null;
     }
 
     private void stopDeliveryClient() {
         if (lumenDeliveryClient == null) return;
         lumenDeliveryClient.stop();
         lumenDeliveryClient = null;
+    }
+
+    private MediaSource buildMediaSource(Uri uri, String drmLicenseServerUrl, UUID drmUuid) {
+        final DefaultHttpDataSourceFactory defaultDataSourceFactory = new DefaultHttpDataSourceFactory(
+                Util.getUserAgent(getApplicationContext(), "StreamrootQA"),
+                DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
+                DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
+                true
+        );
+        HttpMediaDrmCallback drmCallback = new HttpMediaDrmCallback(drmLicenseServerUrl, defaultDataSourceFactory);
+        DrmSessionManager<ExoMediaCrypto> drmSessionManager = new DefaultDrmSessionManager.Builder()
+                .setMultiSession(true)
+                .setUuidAndExoMediaDrmProvider(drmUuid, FrameworkMediaDrm.DEFAULT_PROVIDER)
+                .build(drmCallback);
+
+        switch (Util.inferContentType(uri)) {
+            case C.TYPE_HLS:
+                return new HlsMediaSource.Factory(defaultDataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            case C.TYPE_DASH:
+                return new DashMediaSource.Factory(
+                        new DefaultDashChunkSource.Factory(defaultDataSourceFactory), defaultDataSourceFactory)
+                        .setDrmSessionManager(drmSessionManager)
+                        .createMediaSource(uri);
+            default:
+                throw new IllegalStateException("Unsupported type for url: $uri");
+        }
     }
 }

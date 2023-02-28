@@ -9,9 +9,11 @@ import androidx.annotation.Nullable;
 
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.LoadControl;
-import com.google.android.exoplayer2.PlaybackException;
+import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.Tracks;
+import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.source.TrackGroupArray;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.upstream.BandwidthMeter;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DataSpec;
@@ -28,7 +30,7 @@ import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorWrapperInterface;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 
-public final class PlayerInteractor extends LumenPlayerInteractorBase implements Player.Listener {
+public final class PlayerInteractor extends LumenPlayerInteractorBase implements Player.EventListener {
 
     private static final String TAG = "ExoPlayerInteractor";
 
@@ -100,7 +102,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
 
         private Long meshEstimatedBandwidth;
 
-        ExoPlayerBandwidthMeter(Context context, ExoPlayer.Builder playerBuilder) {
+        ExoPlayerBandwidthMeter(Context context, SimpleExoPlayer.Builder playerBuilder) {
             this.context = context;
             this.listeners = new ArrayList<>();
 
@@ -208,7 +210,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
             this.minBufferField = minBufferField;
         }
 
-        static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
+        protected static Field getAccessibleFieldElseThrow(Class<?> clazz, String fieldName) {
             try {
                 final Field myField = clazz.getDeclaredField(fieldName);
                 myField.setAccessible(true);
@@ -329,12 +331,12 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
     }
 
     @Override
-    public void onTracksChanged(Tracks tracks) {
+    public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
         super.playerTrackSwitch();
     }
 
     @Override
-    public void onPlayerError(PlaybackException error) {
+    public void onPlayerError(ExoPlaybackException error) {
         super.playerError();
     }
 
@@ -346,7 +348,7 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase implements
     }
 
     @Override
-    public void onPlaybackStateChanged(int playbackState) {
+    public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
         switch (playbackState) {
             case Player.STATE_IDLE:
                 super.playerStateChange(LumenVideoPlaybackState.IDLE);
