@@ -8,6 +8,8 @@ To integrate the Mesh Delivery SDK, we need:
 
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
+**Not into Tutorial?** Take a look at the [repository](./) instead
+
 ## SDK installation
 The easiest way to get the Mesh Delivery SDK is to add it as a Gradle dependency. We assume you are using Android Studio with the latest tools updates as recommended by Google. If not, write to us at [cdnsupport@lumen.com](mailto:cdnsupport@lumen.com).
 
