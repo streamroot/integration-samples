@@ -7,7 +7,7 @@ To integrate the Mesh Delivery SDK, we need:
 
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
-**Not into Tutorial?** Take a look at the [repository](./) instead
+**Not into Tutorials?** Take a look at our [sample app](./) 
 
 ## Framework installation
 The Mesh Delivery SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage#quick-start).
