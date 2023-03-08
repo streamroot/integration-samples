@@ -22,7 +22,7 @@ dependencyResolutionManagement {
 }
 ```
 
-Add Mesh Delivery SDK dependency. Add in your **module** `builde.gradle` (it often ends with .app)
+Add Mesh Delivery SDK dependency. In your **module** `build.gradle` (it often ends with .app), add the following lines in the `dependencies` block:
 ```gradle
 // It is good practice to lock dependencies version
 def dc_version = "23.1.0"
@@ -69,11 +69,9 @@ First, add an xml resource (called here `network_security_config.xml`) to your p
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors>
-            <certificates src="system" />
-        </trust-anchors>
-    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
 </network-security-config>
 ```
 
@@ -83,7 +81,6 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 <manifest ...>
     <application
         ...
-        android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
     </application>
 </manifest>
@@ -92,7 +89,7 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 More info can be found in the [Android documentation](https://developer.android.com/training/articles/security-config).
 
 ## Set the Delivery Client Key
-In your `AndroidManifest.xml` add the Delivery Client Key in the application node
+In your `AndroidManifest.xml` add the Delivery Client Key in the `application` node:
 ```xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
@@ -100,7 +97,7 @@ android:value="<delivery-client-key>"
 />
 ```
 
-We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when calling `LumenDeliveryClient.initializeApp()`.
 
 ## Code integration
 
@@ -121,6 +118,9 @@ class Application: MultiDexApplication() {
     }
 }
 ```
+
+**NOTE:** If you use a MultiDexApplication, don't forget to add the `multiDexEnabled true` line in your app gradle file under the `android.defaultConfig` block. More information in the Multidex documentation linked above.
+
 In your `AndroidManifest.xml`, point to your custom application subclass: 
 
 ```kotlin
@@ -168,6 +168,11 @@ private fun createDeliveryClient(
              * param: an instance of a class subclassing LumenPlayerInteractorBase.
              */
             .playerInteractor(playerInteractor)
+            /*
+             * Set the optional parameters (more details below)
+             * NOTE: This is required even if empty
+             */
+            .options {}
             /*
              * Build a LumenDeliveryClient instance
              *
@@ -218,7 +223,8 @@ private fun createDeliveryClient(
     loadControl: DefaultLoadControl,
     bandwidthMeter: ExoPlayerBandwidthMeter
 ) : LumenDeliveryClient {
-    val playerInteractor = PlayerInteractor(player, loadControl, bandwidthMeter)   return LumenDeliveryClient
+    val playerInteractor = PlayerInteractor(player, loadControl, bandwidthMeter)
+    return LumenDeliveryClient
             .meshBuilder(applicationContext)
             .playerInteractor(playerInteractor)
             .options {
