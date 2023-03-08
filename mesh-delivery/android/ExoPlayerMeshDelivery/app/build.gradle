@@ -5,6 +5,7 @@ plugins {
 
 android {
     compileSdk 33
+    namespace 'io.streamroot.lumen.delivery.client.samples.mesh_delivery.exoplayer'
 
     defaultConfig {
         applicationId "io.streamroot.lumen.delivery.client.samples.mesh_delivery.exoplayer"

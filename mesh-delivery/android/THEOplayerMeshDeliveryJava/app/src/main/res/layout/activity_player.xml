@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context="io.streamroot.lumen.delivery.client.samples.theoplayer.PlayerActivity">
+    tools:context=".theoplayer.PlayerActivity">
 
     <FrameLayout
         android:id="@+id/playerContainer"

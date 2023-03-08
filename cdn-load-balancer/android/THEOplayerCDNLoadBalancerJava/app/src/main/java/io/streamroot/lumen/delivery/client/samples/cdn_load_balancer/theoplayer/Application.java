@@ -1,4 +1,4 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.cdn_load_balancer.theoplayer;
 
 import android.content.Context;
 import android.text.TextUtils;

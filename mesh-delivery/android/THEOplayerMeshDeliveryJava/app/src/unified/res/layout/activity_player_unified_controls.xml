@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@null"
-    tools:context="io.streamroot.lumen.delivery.client.samples.theoplayer.PlayerActivity">
+    tools:context="PlayerActivity">
 
     <View
         android:layout_width="match_parent"

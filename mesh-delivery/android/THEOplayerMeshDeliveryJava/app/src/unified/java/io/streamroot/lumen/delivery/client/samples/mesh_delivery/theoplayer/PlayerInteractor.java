@@ -1,7 +1,5 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer;
 
-import android.os.Handler;
-import android.os.HandlerThread;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.theoplayer.android.api.event.EventType;
@@ -9,14 +7,12 @@ import com.theoplayer.android.api.event.player.PlayerEventTypes;
 import com.theoplayer.android.api.event.track.mediatrack.video.VideoTrackEventTypes;
 import com.theoplayer.android.api.event.track.mediatrack.video.list.VideoTrackListEventTypes;
 import com.theoplayer.android.api.player.Player;
-import com.theoplayer.android.api.player.RequestCallback;
 import com.theoplayer.android.api.timerange.TimeRange;
 import com.theoplayer.android.api.timerange.TimeRanges;
 import io.streamroot.lumen.delivery.client.core.LumenPlayerInteractorBase;
 import io.streamroot.lumen.delivery.client.core.LumenVideoPlaybackState;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.concurrent.atomic.AtomicReference;
 
 public final class PlayerInteractor extends LumenPlayerInteractorBase {
   private static final String TAG = "TheoPlayerInteractor";
@@ -103,7 +99,6 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase {
   }
 
   @NonNull private final Player player;
-  @NonNull private final Handler handler;
   @Nullable private EventType<?> lastEvent = null;
 
   public PlayerInteractor(@NonNull Player player) {
@@ -112,10 +107,6 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase {
 
   public PlayerInteractor(@NonNull Player player, double initialBufferTargetS) {
     this.player = player;
-
-    HandlerThread handlerThread = new HandlerThread("PlayerInteractor");
-    handlerThread.start();
-    this.handler = new Handler(handlerThread.getLooper());
 
     setBufferTarget(initialBufferTargetS);
     addListeners();
@@ -181,49 +172,13 @@ public final class PlayerInteractor extends LumenPlayerInteractorBase {
     player.getAbr().setTargetBuffer((int) (target + 0.5));
   }
 
-  private interface Function<T> {
-    void execute(RequestCallback<T> cb);
-  }
-
-  private <T> T runBlocking(final Function<T> block) throws InterruptedException {
-    final Object lock = new Object();
-    final AtomicReference<T> tRef = new AtomicReference<>(null);
-
-    synchronized (lock) {
-      handler.post(
-          () -> {
-            block.execute(
-                t -> {
-                  synchronized (lock) {
-                    tRef.set(t);
-                    lock.notify();
-                  }
-                });
-          });
-      lock.wait();
-    }
-    return tRef.get();
-  }
-
   @Override
   public Double bufferHealth() {
-    double bh = 0.0;
-    try {
-      bh =
-          timeRangesToBufferHealth(
-              runBlocking(player::requestCurrentTime), runBlocking(player::requestBuffered));
-    } catch (InterruptedException ignored) {
-    }
-    return bh;
+    return timeRangesToBufferHealth(player.getCurrentTime(), player.getBuffered());
   }
 
   @Override
   public Double playbackTime() {
-    double pt = 0.0;
-    try {
-      pt = runBlocking(player::requestCurrentTime);
-    } catch (InterruptedException ignored) {
-    }
-    return pt;
+    return player.getCurrentTime();
   }
 }

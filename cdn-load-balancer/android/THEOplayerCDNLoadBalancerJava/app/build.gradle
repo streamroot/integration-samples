@@ -5,7 +5,7 @@ plugins {
 
 ext {
     // Sample string configuration
-    product = 'CDNLoadBalancer'
+    product = 'CDN Load Balancer'
     player = 'THEOplayer'
     language  = 'Java'
 
@@ -19,6 +19,7 @@ ext {
 
 android {
     compileSdk 33
+    namespace 'io.streamroot.lumen.delivery.client.samples.cdn_load_balancer.theoplayer'
 
     defaultConfig {
 
