@@ -18,6 +18,7 @@ ext {
 }
 
 android {
+    namespace 'io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer'
     compileSdk 33
 
     defaultConfig {

@@ -1,11 +1,11 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import com.theoplayer.android.api.event.player.PlayerEventTypes;
 import com.theoplayer.android.api.player.Player;
-import io.streamroot.lumen.delivery.client.samples.theoplayer.databinding.ActivityPlayerUnifiedControlsBinding;
+import io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer.databinding.ActivityPlayerUnifiedControlsBinding;
 import java.util.Locale;
 
 /**
