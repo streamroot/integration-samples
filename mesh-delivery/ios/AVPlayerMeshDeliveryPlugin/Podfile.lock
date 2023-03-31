@@ -1,7 +1,7 @@
 PODS:
-  - LumenMeshDeliveryAVPlayerPlugin (23.1.0.0):
-    - LumenMeshSDK (~> 23.1.0)
-  - LumenMeshSDK (23.1.0)
+  - LumenMeshDeliveryAVPlayerPlugin (23.3.0.0):
+    - LumenMeshSDK (~> 23.3.0)
+  - LumenMeshSDK (23.3.0)
 
 DEPENDENCIES:
   - LumenMeshDeliveryAVPlayerPlugin

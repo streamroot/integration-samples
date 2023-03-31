@@ -1,7 +1,7 @@
 PODS:
-  - LumenCDNLoadBalancerAVPlayerPlugin (23.1.0.0):
-    - LumenOrchestratorSDK (~> 23.1.0)
-  - LumenOrchestratorSDK (23.1.0)
+  - LumenCDNLoadBalancerAVPlayerPlugin (23.3.0.0):
+    - LumenOrchestratorSDK (~> 23.3.0)
+  - LumenOrchestratorSDK (23.3.0)
 
 DEPENDENCIES:
   - LumenCDNLoadBalancerAVPlayerPlugin

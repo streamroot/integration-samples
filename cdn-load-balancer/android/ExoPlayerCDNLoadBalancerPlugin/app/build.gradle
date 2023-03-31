@@ -45,7 +45,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
-    def dc_version = '23.1.0'
+    def dc_version = '23.3.0'
     def exo_version = '2-18'
     def plugin_patch = 0
     implementation "io.streamroot.lumen.delivery.client:orchestrator-plugin-exoplayer-$exo_version-utils:$dc_version.$plugin_patch"
