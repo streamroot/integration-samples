@@ -23,9 +23,9 @@ dependencyResolutionManagement {
 ```
 
 ### Plugin versioning
-For a given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-18:23.1.0.0`:
+For a given `io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-2-18:23.3.0.0`:
 - `2-18` is the ExoPlayer `MAJOR-MINOR` => a specific plugin version will automatically take the last PATCH of ExoPlayer (ex: `2.18.1`)
-- `23.1.0.0` is the Mesh Delivery SDK version (`23.1.0`) appended with a plugin version (`.0`)
+- `23.3.0.0` is the Mesh Delivery SDK version (`23.3.0`) appended with a plugin version (`.0`)
 To summarize, one plugin version = one specific Mesh Delivery SDK version + one specific `MAJOR.MINOR` ExoPlayer version.
 **For that reason, it is recommended that you do not include ExoPlayer as a dependency by yourself but let the Plugin pull the right ExoPlayer version for you.**
 Forcing a different ExoPlayer version may lead to runtime errors such as `UnsatisfiedLinkError`, `ClassNotFoundException`, etc.
@@ -33,7 +33,7 @@ Forcing a different ExoPlayer version may lead to runtime errors such as `Unsati
 Add Mesh Delivery plugin for ExoPlayer dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
 ```gradle
 // It is good practice to lock dependencies version
-def dc_version = '23.1.0'
+def dc_version = '23.3.0'
 def exo_version = '2-18'
 def plugin_patch = 0
 implementation "io.streamroot.lumen.delivery.client:mesh-plugin-exoplayer-$exo_version:$dc_version.$plugin_patch"
