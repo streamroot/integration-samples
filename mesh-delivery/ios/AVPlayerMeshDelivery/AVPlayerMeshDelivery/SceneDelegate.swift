@@ -1,9 +1,6 @@
 //
 //  SceneDelegate.swift
 //  AVPlayerMesh
-//
-//  Created by Mehala, Damien on 14/01/2022.
-//
 
 import UIKit
 
