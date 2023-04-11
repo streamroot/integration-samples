@@ -240,4 +240,4 @@ The lack of some interfaces may :
 
 ## Limitations
 
-Note that in Airplay casting mode the P2P is disabled
+We currently do not support P2P in Airplay casting mode 
