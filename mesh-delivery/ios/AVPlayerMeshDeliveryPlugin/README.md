@@ -2,7 +2,6 @@
 
 ## Prerequisite
 To integrate the Mesh Delivery plugin for AVPlayer, we need:
-
 1. A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
 2. Mesh Delivery plugin for AVPlayer Framework installed.
 

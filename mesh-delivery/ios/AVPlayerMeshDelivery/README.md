@@ -1,7 +1,6 @@
 # Mesh Delivery SDK Integration for iOS, iPadOS and tvOS
 
 ## Prerequisite
-
 To integrate the Mesh Delivery SDK, we need:
 
 1. A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
@@ -12,11 +11,9 @@ To integrate the Mesh Delivery SDK, we need:
 **Not into Tutorials?** Take a look at our [sample app](https://github.com/streamroot/integration-samples/tree/master/mesh-delivery/ios/AVPlayerMeshDelivery)
 
 ## Framework installation
-
 The Mesh Delivery SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/).
 
 ### Cocoapods
-
 To get the SDK via cocoapods, add `pod 'LumenMeshSDK'` to your podfile like this:
 
 ```
@@ -31,7 +28,6 @@ Then, execute `pod install`
 ## Configuration
 
 ### Disable App Transport security
-
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -44,7 +40,6 @@ Add the following lines with the right parameters values.
 ```
 
 ### Set the Client Delivery Key
-
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -59,7 +54,6 @@ Add the following lines with the right parameters values.
 We strongly recommend to set the Delivery Client Key in `Info.plist`. However, if not possible, it is also possible to pass it during the initialization step.
 
 ## Code integration
-
 First, import the SDK:
 
 ```swift
@@ -67,7 +61,6 @@ import LumenMeshSDK
 ```
 
 ### 1. SDK Initialization
-
 Initialize the Mesh Delivery SDK from the `AppDelegate`
 
 ```swift
@@ -87,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ```
 
 ### 2. Bridge between AVPlayer and the `LMDeliveryClient`
-
 In order to work correctly, the SDK instance uses a `PlayerInteractor`.
 
 It is the component in charge of the interactions between the player and the SDK. It monitors Quality of Service (QoS) metrics and allows the SDK to behave accordingly.
@@ -107,7 +99,6 @@ To feed the SDK properly, this class needs to inherit from `LMPlayerInteractorBa
 When integrating the SDK, you are free to implement this component but we provide an implementation example for AVPlayer in [PlayerInteractor.swift](AVPlayerMeshDelivery/PlayerInteractor.swift).
 
 ### 3. Instantiate a `LMDeliveryClient`
-
 Now that the SDK is initialized, you are able to create `LMDeliveryClient` instances. It can be configured pretty easily as such:
 
 ```swift
@@ -132,7 +123,6 @@ func createDeliveryClient() -> LMDeliveryClient {
 **Note**: `PlayerInteractor` is referencing the bridge class from step 2, depending of your implementation the naming can differ from our example, but, it **must** subclass `LMPlayerInteractorBase`
 
 ### 4. Start the SDK instance and get the final url
-
 Calling `start()` on the `LMDeliveryClient` instance will start the SDK.
 Once you have a running instance of the SDK, you must retrieve the final URL and input it to your player instead of your original one.
 
@@ -148,7 +138,6 @@ let playerItem = AVPlayerItem(asset: AVURLAsset(url: deliveryUrl))
 ```
 
 ### 5. Link the player with PlayerInteractor
-
 Start the player with the new url provided by the `LMDeliveryClient` then link it with the `PlayerInteractor` :
 
 ```swift
@@ -159,7 +148,6 @@ playerInteractor.linkPlayer(player!, playerItem: playerItem)
 **Note**: The interactor is linked with a specific player AND a specific player item. The same object should be used inside AVPlayer and inside the linkPlayer() method.
 
 ### 6. Play the stream
-
 To play the stream, simply do:
 
 ```swift
@@ -167,7 +155,6 @@ player?.play()
 ```
 
 ### 7. Stop the SDK
-
 Make sure to stop the `LMDeliveryClient` once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
 
 ```swift
@@ -175,7 +162,6 @@ self.deliveryClient.stop()
 ```
 
 ## Additional options
-
 You can pass additional options during the creation of a `LMDeliveryClient`
 
 ```swift
@@ -243,7 +229,6 @@ func createDeliveryClient() -> LMDeliveryClient {
 ## Troubleshooting
 
 ### Enable logs
-
 By default the log level is set to `OFF` for initalization, it can be turned on when building an instance of `LMDeliveryClient`:
 
 ```swift
@@ -256,11 +241,9 @@ func createDeliveryClient() -> LMDeliveryClient {
 ```
 
 **Notes:**
-
 - Valid value for `LMLogLevel` are `trace`, `critical`, `error`, `warning`, `info`, `debug` or `off`.
 
 ### StatsView
-
 A helper method is available to display various Mesh Delivery related stats on a specified UIView.
 
 ```swift
@@ -271,7 +254,6 @@ self.deliveryClient.displayStatWiew(someView!)
 **Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.
 
 ## Interactor capabilities
-
 The SDK is player agnostic. All communication between the player and the delivery client that are player specific are implemented in a PlayerInteractor class.
 Each player has a different API that the SDK tries to use at its full potential in order to monitor and maximize the Quality of Service.
 The lack of some interfaces may :
@@ -282,7 +264,6 @@ The lack of some interfaces may :
 ### QoS
 
 **States**
-
 - INVALID : Unused
 - IDLE : OK
 - PLAYING : OK
@@ -292,7 +273,6 @@ The lack of some interfaces may :
 - ENDED : OK
 
 **Misc**
-
 - Playback time : OK
 - Bandwidth control : OK
 - Buffer health : OK
@@ -301,10 +281,8 @@ The lack of some interfaces may :
 - Frame drop : OK
 
 ### Offload
-
 - Set buffer target : OK
 - Get buffer target : OK
 
 ## Limitations
-
-Note that in Airplay casting mode the P2P is disabled
+We currently do not support P2P in Airplay casting mode
