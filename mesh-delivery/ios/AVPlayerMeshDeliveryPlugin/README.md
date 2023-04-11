@@ -1,19 +1,24 @@
 # Mesh Delivery Plugin Integration for iOS, iPadOS and tvOS
 
 ## Prerequisite
+
 To integrate the Mesh Delivery plugin for AVPlayer, we need:
+
 1. A valid Delivery Client Key (formerly Streamroot Key). It is available in the Account section of your dashboard.
 2. Mesh Delivery plugin for AVPlayer Framework installed.
 
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/mesh-delivery.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
-**Not into Tutorials?** Take a look at our [sample app](https://github.com/streamroot/integration-samples/tree/master/mesh-delivery/ios/AVPlayerMeshDeliveryPlugin) 
+**Not into Tutorials?** Take a look at our [sample app](https://github.com/streamroot/integration-samples/tree/master/mesh-delivery/ios/AVPlayerMeshDeliveryPlugin)
 
 ## Framework installation
-Mesh Delivery plugin for AVPlayer is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage#quick-start).
+
+Mesh Delivery plugin for AVPlayer is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/).
 
 ### Cocoapods
+
 To get the SDK via cocoapods, add `pod 'LumenMeshDeliveryAVPlayerPlugin'` to your podfile like this:
+
 ```
 target 'MyApp' do
   use_frameworks!
@@ -23,17 +28,10 @@ end
 
 Then, execute `pod install`
 
-### Carthage
-Add the Mesh Delivery Plugin dependency to the Cartfile (more info on [Carthage installation](https://github.com/Carthage/Carthage#quick-start) method).
-```
-github "streamroot/lumen-delivery-client-plugin-avplayer" "VERSION"
-```
-
-Since the plugin uses pods, after carthage checkout you need to run the `pod install` command inside the "lumen-delivery-client-plugin-avplayer" repository before continuing with carthage update.
-
 ## Configuration
 
 ### Disable App Transport security
+
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -46,6 +44,7 @@ Add the following lines with the right parameters values.
 ```
 
 ### Set the Client Delivery Key
+
 In the Project Navigator, right click on "Info.plist", and "Open as" → "Source Code".
 Add the following lines with the right parameters values.
 
@@ -62,11 +61,13 @@ We strongly recommend to set the Delivery Client Key in `Info.plist`. However, i
 ## Code integration
 
 First, import the Plugin:
+
 ```swift
 import LumenMeshDeliveryAVPlayerPlugin
 ```
 
 ### 1. Plugin Initialization
+
 Initialize the Mesh Delivery plugin from the `AppDelegate`
 
 ```swift
@@ -89,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 Now that the plugin is initialized, you are able to create `LMDeliveryClientPlugin` instances. It can be configured pretty easily as such:
 
-
 ```swift
 plugin = LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
       .createAVPlayer()
@@ -101,18 +101,22 @@ plugin = LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
 Unless you gave your own, the plugin created an AVPlayer, it also automatically set the correct `AVPlayerItem`.
 
 Set player to `AVPController` then play
+
 ```swift
 avpController.player = plugin.avPlayer
 plugin.avPlayer.play()
 ```
 
 ### 4. Stop the SDK
+
 Make sure to stop the plugin once you are done with the video. We recommend to put it in the `viewDidDisappear(:bool)` or any callback terminating the player lifecycle.
+
 ```swift
 plugin?.stop()
 ```
 
 ## Additional options
+
 You can pass additional options during the creation of a `LMDeliveryClientPlugin`
 
 ```swift
@@ -176,7 +180,9 @@ func createPlugin() -> LMDeliveryClientPlugin {
 ## Troubleshooting
 
 ### Enable logs
+
 By default the log level is set to `OFF` for initalization, it can be turned on when building an instance of `LMDeliveryClientPlugin`:
+
 ```swift
 plugin = LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
       .createAVPlayer()
@@ -187,40 +193,51 @@ plugin = LMDeliveryClientPlugin.newBuilder(uri: manifestUrl)
 ```
 
 ### StatsView
+
 A helper method is available to display various Mesh Delivery related stats on a specified UIView.
 
 ```swift
 // The implementer is in charge to create the view and to display it on top of the player controller/layer
 plugin.displayStatsView(someView!)
 ```
+
 **Note**: This sample app is using [AVPlayerViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller), on iOS we are adding the view as a subview of `AVPlayerViewController`. On tvOS, we suggest to use [customOverlayViewController](https://developer.apple.com/documentation/avkit/avplayerviewcontroller/3229856-customoverlayviewcontroller) instead.
 
 ## Interactor capabilities
+
 The SDK is player agnostic. All communication between the player and the delivery client that are player specific are implemented in a PlayerInteractor class.
 Each player has a different API that the SDK tries to use at its full potential in order to monitor and maximize the Quality of Service.
 The lack of some interfaces may :
+
 - Reduce QoS detection
 - Reduce offload
 
 ### QoS
 
 **States**
-* INVALID : Unused
-* IDLE : OK
-* PLAYING : OK
-* PAUSED : OK
-* SEEKING : OK
-* REBUFFERING : OK
-* ENDED : OK
+
+- INVALID : Unused
+- IDLE : OK
+- PLAYING : OK
+- PAUSED : OK
+- SEEKING : OK
+- REBUFFERING : OK
+- ENDED : OK
 
 **Misc**
-* Playback time : OK
-* Bandwidth control : OK
-* Buffer health : OK
-* Track switch : Experimental
-* Player error : OK
-* Frame drop : OK
+
+- Playback time : OK
+- Bandwidth control : OK
+- Buffer health : OK
+- Track switch : Experimental
+- Player error : OK
+- Frame drop : OK
 
 ### Offload
-* Set buffer target : OK
-* Get buffer target : OK
+
+- Set buffer target : OK
+- Get buffer target : OK
+
+## Limitations
+
+Note that in Airplay casting mode the P2P is disabled
