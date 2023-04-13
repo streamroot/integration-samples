@@ -1,4 +1,4 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import io.streamroot.lumen.delivery.client.core.LumenLogLevel;
-import io.streamroot.lumen.delivery.client.samples.theoplayer.databinding.ActivityMainBinding;
+import io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
   private ActivityMainBinding binding;

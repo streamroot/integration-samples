@@ -1,4 +1,4 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import com.theoplayer.android.api.player.Player;
 import com.theoplayer.android.api.source.SourceDescription;
 import com.theoplayer.android.api.source.TypedSource;
 import io.streamroot.lumen.delivery.client.core.LumenDeliveryClient;
-import io.streamroot.lumen.delivery.client.samples.theoplayer.databinding.ActivityPlayerBinding;
+import io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer.databinding.ActivityPlayerBinding;
 import io.streamroot.lumen.delivery.client.utils.LumenStatsView;
 
 public class PlayerActivity extends AppCompatActivity {
@@ -129,14 +129,15 @@ public class PlayerActivity extends AppCompatActivity {
   private LumenDeliveryClient createDeliveryClient(Player player) {
     final PlayerInteractor playerInteractor = new PlayerInteractor(player);
 
-    return LumenDeliveryClient.orchestratorBuilder(this)
+    return LumenDeliveryClient.meshBuilder(this)
         .playerInteractor(playerInteractor)
         .options(
             o -> {
               o.logLevel(streamConfig.logLevel);
               o.deliveryClientKey(streamConfig.streamrootKey);
-              if (streamConfig.property != null) o.orchestratorProperty(streamConfig.property);
+              if (streamConfig.property != null) o.meshProperty(streamConfig.property);
               if (streamConfig.contentId != null) o.contentId(streamConfig.contentId);
+              if (streamConfig.latency != null) o.latency(Short.parseShort(streamConfig.latency));
               return null;
             })
         .build(streamConfig.contentUrl);

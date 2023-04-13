@@ -1,4 +1,4 @@
-package io.streamroot.lumen.delivery.client.samples.theoplayer;
+package io.streamroot.lumen.delivery.client.samples.mesh_delivery.theoplayer;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;

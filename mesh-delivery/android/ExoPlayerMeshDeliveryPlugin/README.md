@@ -30,7 +30,7 @@ To summarize, one plugin version = one specific Mesh Delivery SDK version + one 
 **For that reason, it is recommended that you do not include ExoPlayer as a dependency by yourself but let the Plugin pull the right ExoPlayer version for you.**
 Forcing a different ExoPlayer version may lead to runtime errors such as `UnsatisfiedLinkError`, `ClassNotFoundException`, etc.
 
-Add Mesh Delivery plugin for ExoPlayer dependency. Add in your **module** `build.gradle` (it often ends with `.app`)
+Add Mesh Delivery plugin for ExoPlayer dependency. In your **module** `build.gradle` (it often ends with .app), add the following lines in the `dependencies` block:
 ```gradle
 // It is good practice to lock dependencies version
 def dc_version = '23.3.0'
@@ -79,11 +79,9 @@ First, add an xml resource (called here `network_security_config.xml`) to your p
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true">
-        <trust-anchors>
-            <certificates src="system" />
-        </trust-anchors>
-    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
 </network-security-config>
 ```
 
@@ -93,14 +91,15 @@ Then add the following attributes in the application of your `AndroidManifest.xm
 <manifest ...>
     <application
         ...
-        android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config">
     </application>
 </manifest>
 ```
 
+More info can be found in the [Android documentation](https://developer.android.com/training/articles/security-config).
+
 ## Set the Delivery Client Key
-In your `AndroidManifest.xml`, add the `DeliveryClientKey` in the application node:
+In your `AndroidManifest.xml`, add the `DeliveryClientKey` in the `application` node:
 ```xml
 <meta-data
 android:name="io.streamroot.lumen.delivery.client.DeliveryClientKey"
@@ -108,7 +107,7 @@ android:value="<delivery-client-key>"
 />
 ```
 
-We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when instantiating a `LumenDeliveryClient`.
+We strongly recommend to set the Delivery Client Key in your `AndroidManifest.xml`. However, if it's not possible you can specify it when calling `LumenDeliveryClient.initializeApp()`.
 
 ## Code integration
 
@@ -129,6 +128,9 @@ class Application: MultiDexApplication() {
     }
 }
 ```
+
+**NOTE:** If you use a MultiDexApplication, don't forget to add the `multiDexEnabled true` line in your app gradle file under the `android.defaultConfig` block. More information in the Multidex documentation linked above.
+
 In your `AndroidManifest.xml`, point to your custom application subclass: 
 
 ```kotlin
