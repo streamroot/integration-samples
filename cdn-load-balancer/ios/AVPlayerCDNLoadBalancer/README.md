@@ -7,10 +7,10 @@ To integrate the CDN Load Balancer SDK, we need:
 
 **NOTE:** For this sample app, we are using `demoswebsiteandpartners` Delivery Client Key. If you do not have one, you can ask for a [free trial on our website](https://www.lumen.com/en-us/edge-computing/cdn-load-balancer.html). In the following tutorial, every mention to the Delivery Client Key will use the `<delivery-client-key>` placeholder.
 
-**Not into Tutorials?** Take a look at our [sample app](https://github.com/streamroot/integration-samples/tree/master/cdn-load-balancer/ios/AVPlayerCDNLoadBalancer) 
+**Not into Tutorials?** Take a look at our [sample app](https://github.com/streamroot/integration-samples/tree/master/cdn-load-balancer/ios/AVPlayerCDNLoadBalancer)
 
 ## Framework installation
-The CDN Load Balancer SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/) and [Carthage](https://github.com/Carthage/Carthage#quick-start).
+The CDN Load Balancer SDK is delivered as an Xcode framework and is available on [Cocoapods](https://cocoapods.org/).
 
 ### Cocoapods
 To get the SDK via cocoapods, add `pod 'LumenOrchestratorSDK'` to your podfile like this:
@@ -22,14 +22,6 @@ end
 ```
 
 Then, execute `pod install`
-
-### Carthage
-To get the SDK via Carthage, add a dependency on `LumenOrchestratorSDK` like this:
-```
-binary "https://sdk.streamroot.io/ios/LumenOrchestratorSDK.json"
-```
-
-Then, execute `carthage update --use-xcframeworks`
 
 ## Configuration
 
