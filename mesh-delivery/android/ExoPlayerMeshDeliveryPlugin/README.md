@@ -231,7 +231,7 @@ LumenDeliveryClientPlugin.Builder(this, manifestUrl).meshOptions {
     *
     * param: Int
     */
-    latency(25)
+    latency(30)
     /*
     * Set a proxy server
     * Allows the use of a proxy server in the middle
