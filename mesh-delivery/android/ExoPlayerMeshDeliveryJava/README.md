@@ -257,7 +257,7 @@ private LumenDeliveryClient createDeliveryClient(ExoPlayer player, DefaultLoadCo
                 *
                 * param: Int
                 */
-                o.latency(3);
+                o.latency(30);
                 /*
                 * Set a proxy server
                 * Allows the use of a proxy server in the middle
