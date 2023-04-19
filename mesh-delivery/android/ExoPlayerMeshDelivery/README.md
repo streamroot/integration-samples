@@ -262,7 +262,7 @@ private fun createDeliveryClient(
                 *
                 * param: Int
                 */
-                latency(3)
+                latency(30)
                 /*
                 * Set a proxy server
                 * Allows the use of a proxy server in the middle
