@@ -1,0 +1,21 @@
+apply plugin: 'java-gradle-plugin' // Allows us to create and configure custom plugins
+
+buildscript {
+  ext.gradle_version = '7.1.2'
+  repositories {
+      mavenCentral()
+      google()
+  }
+  dependencies {
+      classpath "com.android.tools.build:gradle:$gradle_version"
+  }
+}
+
+repositories {
+    mavenCentral()
+    google()
+}
+
+dependencies {
+    implementation "com.android.tools.build:gradle:$gradle_version"
+}
